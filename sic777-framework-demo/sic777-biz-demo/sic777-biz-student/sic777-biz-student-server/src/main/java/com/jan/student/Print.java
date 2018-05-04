@@ -1,4 +1,4 @@
-package com.jan;
+package com.jan.student;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.core.annotation.Order;

@@ -1,4 +1,4 @@
-package com.sic777;
+package com.sic777.student;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.core.annotation.Order;

@@ -1,4 +1,4 @@
-package com.jan.test;
+package com.jan.student.test;
 
 /**
  * <p></p>
