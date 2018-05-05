@@ -47,7 +47,7 @@
                 <version>${maven-assembly-plugin.version}</version>
                 <configuration>
                     <descriptors>
-                        <descriptor>src/main/assembly/assembly.xml</descriptor>
+                        <descriptor>${basedir}/../sic777-common-demo/src/main/assembly/gateway_assembly.xml</descriptor>
                     </descriptors>
                 </configuration>
                 <executions>

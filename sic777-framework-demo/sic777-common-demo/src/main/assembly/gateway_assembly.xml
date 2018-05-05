@@ -24,7 +24,7 @@
     <fileSets>
         <!-- script -->
         <fileSet>
-            <directory>${project.build.scriptSourceDirectory}</directory>
+            <directory>${project.basedir}/../sic777-common-demo/${project.build.scriptSourceDirectory}</directory>
             <outputDirectory>bin</outputDirectory>
             <fileMode>0644</fileMode>
             <directoryMode>0755</directoryMode>
