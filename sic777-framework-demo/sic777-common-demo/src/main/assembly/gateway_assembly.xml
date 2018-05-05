@@ -36,6 +36,13 @@
             <fileMode>0644</fileMode>
             <directoryMode>0755</directoryMode>
         </fileSet>
+        <!-- log4j2 -->
+        <fileSet>
+            <directory>${project.basedir}/../sic777-common-demo/src/main/resources</directory>
+            <outputDirectory>config</outputDirectory>
+            <fileMode>0644</fileMode>
+            <directoryMode>0755</directoryMode>
+        </fileSet>
         <!-- the project jar -->
         <fileSet>
             <directory>${project.build.directory}</directory>

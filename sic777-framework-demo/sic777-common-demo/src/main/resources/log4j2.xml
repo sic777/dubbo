@@ -2,7 +2,7 @@
 <Configuration status="on" monitorInterval="1800">
     <properties>
         <property name="LOG_HOME">logs</property>
-        <property name="LOG_FILE_NAME">demo-gateway</property>
+        <property name="LOG_FILE_NAME">default_name</property>
     </properties>
 
     <Appenders>

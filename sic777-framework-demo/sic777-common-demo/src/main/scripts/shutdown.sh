@@ -1,10 +1,10 @@
 #!/bin/sh
-#请配置工作路径为根目录
-WK_PATH=""
-#JAR包全称
-JAR=""
-#PID文件
-PID_FILE_PATH="$WK_PATH/pid/pid"
+#1. 请配置工作路径为根目录（必填）
+WK_PATH=
+#2. JAR包全称（必填）
+JAR=
+
+PID_FILE_PATH=$WK_PATH/pid
 PID=""
 
 if [ ! -n "$WK_PATH" ];then
@@ -34,5 +34,5 @@ else
 #  echo "kill proceess pid:[$PID]"
   kill $PID
   echo "">$PID_FILE_PATH
-  echo "success to shutdown server"
+  echo "Service shutdown success."
 fi

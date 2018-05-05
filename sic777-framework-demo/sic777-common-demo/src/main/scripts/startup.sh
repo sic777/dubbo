@@ -1,15 +1,15 @@
 #!/bin/sh
-#请配置工作路径为根目录
-WK_PATH=""
-#JAR包全称
-JAR=""
-#程序入口
-MAIN_CLASS=""
-#入口参数
-ARGS=""
-#JVM参数
-JVM_OPT="-Xmx216M -Xms216M -server -XX:+PrintGCDetails -XX:+PrintGCDateStamps"
-#JDK
+#1. 请配置工作路径为根目录（必填）
+WK_PATH=
+#2. 请配置JAR包全称（必填）
+JAR=
+#3. 请配置程序入口（必填）
+MAIN_CLASS=
+#4. 请配置入口参数（可选）
+ARGS=
+#5. 请配置JVM参数（必填）
+JVM_OPT=-Xmx216M -Xms216M -server -XX:+PrintGCDetails -XX:+PrintGCDateStamps
+#6. 请配置JDK（必填）
 JAVA_HOME=
 
 if [ ! -n "$WK_PATH" ];then
@@ -36,4 +36,4 @@ fi
 
 echo $PID > $WK_PATH/pid/pid
 
-echo "success to start server ..."
+echo "Service startup success."
