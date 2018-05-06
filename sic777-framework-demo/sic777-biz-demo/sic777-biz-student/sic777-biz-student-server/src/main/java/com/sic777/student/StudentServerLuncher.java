@@ -4,6 +4,7 @@ import com.alibaba.dubbo.config.spring.context.annotation.DubboComponentScan;
 import com.sic777.dubbo.provider.DubboProviderLuncher;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
  * <p></p>
@@ -15,6 +16,7 @@ import org.springframework.context.annotation.ComponentScan;
 @SpringBootApplication
 @DubboComponentScan("com.jan")
 @ComponentScan("com.jan")
+@EnableTransactionManagement
 public class StudentServerLuncher {
     public static void main(String[] args) {
         DubboProviderLuncher.start(new Thread(() -> {

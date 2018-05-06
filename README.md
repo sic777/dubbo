@@ -69,6 +69,8 @@
         }
       7. 所有的校验必须服务端也必须得有，在stub编写(仅处理参数校验)
          如果涉及到跨服务调用,请在server端编写
+      
+      8.在mybatis环境下,如果需要支持事务,请在启动类上添加注解org.springframework.transaction.annotation.EnableTransactionManagement
         
 ## 部署
     1. 执行mvc clean package进行打包
@@ -83,5 +85,4 @@
 ## 使用建议
 
     1. 一个服务里边做一件事情,不要跨服务同时新增/删除/修改数据,会出现分布式事务的问题。
-    
     

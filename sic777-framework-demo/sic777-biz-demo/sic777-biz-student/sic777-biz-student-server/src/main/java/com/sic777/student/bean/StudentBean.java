@@ -1,25 +1,15 @@
-package com.sic777.student.domain;
-
-import java.io.Serializable;
+package com.sic777.student.bean;
 
 /**
  * <p></p>
  *
  * @author Zhengzhenxie
  * @version v1.0
- * @since 2018-05-04
+ * @since 2018-05-06
  */
-public class Student implements Serializable {
+public class StudentBean {
     private String id;
     private String name;
-
-    public Student() {
-    }
-
-    public Student(String id, String name) {
-        this.id = id;
-        this.name = name;
-    }
 
     public String getId() {
         return id;

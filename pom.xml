@@ -41,7 +41,7 @@
         <java.version>1.8</java.version>
         <httpcore.version>4.4.6</httpcore.version>
         <httpclient.version>4.5.3</httpclient.version>
-        <spring-boot.version>1.5.9.RELEASE</spring-boot.version>
+        <spring-boot.version>1.5.10.RELEASE</spring-boot.version>
         <fastjson.version>1.2.28</fastjson.version>
         <sic777-utils.version>1.0-SNAPSHOT</sic777-utils.version>
         <sic777-springboot-dubbo.version>1.0-SNAPSHOT</sic777-springboot-dubbo.version>
@@ -52,6 +52,7 @@
         <jetty.version>6.1.26</jetty.version>
         <guava.version>21.0</guava.version>
         <slf4j.version>1.7.15</slf4j.version>
+        <beanutils.version>1.9.3</beanutils.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -174,29 +175,18 @@
                 <version>${fastjson.version}</version>
                 <optional>true</optional>
             </dependency>
+            <!-- beanutils -->
+            <dependency>
+                <groupId>commons-beanutils</groupId>
+                <artifactId>commons-beanutils</artifactId>
+                <version>${beanutils.version}</version>
+                <optional>true</optional>
+            </dependency>
             <!-- guava -->
             <dependency>
                 <groupId>com.google.guava</groupId>
                 <artifactId>guava</artifactId>
                 <version>${guava.version}</version>
-            </dependency>
-            <!-- mongodb -->
-            <dependency>
-                <groupId>org.mongodb</groupId>
-                <artifactId>mongo-java-driver</artifactId>
-                <version>${mongo.version}</version>
-            </dependency>
-            <!-- cassandra -->
-            <dependency>
-                <groupId>com.datastax.cassandra</groupId>
-                <artifactId>cassandra-driver-core</artifactId>
-                <version>${cassandra.version}</version>
-            </dependency>
-            <!-- redis -->
-            <dependency>
-                <groupId>redis.clients</groupId>
-                <artifactId>jedis</artifactId>
-                <version>${jedis.version}</version>
             </dependency>
             <!-- slf4j api -->
             <dependency>

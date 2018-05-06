@@ -21,7 +21,7 @@ public class StudentController extends BaseController {
     private IStudentService studentService;
 
     @PostMapping(REST_URL.TEST)
-    public void create(@RequestBody Student student) {
+    public void create(@RequestBody Student student)throws Exception{
         Response<Student> rs = studentService.create(student);
         super.processRpc(rs);
         rest200(rs.getData());

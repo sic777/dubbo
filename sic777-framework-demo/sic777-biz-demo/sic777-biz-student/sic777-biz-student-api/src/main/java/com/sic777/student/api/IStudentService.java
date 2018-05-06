@@ -18,8 +18,9 @@ public interface IStudentService {
      *
      * @param student
      * @return
+     * @throws Exception
      */
-    Response<Student> create(Student student);
+    Response<Student> create(Student student) throws Exception;
 
     /**
      * 根据id查找
