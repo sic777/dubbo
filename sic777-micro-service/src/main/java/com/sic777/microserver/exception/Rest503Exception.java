@@ -13,7 +13,12 @@ import org.springframework.http.HttpStatus;
  */
 public final class Rest503Exception extends RestException {
 
-    public Rest503Exception() {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -9219530146399136414L;
+
+	public Rest503Exception() {
         super(ERROR_ENUM.SERVICE_EXCEPTION.getCode(), ERROR_ENUM.SERVICE_EXCEPTION.getMsg());
     }
 

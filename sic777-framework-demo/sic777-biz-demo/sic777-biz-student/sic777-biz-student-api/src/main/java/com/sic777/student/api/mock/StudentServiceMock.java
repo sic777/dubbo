@@ -14,26 +14,30 @@ import java.util.List;
  * @since 2018-05-04
  */
 public class StudentServiceMock implements IStudentService {
-    @Override
+    @SuppressWarnings("unchecked")
+	@Override
     public Response<Student> create(Student student) {
         return Response.rpcException();
     }
-
+    
+    @SuppressWarnings("unchecked")
     @Override
     public Response<Student> getById(String id) {
         return Response.rpcException();
     }
-
+    
+    @SuppressWarnings("unchecked")
     @Override
     public Response<List<Student>> listAll() {
         return Response.rpcException();
     }
-
+    
+    @SuppressWarnings("unchecked")
     @Override
     public Response<Student> update(Student student) {
         return Response.rpcException();
     }
-
+    
     @Override
     public Response<?> delete(String id) {
         return Response.rpcException();

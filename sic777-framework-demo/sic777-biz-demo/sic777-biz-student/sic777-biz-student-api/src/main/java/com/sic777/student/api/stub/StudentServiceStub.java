@@ -22,7 +22,8 @@ public class StudentServiceStub implements IStudentService {
         this.studentService = studentService;
     }
 
-    @Override
+    @SuppressWarnings("unchecked")
+	@Override
     public Response<Student> create(Student student) {
         try {
             System.out.println("参数校验");

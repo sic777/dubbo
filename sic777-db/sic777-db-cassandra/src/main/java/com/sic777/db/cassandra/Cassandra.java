@@ -270,7 +270,8 @@ public final class Cassandra {
      * @throws TimeoutException
      * @throws UnsupportedOperationException
      */
-    public List selectByPaging(int page, CassandraQuery query, IProcessRow<?> process) throws InterruptedException, ExecutionException, TimeoutException, UnsupportedOperationException {
+    @SuppressWarnings("rawtypes")
+	public List selectByPaging(int page, CassandraQuery query, IProcessRow<?> process) throws InterruptedException, ExecutionException, TimeoutException, UnsupportedOperationException {
         ResultSet rs = select(query);
         List<Object> results = new ArrayList<>();
         Set<String> set = new HashSet<>();

@@ -12,7 +12,12 @@ import com.sic777.utils.other.RemoteHostUtil;
  */
 public class RpcException extends RuntimeException {
 
-    public RpcException() {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 7229323756899328038L;
+
+	public RpcException() {
         super(String.format("an exception occurs when the server '%s' is invoked.", RemoteHostUtil.getHost()));
     }
 

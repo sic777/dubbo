@@ -614,7 +614,8 @@ public class DubboProviderConfig {
      *
      * @return
      */
-    @Bean
+    @SuppressWarnings("deprecation")
+	@Bean
     public ProviderConfig defaultDubboProviderConfig() {
         ProviderConfig providerConfig = new ProviderConfig();
 

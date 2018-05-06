@@ -12,7 +12,12 @@ import org.springframework.http.HttpStatus;
  */
 public final class Rest400Exception extends RestException {
 
-    public Rest400Exception(int code, String msg) {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -2097486976527779486L;
+
+	public Rest400Exception(int code, String msg) {
         super(code, msg);
     }
 

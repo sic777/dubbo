@@ -13,7 +13,11 @@ import org.springframework.http.HttpStatus;
  * @since 1.7
  */
 public abstract class RestException extends RuntimeException {
-    private final int code;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -70921703399466740L;
+	private final int code;
     private final String msg;
 
 

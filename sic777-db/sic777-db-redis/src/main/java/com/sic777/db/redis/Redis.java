@@ -8,7 +8,6 @@ import org.slf4j.LoggerFactory;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
-import redis.clients.jedis.JedisSentinelPool;
 import redis.clients.util.Pool;
 
 import java.io.IOException;
@@ -41,7 +40,6 @@ public final class Redis {
 
     private static final Logger logger = LoggerFactory.getLogger(Redis.class);
     private JedisPool jedisPool;
-    private JedisSentinelPool sentinelPool;
     private static AtomicBoolean isInit = new AtomicBoolean(false);
     private RedisHash HASH = new RedisHash();
     private RedisKeys KEYS = new RedisKeys();

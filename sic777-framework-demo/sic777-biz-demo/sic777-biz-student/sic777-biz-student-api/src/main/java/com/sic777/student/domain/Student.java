@@ -10,7 +10,11 @@ import java.io.Serializable;
  * @since 2018-05-04
  */
 public class Student implements Serializable {
-    private String id;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 607096734802831146L;
+	private String id;
     private String name;
 
     public Student() {

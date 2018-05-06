@@ -12,7 +12,12 @@ import org.springframework.http.HttpStatus;
  */
 public final class Rest403Exception extends RestException {
 
-    public Rest403Exception(int code, String msg) {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 3487325839481274723L;
+
+	public Rest403Exception(int code, String msg) {
         super(code, msg);
     }
 

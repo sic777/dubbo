@@ -365,7 +365,8 @@ public class DubboProtocolConfig {
      * 不使用@Bean注入,由程序手动注入(为了支持多协议)
      * @return
      */
-    public Map<String, ProtocolConfig> buildProtocolConfig() {
+    @SuppressWarnings("deprecation")
+	public Map<String, ProtocolConfig> buildProtocolConfig() {
         Map<String, ProtocolConfig> ProtocolConfigs = new HashMap<>();
 //        必填项不使用@Value注解,简化报错输出
         if (null == name || name.isEmpty()) {

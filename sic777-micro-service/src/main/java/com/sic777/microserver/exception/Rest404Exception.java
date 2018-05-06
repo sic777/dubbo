@@ -12,7 +12,12 @@ import org.springframework.http.HttpStatus;
  */
 public final class Rest404Exception extends RestException {
 
-    public Rest404Exception(int code, String msg) {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 161657807118141593L;
+
+	public Rest404Exception(int code, String msg) {
         super(code, msg);
     }
 

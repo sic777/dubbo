@@ -27,6 +27,11 @@
             <artifactId>spring-boot-starter</artifactId>
             <optional>true</optional>
         </dependency>
+        <!-- aop -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aop</artifactId>
+        </dependency>
         <!-- 自定义Spring-Boot-Dubbo-Common -->
         <dependency>
             <groupId>com.sic777</groupId>
@@ -37,7 +42,6 @@
         <dependency>
             <groupId>io.dubbo.springboot</groupId>
             <artifactId>spring-boot-starter-dubbo</artifactId>
-            <version>1.0.0</version>
         </dependency>
         <!-- log4j zkClient需要用到 -->
         <dependency>

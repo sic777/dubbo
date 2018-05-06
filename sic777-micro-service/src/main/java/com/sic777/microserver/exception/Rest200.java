@@ -13,6 +13,10 @@ import org.springframework.http.HttpStatus;
 public final class Rest200 extends RestException {
 
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = -1591048367290898210L;
+	/**
      * 响应实体
      */
     private final Object obj;

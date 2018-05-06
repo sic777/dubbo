@@ -16,7 +16,6 @@
         <dependency>
             <groupId>com.sic777</groupId>
             <artifactId>sic777-spring-boot-dubbo-commmon</artifactId>
-            <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
 

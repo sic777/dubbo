@@ -253,7 +253,8 @@ public class DubboRegistryConfig {
      *
      * @return
      */
-    public Map<String, RegistryConfig> buildRegistryConfig() {
+    @SuppressWarnings("deprecation")
+	public Map<String, RegistryConfig> buildRegistryConfig() {
         Map<String, RegistryConfig> registryConfigs = new HashMap<>();
 //        必填项不使用@Value注解,简化报错输出
         if (null == address || address.isEmpty()) {

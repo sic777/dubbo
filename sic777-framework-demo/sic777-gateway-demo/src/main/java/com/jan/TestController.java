@@ -2,7 +2,6 @@ package com.jan;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.sic777.dubbo.common.Response;
-import com.sic777.gateway.rest.REST_URL;
 import com.sic777.gateway.rest.controller.BaseController;
 import com.sic777.student.api.IStudentService;
 import com.sic777.student.domain.Student;

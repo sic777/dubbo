@@ -4,7 +4,6 @@ package com.sic777.dubbo.common;
 import com.sic777.dubbo.common.exception.RpcException;
 
 import java.io.Serializable;
-import java.lang.*;
 
 /**
  * <p>Rpc响应实体</p>
@@ -49,7 +48,8 @@ public final class Response<T> implements Serializable {
      * @param e
      * @return
      */
-    public static Response exception(Throwable e) {
+    @SuppressWarnings("rawtypes")
+	public static Response exception(Throwable e) {
         Response rs = new Response<>();
         rs.setStatus(Status.FAILURE);
         rs.setError(new Error(e));
@@ -61,7 +61,8 @@ public final class Response<T> implements Serializable {
      *
      * @return
      */
-    public static Response rpcException() {
+    @SuppressWarnings("rawtypes")
+	public static Response rpcException() {
         Response rs = new Response<>();
         rs.setStatus(Status.FAILURE);
         rs.setError(new Error(new RpcException()));
@@ -76,7 +77,8 @@ public final class Response<T> implements Serializable {
      * @param errorMsg
      * @return
      */
-    public static Response bizException(int errorCode, String errorMsg) {
+    @SuppressWarnings("rawtypes")
+	public static Response bizException(int errorCode, String errorMsg) {
         Response rs = new Response<>();
         rs.setStatus(Status.FAILURE);
         rs.setError(new Error(errorCode, errorMsg));
