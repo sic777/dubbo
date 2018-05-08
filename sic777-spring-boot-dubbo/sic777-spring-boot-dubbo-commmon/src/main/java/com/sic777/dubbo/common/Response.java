@@ -17,7 +17,7 @@ public final class Response<T> implements Serializable {
     /**
      * 响应状态
      */
-    private transient Status status = Status.SUCCESS;
+    private Status status = Status.SUCCESS;
     /**
      * 响应数据
      */
@@ -25,7 +25,7 @@ public final class Response<T> implements Serializable {
     /**
      * 错误信息
      */
-    private transient Error error;
+    private Error error;
 
     /**
      * 成功，响应状态
