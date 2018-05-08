@@ -12,6 +12,7 @@ import java.lang.annotation.*;
 @Target(value = {ElementType.METHOD, ElementType.TYPE})
 @Retention(value = RetentionPolicy.RUNTIME)
 @Documented
+@Inherited
 public @interface Permission {
 
     int[] value() default RestPermission.ANYBODY;
