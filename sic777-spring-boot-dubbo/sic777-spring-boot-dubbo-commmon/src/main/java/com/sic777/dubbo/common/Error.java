@@ -1,5 +1,7 @@
 package com.sic777.dubbo.common;
 
+import java.io.Serializable;
+
 
 /**
  * <p>错误实体</p>
@@ -8,7 +10,7 @@ package com.sic777.dubbo.common;
  * @version v1.0
  * @since 2018-04-23
  */
-public class Error {
+public class Error implements Serializable{
     /**
      * 错误码
      */
