@@ -72,6 +72,6 @@ public class RestExceptionHandler {
     public Object methodNotSupportedExceptionHandler(HttpServletRequest request, HttpServletResponse response, Exception e) {
         response.setStatus(HttpStatus.METHOD_NOT_ALLOWED.value());
         ERROR_ENUM error = ERROR_ENUM.METHOD_NOT_ALLOWED;
-        return new RestExceptionResponse(error.getCode(), String.format(error.getMsg(), request.getMethod(), request.getRequestURI()));
+        return new RestExceptionResponse(error.getCode(), String.format(error.getMsg(), request.getMethod(), request.getRequestURI())).response();
     }
 }
