@@ -37,7 +37,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>com.sic777.student.StudentServerLuncher</mainClass>
+                            <mainClass>com.sic777.student.StudentServerLauncher</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

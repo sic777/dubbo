@@ -55,7 +55,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>com.sic777.gateway.GatewayLuncher</mainClass>
+                            <mainClass>com.sic777.gateway.GatewayLauncher</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

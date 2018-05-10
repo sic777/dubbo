@@ -1,9 +1,10 @@
-package com.sic777.gateway;
+package com.sic777.student;
 
 import com.alibaba.dubbo.config.spring.context.annotation.DubboComponentScan;
-import com.sic777.dubbo.comsumer.DubboConsumerLuncher;
+import com.sic777.dubbo.provider.DubboProviderLauncher;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
  * <p></p>
@@ -15,9 +16,10 @@ import org.springframework.context.annotation.ComponentScan;
 @SpringBootApplication
 @DubboComponentScan("com.jan")
 @ComponentScan("com.jan")
-public class GatewayLuncher {
+@EnableTransactionManagement
+public class StudentServerLauncher {
     public static void main(String[] args) {
-        DubboConsumerLuncher.start(new Thread(() -> {
+        DubboProviderLauncher.start(new Thread(() -> {
             System.out.println("优雅关闭");
         }));
     }

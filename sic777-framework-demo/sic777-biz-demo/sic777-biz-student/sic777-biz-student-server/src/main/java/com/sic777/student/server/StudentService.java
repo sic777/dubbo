@@ -1,6 +1,8 @@
 package com.sic777.student.server;
 
+import com.alibaba.dubbo.config.annotation.Reference;
 import com.alibaba.dubbo.config.annotation.Service;
+import com.jan.student.test.ITestService;
 import com.sic777.dubbo.common.Response;
 import com.sic777.student.api.IStudentService;
 import com.sic777.student.bean.StudentBean;
@@ -29,9 +31,13 @@ public class StudentService implements IStudentService {
     @Autowired
     private StudentDao studentDao;
 
+    @Reference(version = "1.0")
+    private ITestService test;
+
     @Transactional
     @Override
     public Response<Student> create(Student student) throws Exception {
+        test.a();
         System.out.println("新增数据");
         student.setId(UUID.randomUUID().toString());
         StudentBean bean = new StudentBean();

@@ -51,7 +51,7 @@
         @ComponentScan("${Dubbo扫描路径}")
         public class StudentServerLuncher {
             public static void main(String[] args) {
-                com.sic777.dubbo.provider.DubboProviderLuncher.start(new Thread(() -> {
+                com.sic777.dubbo.provider.DubboProviderLauncher.start(new Thread(() -> {
                      //填写优雅关闭需要处理的代码
                 }));
             }
@@ -62,7 +62,7 @@
         @ComponentScan("${Dubbo扫描路径}")
         public class GatewayLuncher {
             public static void main(String[] args) {
-                com.sic777.dubbo.comsumer.DubboConsumerLuncher.start(new Thread(() -> {
+                com.sic777.dubbo.comsumer.DubboConsumerLauncher.start(new Thread(() -> {
                      //填写优雅关闭需要处理的代码
                 }));
             }

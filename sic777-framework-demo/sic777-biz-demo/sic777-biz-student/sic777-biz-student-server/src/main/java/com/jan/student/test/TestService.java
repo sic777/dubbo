@@ -15,6 +15,6 @@ public class TestService implements ITestService {
 
     @Override
     public void a() {
-
+        System.out.println("你真的好厉害");
     }
 }
