@@ -4,7 +4,7 @@ WK_PATH=
 #2. JAR包全称（必填）
 JAR=
 
-PID_FILE_PATH=$WK_PATH/pid
+PID_FILE_PATH=$WK_PATH/pid/pid
 PID=""
 
 if [ ! -n "$WK_PATH" ];then
