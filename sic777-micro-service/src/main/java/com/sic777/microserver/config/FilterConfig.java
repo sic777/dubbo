@@ -12,7 +12,7 @@ public class FilterConfig {
     public FilterRegistrationBean filterRegister() {
         FilterRegistrationBean frBean = new FilterRegistrationBean();
         frBean.setFilter(new RequestMethodFilter());
-        frBean.addUrlPatterns("/**");
+        frBean.addUrlPatterns("/*");
         return frBean;
     }
 }
