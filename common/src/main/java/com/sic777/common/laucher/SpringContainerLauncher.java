@@ -23,7 +23,7 @@ import java.util.concurrent.CountDownLatch;
  * @since 2018-06-11
  */
 @Order(0)
-@SpringBootApplication(scanBasePackages = BaseConstant.BASE_SPRING_SCAN_PACKAGE)
+@SpringBootApplication(scanBasePackages = {BaseConstant.BASE_SPRING_SCAN_PACKAGE, BaseConstant.ISV_SPRING_SCAN_PACKAGE})
 abstract class SpringContainerLauncher extends AbstractLauncher implements CommandLineRunner {
     private static final Logger logger = LoggerFactory.getLogger(SpringContainerLauncher.class);
 

@@ -13,6 +13,10 @@ public class BaseConstant {
      */
     public static final String BASE_SPRING_SCAN_PACKAGE = "com.sic777";
     /**
+     * ISV Spring扫描路径
+     */
+    public static final String ISV_SPRING_SCAN_PACKAGE = "${spring.scan}";
+    /**
      * 默认配置文件所在文件夹名称
      */
     public final static String DEFAULT_CONFIG_PATH_NAME = "config";
