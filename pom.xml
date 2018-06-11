@@ -2,228 +2,346 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-    <groupId>com.sic777</groupId>
-    <artifactId>sic777-framework</artifactId>
-    <version>1.0-SNAPSHOT</version>
-    <modules>
-        <module>sic777-utils</module>
-        <module>sic777-db</module>
-        <module>sic777-spring-boot-dubbo</module>
-        <module>sic777-micro-service</module>
-        <module>sic777-framework-demo</module>
-    </modules>
-    <packaging>pom</packaging>
-    <name>${project.artifactId}</name>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.sic777</groupId>
+	<artifactId>base-framework</artifactId>
+	<version>1.0.0</version>
+	<packaging>pom</packaging>
+	<name>${project.artifactId}</name>
 
-    <inceptionYear>2018</inceptionYear>
-    <description>sic777 basic framework</description>
+	<modules>
+		<module>common</module>
+		<module>utils</module>
+		<module>logger</module>
+		<module>database</module>
+		<module>dubbo</module>
+		<module>restful</module>
+		<module>demo</module>
+	</modules>
 
-    <organization>
-        <name>sic777</name>
-        <url>https://github.com/sic777/sic777-framework</url>
-    </organization>
+	<inceptionYear>2018</inceptionYear>
+	<description>sic777 basic framework and services code</description>
 
-    <developers>
-        <developer>
-            <name>ZhenXie(Zheng)</name>
-            <id>zheng.zhenx</id>
-            <email>3646406 (AT) qq.com</email>
-            <roles>
-                <role>Developer</role>
-            </roles>
-            <timezone>+8</timezone>
-        </developer>
-    </developers>
+	<developers>
+		<developer>
+			<name>ZhenXie(Zheng)</name>
+			<id>zheng.zhenx</id>
+			<email>3646406 (AT) qq.com</email>
+			<roles>
+				<role>Developer</role>
+			</roles>
+			<timezone>+8</timezone>
+		</developer>
+	</developers>
 
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>1.8</java.version>
-        <httpcore.version>4.4.6</httpcore.version>
-        <httpclient.version>4.5.3</httpclient.version>
-        <spring-boot.version>1.5.10.RELEASE</spring-boot.version>
-        <spring.version>4.3.10.RELEASE</spring.version>
-        <fastjson.version>1.2.28</fastjson.version>
-        <sic777-utils.version>1.0-SNAPSHOT</sic777-utils.version>
-        <sic777-springboot-dubbo.version>1.0-SNAPSHOT</sic777-springboot-dubbo.version>
-        <dubbo.version>2.6.0</dubbo.version>
-        <curator-framework.version>2.12.0</curator-framework.version>
-        <log4j.version>1.2.17</log4j.version>
-        <io.dubbo.springboot.version>1.0.0</io.dubbo.springboot.version>
-        <jetty.version>6.1.26</jetty.version>
-        <guava.version>21.0</guava.version>
-        <slf4j.version>1.7.15</slf4j.version>
-        <beanutils.version>1.9.3</beanutils.version>
-    </properties>
-    <dependencyManagement>
-        <dependencies>
-            <!-- 自定义sic777工具包 -->
-            <dependency>
-                <groupId>com.sic777</groupId>
-                <artifactId>sic777-utils</artifactId>
-                <version>${sic777-utils.version}</version>
-                <optional>true</optional>
-            </dependency>
-            <!-- 自定义Spring-Boot-Dubbo-Common -->
-            <dependency>
-                <groupId>com.sic777</groupId>
-                <artifactId>sic777-spring-boot-dubbo-commmon</artifactId>
-                <version>${sic777-springboot-dubbo.version}</version>
-                <optional>true</optional>
-            </dependency>
-            <!-- log4j -->
-            <dependency>
-                <groupId>log4j</groupId>
-                <artifactId>log4j</artifactId>
-                <version>${log4j.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.dubbo.springboot</groupId>
-                <artifactId>spring-boot-starter-dubbo</artifactId>
-                <version>${io.dubbo.springboot.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <artifactId>netty</artifactId>
-                        <groupId>org.jboss.netty</groupId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>org.springframework.boot</groupId>
-                        <artifactId>spring-boot-starter</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>com.alibaba</groupId>
-                        <artifactId>dubbo</artifactId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
-            <!-- dubbo -->
-            <dependency>
-                <groupId>com.alibaba</groupId>
-                <artifactId>dubbo</artifactId>
-                <version>${dubbo.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>org.springframework</groupId>
-                        <artifactId>spring-aop</artifactId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-aop</artifactId>
-                <version>${spring.version}</version>
-            </dependency>
-            <!-- jetty -->
-            <dependency>
-                <groupId>org.mortbay.jetty</groupId>
-                <artifactId>jetty</artifactId>
-                <version>${jetty.version}</version>
-                <scope>provided</scope>
-            </dependency>
-            <!-- curator -->
-            <dependency>
-                <groupId>org.apache.curator</groupId>
-                <artifactId>curator-framework</artifactId>
-                <version>${curator-framework.version}</version>
-            </dependency>
-            <!-- spring-boot-starter-web -->
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-web</artifactId>
-                <version>${spring-boot.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>org.springframework.boot</groupId>
-                        <artifactId>spring-boot-starter-logging</artifactId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
-            <!-- spring-boot-starter -->
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter</artifactId>
-                <version>${spring-boot.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>org.springframework.boot</groupId>
-                        <artifactId>spring-boot-starter-logging</artifactId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
-            <!-- spring-boot-starter-actuator -->
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-actuator</artifactId>
-                <version>${spring-boot.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>com.fasterxml.jackson.core</groupId>
-                        <artifactId>jackson-databind</artifactId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
-            <!-- spring-boot-starter-log4j2 -->
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-log4j2</artifactId>
-                <version>${spring-boot.version}</version>
-            </dependency>
-            <!-- http core-->
-            <dependency>
-                <groupId>org.apache.httpcomponents</groupId>
-                <artifactId>httpcore</artifactId>
-                <version>${httpcore.version}</version>
-                <optional>true</optional>
-            </dependency>
-            <!-- http client-->
-            <dependency>
-                <groupId>org.apache.httpcomponents</groupId>
-                <artifactId>httpclient</artifactId>
-                <version>${httpclient.version}</version>
-                <optional>true</optional>
-            </dependency>
-            <!-- fast json -->
-            <dependency>
-                <groupId>com.alibaba</groupId>
-                <artifactId>fastjson</artifactId>
-                <version>${fastjson.version}</version>
-                <optional>true</optional>
-            </dependency>
-            <!-- beanutils -->
-            <dependency>
-                <groupId>commons-beanutils</groupId>
-                <artifactId>commons-beanutils</artifactId>
-                <version>${beanutils.version}</version>
-                <optional>true</optional>
-            </dependency>
-            <!-- guava -->
-            <dependency>
-                <groupId>com.google.guava</groupId>
-                <artifactId>guava</artifactId>
-                <version>${guava.version}</version>
-            </dependency>
-            <!-- slf4j api -->
-            <dependency>
-                <groupId>org.slf4j</groupId>
-                <artifactId>slf4j-api</artifactId>
-                <version>${slf4j.version}</version>
-                <optional>true</optional>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
+	<properties>
+		<!-- base version -->
+		<java.version>1.8</java.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-    <build>
-        <plugins>
-            <!-- compiler plugin -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
-                    <encoding>${project.build.sourceEncoding}</encoding>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
+		<!-- jars version -->
+		<junit.version>4.12</junit.version>
+		<jedis.version>2.8.1</jedis.version>
+		<mysql.version>5.1.38</mysql.version>
+		<spring-boot-mybatis.version>1.3.2</spring-boot-mybatis.version>
+		<spring.version>4.3.10.RELEASE</spring.version>
+		<spring-boot.version>1.5.5.RELEASE</spring-boot.version>
+		<dubbo.version>2.6.0</dubbo.version>
+		<curator-framework.version>2.12.0</curator-framework.version>
+		<fastjson.version>1.2.31</fastjson.version>
+		<httpcore.version>4.4.6</httpcore.version>
+		<httpclient.version>4.5.3</httpclient.version>
+		<commons-beanutils.version>1.9.3</commons-beanutils.version>
+		<slf4j.version>1.7.25</slf4j.version>
+		<log4j.version>2.7</log4j.version>
+
+		<!-- plugins version -->
+		<maven-jar-plugin.version>2.4</maven-jar-plugin.version>
+		<maven-assembly-plugin.version>2.4</maven-assembly-plugin.version>
+		<maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
+		<wagon-ssh.version>2.10</wagon-ssh.version>
+	</properties>
+
+
+	<!-- dependencies management -->
+	<dependencyManagement>
+		<dependencies>
+			<!-- mybatis-spring-boot-starter -->
+			<dependency>
+				<groupId>org.mybatis.spring.boot</groupId>
+				<artifactId>mybatis-spring-boot-starter</artifactId>
+				<version>${spring-boot-mybatis.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>org.springframework.boot</groupId>
+						<artifactId>spring-boot-starter-logging</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<!-- redis -->
+			<dependency>
+				<groupId>redis.clients</groupId>
+				<artifactId>jedis</artifactId>
+				<version>${jedis.version}</version>
+			</dependency>
+			<!-- mysql -->
+			<dependency>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+				<version>${mysql.version}</version>
+			</dependency>
+
+			<!-- spring -->
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-aop</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-beans</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-core</artifactId>
+				<version>${spring.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>commons-logging</groupId>
+						<artifactId>commons-logging</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-expression</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-webmvc</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+
+			<!-- spring-boot-starter-web -->
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-web</artifactId>
+				<version>${spring-boot.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>org.springframework.boot</groupId>
+						<artifactId>spring-boot-starter-logging</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>org.springframework</groupId>
+						<artifactId>*</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>com.fasterxml.jackson.core</groupId>
+						<artifactId>*</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+
+			<!-- spring-boot-starter -->
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter</artifactId>
+				<version>${spring-boot.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>org.springframework.boot</groupId>
+						<artifactId>spring-boot-starter-logging</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>org.springframework</groupId>
+						<artifactId>*</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+
+			<!-- dubbo -->
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>dubbo</artifactId>
+				<version>${dubbo.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>org.springframework</groupId>
+						<artifactId>*</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+
+			<!-- curator -->
+			<dependency>
+				<groupId>org.apache.curator</groupId>
+				<artifactId>curator-framework</artifactId>
+				<version>${curator-framework.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>io.netty</groupId>
+						<artifactId>netty</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>org.slf4j</groupId>
+						<artifactId>*</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>log4j</groupId>
+						<artifactId>log4j</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+
+			<!-- fast json -->
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>fastjson</artifactId>
+				<version>${fastjson.version}</version>
+			</dependency>
+
+			<!-- http -->
+			<dependency>
+				<groupId>org.apache.httpcomponents</groupId>
+				<artifactId>httpcore</artifactId>
+				<version>${httpcore.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.httpcomponents</groupId>
+				<artifactId>httpclient</artifactId>
+				<version>${httpclient.version}</version>
+			</dependency>
+
+			<!-- beanutils -->
+			<dependency>
+				<groupId>commons-beanutils</groupId>
+				<artifactId>commons-beanutils</artifactId>
+				<version>${commons-beanutils.version}</version>
+			</dependency>
+
+			<!-- log -->
+			<dependency>
+				<groupId>org.apache.logging.log4j</groupId>
+				<artifactId>log4j-slf4j-impl</artifactId>
+				<version>${log4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.logging.log4j</groupId>
+				<artifactId>log4j-api</artifactId>
+				<version>${log4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.logging.log4j</groupId>
+				<artifactId>log4j-core</artifactId>
+				<version>${log4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-api</artifactId>
+				<version>${slf4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>jcl-over-slf4j</artifactId>
+				<version>${slf4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>jul-to-slf4j</artifactId>
+				<version>${slf4j.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<!-- default dependencies -->
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<!-- default plugins -->
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven-compiler-plugin.version}</version>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+					<encoding>${project.build.sourceEncoding}</encoding>
+				</configuration>
+			</plugin>
+		</plugins>
+
+		<!-- plugins management -->
+		<pluginManagement>
+			<plugins>
+				<!--jar plugin -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jar-plugin</artifactId>
+					<version>${maven-jar-plugin.version}</version>
+					<configuration>
+						<archive>
+							<addMavenDescriptor>true</addMavenDescriptor>
+							<manifest>
+								<addClasspath>true</addClasspath>
+								<!--<mainClass>由子模块填写</mainClass>-->
+							</manifest>
+						</archive>
+						<excludes>
+							<!--<exclude>由子模块填写</exclude>-->
+						</excludes>
+					</configuration>
+				</plugin>
+				<!--assembly plugin -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-assembly-plugin</artifactId>
+					<version>${maven-assembly-plugin.version}</version>
+					<configuration>
+						<descriptors>
+							<!--<descriptor>由子模块填写</descriptor>-->
+						</descriptors>
+					</configuration>
+					<executions>
+						<execution>
+							<id>make-assembly</id>
+							<phase>package</phase>
+							<goals>
+								<goal>single</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+		<!-- ssh -->
+		<extensions>
+			<extension>
+				<groupId>org.apache.maven.wagon</groupId>
+				<artifactId>wagon-ssh</artifactId>
+				<version>${wagon-ssh.version}</version>
+			</extension>
+		</extensions>
+	</build>
+	<distributionManagement>
+		<repository>
+			<id>wq</id>
+			<url>scp://120.79.212.170/root/mvn_rep</url>
+		</repository>
+	</distributionManagement>
 </project>

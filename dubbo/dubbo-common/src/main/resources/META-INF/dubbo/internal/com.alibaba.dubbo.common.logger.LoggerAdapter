@@ -1,0 +1,1 @@
+log4j2=com.sic777.dubbo.common.spi.extend.logger.Log4j2LoggerAdapter

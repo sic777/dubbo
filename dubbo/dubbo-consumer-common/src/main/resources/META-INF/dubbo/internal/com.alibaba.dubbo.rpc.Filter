@@ -1,0 +1,1 @@
+exceptionFilterConsumer=com.sic777.dubbo.consumer.spi.extend.filter.ConsumerExceptionFilterExtend
