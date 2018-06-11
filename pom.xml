@@ -377,7 +377,7 @@
 	<distributionManagement>
 		<repository>
 			<id>wq</id>
-			<url>scp://120.79.212.170/root/mvn_rep</url>
+			<url>scp://120.79.212.170/modules/mvn_rep</url>
 		</repository>
 	</distributionManagement>
 </project>
