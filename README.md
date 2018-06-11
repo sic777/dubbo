@@ -1,4 +1,5 @@
-#工程结构说明
+# 工程结构说明
+
     base-framework                                              基础框架父工程
         |---common                                              通用工程(框架无关)
         |---database                                            数据库父工程
@@ -26,8 +27,9 @@
         |---utils                                               工具类(框架无关)
 
 
-#框架使用说明
-   
+# 框架使用说明
+
+
 **common工程说明**
     
     该工程是框架无关的
@@ -45,6 +47,7 @@
     4.CurrentEnvironment 初始化当前环境/获取当前环境 *重要
 
 **database工程说明**
+   
    
 1. **database-redis**
      
@@ -88,13 +91,15 @@
              }
            }
            
+  
 2. **database-springboot-mybatis**
-    
-     
-     该工程基于SpringBoot框架
+   
+   
+       该工程基于SpringBoot框架
 
-     集成springboot与mybatis,主要是引入jar包。
-    
+       集成springboot与mybatis,主要是引入jar包。
+
+
 
 **dubbo工程说明**
     
@@ -401,7 +406,7 @@
     
     关于服务提供者/消费者需要引入什么jar包、具体怎么使用，直接参考该项目即可。
     
-#使用建议
+# 使用建议
     
 1. **客户端**
 
@@ -419,15 +424,7 @@
     2.服务端需要抛出错误时,使用new RpcResponse<>(RpcExceptionType rpcExceptionType, String errorMsg)的方式进行抛出
     3.服务端需要返回数据时,使用new RpcResponse<>(T t)进行返回
     4.服务端需要返回boolean值时,使用new RpcResponse<>(RpcResponseStatus status)替代。
-    
-#初始化说明
 
-    1.在生产/测试环境下,程序启动的时候必须初始化环境(默认环境为develop)
-        CurrentEnvironment.instance().init();//配置JVM参数 -Denvironment=test或者-Denvironment=product
-        或者
-        CurrentEnvironment.instance().init(Environment environment);//传入指定的环境
-      整套框架都会根据不同环境配置不同的参数和其他策略。
-
-#注意
+# 注意
 
     1.当使用到Spring体系的框架时候,ISV的扫描路径需要手动配置
