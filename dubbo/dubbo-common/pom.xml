@@ -18,12 +18,6 @@
             <artifactId>logger</artifactId>
             <version>${project.version}</version>
         </dependency>
-        <!-- utils -->
-        <dependency>
-            <groupId>com.sic777</groupId>
-            <artifactId>utils</artifactId>
-            <version>${project.version}</version>
-        </dependency>
         <!-- dubbo -->
         <dependency>
             <groupId>com.alibaba</groupId>

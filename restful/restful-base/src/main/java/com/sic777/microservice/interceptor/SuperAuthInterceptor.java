@@ -26,7 +26,7 @@ public abstract class SuperAuthInterceptor {
      * @param accessToken
      * @param permissionAnnotation
      *
-     * @return <accessToken缓存的数据,Rest接口权限值>
+     * @return accessToken缓存的数据,Rest接口权限值
      *
      * @throws Exception
      */
@@ -48,7 +48,7 @@ public abstract class SuperAuthInterceptor {
     }
 
     /**
-     * <p>权限注解优先级：方法注解 > 类注解 </p>
+     * <p>权限注解优先级：方法注解大于类注解 </p>
      * <p>1. 类无,方法无 无需校验 </p>
      * <p>2. 类无,方法有 以方法为主 </p>
      * <p>3. 类有,方法无 以类为主</p>
@@ -59,7 +59,7 @@ public abstract class SuperAuthInterceptor {
      * @param fallPermission  优先级低的权限注解，一般为方法权限注解
      * @param authSPI
      *
-     * @return @return <accessToken缓存的数据,Rest接口权限值>
+     * @return @return accessToken缓存的数据,Rest接口权限值
      *
      * @throws Exception
      */

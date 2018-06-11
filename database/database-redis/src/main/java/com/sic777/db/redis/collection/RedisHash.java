@@ -235,7 +235,7 @@ public class RedisHash {
      * 获取hash中value的集合
      *
      * @param key
-     * @return List<String>
+     * @return
      */
     public List<String> hvals(String key) {
         Jedis jedis = null;
@@ -275,7 +275,7 @@ public class RedisHash {
      * 返回指定hash中的所有存储名字,类似Map中的keySet方法
      *
      * @param key
-     * @return Set<String> 存储名称的集合
+     * @return 存储名称的集合
      */
     public Set<String> hkeys(String key) {
         Jedis jedis = null;
@@ -314,7 +314,7 @@ public class RedisHash {
      *
      * @param key
      * @param fields 存储位置
-     * @return List<String>
+     * @return
      */
     public List<String> hmget(String key, String... fields) {
         Jedis jedis = null;

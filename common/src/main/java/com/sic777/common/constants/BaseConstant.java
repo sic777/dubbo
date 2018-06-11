@@ -25,7 +25,7 @@ public class BaseConstant {
      */
     public final static String DEFAULT_JSON_NAME = "configure.json";
     /**
-     * 环境标识符
+     * 环境标识(值为：开发、测试、生产...)
      */
     public final static String ENVIRONMENT_FLAG = "environment";
 }

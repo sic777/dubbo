@@ -10,7 +10,7 @@ package com.sic777.utils;
 public class ValueUtil {
 
     /**
-     * 判断是否为开区间 start < param < end
+     * <p>判断是否为开区间 start 小于 param 小于 end</p>
      *
      * @param param
      * @param start
@@ -21,8 +21,9 @@ public class ValueUtil {
         return isInterval(start, end, Operator.GET) && isInterval(param, start, Operator.GT) && isInterval(param, end, Operator.LT);
     }
 
+
     /**
-     * 判断是否为闭区间 start <= param <= end
+     * <p>判断是否为闭区间 start 小于等于 param 小于等于 end</p>
      *
      * @param param
      * @param start
@@ -33,8 +34,9 @@ public class ValueUtil {
         return isInterval(start, end, Operator.GET) && isInterval(param, start, Operator.GET) && isInterval(param, end, Operator.LET);
     }
 
+
     /**
-     * 判断是否满足半开区间 start < param <= end
+     * <p>判断是否满足半开区间 start 小于 param 小于等于 end</p>
      *
      * @param param
      * @param start
@@ -45,8 +47,9 @@ public class ValueUtil {
         return isInterval(start, end, Operator.GET) && isInterval(param, start, Operator.GT) && isInterval(param, end, Operator.LET);
     }
 
+
     /**
-     * 判断是否满足半开区间 start <= param < end
+     * <p>判断是否满足半开区间 start 小于等于 param 小于 end</p>
      *
      * @param param
      * @param start

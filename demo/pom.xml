@@ -14,4 +14,11 @@
 		<module>dubbo-springboot-demo</module>
 	</modules>
 
+	<dependencies>
+		<dependency>
+			<groupId>com.sic777</groupId>
+			<artifactId>common</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+	</dependencies>
 </project>

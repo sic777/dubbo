@@ -141,7 +141,7 @@ public class RedisSortSets {
      * @param key
      * @param start 开始位置(包含)
      * @param end   结束位置(包含)
-     * @return Set<String>
+     * @return
      */
     public Set<String> zrange(String key, int start, int end) {
         Jedis jedis = null;
@@ -175,7 +175,7 @@ public class RedisSortSets {
      * @param key
      * @param min 上限权重
      * @param max 下限权重
-     * @return Set<String>
+     * @return
      */
     public Set<String> zrangeByScore(String key, double min, double max) {
         Jedis jedis = null;
@@ -317,7 +317,7 @@ public class RedisSortSets {
      * @param key
      * @param start
      * @param end
-     * @return Set<String>
+     * @return
      */
     public Set<String> zrevrange(String key, int start, int end) {
         Jedis jedis = null;

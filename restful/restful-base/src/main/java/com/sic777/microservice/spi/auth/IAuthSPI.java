@@ -17,9 +17,7 @@ public interface IAuthSPI {
      * 解析token
      *
      * @param accessToken 鉴权凭证
-     *
-     * @return <accessToken缓存的数据,Rest接口权限值>
-     *
+     * @return accessToken缓存的数据, Rest接口权限值
      * @throws Exception
      */
     TwoTuple<JSONObject, Integer> parse(String accessToken) throws Exception;

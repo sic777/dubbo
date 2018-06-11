@@ -1,7 +1,7 @@
 package com.sic777.demo.server;
 
 import com.sic777.common.laucher.processor.IStarterProcessor;
-import com.sic777.dubbo.provider.DubboProviderLauncher;
+import com.sic777.common.laucher.SpringServerContainerLauncher;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import javax.annotation.PostConstruct;
@@ -22,7 +22,7 @@ public class DemoServerLauncher {
     }
 
     public static void main(String[] args) {
-        DubboProviderLauncher.start(new IStarterProcessor() {
+        SpringServerContainerLauncher.instance().start(new IStarterProcessor() {
             @Override
             public void before() {
                 System.out.println("Spring容器启动前");

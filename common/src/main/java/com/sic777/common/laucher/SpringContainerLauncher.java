@@ -1,8 +1,8 @@
-package com.sic777.dubbo.provider;
+package com.sic777.common.laucher;
 
 import com.sic777.common.constants.BaseConstant;
-import com.sic777.common.system.CurrentEnvironment;
 import com.sic777.common.laucher.processor.IStarterProcessor;
+import com.sic777.common.system.CurrentEnvironment;
 import com.sic777.utils.system.Version;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,40 +16,32 @@ import org.springframework.core.annotation.Order;
 import java.util.concurrent.CountDownLatch;
 
 /**
- * <p>
- * 服务提供者启动类</br>
- * 开发者可以实现org.springframework.boot.CommandLineRunner接口来做一些初始化工作(调用时机为容器启动之后),
- * 该接口可以使用注解org.springframework.core.annotation.Order,
- * 在拥有多个初始化数据操作的时候设置初始化的顺序
- * (请从下标10开始，0-9为默认占用，值越小越先执行)
- * </p>
+ * <p></p>
  *
  * @author Zhengzhenxie
  * @version v1.0
- * @since 2018-04-23
+ * @since 2018-06-11
  */
 @Order(0)
 @SpringBootApplication(scanBasePackages = BaseConstant.BASE_SPRING_SCAN_PACKAGE)
-public class DubboProviderLauncher implements CommandLineRunner {
-    private static final Logger logger = LoggerFactory.getLogger(DubboProviderLauncher.class);
+abstract class SpringContainerLauncher extends AbstractLauncher implements CommandLineRunner {
+    private static final Logger logger = LoggerFactory.getLogger(SpringContainerLauncher.class);
 
     @Bean
     public CountDownLatch closeLatch() {
         return new CountDownLatch(1);
     }
 
-    public static void start() {
-        start(null, null);
-    }
-
-    public static void start(IStarterProcessor process, Thread hook) {
+    @Override
+    void startImpl(IStarterProcessor process, Thread hook) {
         try {
+            CurrentEnvironment.instance().init();//初始化环境
             if (null != process) {
                 process.before();
             }
             ApplicationContext ctx = new SpringApplicationBuilder()
-                    .sources(DubboProviderLauncher.class)
-                    .web(false)
+                    .sources(SpringContainerLauncher.class)
+                    .web(isWebEnvironment())
                     .run();
             if (null != hook) {
                 Runtime.getRuntime().addShutdownHook(hook);

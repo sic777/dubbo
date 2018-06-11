@@ -176,8 +176,8 @@ public class RedisStrings {
     }
 
     /**
-     * 从指定位置开始插入数据，插入的数据会覆盖指定位置以后的数据<br/>
-     * 例:String str1="123456789";<br/>
+     * 从指定位置开始插入数据，插入的数据会覆盖指定位置以后的数据<br>
+     * 例:String str1="123456789";<br>
      * 对str1操作后setRange(key,4,0000)，str1="123400009";
      *
      * @param key
@@ -239,7 +239,7 @@ public class RedisStrings {
     }
 
     /**
-     * <b>可以作为获取唯一id的方法</b><br/>
+     * 可以作为获取唯一id的方法
      * 将key对应的value加上指定的值，只有value可以转为数字时该方法才可用
      *
      * @param key
@@ -281,7 +281,7 @@ public class RedisStrings {
     }
 
     /**
-     * 获取并设置指定key对应的value<br/>
+     * 获取并设置指定key对应的value
      * 如果key存在返回之前的value,否则返回null
      *
      * @param key
@@ -305,7 +305,7 @@ public class RedisStrings {
      * 批量获取记录,如果指定的key不存在返回List的对应位置将是null
      *
      * @param keys
-     * @return List<String> 值得集合
+     * @return
      */
     public List<String> mget(String... keys) {
         Jedis jedis = null;

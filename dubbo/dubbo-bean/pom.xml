@@ -10,13 +10,4 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<artifactId>dubbo-bean</artifactId>
-
-	<dependencies>
-		<!-- common -->
-		<dependency>
-			<groupId>com.sic777</groupId>
-			<artifactId>common</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-	</dependencies>
 </project>

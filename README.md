@@ -51,7 +51,6 @@
                 |---restful-netty                               基于Netty的Restful框架
                 |---restful-restexpress                         基于restexpress的Restful框架(本身也基于Netty)
                 |---restful-springboot                          基于SpringBoot的Restful框架
-        |---utils                                               工具类(框架无关)
 
 
 # 框架使用说明
@@ -61,7 +60,7 @@
     
     该工程是框架无关的
     
-    主要是封装一些常见的，通用的枚举常量等。
+    一.封装一些常见的，通用的枚举常量等。
     
     目前提供的有：
     1.Environment    环境枚举
@@ -75,6 +74,37 @@
     3.ErrorMsg       提供基本的错误信息语句（客户端服务端通用）
     
     4.CurrentEnvironment 初始化当前环境/获取当前环境 *重要
+    
+    二.提供常用的工具类，主要包括：
+    
+    1.PropertiesUtil  加载配置文件
+    
+    2.StringUtil      字符串工具
+    
+    3.DateFormatTools 日期格式化工具
+    
+    4.JsonUtil        Json工具
+    
+    5.ObjectUtil      对象判空工具
+    
+    6.SystemCheckUtil 防痴呆检测工具
+    
+    7.Version         Jar包版本检测工具
+    
+    8.HostUtil        获取本机ip地址工具
+    
+    9.PermissionUtil  权限算法工具
+    
+    10.Http           Http工具
+                      使用时,建议初始化连接池PoolHttpConnectionManager.instance.init(int max, int per)
+                      
+    11.com.sic777.utils.generator包下的ID生成工具
+    
+    12.com.sic777.utils.encrypt包下的加密算法工具
+    
+    13.com.sic777.utils.container包下的容器生成工具
+    
+    14.com.sic777.utils.bean包下的实体转换工具
 
 **database工程说明**
    
@@ -242,8 +272,6 @@
         
       2.在DubboConsumerInfoLogger将Dubbo消费者的配置信息打印出来
       
-      3.定义启动类DubboConsumerLauncher供ISV调用
-        
  7.**dubbo-springboot-provider工程说明**
  
       该工程基于SpringBoot框架
@@ -259,8 +287,6 @@
         
       3.在DubboProviderInfoLogger将Dubbo提供者的配置信息打印出来
       
-      4.定义启动类DubboProviderLauncher供ISV调用
-        
 **logger工程说明**
 
      该工程是框架无关的
@@ -443,43 +469,6 @@
        
      7.定义了一个统一错误响应控制器RestExceptionController,如请求方法不支持
      
-     8.定义了启动类MicroserviceLauncher
-     
-**utils工程说明**
-    
-    该工程是框架无关的
-    提供常用的工具类，主要包括：
-    
-    1.PropertiesUtil  加载配置文件
-    
-    2.StringUtil      字符串工具
-    
-    3.DateFormatTools 日期格式化工具
-    
-    4.JsonUtil        Json工具
-    
-    5.ObjectUtil      对象判空工具
-    
-    6.SystemCheckUtil 防痴呆检测工具
-    
-    7.Version         Jar包版本检测工具
-    
-    8.HostUtil        获取本机ip地址工具
-    
-    9.PermissionUtil  权限算法工具
-    
-    10.Http           Http工具
-                      使用时,建议初始化连接池PoolHttpConnectionManager.instance.init(int max, int per)
-                      
-    11.com.sic777.utils.generator包下的ID生成工具
-    
-    12.com.sic777.utils.encrypt包下的加密算法工具
-    
-    13.com.sic777.utils.container包下的容器生成工具
-    
-    14.com.sic777.utils.bean包下的实体转换工具
-    
-    
 **demo工程说明**
     
     关于服务提供者/消费者需要引入什么jar包、具体怎么使用，直接参考该项目即可。

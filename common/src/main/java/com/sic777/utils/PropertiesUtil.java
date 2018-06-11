@@ -1,6 +1,7 @@
 package com.sic777.utils;
 
 
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.sic777.common.constants.BaseConstant;
 import com.sic777.common.system.CurrentEnvironment;
@@ -60,7 +61,6 @@ public final class PropertiesUtil {
 
     /**
      * 自动根据环境加载配置文件
-     * 前提是CurrentEnvironment.instance().init(Environment environment)已被初始化
      *
      * @param configName     配置文件名称
      * @param configPathName 配置文件所在文件夹名称
@@ -76,7 +76,7 @@ public final class PropertiesUtil {
 
     /**
      * 自动根据环境加载配置文件
-     * 前提是CurrentEnvironment.instance().init(Environment environment)已被初始化
+     *
      * <p>
      * 注意：
      * 配置文件名称默认为 application.properties
@@ -133,7 +133,6 @@ public final class PropertiesUtil {
 
     /**
      * 自动根据环境加载配置文件
-     * 前提是CurrentEnvironment.instance().init(Environment environment)已被初始化
      *
      * @param configureName     配置文件名称
      * @param configurePathName 配置文件所在文件夹名称
@@ -148,7 +147,7 @@ public final class PropertiesUtil {
 
     /**
      * 自动根据环境加载配置文件
-     * 前提是CurrentEnvironment.instance().init(Environment environment)已被初始化
+     * <p>
      * 注意：
      * 配置文件名称默认为 configure.json
      * 配置文件存放文件夹名称 config
@@ -158,6 +157,76 @@ public final class PropertiesUtil {
     public static JSONObject loadJsonAutomatic() throws Exception {
         return loadJsonAutomatic(BaseConstant.DEFAULT_JSON_NAME, BaseConstant.DEFAULT_CONFIG_PATH_NAME);
     }
+
+
+    /**
+     * 在绝对路径下解析配置文件，输出JSONArray对象
+     *
+     * @param configurePath 绝对路径
+     * @return
+     * @throws Exception
+     */
+    public static JSONArray loadArrayAbsolute(String configurePath) throws Exception {
+        if (null == configurePath) {
+            return null;
+        }
+        String path = StringUtil.parsePath(configurePath);
+        BufferedReader input = null;
+        try {
+            String text;
+            StringBuilder sb = new StringBuilder();
+            input = new BufferedReader(new FileReader(path));
+            while ((text = input.readLine()) != null) {
+                sb.append(text);
+            }
+            return JSONArray.parseArray(sb.toString());
+        } finally {
+            if (null != input) {
+                input.close();
+            }
+        }
+    }
+
+    /**
+     * 在类路径下解析配置文件，输出JSONArray对象
+     *
+     * @param configurePath 类路径下的文件路径
+     * @return
+     * @throws Exception
+     */
+    public static JSONArray loadArrayClasspath(String configurePath) throws Exception {
+        ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+        URL url = classLoader.getResource(configurePath);
+        return null != url ? loadArrayAbsolute(url.getPath()) : null;
+    }
+
+    /**
+     * 自动根据环境加载配置文件
+     *
+     * @param configureName     配置文件名称
+     * @param configurePathName 配置文件所在文件夹名称
+     * @return
+     */
+    public static JSONArray loadArrayAutomatic(String configureName, String configurePathName) throws Exception {
+        TwoTuple<String, Boolean> t = getPathAutomatic(configureName, configurePathName);
+        return t.second
+                ? PropertiesUtil.loadArrayClasspath(t.first)
+                : PropertiesUtil.loadArrayAbsolute(t.first);
+    }
+
+    /**
+     * 自动根据环境加载配置文件
+     * <p>
+     * 注意：
+     * 配置文件名称默认为 configure.json
+     * 配置文件存放文件夹名称 config
+     *
+     * @return
+     */
+    public static JSONArray loadArrayAutomatic() throws Exception {
+        return loadArrayAutomatic(BaseConstant.DEFAULT_JSON_NAME, BaseConstant.DEFAULT_CONFIG_PATH_NAME);
+    }
+
 
     /**
      * 获取文件全路径

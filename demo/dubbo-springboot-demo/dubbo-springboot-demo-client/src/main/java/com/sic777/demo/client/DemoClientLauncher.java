@@ -1,8 +1,7 @@
 package com.sic777.demo.client;
 
-import com.sic777.common.system.CurrentEnvironment;
 import com.sic777.common.laucher.processor.IStarterProcessor;
-import com.sic777.dubbo.consumer.DubboConsumerLauncher;
+import com.sic777.common.laucher.SpringWebContainerLauncher;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import javax.annotation.PostConstruct;
@@ -23,11 +22,10 @@ public class DemoClientLauncher {
     }
 
     public static void main(String[] args) {
-        DubboConsumerLauncher.start(new IStarterProcessor() {
+        SpringWebContainerLauncher.instance().start(new IStarterProcessor() {
             @Override
             public void before() {
                 System.out.println("Spring容器启动前");
-                CurrentEnvironment.instance().init();
             }
 
             @Override

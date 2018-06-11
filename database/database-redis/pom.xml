@@ -12,11 +12,6 @@
 	<artifactId>database-redis</artifactId>
 	<dependencies>
 		<dependency>
-			<groupId>com.sic777</groupId>
-			<artifactId>utils</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-		<dependency>
 			<groupId>redis.clients</groupId>
 			<artifactId>jedis</artifactId>
 		</dependency>

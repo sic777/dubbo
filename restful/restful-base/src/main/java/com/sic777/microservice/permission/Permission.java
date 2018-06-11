@@ -3,7 +3,7 @@ package com.sic777.microservice.permission;
 import java.lang.annotation.*;
 
 /**
- * <p>权限注解: 方法级别 > 类级别</p>
+ * <p>权限注解: 方法级别大于类级别</p>
  *
  * @author Zhengzhenxie
  * @version v1.0
