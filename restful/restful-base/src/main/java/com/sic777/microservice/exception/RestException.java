@@ -1,8 +1,9 @@
 package com.sic777.microservice.exception;
 
 
-import com.sic777.microservice.exception.error.RESTFUL_ERROR;
+import com.sic777.common.exception.SuperRuntimeException;
 import com.sic777.microservice.exception.response.RestExceptionResponse;
+import scala.Enumeration;
 
 /**
  * <p></p>
@@ -12,7 +13,7 @@ import com.sic777.microservice.exception.response.RestExceptionResponse;
  * @version v1.0
  * @since 1.7
  */
-public abstract class RestException extends RuntimeException {
+public abstract class RestException extends SuperRuntimeException {
     /**
      *
      */
@@ -30,8 +31,8 @@ public abstract class RestException extends RuntimeException {
      */
     private final boolean log;
 
-    public RestException(RESTFUL_ERROR ERROR, boolean log, Object... format) {
-        this(ERROR.getCode(), String.format(ERROR.getMsg(), format), log, null);
+    public RestException(Enumeration.Value error, boolean log, Object... format) {
+        this(error.id(), String.format(error.toString(), format), log, null);
     }
 
     public RestException(long code, String msg, boolean log, Throwable throwable) {
@@ -57,15 +58,5 @@ public abstract class RestException extends RuntimeException {
 
     public boolean isLog() {
         return log;
-    }
-
-    /**
-     * 覆盖父方法,不爬栈,提升性能
-     *
-     * @return
-     */
-    @Override
-    public synchronized Throwable fillInStackTrace() {
-        return this;
     }
 }

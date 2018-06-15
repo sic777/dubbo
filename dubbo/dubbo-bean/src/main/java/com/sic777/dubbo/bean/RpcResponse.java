@@ -44,9 +44,10 @@ public final class RpcResponse<T> implements Serializable {
      *
      * @param rpcExceptionType
      * @param errorMsg
+     * @param extendParams
      */
-    public RpcResponse(RpcExceptionType rpcExceptionType, String errorMsg) {
-        this(RpcResponseStatus.FAILURE, null, new RpcException(rpcExceptionType, errorMsg));
+    public RpcResponse(RpcExceptionType rpcExceptionType, String errorMsg, Object... extendParams) {
+        this(RpcResponseStatus.FAILURE, null, new RpcException(rpcExceptionType, errorMsg, extendParams));
     }
 
     /**

@@ -32,7 +32,7 @@ public abstract class RestfulController extends SuperRestfulController {
             out.print(JSONObject.toJSON(obj));
             out.flush();
         } catch (IOException e) {
-            throw new Rest503Exception(e);
+            throw new Rest503Exception(e, true);
         }
     }
 

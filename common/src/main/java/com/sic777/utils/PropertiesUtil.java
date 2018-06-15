@@ -227,7 +227,6 @@ public final class PropertiesUtil {
         return loadArrayAutomatic(BaseConstant.DEFAULT_JSON_NAME, BaseConstant.DEFAULT_CONFIG_PATH_NAME);
     }
 
-
     /**
      * 获取文件全路径
      *

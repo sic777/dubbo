@@ -1,5 +1,6 @@
 package com.sic777.microservice.exception;
 
+
 /**
  * <p></p>
  *

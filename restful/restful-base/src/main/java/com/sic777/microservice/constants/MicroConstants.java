@@ -25,10 +25,6 @@ public class MicroConstants {
      */
     public static final String ACK_ATTRIBUTE_FLAG = "ACK_ATTRIBUTE";
     /**
-     * 鉴权标识
-     */
-    public static final String ACCESS_TOKEN_FLAG = "Access-Token";
-    /**
      * 接口权限标识
      */
     public static final String PERMISSION_FLAG = "REST_PERMISSION";

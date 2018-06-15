@@ -1,6 +1,7 @@
 package com.sic777.microservice.controller;
 
-import com.sic777.microservice.exception.error.RESTFUL_ERROR;
+import com.sic777.microservice.exception.error.NotFoundException;
+import com.sic777.microservice.exception.error.SystemException;
 import com.sic777.microservice.exception.response.RestExceptionResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.web.ErrorAttributes;
@@ -39,8 +40,8 @@ public class RestExceptionController extends RestfulController implements ErrorC
         RequestAttributes requestAttributes = new ServletRequestAttributes(request);
         Map<String, Object> ea = errorAttributes.getErrorAttributes(requestAttributes, false);
         return 404 == (Integer) ea.get("status")
-                ? new RestExceptionResponse(RESTFUL_ERROR.URI_NOT_FOUND, ea.get("path"))
-                : new RestExceptionResponse(RESTFUL_ERROR.SERVICE_EXCEPTION);
+                ? new RestExceptionResponse(NotFoundException.URI_NOT_FOUND(), ea.get("path"))
+                : new RestExceptionResponse(SystemException.SERVICE_EXCEPTION());
     }
 
     @Override

@@ -8,7 +8,9 @@ import com.sic777.microservice.exception.Rest400Exception;
 import com.sic777.microservice.exception.Rest403Exception;
 import com.sic777.microservice.exception.Rest404Exception;
 import com.sic777.microservice.exception.Rest503Exception;
-import com.sic777.microservice.exception.error.RESTFUL_ERROR;
+import com.sic777.microservice.exception.error.AuthenticationException;
+import com.sic777.microservice.exception.error.NotFoundException;
+import com.sic777.microservice.exception.error.ParamException;
 
 /**
  * <p>rpc响应处理工具类</p>
@@ -32,15 +34,15 @@ public class RpcResponseUtil {
                 case UNKNOWN:
                     throw new Rest503Exception(null, false);
                 case PARAM_INVALID:
-                    throw new Rest400Exception(RESTFUL_ERROR.PARAM_INVALID.getCode(), msg);
+                    throw new Rest400Exception(ParamException.PARAM_INVALID(), false, msg);
                 case INVALID_ACCESS:
-                    throw new Rest403Exception(RESTFUL_ERROR.INVALID_ACCESS.getCode(), msg);
+                    throw new Rest403Exception(AuthenticationException.INVALID_ACCESS(), false, msg);
                 case CLIENT_EXCEPTION:
                     throw new Rest503Exception(null, false);
                 case SERVICE_EXCEPTION:
                     throw new Rest503Exception(null, false);
                 case RESOURCE_NOT_FOUND:
-                    throw new Rest404Exception(RESTFUL_ERROR.RESOURCE_NOT_FOUND.getCode(), msg);
+                    throw new Rest404Exception(NotFoundException.RESOURCE_NOT_FOUND(), false, msg);
                 default:
                     throw new Rest503Exception(null, false);
             }

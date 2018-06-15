@@ -1,6 +1,7 @@
 package com.sic777.microservice.exception;
 
-import com.sic777.microservice.exception.error.RESTFUL_ERROR;
+
+import scala.Enumeration;
 
 /**
  * <p></p>
@@ -22,12 +23,8 @@ public final class Rest404Exception extends RestException {
         super(code, msg, log, null);
     }
 
-    public Rest404Exception(RESTFUL_ERROR ERROR, Object... format) {
-        this(ERROR, false, format);
-    }
-
-    public Rest404Exception(RESTFUL_ERROR ERROR, boolean log, Object... format) {
-        super(ERROR, log, format);
+    public Rest404Exception(Enumeration.Value error, boolean log, Object... format) {
+        super(error, log, format);
     }
 
     @Override

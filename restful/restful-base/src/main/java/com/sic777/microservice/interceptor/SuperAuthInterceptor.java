@@ -2,7 +2,7 @@ package com.sic777.microservice.interceptor;
 
 import com.alibaba.fastjson.JSONObject;
 import com.sic777.microservice.exception.Rest403Exception;
-import com.sic777.microservice.exception.error.RESTFUL_ERROR;
+import com.sic777.microservice.exception.error.AuthenticationException;
 import com.sic777.microservice.permission.Permission;
 import com.sic777.microservice.permission.RestPermission;
 import com.sic777.microservice.spi.auth.IAuthSPI;
@@ -25,9 +25,7 @@ public abstract class SuperAuthInterceptor {
      *
      * @param accessToken
      * @param permissionAnnotation
-     *
-     * @return accessToken缓存的数据,Rest接口权限值
-     *
+     * @return accessToken缓存的数据, Rest接口权限值
      * @throws Exception
      */
     protected final TwoTuple<JSONObject, Integer> validate(String accessToken, Permission permissionAnnotation, IAuthSPI authSPI) throws Exception {
@@ -36,11 +34,11 @@ public abstract class SuperAuthInterceptor {
             int permission = PermissionUtil.permission(permissionAnnotation.value());
             if ((RestPermission.ANYBODY & permission) == 0) {
                 if (StringUtil.isEmpty(accessToken)) {
-                    throw new Rest403Exception(RESTFUL_ERROR.ACCESS_TOKEN_VALUE_EMPTY);
+                    throw new Rest403Exception(AuthenticationException.ACCESS_TOKEN_VALUE_EMPTY(), false);
                 }
                 tuple = authSPI.parse(accessToken);
                 if (tuple.first == null || (tuple.second & permission) == 0) {
-                    throw new Rest403Exception(RESTFUL_ERROR.INVALID_ACCESS);
+                    throw new Rest403Exception(AuthenticationException.INVALID_ACCESS(), false);
                 }
             }
         }
@@ -58,9 +56,7 @@ public abstract class SuperAuthInterceptor {
      * @param firstPermission 优先级高的权限注解，一般为类权限注解。
      * @param fallPermission  优先级低的权限注解，一般为方法权限注解
      * @param authSPI
-     *
      * @return @return accessToken缓存的数据,Rest接口权限值
-     *
      * @throws Exception
      */
     protected final TwoTuple<JSONObject, Integer> validate(String accessToken, Permission firstPermission, Permission fallPermission, IAuthSPI authSPI) throws Exception {

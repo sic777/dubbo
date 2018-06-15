@@ -32,4 +32,8 @@ public class BaseConstant {
      * 环境标识(值为：开发、测试、生产...)
      */
     public final static String ENVIRONMENT_FLAG = "environment";
+    /**
+     * 鉴权标识
+     */
+    public static final String ACCESS_TOKEN_FLAG = "Access-Token";
 }

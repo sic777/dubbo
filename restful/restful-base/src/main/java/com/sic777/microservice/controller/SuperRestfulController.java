@@ -1,10 +1,14 @@
 package com.sic777.microservice.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.sic777.common.constants.BaseConstant;
+import com.sic777.common.exception.CommonException;
 import com.sic777.microservice.constants.MicroConstants;
 import com.sic777.microservice.exception.*;
-import com.sic777.microservice.exception.error.RESTFUL_ERROR;
-import com.sic777.microservice.utils.RestValidateUtil;
+import com.sic777.microservice.exception.error.NotFoundException;
+import com.sic777.microservice.exception.error.ParamException;
+import com.sic777.utils.ObjectUtil;
+import scala.Enumeration;
 
 import java.util.List;
 
@@ -32,7 +36,7 @@ public abstract class SuperRestfulController {
      * @return
      */
     protected final String getAccessTokenString() {
-        return this.getAccessTokenData().getString(MicroConstants.ACCESS_TOKEN_FLAG);
+        return this.getAccessTokenData().getString(BaseConstant.ACCESS_TOKEN_FLAG);
     }
 
     /**
@@ -51,7 +55,9 @@ public abstract class SuperRestfulController {
      * @throws Rest400Exception
      */
     protected final void funcValidateNotNull(Object obj, String key) throws Rest400Exception {
-        RestValidateUtil.objectNotNull(obj, key);
+        if (ObjectUtil.isNull(obj)) {
+            throw new Rest400Exception(ParamException.OBJECT_NULL(), false, key);
+        }
     }
 
     /**
@@ -62,7 +68,9 @@ public abstract class SuperRestfulController {
      * @throws Rest400Exception
      */
     protected final void funcValidateNotEmpty(String str, String key) throws Rest400Exception {
-        RestValidateUtil.stringNotEmpty(str, key);
+        if (ObjectUtil.isNull(str)) {
+            throw new Rest400Exception(ParamException.VALUE_EMPTY(), false, key);
+        }
     }
 
 
@@ -147,22 +155,13 @@ public abstract class SuperRestfulController {
         throw new Rest404Exception(code, msg);
     }
 
-
-    private void rest400(RESTFUL_ERROR error, Object... format) {
-        throw new Rest400Exception(error, format);
-    }
-
-    private void rest404(RESTFUL_ERROR error, Object... format) {
-        throw new Rest404Exception(error, format);
-    }
-
     /**
      * 参数校验异常(400异常)
      *
      * @param details %s 详细信息,param invalid,details:'%s'
      */
     protected final void exceptionParamInvalid(String details) {
-        this.rest400(RESTFUL_ERROR.PARAM_INVALID, details);
+        this.restException(ParamException.PARAM_INVALID(), details);
     }
 
     /**
@@ -171,7 +170,7 @@ public abstract class SuperRestfulController {
      * @param key 关键字
      */
     protected final void exceptionObjectOrKeyNull(String key) {
-        this.rest400(RESTFUL_ERROR.OBJECT_NULL, key);
+        this.restException(ParamException.OBJECT_NULL(), key);
     }
 
     /**
@@ -180,7 +179,7 @@ public abstract class SuperRestfulController {
      * @param key 关键字
      */
     protected final void exceptionValueEmpty(String key) {
-        this.rest400(RESTFUL_ERROR.VALUE_EMPTY, key);
+        this.restException(ParamException.VALUE_EMPTY(), key);
     }
 
     /**
@@ -189,15 +188,37 @@ public abstract class SuperRestfulController {
      * @param key 关键字
      */
     protected final void exceptionValueNull(String key) {
-        this.rest400(RESTFUL_ERROR.VALUE_NULL, key);
+        this.restException(ParamException.VALUE_NULL(), key);
     }
 
     /**
      * 资源未找到异常(404异常)
+     *
      * @param details
      */
     protected final void exceptionResourceNotFound(String details) {
-        this.rest404(RESTFUL_ERROR.RESOURCE_NOT_FOUND, details);
+        this.restException(NotFoundException.RESOURCE_NOT_FOUND(), details);
+    }
+
+    /**
+     * 抛出异常
+     *
+     * @param error
+     * @param format
+     */
+    public void restException(Enumeration.Value error, Object... format) {
+        throw new CommonException(error, format);
+    }
+
+    /**
+     * 抛出异常
+     *
+     * @param error
+     * @param log    是否记录日志
+     * @param format
+     */
+    public void restException(Enumeration.Value error, boolean log, Object... format) {
+        throw new CommonException(error, log, format);
     }
 
 }

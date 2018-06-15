@@ -2,6 +2,7 @@ package com.sic777.microservice.interceptor;
 
 
 import com.alibaba.fastjson.JSONObject;
+import com.sic777.common.constants.BaseConstant;
 import com.sic777.microservice.constants.MicroConstants;
 import com.sic777.microservice.permission.Permission;
 import com.sic777.microservice.spi.auth.IAuthSPI;
@@ -47,7 +48,7 @@ public class AuthInterceptor extends SuperAuthInterceptor implements HandlerInte
             if (null == methodPermission) {
                 classPermission = controller.getClass().getAnnotation(Permission.class);//类权限注解
             }
-            String accessToken = request.getHeader(MicroConstants.ACCESS_TOKEN_FLAG);
+            String accessToken = request.getHeader(BaseConstant.ACCESS_TOKEN_FLAG);
             TwoTuple<JSONObject, Integer> tuple = super.validate(accessToken, methodPermission, classPermission, auth);
             //将token缓存的数据和解析出来的权限携带给控制器
             tuple.first.put(MicroConstants.PERMISSION_FLAG, tuple.second);

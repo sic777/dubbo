@@ -3,15 +3,15 @@ package com.sic777.microservice.exception.response;
 
 import com.sic777.microservice.constants.MicroConstants;
 import com.alibaba.fastjson.JSONObject;
-import com.sic777.microservice.exception.error.RESTFUL_ERROR;
+import scala.Enumeration;
 
 public class RestExceptionResponse {
 
     private final long code;
     private final String message;
 
-    public RestExceptionResponse(RESTFUL_ERROR ERROR, Object... format) {
-        this(ERROR.getCode(), String.format(ERROR.getMsg(), format));
+    public RestExceptionResponse(Enumeration.Value error, Object... format) {
+        this(error.id(), String.format(error.toString(), format));
     }
 
     public RestExceptionResponse(long code, String message) {

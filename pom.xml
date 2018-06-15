@@ -53,6 +53,8 @@
 		<commons-beanutils.version>1.9.3</commons-beanutils.version>
 		<slf4j.version>1.7.25</slf4j.version>
 		<log4j.version>2.7</log4j.version>
+		<netty.version>4.1.1.Final</netty.version>
+		<scala.version>2.12.6</scala.version>
 
 		<!-- plugins version -->
 		<maven-jar-plugin.version>2.4</maven-jar-plugin.version>
@@ -61,12 +63,36 @@
 		<wagon-ssh.version>2.10</wagon-ssh.version>
 		<maven-source-plugin.version>3.0.1</maven-source-plugin.version>
 		<maven-javadoc-plugin.version>2.10.4</maven-javadoc-plugin.version>
+		<scala-maven-plugin.version>3.2.0</scala-maven-plugin.version>
+		<build-helper-maven-plugin.version>3.0.0</build-helper-maven-plugin.version>
 	</properties>
 
 
 	<!-- dependencies management -->
 	<dependencyManagement>
 		<dependencies>
+
+			<!-- scala -->
+			<dependency>
+				<groupId>org.scala-lang</groupId>
+				<artifactId>scala-library</artifactId>
+				<version>${scala.version}</version>
+				<scope>compile</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.scala-lang</groupId>
+				<artifactId>scala-compiler</artifactId>
+				<version>${scala.version}</version>
+				<scope>compile</scope>
+			</dependency>
+
+			<!-- netty -->
+			<dependency>
+				<groupId>io.netty</groupId>
+				<artifactId>netty-all</artifactId>
+				<version>${netty.version}</version>
+			</dependency>
+
 			<!-- mybatis-spring-boot-starter -->
 			<dependency>
 				<groupId>org.mybatis.spring.boot</groupId>
@@ -285,6 +311,14 @@
 					<target>${java.version}</target>
 					<encoding>${project.build.sourceEncoding}</encoding>
 				</configuration>
+				<executions>
+					<execution>
+						<phase>compile</phase>
+						<goals>
+							<goal>compile</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 			<!-- javadoc -->
 			<plugin>
@@ -362,6 +396,33 @@
 							</goals>
 						</execution>
 					</executions>
+				</plugin>
+				<!-- scala -->
+				<plugin>
+					<groupId>net.alchim31.maven</groupId>
+					<artifactId>scala-maven-plugin</artifactId>
+					<version>${scala-maven-plugin.version}</version>
+					<executions>
+						<execution>
+							<id>compile-scala</id>
+							<phase>compile</phase>
+							<goals>
+								<goal>add-source</goal>
+								<goal>compile</goal>
+							</goals>
+						</execution>
+						<execution>
+							<id>test-compile-scala</id>
+							<phase>test-compile</phase>
+							<goals>
+								<goal>add-source</goal>
+								<goal>testCompile</goal>
+							</goals>
+						</execution>
+					</executions>
+					<configuration>
+						<scalaVersion>${scala.version}</scalaVersion>
+					</configuration>
 				</plugin>
 			</plugins>
 		</pluginManagement>
