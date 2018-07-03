@@ -31,7 +31,7 @@ public class ResponseManager {
     private ResponseManager() {
     }
 
-    private ResponseBodyType responseBodyType = ResponseBodyType.ALL_HAS_BODY;
+    private ResponseBodyType responseBodyType = ResponseBodyType.FIXED;
 
     private AtomicBoolean isInit = new AtomicBoolean(false);
 
@@ -64,12 +64,12 @@ public class ResponseManager {
     public final JSONObject getSuccessResponseBody(Object obj) {
         JSONObject resp = new JSONObject();
         switch (responseBodyType) {
-            case ALL_HAS_BODY:
+            case FIXED:
                 resp.put(MicroConstants.CODE_FLAG, HttpStatus.OK.value());
                 resp.put(MicroConstants.DATA_FLAG, obj);
                 resp.put(MicroConstants.MSG_FLAG, HttpStatus.OK.getReasonPhrase());
                 break;
-            case JUST_ERROR_HAS_BODY:
+            case DYNAMIC:
                 resp.put(MicroConstants.DATA_FLAG, obj);
                 break;
         }
@@ -127,7 +127,7 @@ public class ResponseManager {
         json.put(MicroConstants.CODE_FLAG, code);
         json.put(MicroConstants.MSG_FLAG, msg);
         switch (responseBodyType) {
-            case JUST_ERROR_HAS_BODY:
+            case DYNAMIC:
                 JSONObject resp = new JSONObject();
                 resp.put(MicroConstants.ERROR_FLAG, json);
                 return resp;
@@ -264,8 +264,17 @@ public class ResponseManager {
      */
     public final void funcValidateObjectNotNull(Object obj, String key) {
         if (ObjectUtil.isNull(obj)) {
-            this.throwRestException(ParamException.OBJECT_NULL(), key);
+            this.throwObjectNullException(key);
         }
+    }
+
+    /**
+     * 抛出对象为null异常
+     *
+     * @param key
+     */
+    public final void throwObjectNullException(String key) {
+        this.throwRestException(ParamException.OBJECT_NULL(), key);
     }
 
 
@@ -277,8 +286,17 @@ public class ResponseManager {
      */
     public final void funcValidateValueNotNull(Object value, String key) {
         if (ObjectUtil.isNull(value)) {
-            this.throwRestException(ParamException.VALUE_NULL(), key);
+            this.throwValueNullException(key);
         }
+    }
+
+    /**
+     * 抛出值为null抛出异常
+     *
+     * @param key
+     */
+    public final void throwValueNullException(String key) {
+        this.throwRestException(ParamException.VALUE_NULL(), key);
     }
 
     /**
@@ -289,8 +307,17 @@ public class ResponseManager {
      */
     public final void funcValidateValueNotEmpty(Object value, String key) {
         if (ObjectUtil.isNull(value)) {
-            this.throwRestException(ParamException.VALUE_EMPTY(), key);
+            this.throwValueEmptyException(key);
         }
+    }
+
+    /**
+     * 抛出参数为空异常
+     *
+     * @param key
+     */
+    public final void throwValueEmptyException(String key) {
+        this.throwRestException(ParamException.VALUE_EMPTY(), key);
     }
 
 }

@@ -79,8 +79,8 @@ public class RestExceptionHandler {
     public Object restExceptionHandler(HttpServletRequest request, HttpServletResponse response, Exception e) {
         AbstractRestException ex = (AbstractRestException) e;
         HttpStatus httpStatus = ex.getHttpStatus();
-        boolean all = ResponseManager.instance().getResponseBodyType() == ResponseBodyType.ALL_HAS_BODY;
-        if (all && httpStatus != HttpStatus.SERVICE_UNAVAILABLE && httpStatus != HttpStatus.FORBIDDEN) {
+        boolean isFixed = ResponseManager.instance().getResponseBodyType() == ResponseBodyType.FIXED;
+        if (isFixed && httpStatus != HttpStatus.SERVICE_UNAVAILABLE && httpStatus != HttpStatus.FORBIDDEN) {
             response.setStatus(HttpStatus.OK.value());
         } else {
             response.setStatus(httpStatus.value());
