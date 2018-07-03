@@ -37,7 +37,6 @@ public class RequestMethodFilter implements Filter {
         //httpResponse.addHeader("Transfer-Encoding", "chunked");
         if (HttpConstants.OPTIONS_METHOD.equals(method.toUpperCase())) {
             httpResponse.getWriter().append("").flush();
-            return;
         } else {
             chain.doFilter(request, response);
         }

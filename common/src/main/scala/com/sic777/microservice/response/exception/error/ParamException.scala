@@ -1,4 +1,4 @@
-package com.sic777.microservice.exception.error
+package com.sic777.microservice.response.exception.error
 
 /**
   * <p></p>

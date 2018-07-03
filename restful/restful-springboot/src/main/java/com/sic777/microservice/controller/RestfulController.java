@@ -2,7 +2,7 @@ package com.sic777.microservice.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.sic777.microservice.constants.MicroConstants;
-import com.sic777.microservice.exception.Rest503Exception;
+import com.sic777.microservice.response.ResponseManager;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
@@ -28,11 +28,12 @@ public abstract class RestfulController extends SuperRestfulController {
     @Override
     protected void rest200(Object obj) {
         try {
+            JSONObject resp = ResponseManager.instance().getSuccessResponseBody(obj);
             PrintWriter out = this.getResponse().getWriter();
-            out.print(JSONObject.toJSON(obj));
+            out.print(resp);
             out.flush();
         } catch (IOException e) {
-            throw new Rest503Exception(e, true);
+            ResponseManager.instance().throwRest503Exception(e);
         }
     }
 

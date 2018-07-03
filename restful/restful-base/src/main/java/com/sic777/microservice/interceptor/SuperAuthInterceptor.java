@@ -1,8 +1,8 @@
 package com.sic777.microservice.interceptor;
 
 import com.alibaba.fastjson.JSONObject;
-import com.sic777.microservice.exception.Rest403Exception;
-import com.sic777.microservice.exception.error.AuthenticationException;
+import com.sic777.microservice.response.ResponseManager;
+import com.sic777.microservice.response.exception.error.AuthenticationException;
 import com.sic777.microservice.permission.Permission;
 import com.sic777.microservice.permission.RestPermission;
 import com.sic777.microservice.spi.auth.IAuthSPI;
@@ -34,11 +34,11 @@ public abstract class SuperAuthInterceptor {
             int permission = PermissionUtil.permission(permissionAnnotation.value());
             if ((RestPermission.ANYBODY & permission) == 0) {
                 if (StringUtil.isEmpty(accessToken)) {
-                    throw new Rest403Exception(AuthenticationException.ACCESS_TOKEN_VALUE_EMPTY(), false);
+                    ResponseManager.instance().throwRestException(AuthenticationException.ACCESS_TOKEN_VALUE_EMPTY());
                 }
                 tuple = authSPI.parse(accessToken);
                 if (tuple.first == null || (tuple.second & permission) == 0) {
-                    throw new Rest403Exception(AuthenticationException.INVALID_ACCESS(), false);
+                    ResponseManager.instance().throwRestException(AuthenticationException.INVALID_ACCESS());
                 }
             }
         }

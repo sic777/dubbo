@@ -13,6 +13,19 @@ public class MicroConstants {
      */
     public static final String ERROR_FLAG = "error";
     /**
+     * 返回前端状态码key
+     */
+    public static final String CODE_FLAG = "code";
+    /**
+     * 返回前端实体key
+     */
+    public static final String DATA_FLAG = "data";
+    /**
+     * 返回前端信息key
+     */
+    public static final String MSG_FLAG = "message";
+
+    /**
      * 总数标识
      */
     public static final String COUNT_FLAG = "count";

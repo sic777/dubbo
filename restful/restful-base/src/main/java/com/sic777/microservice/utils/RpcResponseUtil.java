@@ -4,13 +4,10 @@ import com.sic777.dubbo.exception.RpcException;
 import com.sic777.dubbo.exception.RpcExceptionType;
 import com.sic777.dubbo.bean.RpcResponse;
 import com.sic777.dubbo.bean.RpcResponseStatus;
-import com.sic777.microservice.exception.Rest400Exception;
-import com.sic777.microservice.exception.Rest403Exception;
-import com.sic777.microservice.exception.Rest404Exception;
-import com.sic777.microservice.exception.Rest503Exception;
-import com.sic777.microservice.exception.error.AuthenticationException;
-import com.sic777.microservice.exception.error.NotFoundException;
-import com.sic777.microservice.exception.error.ParamException;
+import com.sic777.microservice.response.ResponseManager;
+import com.sic777.microservice.response.exception.error.AuthenticationException;
+import com.sic777.microservice.response.exception.error.NotFoundException;
+import com.sic777.microservice.response.exception.error.ParamException;
 
 /**
  * <p>rpc响应处理工具类</p>
@@ -32,19 +29,19 @@ public class RpcResponseUtil {
             String msg = er.getMsg();
             switch (rpcExceptionType) {
                 case UNKNOWN:
-                    throw new Rest503Exception(null, false);
+                    ResponseManager.instance().throwRest503Exception(null);
                 case PARAM_INVALID:
-                    throw new Rest400Exception(ParamException.PARAM_INVALID(), false, msg);
+                    ResponseManager.instance().throwRestException(ParamException.PARAM_INVALID(), msg);
                 case INVALID_ACCESS:
-                    throw new Rest403Exception(AuthenticationException.INVALID_ACCESS(), false, msg);
+                    ResponseManager.instance().throwRestException(AuthenticationException.INVALID_ACCESS(), msg);
                 case CLIENT_EXCEPTION:
-                    throw new Rest503Exception(null, false);
+                    ResponseManager.instance().throwRest503Exception(null);
                 case SERVICE_EXCEPTION:
-                    throw new Rest503Exception(null, false);
+                    ResponseManager.instance().throwRest503Exception(null);
                 case RESOURCE_NOT_FOUND:
-                    throw new Rest404Exception(NotFoundException.RESOURCE_NOT_FOUND(), false, msg);
+                    ResponseManager.instance().throwRestException(NotFoundException.RESOURCE_NOT_FOUND(), msg);
                 default:
-                    throw new Rest503Exception(null, false);
+                    ResponseManager.instance().throwRest503Exception(null);
             }
         }
     }

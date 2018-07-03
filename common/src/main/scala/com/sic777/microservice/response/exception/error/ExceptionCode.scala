@@ -1,4 +1,4 @@
-package com.sic777.microservice.exception.error
+package com.sic777.microservice.response.exception.error
 
 import com.sic777.common.constants.{BaseConstant, ErrorMsg}
 
@@ -10,7 +10,6 @@ import com.sic777.common.constants.{BaseConstant, ErrorMsg}
   * @since 2018-06-15
   */
 object ExceptionCode {
-
 
   /**
     * <p>
@@ -85,39 +84,6 @@ object ExceptionCode {
     val URI_NOT_FOUND: Value = Value(30001, "requested path: '%s' not found")
   }
 
-  /**
-    * <p>
-    * '不允许的操作'异常错误码
-    * 说明：使用者的错误码从41000开始，40000~40999位为系统保留
-    * </p>
-    *
-    * @author Zhengzhenxie
-    * @version v1.0
-    * @since 2018-06-15
-    */
-  class NotAllowedException extends Enumeration {
-    /**
-      * 请求方法不支持
-      */
-    val METHOD_NOT_ALLOWED: Value = Value(40000, "method '%s' not allowed requested path: '%s'")
-  }
-
-  /**
-    * <p>
-    * '服务器发生错误'异常错误码
-    * 说明：使用者的错误码从51000开始，50000~50999位为系统保留
-    * </p>
-    *
-    * @author Zhengzhenxie
-    * @version v1.0
-    * @since 2018-06-15
-    */
-  class SystemException extends Enumeration {
-    /**
-      * 服务器发生异常
-      */
-    val SERVICE_EXCEPTION: Value = Value(50000, ErrorMsg.SERVICE_EXCEPTION)
-  }
 
   /**
     * 根据错误码返回错误类对象
@@ -132,10 +98,8 @@ object ExceptionCode {
       AuthenticationException
     } else if (code >= 30000 && code <= 39999) {
       NotFoundException
-    } else if (code >= 40000 && code <= 49999) {
-      NotAllowedException
     } else {
-      SystemException
+      null
     }
   }
 }

@@ -1,13 +1,10 @@
-package com.sic777.microservice.exception.handler;
+package com.sic777.microservice.response.exception.handler;
 
+import com.sic777.common.constants.ErrorMsg;
 import com.sic777.common.exception.CommonException;
-import com.sic777.microservice.exception.*;
-import com.sic777.microservice.exception.error.ExceptionCode;
-import com.sic777.microservice.exception.error.NotAllowedException;
-import com.sic777.microservice.exception.response.RestExceptionResponse;
+import com.sic777.microservice.response.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -44,21 +41,14 @@ public class RestExceptionHandler {
     public Object commonExceptionHandler(HttpServletRequest request, HttpServletResponse response, Exception e) {
         CommonException commonException = (CommonException) e;
         Enumeration.Value v = commonException.getError();
-        int id = v.id();
-        boolean isLog = commonException.isLog();
-        Object format = commonException.getFormat();
-        //根据id解析抛出异常
-        Object obj = ExceptionCode.parse(id);
-        if (obj instanceof ExceptionCode.ParamException) {//400
-            return this.restExceptionHandler(request, response, new Rest400Exception(v, isLog, format));
-        } else if (obj instanceof ExceptionCode.AuthenticationException) {//403
-            return this.restExceptionHandler(request, response, new Rest403Exception(v, isLog, format));
-        } else if (obj instanceof ExceptionCode.NotFoundException) {//404
-            return this.restExceptionHandler(request, response, new Rest404Exception(v, isLog, format));
-        } else if (obj instanceof ExceptionCode.NotAllowedException) {//405
-            return this.methodNotSupportedExceptionHandler(request, response, e);
-        }//503
-        return this.restExceptionHandler(request, response, new Rest503Exception(e, isLog));
+        Object[] format = commonException.getFormat();
+        ExceptionType exceptionType = ResponseManager.instance().getExceptionType(v);
+        return this.restExceptionHandler(request, response, new AbstractRestException(v, format) {
+            @Override
+            public HttpStatus getHttpStatus() {
+                return HttpStatus.valueOf(exceptionType.getCode());
+            }
+        });
     }
 
     /**
@@ -72,7 +62,8 @@ public class RestExceptionHandler {
     @ResponseBody
     @ExceptionHandler(value = {Exception.class, RuntimeException.class})
     public Object defaultExceptionHandler(HttpServletRequest request, HttpServletResponse response, Exception e) {
-        return this.restExceptionHandler(request, response, new Rest503Exception(e, true));
+        logger.error("restful response error:", e);
+        return ResponseManager.instance().getErrorResponseBody(HttpStatus.SERVICE_UNAVAILABLE.value(), ErrorMsg.SERVICE_EXCEPTION);
     }
 
     /**
@@ -84,14 +75,18 @@ public class RestExceptionHandler {
      * @return
      */
     @ResponseBody
-    @ExceptionHandler(value = RestException.class)
+    @ExceptionHandler(value = AbstractRestException.class)
     public Object restExceptionHandler(HttpServletRequest request, HttpServletResponse response, Exception e) {
-        RestException ex = (RestException) e;
-        response.setStatus(ex.getHttpStatus());
-        if (ex.isLog()) {
-            logger.error("restful response error:", ex);
+        AbstractRestException ex = (AbstractRestException) e;
+        HttpStatus httpStatus = ex.getHttpStatus();
+        boolean all = ResponseManager.instance().getResponseBodyType() == ResponseBodyType.ALL_HAS_BODY;
+        if (all && httpStatus != HttpStatus.SERVICE_UNAVAILABLE && httpStatus != HttpStatus.FORBIDDEN) {
+            response.setStatus(HttpStatus.OK.value());
+        } else {
+            response.setStatus(httpStatus.value());
         }
-        return ex.response();
+        logger.error("restful response error:", ex);
+        return ResponseManager.instance().getErrorResponseBody(ex.getCode(), ex.getMsg());
     }
 
     /**
@@ -105,7 +100,9 @@ public class RestExceptionHandler {
     @ResponseBody
     @ExceptionHandler(value = HttpRequestMethodNotSupportedException.class)
     public Object methodNotSupportedExceptionHandler(HttpServletRequest request, HttpServletResponse response, Exception e) {
-        response.setStatus(HttpStatus.METHOD_NOT_ALLOWED.value());
-        return new RestExceptionResponse(NotAllowedException.METHOD_NOT_ALLOWED(), request.getMethod(), request.getRequestURI()).response();
+        int code = HttpStatus.METHOD_NOT_ALLOWED.value();
+        String msg = "Method {%s} Not Allowed,URI {'%s'}";
+        response.setStatus(code);
+        return ResponseManager.instance().getErrorResponseBody(code, String.format(msg, request.getMethod(), request.getRequestURI()));
     }
 }

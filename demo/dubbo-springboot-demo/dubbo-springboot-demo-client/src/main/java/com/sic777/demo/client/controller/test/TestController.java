@@ -5,6 +5,7 @@ import com.sic777.demo.api.test.TestDto;
 import com.sic777.demo.client.controller.BaseController;
 import com.sic777.demo.client.service.test.ITestService;
 import com.sic777.microservice.permission.Permission;
+import com.sic777.microservice.response.ResponseManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -44,7 +45,7 @@ public class TestController extends BaseController {
     @PostMapping("/test")
     void create(@RequestBody TestDto dto) throws Exception {
         String id = testService.create(dto);
-        JSONObject retJson = super.generateReturnId("id", id);
+        JSONObject retJson = ResponseManager.instance().generateReturnId("id", id);
         super.rest200(retJson);
     }
 
@@ -144,7 +145,7 @@ public class TestController extends BaseController {
     @GetMapping("/tests")
     void list() throws Exception {
         List<TestDto> ls = testService.list();
-        JSONObject retJson = super.generateReturnList(ls, 1000);
+        JSONObject retJson = ResponseManager.instance().generateReturnList(ls, 1000);
         super.rest200(retJson);
     }
 }
