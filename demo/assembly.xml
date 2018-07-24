@@ -27,7 +27,8 @@
             <directory>${project.basedir}/src/main/scripts</directory>
             <outputDirectory>bin</outputDirectory>
             <fileMode>0644</fileMode>
-            <directoryMode>0755</directoryMode>
+			<directoryMode>0755</directoryMode>
+			<filtered>true</filtered>			
         </fileSet>
         <!-- config -->
         <fileSet>
@@ -37,7 +38,8 @@
             <directoryMode>0755</directoryMode>
             <includes>
                 <include>*.properties</include>
-            </includes>
+			</includes>
+			<filtered>true</filtered>			
         </fileSet>
         <!-- static resources -->
         <fileSet>

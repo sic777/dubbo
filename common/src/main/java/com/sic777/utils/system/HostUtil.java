@@ -12,15 +12,33 @@ import java.net.UnknownHostException;
  */
 public class HostUtil {
     /**
-     * 获取host地址
+     * 获取机器名
      *
      * @return
      */
-    public static String getHost() {
+    public static String getHostName() {
+        try {
+            return InetAddress.getLocalHost().getHostName();
+        } catch (UnknownHostException e) {
+            return "";
+        }
+    }
+
+    /**
+     * 获取机器地址
+     *
+     * @return
+     */
+    public static String getHostAddress() {
         try {
             return InetAddress.getLocalHost().getHostAddress();
         } catch (UnknownHostException e) {
             return "";
         }
+    }
+
+    public static void main(String[] args) {
+        System.out.println(getHostName());
+        System.out.println(getHostAddress());
     }
 }

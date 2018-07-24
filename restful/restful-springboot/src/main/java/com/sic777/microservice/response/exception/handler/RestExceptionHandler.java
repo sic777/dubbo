@@ -62,7 +62,7 @@ public class RestExceptionHandler {
     @ResponseBody
     @ExceptionHandler(value = {Exception.class, RuntimeException.class})
     public Object defaultExceptionHandler(HttpServletRequest request, HttpServletResponse response, Exception e) {
-        logger.error("restful response error:", e);
+        logger.error("restful response error", e);
         return ResponseManager.instance().getErrorResponseBody(HttpStatus.SERVICE_UNAVAILABLE.value(), ErrorMsg.SERVICE_EXCEPTION);
     }
 
@@ -85,7 +85,9 @@ public class RestExceptionHandler {
         } else {
             response.setStatus(httpStatus.value());
         }
-        logger.error("restful response error:", ex);
+        if (httpStatus == HttpStatus.SERVICE_UNAVAILABLE) {
+            logger.error("restful response error", ex);
+        }
         return ResponseManager.instance().getErrorResponseBody(ex.getCode(), ex.getMsg());
     }
 
