@@ -25,12 +25,16 @@ public abstract class RestfulController extends SuperRestfulController {
         return (JSONObject) this.getAttribute(MicroConstants.ACK_ATTRIBUTE_FLAG);
     }
 
+    /**
+     * @param writeObject 输出的对象
+     */
     @Override
-    protected void rest200(Object obj) {
+    protected void rest200(Object writeObject) {
         try {
-            JSONObject resp = ResponseManager.instance().getSuccessResponseBody(obj);
             PrintWriter out = this.getResponse().getWriter();
-            out.print(resp);
+            out.print(writeObject instanceof JSONObject
+                    ? writeObject
+                    : ResponseManager.instance().getSuccessResponseBody(writeObject));
             out.flush();
         } catch (IOException e) {
             ResponseManager.instance().throwRest503Exception(e);
