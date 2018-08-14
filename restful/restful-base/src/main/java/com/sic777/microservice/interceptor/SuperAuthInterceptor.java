@@ -37,7 +37,7 @@ public abstract class SuperAuthInterceptor {
                     ResponseManager.instance().throwRestException(AuthenticationException.ACCESS_TOKEN_VALUE_EMPTY());
                 }
                 tuple = authSPI.parse(accessToken);
-                if (tuple.first == null || (tuple.second & permission) == 0) {
+                if (tuple == null || tuple.first == null || (tuple.second & permission) == 0) {
                     ResponseManager.instance().throwRestException(AuthenticationException.INVALID_ACCESS());
                 }
             }
