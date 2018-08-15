@@ -61,19 +61,17 @@ public class ResponseManager {
      * @param obj
      * @return
      */
-    public final JSONObject getSuccessResponseBody(Object obj) {
-        JSONObject resp = new JSONObject();
+    public final Object getSuccessResponseBody(Object obj) {
         switch (responseBodyType) {
             case FIXED:
+                JSONObject resp = new JSONObject();
                 resp.put(MicroConstants.CODE_FLAG, HttpStatus.OK.value());
                 resp.put(MicroConstants.DATA_FLAG, obj);
                 resp.put(MicroConstants.MSG_FLAG, HttpStatus.OK.getReasonPhrase());
-                break;
-            case DYNAMIC:
-                resp.put(MicroConstants.DATA_FLAG, obj);
-                break;
+                return resp;
+            default:
+                return obj;
         }
-        return resp;
     }
 
     /**
@@ -87,7 +85,7 @@ public class ResponseManager {
         JSONObject js = new JSONObject();
         js.put(MicroConstants.COUNT_FLAG, count);
         js.put(MicroConstants.LIST_FLAG, dataList);
-        return getSuccessResponseBody(js);
+        return (JSONObject) getSuccessResponseBody(js);
     }
 
     /**
@@ -100,7 +98,7 @@ public class ResponseManager {
     public final JSONObject generateReturnId(String idKey, Object idValue) {
         JSONObject js = new JSONObject();
         js.put(idKey, idValue);
-        return getSuccessResponseBody(js);
+        return (JSONObject) getSuccessResponseBody(js);
     }
 
     /**
@@ -112,7 +110,7 @@ public class ResponseManager {
     public final JSONObject generateDefaultReturnId(Object idValue) {
         JSONObject js = new JSONObject();
         js.put("id", idValue);
-        return getSuccessResponseBody(js);
+        return (JSONObject) getSuccessResponseBody(js);
     }
 
     /**
