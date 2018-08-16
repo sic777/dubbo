@@ -1,13 +1,13 @@
 package com.sic777.common.exception;
 
 /**
- * <p></p>
+ * <p>运行时异常基类</p>
  *
  * @author Zhengzhenxie
  * @version v1.0
  * @since 2018-06-15
  */
-public class SuperRuntimeException extends RuntimeException {
+public abstract class SuperRuntimeException extends RuntimeException {
     private static final long serialVersionUID = 1957474075268725412L;
 
     public SuperRuntimeException() {

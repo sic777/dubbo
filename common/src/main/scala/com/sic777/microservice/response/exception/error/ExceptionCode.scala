@@ -3,7 +3,7 @@ package com.sic777.microservice.response.exception.error
 import com.sic777.common.constants.{BaseConstant, ErrorMsg}
 
 /**
-  * <p></p>
+  * <p>错误码</p>
   *
   * @author Zhengzhenxie
   * @version v1.0

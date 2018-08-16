@@ -33,9 +33,7 @@ public class AuthInterceptor extends SuperAuthInterceptor implements HandlerInte
      * @param request
      * @param response
      * @param handler
-     *
      * @return
-     *
      * @throws Exception
      */
     @Override

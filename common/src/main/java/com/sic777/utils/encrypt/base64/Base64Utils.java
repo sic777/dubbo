@@ -8,7 +8,7 @@ import com.alibaba.fastjson.util.Base64;
  * <p>Base64双向加密工具</p>
  *
  * @author Zhengzhenxie<br>
- *         <br>2017-12-09 17:55
+ * <br>2017-12-09 17:55
  * @version v1.0
  * @since 2018-03-03 17:15
  */

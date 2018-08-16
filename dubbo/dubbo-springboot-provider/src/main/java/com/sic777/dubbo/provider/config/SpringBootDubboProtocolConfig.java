@@ -1,8 +1,8 @@
 package com.sic777.dubbo.provider.config;
 
 import com.sic777.dubbo.common.constants.DubboConstant;
-import com.alibaba.dubbo.config.ProtocolConfig;
 import com.sic777.dubbo.provider.config.build.DubboProtocolConfigManager;
+import com.alibaba.dubbo.config.ProtocolConfig;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

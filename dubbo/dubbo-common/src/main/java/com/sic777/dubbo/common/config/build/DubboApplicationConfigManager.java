@@ -1,6 +1,5 @@
 package com.sic777.dubbo.common.config.build;
 
-import com.alibaba.dubbo.config.ApplicationConfig;
 import com.sic777.common.system.CurrentEnvironment;
 import com.sic777.dubbo.common.config.SuperDubboApplicationConfig;
 import com.sic777.dubbo.common.constants.DubboConstant;
@@ -8,6 +7,7 @@ import com.sic777.dubbo.common.constants.DubboDefaultValue;
 import com.sic777.dubbo.common.enums.ApplicationCompilerType;
 import com.sic777.dubbo.common.enums.ApplicationLogType;
 import com.sic777.utils.StringUtil;
+import com.alibaba.dubbo.config.ApplicationConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

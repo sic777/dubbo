@@ -80,13 +80,10 @@ public class RestExceptionHandler {
         AbstractRestException ex = (AbstractRestException) e;
         HttpStatus httpStatus = ex.getHttpStatus();
         boolean isFixed = ResponseManager.instance().getResponseBodyType() == ResponseBodyType.FIXED;
-        if (isFixed && httpStatus != HttpStatus.SERVICE_UNAVAILABLE && httpStatus != HttpStatus.FORBIDDEN) {
+        if (isFixed && httpStatus != HttpStatus.SERVICE_UNAVAILABLE && httpStatus != HttpStatus.FORBIDDEN) {//除了503和403，Http状态码统一为200
             response.setStatus(HttpStatus.OK.value());
         } else {
             response.setStatus(httpStatus.value());
-        }
-        if (httpStatus == HttpStatus.SERVICE_UNAVAILABLE) {
-            logger.error("restful response error", ex);
         }
         return ResponseManager.instance().getErrorResponseBody(ex.getCode(), ex.getMsg());
     }

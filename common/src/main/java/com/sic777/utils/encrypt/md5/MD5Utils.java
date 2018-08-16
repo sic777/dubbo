@@ -1,5 +1,7 @@
 package com.sic777.utils.encrypt.md5;
 
+import com.sic777.utils.StringUtil;
+
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
@@ -7,7 +9,7 @@ import java.security.NoSuchAlgorithmException;
  * <p>MD5加密</p>
  *
  * @author Zhengzhenxie<br>
- *         <br>2017-12-09 17:55
+ * <br>2017-12-09 17:55
  * @version v1.0
  * @since 2018-03-03 17:15
  */
@@ -35,7 +37,7 @@ public class MD5Utils {
     public static String MD5(String string) {
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
-            return byteArrayToHexString(md.digest(string.getBytes()));
+            return StringUtil.byteArrayToHexString(md.digest(string.getBytes()));
         } catch (NoSuchAlgorithmException e) {
             return null;
         }
@@ -44,20 +46,9 @@ public class MD5Utils {
     public static String MD5(byte[] bytes) {
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
-            return byteArrayToHexString(md.digest(bytes));
+            return StringUtil.byteArrayToHexString(md.digest(bytes));
         } catch (NoSuchAlgorithmException e) {
             return null;
         }
-    }
-
-    private static String byteArrayToHexString(byte[] bytes) {
-        StringBuffer buf = new StringBuffer(bytes.length * 2);
-        for (int i = 0; i < bytes.length; i++) {
-            if (((int) bytes[i] & 0xff) < 0x10) {
-                buf.append("0");
-            }
-            buf.append(Long.toString((int) bytes[i] & 0xff, 16));
-        }
-        return buf.toString();
     }
 }

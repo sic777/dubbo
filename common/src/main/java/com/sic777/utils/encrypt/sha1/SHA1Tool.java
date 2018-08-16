@@ -1,8 +1,17 @@
 package com.sic777.utils.encrypt.sha1;
 
+import com.sic777.utils.StringUtil;
+
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+/**
+ * <p></p>
+ *
+ * @author Zhengzhenxie
+ * @version v1.0
+ * @since 2018-02-11 10:58
+ */
 public class SHA1Tool {
     /**
      * sha1加密
@@ -16,7 +25,7 @@ public class SHA1Tool {
         try {
             resultString = new String(sourceString);
             MessageDigest md = MessageDigest.getInstance("SHA-1");
-            resultString = byte2hexString(md.digest(resultString.getBytes()));
+            resultString = StringUtil.byteArrayToHexString(md.digest(resultString.getBytes()));
         } catch (NoSuchAlgorithmException ex) {
             throw ex;
         }
@@ -29,27 +38,10 @@ public class SHA1Tool {
         try {
             resultString = new String(sourceString);
             MessageDigest md = MessageDigest.getInstance("SHA-256");
-            resultString = byte2hexString(md.digest(resultString.getBytes()));
+            resultString = StringUtil.byteArrayToHexString(md.digest(resultString.getBytes()));
         } catch (NoSuchAlgorithmException ex) {
             throw ex;
         }
         return resultString;
-    }
-
-    /**
-     * byte to hex
-     *
-     * @param bytes
-     * @return
-     */
-    public final static String byte2hexString(byte[] bytes) {
-        StringBuffer buf = new StringBuffer(bytes.length * 2);
-        for (int i = 0; i < bytes.length; i++) {
-            if (((int) bytes[i] & 0xff) < 0x10) {
-                buf.append("0");
-            }
-            buf.append(Long.toString((int) bytes[i] & 0xff, 16));
-        }
-        return buf.toString().toUpperCase();
     }
 }

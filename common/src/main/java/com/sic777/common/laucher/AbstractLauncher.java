@@ -1,5 +1,6 @@
 package com.sic777.common.laucher;
 
+
 import com.sic777.common.laucher.processor.IStarterProcessor;
 
 /**
@@ -10,7 +11,6 @@ import com.sic777.common.laucher.processor.IStarterProcessor;
  * @since 2018-06-11
  */
 public abstract class AbstractLauncher {
-
 
     /**
      * 启动

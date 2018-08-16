@@ -1,12 +1,12 @@
 package com.sic777.microservice.interceptor;
 
-import com.alibaba.fastjson.JSONObject;
 import com.sic777.microservice.response.ResponseManager;
+import com.sic777.microservice.spi.auth.IAuthSPI;
+import com.sic777.utils.StringUtil;
+import com.alibaba.fastjson.JSONObject;
 import com.sic777.microservice.response.exception.error.AuthenticationException;
 import com.sic777.microservice.permission.Permission;
 import com.sic777.microservice.permission.RestPermission;
-import com.sic777.microservice.spi.auth.IAuthSPI;
-import com.sic777.utils.StringUtil;
 import com.sic777.utils.container.tuple.Tuple;
 import com.sic777.utils.container.tuple.TwoTuple;
 import com.sic777.utils.permission.PermissionUtil;

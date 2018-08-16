@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<parent>
 		<artifactId>restful</artifactId>
-		<groupId>com.sic777</groupId>
-		<version>1.1.0</version>
+		<groupId>com.sic777.framework</groupId>
+		<version>0.0.1_beta</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 
@@ -13,9 +13,9 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>com.sic777</groupId>
+			<groupId>com.sic777.framework</groupId>
 			<artifactId>restful-base</artifactId>
-			<version>${project.version}</version>
+			<version>${project.parent.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

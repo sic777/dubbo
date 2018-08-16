@@ -16,7 +16,7 @@ public enum KeyStoreType {
 
     private final String type;
 
-    private KeyStoreType(String type) {
+    KeyStoreType(String type) {
         this.type = type;
     }
 

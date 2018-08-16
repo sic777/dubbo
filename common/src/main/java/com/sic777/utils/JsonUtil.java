@@ -1,7 +1,6 @@
 package com.sic777.utils;
 
 import com.alibaba.fastjson.JSONObject;
-import com.sic777.utils.StringUtil;
 
 /**
  * <p></p>
@@ -50,7 +49,7 @@ public class JsonUtil {
      * @return
      */
     public static boolean containsKey(JSONObject js, String key) {
-        return ObjectUtil.isNotNull(js) && js.containsKey(key);
+        return StringUtil.isNotNull(js) && js.containsKey(key);
     }
 
     /**
@@ -61,6 +60,6 @@ public class JsonUtil {
      * @return
      */
     public static boolean containsValue(JSONObject js, Object value) {
-        return ObjectUtil.isNotNull(js) && js.containsValue(value);
+        return StringUtil.isNotNull(js) && js.containsValue(value);
     }
 }

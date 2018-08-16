@@ -25,7 +25,7 @@ public class GuidManager {
      */
     private int guidLowIndex = 0;
 
-    public static final GuidManager instance() {
+    public static GuidManager instance() {
         return singleton;
     }
 

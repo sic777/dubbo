@@ -16,7 +16,7 @@ import org.springframework.core.annotation.Order;
 import java.util.concurrent.CountDownLatch;
 
 /**
- * <p></p>
+ * <p>Spring容器启动基类</p>
  *
  * @author Zhengzhenxie
  * @version v1.0

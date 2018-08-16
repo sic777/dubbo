@@ -1,15 +1,16 @@
 package com.sic777.microservice.controller;
 
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.sic777.microservice.constants.MicroConstants;
-import com.sic777.microservice.response.ResponseManager;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>controller抽象类</p>
@@ -26,19 +27,24 @@ public abstract class RestfulController extends SuperRestfulController {
     }
 
     /**
+     * @param writeObject
+     * @throws Exception
+     * @deprecated
+     */
+    protected void rest200(Object writeObject) throws Exception {
+        success(writeObject);
+    }
+
+    /**
      * @param writeObject 输出的对象
+     * @throws Exception
+     * @see com.sic777.microservice.response.ResponseManager#success(SuperRestfulController, Object)
      */
     @Override
-    protected void rest200(Object writeObject) {
-        try {
-            PrintWriter out = this.getResponse().getWriter();
-            out.print(writeObject instanceof JSONObject
-                    ? writeObject
-                    : ResponseManager.instance().getSuccessResponseBody(writeObject));
-            out.flush();
-        } catch (IOException e) {
-            ResponseManager.instance().throwRest503Exception(e);
-        }
+    public void success(Object writeObject) throws Exception {
+        PrintWriter out = this.getResponse().getWriter();
+        out.print(writeObject);
+        out.flush();
     }
 
     /**
@@ -80,6 +86,53 @@ public abstract class RestfulController extends SuperRestfulController {
     protected final HttpServletResponse getResponse() {
         ServletRequestAttributes requestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         return requestAttributes.getResponse();
+    }
+
+    /**
+     * 获取企业id
+     *
+     * @return
+     */
+    protected final String funcGetCorpId() {
+        return getAccessTokenData().getString("corp_id");
+    }
+
+    /**
+     * 获取企业成员id
+     *
+     * @return
+     */
+    protected final String funcGetMemberId() {
+        return getAccessTokenData().getString("member_id");
+    }
+
+    /**
+     * 获取成员岗位列表
+     *
+     * @return
+     */
+    protected final List<String> funcGetPositionIds() {
+        JSONArray array = getAccessTokenData().getJSONArray("position_ids");
+        return null != array ? array.toJavaList(String.class) : new ArrayList<>();
+    }
+
+    /**
+     * 获取成员部门列表
+     *
+     * @return
+     */
+    protected final List<String> funcGetDepartmentIds() {
+        JSONArray array = getAccessTokenData().getJSONArray("department_ids");
+        return null != array ? array.toJavaList(String.class) : new ArrayList<>();
+    }
+
+    /**
+     * 用户用户id
+     *
+     * @return
+     */
+    protected final Integer funcGetUserId() {
+        return getAccessTokenData().getInteger("user_id");
     }
 
 }

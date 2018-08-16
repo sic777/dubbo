@@ -3,13 +3,20 @@ package com.sic777.utils;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * <p>日期格式化工具</p>
+ *
+ * @author Zhengzhenxie
+ * @version v1.0
+ * @since 2018-01-10 17:43
+ */
 public class DateFormatTools {
 
     private DateFormatTools() {
         throw new IllegalStateException("Utility class");
     }
 
-    public static final String funcGetDateWithFormat(Date date, String format) {
+    public static String funcGetDateWithFormat(Date date, String format) {
         try {
             SimpleDateFormat dateFormat = new SimpleDateFormat(format);
             return dateFormat.format(date);
@@ -18,7 +25,7 @@ public class DateFormatTools {
         }
     }
 
-    public static final Date funcGetDateWithFormat(String date, String format) {
+    public static Date funcGetDateWithFormat(String date, String format) {
         if (null == date) {
             return null;
         }
@@ -36,7 +43,7 @@ public class DateFormatTools {
      * @param date
      * @return
      */
-    public static final String funcGetDate(Date date) {
+    public static String funcGetDate(Date date) {
         return funcGetDateWithFormat(date, "yyyy-MM-dd'T'HH:mm:ss.SS'Z'");
     }
 
@@ -46,7 +53,7 @@ public class DateFormatTools {
      * @param date
      * @return
      */
-    public static final Date funcGetDate(String date) {
+    public static Date funcGetDate(String date) {
         return funcGetDateWithFormat(date, "yyyy-MM-dd'T'HH:mm:ss.SS'Z'");
     }
 
@@ -56,7 +63,7 @@ public class DateFormatTools {
      * @param date
      * @return
      */
-    public static final String funcGetDay(Date date) {
+    public static String funcGetDay(Date date) {
         return funcGetDateWithFormat(date, "yyyy-MM-dd");
     }
 
@@ -66,7 +73,7 @@ public class DateFormatTools {
      * @param date
      * @return
      */
-    public static final Date funcGetDay(String date) {
+    public static Date funcGetDay(String date) {
         return funcGetDateWithFormat(date, "yyyy-MM-dd");
     }
 

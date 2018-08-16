@@ -1,5 +1,6 @@
 package com.sic777.dubbo.exception;
 
+
 import com.sic777.common.exception.SuperRuntimeException;
 
 /**

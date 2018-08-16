@@ -1,16 +1,16 @@
 package com.sic777.dubbo.consumer.config.build;
 
-import com.alibaba.dubbo.config.ApplicationConfig;
-import com.alibaba.dubbo.config.ConsumerConfig;
-import com.alibaba.dubbo.config.RegistryConfig;
 import com.sic777.dubbo.common.config.SuperDubboApplicationConfig;
 import com.sic777.dubbo.common.config.SuperDubboRegistryConfig;
 import com.sic777.dubbo.common.config.build.DubboApplicationConfigManager;
 import com.sic777.dubbo.common.config.build.DubboRegistryConfigManager;
 import com.sic777.dubbo.common.constants.DubboConstant;
 import com.sic777.dubbo.common.constants.DubboDefaultValue;
-import com.sic777.dubbo.consumer.config.SuperDubboConsumerConfig;
 import com.sic777.utils.StringUtil;
+import com.alibaba.dubbo.config.ApplicationConfig;
+import com.alibaba.dubbo.config.ConsumerConfig;
+import com.alibaba.dubbo.config.RegistryConfig;
+import com.sic777.dubbo.consumer.config.SuperDubboConsumerConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

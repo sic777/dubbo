@@ -1,13 +1,19 @@
 package com.sic777.dubbo.common.config.build;
 
+import com.sic777.dubbo.common.config.SuperDubboRegistryConfig;
+import com.sic777.dubbo.common.constants.DubboDefaultValue;
+import com.sic777.dubbo.common.enums.RegistryClientType;
+import com.sic777.dubbo.common.enums.RegistryProtocolType;
+import com.sic777.dubbo.common.enums.RegistryTransportType;
 import com.alibaba.dubbo.config.RegistryConfig;
+import com.sic777.dubbo.common.constants.DubboConstant;
+import com.sic777.utils.StringUtil;
 import com.sic777.dubbo.common.config.SuperDubboRegistryConfig;
 import com.sic777.dubbo.common.constants.DubboConstant;
 import com.sic777.dubbo.common.constants.DubboDefaultValue;
 import com.sic777.dubbo.common.enums.RegistryClientType;
 import com.sic777.dubbo.common.enums.RegistryProtocolType;
 import com.sic777.dubbo.common.enums.RegistryTransportType;
-import com.sic777.utils.StringUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

@@ -30,12 +30,19 @@ public final class RpcResponse<T> implements Serializable {
     private final RpcException exception;
 
     /**
-     * 仅返回Rpc状态
-     *
-     * @param status 响应状态
+     * 仅返回Rpc状态(成功)
      */
-    public RpcResponse(RpcResponseStatus status) {
-        this(status, null, null);
+    public RpcResponse() {
+        this(RpcResponseStatus.SUCCESS, null, null);
+    }
+
+    /**
+     * Rpc成功,返回数据
+     *
+     * @param t
+     */
+    public RpcResponse(T t) {
+        this(RpcResponseStatus.SUCCESS, t, null);
     }
 
     /**
@@ -50,14 +57,6 @@ public final class RpcResponse<T> implements Serializable {
         this(RpcResponseStatus.FAILURE, null, new RpcException(rpcExceptionType, errorMsg, extendParams));
     }
 
-    /**
-     * Rpc成功,返回数据
-     *
-     * @param t
-     */
-    public RpcResponse(T t) {
-        this(RpcResponseStatus.SUCCESS, t, null);
-    }
 
     /**
      * 内部构造器

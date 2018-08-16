@@ -1,9 +1,11 @@
 package com.sic777.demo.client.service.test;
 
-import com.alibaba.dubbo.config.annotation.Reference;
 import com.sic777.demo.api.test.TestDto;
 import com.sic777.dubbo.bean.RpcResponse;
+import com.sic777.microservice.response.ResponseManager;
+import com.sic777.microservice.response.exception.error.NotFoundException;
 import com.sic777.microservice.utils.RpcResponseUtil;
+import com.alibaba.dubbo.config.annotation.Reference;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -22,6 +24,8 @@ public class TestServiceImpl implements ITestService {
 
     @Override
     public String create(TestDto testDto) throws Exception {
+        //通用异常测试
+        ResponseManager.instance().throwCommonException(NotFoundException.RESOURCE_NOT_FOUND(), "测试资源不存在");
         RpcResponse<String> response = testService.create(testDto);
         RpcResponseUtil.check(response);
         return response.getData();

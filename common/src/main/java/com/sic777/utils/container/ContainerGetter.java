@@ -21,19 +21,19 @@ import java.util.concurrent.CopyOnWriteArraySet;
  */
 public class ContainerGetter {
     public static <K, V> HashMap<K, V> hashMap() {
-        return new HashMap<K, V>();
+        return new HashMap<>();
     }
 
     public static <K, V> HashMap<K, V> hashMap(int capacity) {
-        return new HashMap<K, V>(capacity);
+        return new HashMap<>(capacity);
     }
 
     public static <K extends Enum<K>, V> EnumMap<K, V> enumMap(Class<K> type) {
-        return new EnumMap<K, V>(type);
+        return new EnumMap<>(type);
     }
 
     public static <K, V> ConcurrentHashMap<K, V> concurHashMap() {
-        return new ConcurrentHashMap<K, V>();
+        return new ConcurrentHashMap<>();
     }
 
     public static <K, V> TreeMap<K, V> treeMap() {
@@ -49,7 +49,7 @@ public class ContainerGetter {
     }
 
     public static <T> ArrayList<T> arrayList(Collection<T> list) {
-        return new ArrayList<T>(list);
+        return new ArrayList<>(list);
     }
 
     public static <T> LinkedHashSet<T> linkedHashSet() {
@@ -65,39 +65,39 @@ public class ContainerGetter {
     }
 
     public static <T> HashSet<T> hashSet(Collection<T> set) {
-        return new HashSet<T>(set);
+        return new HashSet<>(set);
     }
 
     public static <T> CopyOnWriteArraySet<T> copyOnWriteArraySet() {
-        return new CopyOnWriteArraySet<T>();
+        return new CopyOnWriteArraySet<>();
     }
 
     public static <T> ArrayList<T> arrayList() {
-        return new ArrayList<T>();
+        return new ArrayList<>();
     }
 
     public static <T> ArrayList<T> arrayList(int capacity) {
-        return new ArrayList<T>(capacity);
+        return new ArrayList<>(capacity);
     }
 
     public static <T> LinkedList<T> linkedList() {
-        return new LinkedList<T>();
+        return new LinkedList<>();
     }
 
     public static <T> LinkedList<T> linkedList(Collection<T> collection) {
-        return new LinkedList<T>(collection);
+        return new LinkedList<>(collection);
     }
 
     public static <T> HashSet<T> hashSet(int capacity) {
-        return new HashSet<T>(capacity);
+        return new HashSet<>(capacity);
     }
 
     public static <T> HashSet<T> hashSet() {
-        return new HashSet<T>();
+        return new HashSet<>();
     }
 
     public static <T> TreeSet<T> treeSet() {
-        return new TreeSet<T>();
+        return new TreeSet<>();
     }
 
     public static <T> TreeSet<T> treeSet(Comparator<T> comparator) {
@@ -105,7 +105,7 @@ public class ContainerGetter {
     }
 
     public static <T> ConcurrentLinkedQueue<T> concurLinkedQueue() {
-        return new ConcurrentLinkedQueue<T>();
+        return new ConcurrentLinkedQueue<>();
     }
 
     public static <T> PriorityQueue<T> priorityQueue(Comparator<T> comparator) {
@@ -117,7 +117,7 @@ public class ContainerGetter {
     }
 
     public static <T> CopyOnWriteArrayList<T> copyOnWriteArrayList() {
-        return new CopyOnWriteArrayList<T>();
+        return new CopyOnWriteArrayList<>();
     }
 
     public static <T> CopyOnWriteArrayList<T> copyOnWriteArrayList(Collection<T> coll) {
@@ -125,24 +125,23 @@ public class ContainerGetter {
     }
 
     public static <A, B, C> ThreeTupleList<A, B, C> threeTupleList() {
-        return new ThreeTupleList<A, B, C>();
+        return new ThreeTupleList<>();
     }
 
     public static <A, B, C, D, E> FiveTupleList<A, B, C, D, E> fiveTupleList() {
-        return new FiveTupleList<A, B, C, D, E>();
+        return new FiveTupleList<>();
     }
 
     public static <A, B, C, D, E, F> SixTupleList<A, B, C, D, E, F> sixTupleList() {
-        return new SixTupleList<A, B, C, D, E, F>();
+        return new SixTupleList<>();
     }
 
     public static <A, B> TwoTupleList<A, B> twoTupleList() {
-        return new TwoTupleList<A, B>();
+        return new TwoTupleList<>();
     }
 
     public static <T> Set<T> treeSet(Collection<T> coll) {
-        TreeSet<T> treeSet = new TreeSet<>(coll);
-        return treeSet;
+        return new TreeSet<>(coll);
     }
 
 }

@@ -9,6 +9,10 @@ package com.sic777.microservice.constants;
  */
 public class MicroConstants {
     /**
+     * 默认id key
+     */
+    public static final String ID_FLAG = "id";
+    /**
      * 返回前端错误key
      */
     public static final String ERROR_FLAG = "error";

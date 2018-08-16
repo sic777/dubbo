@@ -46,48 +46,22 @@ public final class Redis {
     /**
      * redis初始化
      *
-     * @param props
-     * @return
+     * @throws Exception
      */
-    public boolean init(final Properties props) {
+    public void init() throws Exception {
         if (isInit.compareAndSet(false, true)) {
-            logger.info("init redis config ...");
-            redisConfig = new RedisConfig(props);
+            logger.info("init redis ...");
+            try {
+                JSONObject js = PropertiesUtil.loadJsonAutomatic();
+                redisConfig = new RedisConfig(js);
+            } catch (Exception e) {
+                logger.warn("Automatic loading of json configuration file failed, try to automatically load properties configuration file...");
+                Properties properties = PropertiesUtil.loadPropertiesAutomatic();
+                redisConfig = new RedisConfig(properties);
+            }
             initPool();
-            return true;
         }
-        return false;
-    }
 
-    /**
-     * redis初始化
-     *
-     * @param jsonObject
-     * @return
-     */
-    public boolean init(final JSONObject jsonObject) {
-        if (isInit.compareAndSet(false, true)) {
-            logger.info("init redis config ...");
-            redisConfig = new RedisConfig(jsonObject);
-            initPool();
-            return true;
-        }
-        return false;
-    }
-
-    /**
-     * redis初始化
-     *
-     * @return
-     */
-    public boolean init() {
-        try {
-            JSONObject js = PropertiesUtil.loadJsonAutomatic();
-            return null != js ? init(js) : init(PropertiesUtil.loadPropertiesAutomatic());
-        } catch (Exception e) {
-            logger.error("", e);
-        }
-        return false;
     }
 
     /**

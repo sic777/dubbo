@@ -4,28 +4,43 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<parent>
 		<artifactId>dubbo-springboot-demo</artifactId>
-		<groupId>com.sic777</groupId>
-		<version>1.1.0</version>
+		<groupId>com.sic777.framework</groupId>
+		<version>0.0.1_beta</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 
 	<artifactId>dubbo-springboot-demo-client</artifactId>
 
+	<properties>
+		<StartArgs></StartArgs>
+		<MainClass>com.sic777.demo.client.DemoClientLauncher</MainClass>
+	</properties>
+
+
 	<dependencies>
 		<dependency>
-			<groupId>com.sic777</groupId>
+			<groupId>com.sic777.framework</groupId>
 			<artifactId>dubbo-springboot-demo-api</artifactId>
-			<version>${project.version}</version>
+			<version>${project.parent.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>com.sic777</groupId>
+			<groupId>com.sic777.framework</groupId>
 			<artifactId>dubbo-springboot-consumer</artifactId>
-			<version>${project.version}</version>
+			<version>${project.parent.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>com.sic777</groupId>
+			<groupId>com.sic777.framework</groupId>
 			<artifactId>restful-springboot</artifactId>
-			<version>${project.version}</version>
+			<version>${project.parent.version}</version>
+		</dependency>
+		<!-- http -->
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpcore</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
 		</dependency>
 	</dependencies>
 
@@ -38,25 +53,26 @@
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>com.sic777.demo.client.DemoClientLauncher</mainClass>
+							<mainClass>${MainClass}</mainClass>
 						</manifest>
 					</archive>
 					<excludes>
 						<exclude>static/**</exclude>
 						<exclude>*.properties</exclude>
+						<exclude>*.xml</exclude>
 					</excludes>
 				</configuration>
 			</plugin>
 			<!--assembly plugin -->
-			<!--<plugin>-->
-				<!--<groupId>org.apache.maven.plugins</groupId>-->
-				<!--<artifactId>maven-assembly-plugin</artifactId>-->
-				<!--<configuration>-->
-					<!--<descriptors>-->
-						<!--<descriptor>${basedir}/../../assembly.xml</descriptor>-->
-					<!--</descriptors>-->
-				<!--</configuration>-->
-			<!--</plugin>-->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<configuration>
+					<descriptors>
+						<descriptor>${basedir}/../../assembly.xml</descriptor>
+					</descriptors>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 </project>

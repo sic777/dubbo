@@ -23,7 +23,7 @@ public class RedisConfig {
     private final boolean testOnReturn;
     private final boolean testWhileIdle;
 
-    public RedisConfig(JSONObject jsonObject) {
+    public RedisConfig(final JSONObject jsonObject) {
         JSONObject redisJson = jsonObject.getJSONObject(RedisConstant.REDIS_FLAG);
         this.ip = redisJson.getString(RedisConstant.HOST);
         this.port = redisJson.getIntValue(RedisConstant.PORT);
@@ -36,7 +36,7 @@ public class RedisConfig {
         this.testWhileIdle = redisJson.getBoolean(RedisConstant.POOL_TEST_WHILE_IDLE);
     }
 
-    public RedisConfig(Properties props) {
+    public RedisConfig(final Properties props) {
         this.ip = props.getProperty(String.format("redis.%s", RedisConstant.HOST));
         this.port = Integer.parseInt(props.getProperty(String.format("redis.%s", RedisConstant.PORT)));
         this.pass = props.getProperty(String.format("redis.%s", RedisConstant.PASSWORD));

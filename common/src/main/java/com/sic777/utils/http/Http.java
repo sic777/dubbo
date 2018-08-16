@@ -1,6 +1,8 @@
 package com.sic777.utils.http;
 
+import org.apache.http.Header;
 import org.apache.http.HttpEntity;
+import org.apache.http.StatusLine;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.*;
 import org.apache.http.entity.ContentType;
@@ -36,21 +38,8 @@ public class Http {
      * @return
      * @throws IOException
      */
-    public static String delete(String url, Map<String, Object> params, Map<String, String> headers, int connectTimeout, int socketTimeout) throws IOException {
-        StringBuffer param = new StringBuffer();
-        if (null != params) {
-            int i = 0;
-            int size = params.size() - 1;
-            for (String key : params.keySet()) {
-                if (i == size) {
-                    param.append("?").append(key).append("=").append(params.get(key));
-                } else {
-                    param.append("?").append(key).append("=").append(params.get(key)).append("&");
-                }
-                i++;
-            }
-            url += param.toString();
-        }
+    public static HttpResponse delete(String url, Map<String, Object> params, Map<String, String> headers, int connectTimeout, int socketTimeout) throws IOException {
+        url = url(params, url);
         HttpDelete delete = new HttpDelete(url);
         RequestConfig requestConfig = RequestConfig.custom()
                 .setConnectTimeout(0 != connectTimeout ? connectTimeout : DEFAULT_CONNECT_TIMEOUT)
@@ -76,7 +65,7 @@ public class Http {
      * @return
      * @throws IOException
      */
-    public static String delete(String url, Map<String, String> headerMap, int connectTimeout, int socketTimeout) throws IOException {
+    public static HttpResponse delete(String url, Map<String, String> headerMap, int connectTimeout, int socketTimeout) throws IOException {
         return delete(url, null, headerMap, connectTimeout, socketTimeout);
     }
 
@@ -86,7 +75,7 @@ public class Http {
      * @return
      * @throws IOException
      */
-    public static String delete(String url, Map<String, String> headerMap) throws IOException {
+    public static HttpResponse delete(String url, Map<String, String> headerMap) throws IOException {
         return delete(url, null, headerMap, DEFAULT_CONNECT_TIMEOUT, DEFAULT_SOCKET_TIMEOUT);
     }
 
@@ -95,7 +84,7 @@ public class Http {
      * @return
      * @throws IOException
      */
-    public static String delete(String url) throws IOException {
+    public static HttpResponse delete(String url) throws IOException {
         return delete(url, null, null, DEFAULT_CONNECT_TIMEOUT, DEFAULT_SOCKET_TIMEOUT);
     }
 
@@ -108,7 +97,7 @@ public class Http {
      * @return
      * @throws IOException
      */
-    public static String put(String url, String body, Map<String, String> headers, int connectTimeout, int socketTimeout) throws IOException {
+    public static HttpResponse put(String url, String body, Map<String, String> headers, int connectTimeout, int socketTimeout) throws IOException {
         HttpPut put = new HttpPut(url);
         RequestConfig requestConfig = RequestConfig.custom()
                 .setConnectTimeout(0 != connectTimeout ? connectTimeout : DEFAULT_CONNECT_TIMEOUT)
@@ -138,7 +127,7 @@ public class Http {
      * @return
      * @throws IOException
      */
-    public static String put(String url, String body, Map<String, String> headers) throws IOException {
+    public static HttpResponse put(String url, String body, Map<String, String> headers) throws IOException {
         return put(url, body, headers, DEFAULT_CONNECT_TIMEOUT, DEFAULT_SOCKET_TIMEOUT);
     }
 
@@ -148,7 +137,7 @@ public class Http {
      * @return
      * @throws IOException
      */
-    public static String put(String url, String body) throws IOException {
+    public static HttpResponse put(String url, String body) throws IOException {
         return put(url, body, null, DEFAULT_CONNECT_TIMEOUT, DEFAULT_SOCKET_TIMEOUT);
     }
 
@@ -157,7 +146,7 @@ public class Http {
      * @return
      * @throws IOException
      */
-    public static String put(String url) throws IOException {
+    public static HttpResponse put(String url) throws IOException {
         return put(url, null, null, DEFAULT_CONNECT_TIMEOUT, DEFAULT_SOCKET_TIMEOUT);
     }
 
@@ -170,7 +159,7 @@ public class Http {
      * @return
      * @throws IOException
      */
-    public static String post(String url, String body, Map<String, String> headers, int connectTimeout, int socketTimeout) throws IOException {
+    public static HttpResponse post(String url, String body, Map<String, String> headers, int connectTimeout, int socketTimeout) throws IOException {
         HttpPost post = new HttpPost(url);
         RequestConfig requestConfig = RequestConfig.custom()
                 .setConnectTimeout(0 != connectTimeout ? connectTimeout : DEFAULT_CONNECT_TIMEOUT)
@@ -200,7 +189,7 @@ public class Http {
      * @return
      * @throws IOException
      */
-    public static String post(String url, String body, Map<String, String> headers) throws IOException {
+    public static HttpResponse post(String url, String body, Map<String, String> headers) throws IOException {
         return post(url, body, headers, DEFAULT_CONNECT_TIMEOUT, DEFAULT_SOCKET_TIMEOUT);
     }
 
@@ -210,7 +199,7 @@ public class Http {
      * @return
      * @throws IOException
      */
-    public static String post(String url, String body) throws IOException {
+    public static HttpResponse post(String url, String body) throws IOException {
         return post(url, body, null, DEFAULT_CONNECT_TIMEOUT, DEFAULT_SOCKET_TIMEOUT);
     }
 
@@ -219,7 +208,7 @@ public class Http {
      * @return
      * @throws IOException
      */
-    public static String post(String url) throws IOException {
+    public static HttpResponse post(String url) throws IOException {
         return post(url, null, null, DEFAULT_CONNECT_TIMEOUT, DEFAULT_SOCKET_TIMEOUT);
     }
 
@@ -233,21 +222,8 @@ public class Http {
      * @return
      * @throws IOException
      */
-    public static String get(String url, Map<String, String> replaceParams, Map<String, Object> params, Map<String, String> headerMap, int connectTimeout, int socketTimeout) throws IOException {
-        StringBuffer param = new StringBuffer();
-        if (null != params) {
-            int i = 0;
-            int size = params.size() - 1;
-            for (String key : params.keySet()) {
-                if (i == size) {
-                    param.append("?").append(key).append("=").append(params.get(key));
-                } else {
-                    param.append("?").append(key).append("=").append(params.get(key)).append("&");
-                }
-                i++;
-            }
-            url += param.toString();
-        }
+    public static HttpResponse get(String url, Map<String, String> replaceParams, Map<String, Object> params, Map<String, String> headerMap, int connectTimeout, int socketTimeout) throws IOException {
+        url = url(params, url);
         if (null != replaceParams) {
             for (String key : replaceParams.keySet()) {
                 url = url.replace(key, replaceParams.get(key));
@@ -276,7 +252,7 @@ public class Http {
      * @return
      * @throws IOException
      */
-    public static String get(String url, Map<String, String> replaceParams, Map<String, Object> params, Map<String, String> headerMap) throws IOException {
+    public static HttpResponse get(String url, Map<String, String> replaceParams, Map<String, Object> params, Map<String, String> headerMap) throws IOException {
         return get(url, replaceParams, params, headerMap, DEFAULT_CONNECT_TIMEOUT, DEFAULT_SOCKET_TIMEOUT);
     }
 
@@ -289,7 +265,7 @@ public class Http {
      * @return
      * @throws IOException
      */
-    public static String get(String url, Map<String, Object> params, Map<String, String> headerMap, int connectTimeout, int socketTimeout) throws IOException {
+    public static HttpResponse get(String url, Map<String, Object> params, Map<String, String> headerMap, int connectTimeout, int socketTimeout) throws IOException {
         return get(url, null, params, headerMap, connectTimeout, socketTimeout);
     }
 
@@ -300,7 +276,7 @@ public class Http {
      * @return
      * @throws IOException
      */
-    public static String get(String url, Map<String, Object> params, Map<String, String> headerMap) throws IOException {
+    public static HttpResponse get(String url, Map<String, Object> params, Map<String, String> headerMap) throws IOException {
         return get(url, null, params, headerMap, DEFAULT_CONNECT_TIMEOUT, DEFAULT_SOCKET_TIMEOUT);
     }
 
@@ -310,7 +286,7 @@ public class Http {
      * @return
      * @throws IOException
      */
-    public static String get(String url, Map<String, String> headerMap) throws IOException {
+    public static HttpResponse get(String url, Map<String, String> headerMap) throws IOException {
         return get(url, null, null, headerMap, DEFAULT_CONNECT_TIMEOUT, DEFAULT_SOCKET_TIMEOUT);
     }
 
@@ -319,9 +295,36 @@ public class Http {
      * @return
      * @throws IOException
      */
-    public static String get(String url) throws IOException {
+    public static HttpResponse get(String url) throws IOException {
         return get(url, null, null, null, DEFAULT_CONNECT_TIMEOUT, DEFAULT_SOCKET_TIMEOUT);
     }
+
+
+    /**
+     * 处理url
+     *
+     * @param params
+     * @param url
+     * @return
+     */
+    private static String url(Map<String, Object> params, String url) {
+        StringBuffer param = new StringBuffer();
+        if (null != params) {
+            int i = 0;
+            int size = params.size() - 1;
+            for (String key : params.keySet()) {
+                if (i == size) {
+                    param.append("?").append(key).append("=").append(params.get(key));
+                } else {
+                    param.append("?").append(key).append("=").append(params.get(key)).append("&");
+                }
+                i++;
+            }
+            url += param.toString();
+        }
+        return url;
+    }
+
 
     /**
      * 响应
@@ -330,17 +333,25 @@ public class Http {
      * @return
      * @throws IOException
      */
-    private static String ret(CloseableHttpResponse res) throws IOException {
+    private static HttpResponse ret(CloseableHttpResponse res) throws IOException {
+        //status
+        StatusLine statusLine = res.getStatusLine();
+        //response bean
+        HttpResponse httpResponse = new HttpResponse(statusLine.getStatusCode());
+        //headers
+        for (Header header : res.getAllHeaders()) {
+            httpResponse.setHeader(header.getName(), header.getValue());
+        }
+        //entity
         HttpEntity respEntity = res.getEntity();
         String respCharset = "UTF-8";
         if (null != ContentType.getOrDefault(respEntity).getCharset()) {
             respCharset = ContentType.getOrDefault(respEntity).getCharset().toString();
         }
         String inResponse = EntityUtils.toString(respEntity, respCharset);
-        logger.debug("response content:" + inResponse);
+        logger.debug("Http response content:\r\n" + inResponse);
         res.close();
-        return inResponse;
+        httpResponse.setContent(inResponse);
+        return httpResponse;
     }
-
-
 }

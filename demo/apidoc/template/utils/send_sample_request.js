@@ -95,22 +95,14 @@ define([
         // send AJAX request, catch success or error callback
         // 重构
         var ajaxRequest;
-        if (paramType.requestBody !== undefined) {
-            param = param.requestBody;
+        if (paramType.RequestBody !== undefined) {
+            param = param.RequestBody;
             if (!isJSON(param)) {
-                var message = "Error 503:";
-                var resp = '{' +
-                    '"error": {' +
-                    '"code": 5031001,' +
-                    '"message": "请传入Json类型的对象"' +
-                    '}' +
-                    '}';
-                message += "<br>" + resp;
                 if ($root.find(".sample-request-response").is(":visible")) {
                     $root.find(".sample-request-response").fadeTo(1, 0.1);
                 }
                 $root.find(".sample-request-response").fadeTo(250, 1);
-                $root.find(".sample-request-response-json").html(message);
+                $root.find(".sample-request-response-json").html("请传入Json类型的对象");
                 refreshScrollSpy();
                 return;
             }

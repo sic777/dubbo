@@ -4,7 +4,6 @@ import com.alibaba.dubbo.config.annotation.Service;
 import com.sic777.demo.api.test.ITestService;
 import com.sic777.demo.api.test.TestDto;
 import com.sic777.dubbo.bean.RpcResponse;
-import com.sic777.dubbo.bean.RpcResponseStatus;
 import com.sic777.utils.container.ContainerGetter;
 
 import java.util.List;
@@ -26,12 +25,12 @@ public class TestServiceImpl implements ITestService {
 
     @Override
     public RpcResponse<?> delete(String id) {
-        return new RpcResponse<>(RpcResponseStatus.SUCCESS);
+        return new RpcResponse<>();
     }
 
     @Override
     public RpcResponse<?> update(TestDto testDto) {
-        return new RpcResponse<>(RpcResponseStatus.SUCCESS);
+        return new RpcResponse<>();
     }
 
     @Override

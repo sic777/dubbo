@@ -1,10 +1,10 @@
 package com.sic777.dubbo.consumer.config;
 
-import com.alibaba.dubbo.config.ConsumerConfig;
 import com.sic777.dubbo.common.config.SpringBootDubboApplicationConfig;
 import com.sic777.dubbo.common.config.SpringBootDubboRegistryConfig;
 import com.sic777.dubbo.common.constants.DubboConstant;
 import com.sic777.dubbo.consumer.config.build.DubboConsumerConfigManager;
+import com.alibaba.dubbo.config.ConsumerConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;

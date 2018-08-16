@@ -1,7 +1,7 @@
 package com.sic777.common.laucher;
 
 /**
- * <p></p>
+ * <p>Spring容器Web端启动类</p>
  *
  * @author Zhengzhenxie
  * @version v1.0

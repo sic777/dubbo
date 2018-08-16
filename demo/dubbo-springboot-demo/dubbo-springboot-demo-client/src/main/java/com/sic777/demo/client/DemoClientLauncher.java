@@ -1,7 +1,9 @@
 package com.sic777.demo.client;
 
-import com.sic777.common.laucher.processor.IStarterProcessor;
 import com.sic777.common.laucher.SpringWebContainerLauncher;
+import com.sic777.common.laucher.processor.IStarterProcessor;
+import com.sic777.microservice.response.ResponseBodyType;
+import com.sic777.microservice.response.ResponseManager;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import javax.annotation.PostConstruct;
@@ -26,6 +28,7 @@ public class DemoClientLauncher {
             @Override
             public void before() {
                 System.out.println("Spring容器启动前");
+                ResponseManager.instance().init(ResponseBodyType.FIXED);
             }
 
             @Override

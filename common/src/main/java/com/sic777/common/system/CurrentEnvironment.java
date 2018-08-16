@@ -98,7 +98,7 @@ public final class CurrentEnvironment {
     }
 
     /**
-     * 是否为开发环境
+     * 是否为默认(开发)环境
      *
      * @return
      */

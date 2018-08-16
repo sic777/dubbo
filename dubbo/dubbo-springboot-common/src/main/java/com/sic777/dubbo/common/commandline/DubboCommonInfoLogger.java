@@ -1,11 +1,11 @@
 package com.sic777.dubbo.common.commandline;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.sic777.dubbo.common.config.SpringBootDubboApplicationConfig;
-import com.sic777.dubbo.common.config.SpringBootDubboRegistryConfig;
 import com.sic777.dubbo.common.config.build.DubboApplicationConfigManager;
 import com.sic777.dubbo.common.config.build.DubboRegistryConfigManager;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.serializer.SerializerFeature;
+import com.sic777.dubbo.common.config.SpringBootDubboRegistryConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,8 +1,9 @@
 package com.sic777.microservice.controller;
 
-import com.alibaba.fastjson.JSONObject;
 import com.sic777.common.constants.BaseConstant;
 import com.sic777.microservice.constants.MicroConstants;
+import com.sic777.microservice.permission.RestPermission;
+import com.alibaba.fastjson.JSONObject;
 
 /**
  * <p></p>
@@ -11,7 +12,7 @@ import com.sic777.microservice.constants.MicroConstants;
  * @version v1.0
  * @since 2018-06-05
  */
-public abstract class SuperRestfulController {
+public abstract class SuperRestfulController implements RestPermission {
     /**
      * 获取当前accessToken对应的权限
      *
@@ -38,10 +39,11 @@ public abstract class SuperRestfulController {
     protected abstract JSONObject getAccessTokenData();
 
     /**
-     * 响应200
+     * 返回成功(任意对象)
      *
      * @param obj
+     * @throws Exception
      */
-    protected abstract void rest200(Object obj);
+    public abstract void success(Object obj) throws Exception;
 
 }

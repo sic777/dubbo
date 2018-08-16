@@ -1,16 +1,19 @@
 package com.sic777.microservice.response;
 
+import com.sic777.common.exception.CommonException;
+import com.sic777.microservice.controller.SuperRestfulController;
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.sic777.microservice.constants.MicroConstants;
 import com.sic777.microservice.response.exception.error.ExceptionCode;
 import com.sic777.microservice.response.exception.error.NotFoundException;
 import com.sic777.microservice.response.exception.error.ParamException;
-import com.sic777.utils.ObjectUtil;
+import com.sic777.utils.StringUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import scala.Enumeration;
 
-import java.util.List;
+import java.util.Collection;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
@@ -43,75 +46,100 @@ public class ResponseManager {
     public final void init(ResponseBodyType responseBodyType) {
         if (isInit.compareAndSet(false, true)) {
             this.responseBodyType = responseBodyType;
-            logger.info("set response body:" + responseBodyType);
+            logger.info("set response body type:" + responseBodyType);
         }
     }
 
     /**
+     * 获取响应体类型
+     *
      * @return
      */
     public final ResponseBodyType getResponseBodyType() {
         return this.responseBodyType;
     }
 
+    /**
+     * 返回成功(对象为空)
+     *
+     * @param restfulController
+     * @throws Exception
+     */
+    public final void success(SuperRestfulController restfulController) throws Exception {
+        success(restfulController, null);
+    }
 
     /**
-     * 获取成功的响应体
+     * 返回成功(任意对象)
      *
-     * @param obj
-     * @return
+     * @param restfulController
+     * @param object
+     * @throws Exception
      */
-    public final Object getSuccessResponseBody(Object obj) {
+    public final void success(SuperRestfulController restfulController, Object object) throws Exception {
+        Object response = null;
         switch (responseBodyType) {
             case FIXED:
                 JSONObject resp = new JSONObject();
                 resp.put(MicroConstants.CODE_FLAG, HttpStatus.OK.value());
-                resp.put(MicroConstants.DATA_FLAG, obj);
+                resp.put(MicroConstants.DATA_FLAG, object);
                 resp.put(MicroConstants.MSG_FLAG, HttpStatus.OK.getReasonPhrase());
-                return resp;
+                response = resp;
+                break;
             default:
-                return obj;
+                if (null != object) {
+                    response = object instanceof JSON ? object : JSON.toJSON(object);
+                }
+        }
+        if (null != response) {
+            restfulController.success(response);
         }
     }
 
     /**
-     * 构造响应列表对象
+     * 返回成功(集合)
      *
-     * @param dataList
-     * @param count
-     * @return
+     * @param restfulController
+     * @param dataCollections   数据集合
+     * @param count             总数
+     * @throws Exception
      */
-    public final JSONObject generateReturnList(List<?> dataList, int count) {
+    public final void successCollections(SuperRestfulController restfulController, Collection<?> dataCollections,
+                                         int count) throws Exception {
         JSONObject js = new JSONObject();
         js.put(MicroConstants.COUNT_FLAG, count);
-        js.put(MicroConstants.LIST_FLAG, dataList);
-        return (JSONObject) getSuccessResponseBody(js);
+        js.put(MicroConstants.LIST_FLAG, dataCollections);
+        success(restfulController, js);
     }
 
     /**
-     * 构造响应id
+     * 返回成功("键=值")
      *
-     * @param idKey
-     * @param idValue
-     * @return
+     * @param restfulController
+     * @param key               返回的键
+     * @param value             返回的值
+     * @throws Exception
      */
-    public final JSONObject generateReturnId(String idKey, Object idValue) {
+    public final void successKV(SuperRestfulController restfulController, String key, Object value) throws
+            Exception {
         JSONObject js = new JSONObject();
-        js.put(idKey, idValue);
-        return (JSONObject) getSuccessResponseBody(js);
+        js.put(key, value);
+        success(restfulController, js);
     }
 
     /**
-     * 构造默认的响应id,key为"id"
+     * 返回成功("id=值")
      *
-     * @param idValue
-     * @return
+     * @param restfulController
+     * @param idValue           id值
+     * @throws Exception
      */
-    public final JSONObject generateDefaultReturnId(Object idValue) {
+    public final void successId(SuperRestfulController restfulController, Object idValue) throws Exception {
         JSONObject js = new JSONObject();
-        js.put("id", idValue);
-        return (JSONObject) getSuccessResponseBody(js);
+        js.put(MicroConstants.ID_FLAG, idValue);
+        success(restfulController, js);
     }
+
 
     /**
      * 获取抛出错误的响应体
@@ -119,6 +147,7 @@ public class ResponseManager {
      * @param code
      * @param msg
      * @return
+     * @see com.sic777.microservice.response.ResponseBodyType
      */
     public final JSONObject getErrorResponseBody(long code, String msg) {
         JSONObject json = new JSONObject();
@@ -145,19 +174,83 @@ public class ResponseManager {
         return this.getErrorResponseBody(error.id(), String.format(error.toString(), format));
     }
 
-
     /**
-     * 抛异常
+     * 校验对象不为null,为null抛出异常
      *
-     * @param restException
-     * @throws AbstractRestException
+     * @param obj
+     * @param key
      */
-    private void throwRestException(AbstractRestException restException) throws AbstractRestException {
-        throw restException;
+    public final void funcValidateObjectNotNull(Object obj, String key) {
+        if (StringUtil.isNull(obj)) {
+            this.throwRestException(ParamException.OBJECT_NULL(), key);
+        }
     }
 
     /**
-     * 抛503异常
+     * 校验值不为null,null则抛出异常
+     *
+     * @param value
+     * @param key
+     */
+    public final void funcValidateValueNotNull(Object value, String key) {
+        if (StringUtil.isNull(value)) {
+            this.throwRestException(ParamException.VALUE_NULL(), key);
+        }
+    }
+
+    /**
+     * 校验值不为空,为空抛出异常
+     *
+     * @param value
+     * @param key
+     */
+    public final void funcValidateValueNotEmpty(Object value, String key) {
+        if (StringUtil.isNull(value)) {
+            this.throwRestException(ParamException.VALUE_EMPTY(), key);
+        }
+    }
+
+    /**
+     * 参数校验异常
+     *
+     * @param details %s 详细信息,param invalid,details:'%s'
+     */
+    public void throwParamInvalidException(String details) {
+        this.throwRestException(ParamException.PARAM_INVALID(), details);
+    }
+
+    /**
+     * 资源未找到异常
+     *
+     * @param details 详细信息
+     */
+    public final void throwResourceNotFoundException(String details) {
+        this.throwRestException(NotFoundException.RESOURCE_NOT_FOUND(), details);
+    }
+
+    /**
+     * 获取异常类型
+     *
+     * @param error
+     * @return
+     */
+    public ExceptionType getExceptionType(Enumeration.Value error) {
+        Object obj = ExceptionCode.parse(error.id());
+        ExceptionType exceptionType;
+        if (obj instanceof ExceptionCode.ParamException) {//400
+            exceptionType = ExceptionType.EXCEPTION_400;
+        } else if (obj instanceof ExceptionCode.AuthenticationException) {//403
+            exceptionType = ExceptionType.EXCEPTION_403;
+        } else if (obj instanceof ExceptionCode.NotFoundException) {//404
+            exceptionType = ExceptionType.EXCEPTION_404;
+        } else {//503
+            exceptionType = ExceptionType.EXCEPTION_503;
+        }
+        return exceptionType;
+    }
+
+    /**
+     * 抛出Restful503异常
      *
      * @param throwable
      * @throws AbstractRestException
@@ -166,8 +259,32 @@ public class ResponseManager {
         this.throwRestException(new Rest503Exception(throwable));
     }
 
+
     /**
-     * 抛异常
+     * 抛出Restful异常
+     *
+     * @param error
+     * @param format
+     */
+    public void throwRestException(Enumeration.Value error, Object... format) {
+        this.throwRestException(error.id(), String.format(error.toString(), format), getExceptionType(error));
+    }
+
+
+    /**
+     * 抛出Restful异常
+     *
+     * @param code
+     * @param message
+     * @param exceptionType
+     */
+    public void throwRestException(long code, String message, ExceptionType exceptionType) {
+        this.throwRestException(code, message, exceptionType, null);
+    }
+
+
+    /**
+     * 抛出Restful异常
      *
      * @param code
      * @param message
@@ -195,127 +312,23 @@ public class ResponseManager {
     }
 
     /**
-     * 抛异常
+     * 抛出Restful异常
      *
-     * @param code
-     * @param message
-     * @param exceptionType
+     * @param restException
+     * @throws AbstractRestException
      */
-    public void throwRestException(long code, String message, ExceptionType exceptionType) {
-        this.throwRestException(code, message, exceptionType, null);
+    public void throwRestException(AbstractRestException restException) throws AbstractRestException {
+        throw restException;
     }
 
     /**
-     * 抛异常
+     * 抛出通用异常
      *
      * @param error
      * @param format
+     * @throws CommonException
      */
-    public void throwRestException(Enumeration.Value error, Object... format) {
-        this.throwRestException(error.id(), String.format(error.toString(), format), getExceptionType(error));
+    public void throwCommonException(Enumeration.Value error, Object... format) throws CommonException {
+        throw new CommonException(error, format);
     }
-
-    /**
-     * 获取异常类型
-     *
-     * @param error
-     * @return
-     */
-    public ExceptionType getExceptionType(Enumeration.Value error) {
-        Object obj = ExceptionCode.parse(error.id());
-        ExceptionType exceptionType;
-        if (obj instanceof ExceptionCode.ParamException) {//400
-            exceptionType = ExceptionType.EXCEPTION_400;
-        } else if (obj instanceof ExceptionCode.AuthenticationException) {//403
-            exceptionType = ExceptionType.EXCEPTION_403;
-        } else if (obj instanceof ExceptionCode.NotFoundException) {//404
-            exceptionType = ExceptionType.EXCEPTION_404;
-        } else {//503
-            exceptionType = ExceptionType.EXCEPTION_503;
-        }
-        return exceptionType;
-    }
-
-    /**
-     * 资源未找到异常
-     *
-     * @param details
-     */
-    public final void resourceNotFoundException(String details) {
-        this.throwRestException(NotFoundException.RESOURCE_NOT_FOUND(), details);
-    }
-
-    /**
-     * 参数校验异常
-     *
-     * @param details %s 详细信息,param invalid,details:'%s'
-     */
-    public final void paramInvalidException(String details) {
-        this.throwRestException(ParamException.PARAM_INVALID(), details);
-    }
-
-    /**
-     * 校验对象不为null,为null抛出异常
-     *
-     * @param obj
-     * @param key
-     */
-    public final void funcValidateObjectNotNull(Object obj, String key) {
-        if (ObjectUtil.isNull(obj)) {
-            this.throwObjectNullException(key);
-        }
-    }
-
-    /**
-     * 抛出对象为null异常
-     *
-     * @param key
-     */
-    public final void throwObjectNullException(String key) {
-        this.throwRestException(ParamException.OBJECT_NULL(), key);
-    }
-
-
-    /**
-     * 校验值不为null,null则抛出异常
-     *
-     * @param value
-     * @param key
-     */
-    public final void funcValidateValueNotNull(Object value, String key) {
-        if (ObjectUtil.isNull(value)) {
-            this.throwValueNullException(key);
-        }
-    }
-
-    /**
-     * 抛出值为null抛出异常
-     *
-     * @param key
-     */
-    public final void throwValueNullException(String key) {
-        this.throwRestException(ParamException.VALUE_NULL(), key);
-    }
-
-    /**
-     * 校验值不为空,为空抛出异常
-     *
-     * @param value
-     * @param key
-     */
-    public final void funcValidateValueNotEmpty(Object value, String key) {
-        if (ObjectUtil.isNull(value)) {
-            this.throwValueEmptyException(key);
-        }
-    }
-
-    /**
-     * 抛出参数为空异常
-     *
-     * @param key
-     */
-    public final void throwValueEmptyException(String key) {
-        this.throwRestException(ParamException.VALUE_EMPTY(), key);
-    }
-
 }

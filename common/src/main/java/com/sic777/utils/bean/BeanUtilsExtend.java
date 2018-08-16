@@ -9,7 +9,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Date;
 
 /**
- * <p></p>
+ * <p>BeanUtils扩展</p>
  *
  * @author Zhengzhenxie
  * @version v1.0
@@ -21,6 +21,8 @@ public class BeanUtilsExtend extends BeanUtils {
     }
 
     /**
+     * 复制实体
+     *
      * @param target 目标实体
      * @param source 源头实体
      * @throws IllegalAccessException

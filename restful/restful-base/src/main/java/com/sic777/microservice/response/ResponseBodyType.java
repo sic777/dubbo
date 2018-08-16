@@ -11,9 +11,9 @@ public enum ResponseBodyType {
     /**
      * 返回的数据格式:
      * {
-     * "code":状态码,
-     * "message":"描述信息",
-     * "data":响应数据(对象)
+     * "code" : "状态码",
+     * "message" : "描述信息",
+     * "data" : "响应数据"
      * }
      */
     FIXED,
@@ -21,16 +21,18 @@ public enum ResponseBodyType {
      * 返回的数据格式:
      * 1.HTTP 200
      * {
-     * "id":"",
-     * "name":""
+     * "id" : "",
+     * "xx" : "",
+     * "xxx" : ""
      * }
-     *
+     * <p>
+     * <p>
      * 2.非HTTP 200
      * {
-     * "error":
+     * "error" :
      * {
-     * "message":"错误信息",
-     * "code":错误码
+     * "message" : "错误信息",
+     * "code" : "错误码"
      * }
      * }
      */

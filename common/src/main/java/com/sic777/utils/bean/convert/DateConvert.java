@@ -6,7 +6,7 @@ import com.sic777.utils.DateFormatTools;
 import org.apache.commons.beanutils.Converter;
 
 /**
- * <p></p>
+ * <p>日期转换器</p>
  *
  * @author Zhengzhenxie
  * @version v1.0
@@ -14,8 +14,8 @@ import org.apache.commons.beanutils.Converter;
  */
 public class DateConvert implements Converter {
 
-    @SuppressWarnings({ "rawtypes", "unchecked" })
-	@Override
+    @SuppressWarnings({"rawtypes", "unchecked"})
+    @Override
     public Object convert(Class clz, Object value) {
         if (value instanceof String) {
             //TODO.. 暂时先支持yyyy-MM-dd'T'HH:mm:ss.SS'Z'格式,需要支持其他格式,请修改此处代码,用正则匹配.

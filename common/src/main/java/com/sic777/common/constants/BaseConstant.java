@@ -1,7 +1,7 @@
 package com.sic777.common.constants;
 
 /**
- * <p></p>
+ * <p>基础常量</p>
  *
  * @author Zhengzhenxie
  * @version v1.0

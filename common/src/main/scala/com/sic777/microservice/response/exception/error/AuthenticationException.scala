@@ -1,7 +1,7 @@
 package com.sic777.microservice.response.exception.error
 
 /**
-  * <p></p>
+  * <p>'认证/权限错误'异常错误码</p>
   *
   * @author Zhengzhenxie
   * @version v1.0
