@@ -2,7 +2,9 @@ package com.sic777.demo.client.permission;
 
 import com.alibaba.fastjson.JSONObject;
 import com.sic777.microservice.spi.auth.IAuthSPI;
+import com.sic777.utils.container.tuple.Tuple;
 import com.sic777.utils.container.tuple.TwoTuple;
+import org.springframework.stereotype.Component;
 
 /**
  * <p></p>
@@ -11,9 +13,10 @@ import com.sic777.utils.container.tuple.TwoTuple;
  * @version v1.0
  * @since 2018-08-16
  */
+@Component
 public class AuthImpl implements IAuthSPI {
     @Override
     public TwoTuple<JSONObject, Integer> parse(String accessToken) throws Exception {
-        return null;
+        return Tuple.tuple(new JSONObject(), RestPermissionExtend.USER);
     }
 }
