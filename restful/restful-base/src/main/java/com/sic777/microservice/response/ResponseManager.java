@@ -105,7 +105,7 @@ public class ResponseManager {
      * @throws Exception
      */
     public final void successCollections(SuperRestfulController restfulController, Collection<?> dataCollections,
-                                         int count) throws Exception {
+                                         long count) throws Exception {
         JSONObject js = new JSONObject();
         js.put(MicroConstants.COUNT_FLAG, count);
         js.put(MicroConstants.LIST_FLAG, dataCollections);
