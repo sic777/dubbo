@@ -1,9 +1,7 @@
 package com.sic777.db.redis;
 
 
-import com.alibaba.fastjson.JSONObject;
 import com.sic777.db.redis.collection.*;
-import com.sic777.utils.PropertiesUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import redis.clients.jedis.Jedis;
@@ -11,7 +9,6 @@ import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
 import redis.clients.util.Pool;
 
-import java.util.Properties;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 
@@ -46,22 +43,13 @@ public final class Redis {
     /**
      * redis初始化
      *
-     * @throws Exception
      */
-    public void init() throws Exception {
+    public void init() {
         if (isInit.compareAndSet(false, true)) {
             logger.info("init redis ...");
-            try {
-                JSONObject js = PropertiesUtil.loadJsonAutomatic();
-                redisConfig = new RedisConfig(js);
-            } catch (Exception e) {
-                logger.warn("Automatic loading of json configuration file failed, try to automatically load properties configuration file...");
-                Properties properties = PropertiesUtil.loadPropertiesAutomatic();
-                redisConfig = new RedisConfig(properties);
-            }
+            redisConfig = new RedisConfig();
             initPool();
         }
-
     }
 
     /**

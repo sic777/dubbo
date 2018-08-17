@@ -1,9 +1,7 @@
 package com.sic777.db.redis;
 
 
-import com.alibaba.fastjson.JSONObject;
-
-import java.util.Properties;
+import com.sic777.utils.ConfigureManager;
 
 /**
  * <p>Redis配置</p>
@@ -23,29 +21,16 @@ public class RedisConfig {
     private final boolean testOnReturn;
     private final boolean testWhileIdle;
 
-    public RedisConfig(final JSONObject jsonObject) {
-        JSONObject redisJson = jsonObject.getJSONObject(RedisConstant.REDIS_FLAG);
-        this.ip = redisJson.getString(RedisConstant.HOST);
-        this.port = redisJson.getIntValue(RedisConstant.PORT);
-        this.pass = redisJson.getString(RedisConstant.PASSWORD);
-        this.maxTotal = redisJson.getIntValue(RedisConstant.POOL_MAX_TOTAL);
-        this.maxIdle = redisJson.getIntValue(RedisConstant.POOL_MAX_IDLE);
-        this.maxWaitMillis = redisJson.getIntValue(RedisConstant.POOL_MAX_WAIT_MILLIS);
-        this.testOnBorrow = redisJson.getBoolean(RedisConstant.POOL_TEST_ON_BORROW);
-        this.testOnReturn = redisJson.getBoolean(RedisConstant.POOL_TEST_ON_RETURN);
-        this.testWhileIdle = redisJson.getBoolean(RedisConstant.POOL_TEST_WHILE_IDLE);
-    }
-
-    public RedisConfig(final Properties props) {
-        this.ip = props.getProperty(String.format("redis.%s", RedisConstant.HOST));
-        this.port = Integer.parseInt(props.getProperty(String.format("redis.%s", RedisConstant.PORT)));
-        this.pass = props.getProperty(String.format("redis.%s", RedisConstant.PASSWORD));
-        this.maxTotal = Integer.parseInt(props.getProperty(String.format("redis.%s", RedisConstant.POOL_MAX_TOTAL)));
-        this.maxIdle = Integer.parseInt(props.getProperty(String.format("redis.%s", RedisConstant.POOL_MAX_IDLE)));
-        this.maxWaitMillis = Integer.parseInt(props.getProperty(String.format("redis.%s", RedisConstant.POOL_MAX_WAIT_MILLIS)));
-        this.testOnBorrow = Boolean.parseBoolean(props.getProperty(String.format("redis.%s", RedisConstant.POOL_TEST_ON_BORROW)));
-        this.testOnReturn = Boolean.parseBoolean(props.getProperty(String.format("redis.%s", RedisConstant.POOL_TEST_ON_RETURN)));
-        this.testWhileIdle = Boolean.parseBoolean(props.getProperty(String.format("redis.%s", RedisConstant.POOL_TEST_WHILE_IDLE)));
+    public RedisConfig() {
+        this.ip = ConfigureManager.instance().getString(RedisConstant.HOST);
+        this.port = ConfigureManager.instance().getInt(RedisConstant.PORT);
+        this.pass = ConfigureManager.instance().getString(RedisConstant.PASSWORD);
+        this.maxTotal = ConfigureManager.instance().getInt(RedisConstant.POOL_MAX_TOTAL);
+        this.maxIdle = ConfigureManager.instance().getInt(RedisConstant.POOL_MAX_IDLE);
+        this.maxWaitMillis = ConfigureManager.instance().getInt(RedisConstant.POOL_MAX_WAIT_MILLIS);
+        this.testOnBorrow = ConfigureManager.instance().getBool(RedisConstant.POOL_TEST_ON_BORROW);
+        this.testOnReturn = ConfigureManager.instance().getBool(RedisConstant.POOL_TEST_ON_RETURN);
+        this.testWhileIdle = ConfigureManager.instance().getBool(RedisConstant.POOL_TEST_WHILE_IDLE);
     }
 
     public RedisConfig(String ip, int port, String pass, int maxTotal, int maxIdle, int maxWaitMillis, boolean testOnBorrow, boolean testOnReturn, boolean testWhileIdle) {

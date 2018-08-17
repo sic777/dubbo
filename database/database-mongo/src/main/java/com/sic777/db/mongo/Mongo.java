@@ -2,10 +2,8 @@ package com.sic777.db.mongo;
 
 
 import com.sic777.db.mongo.config.MongoConfig;
-import com.sic777.utils.PropertiesUtil;
 import com.sic777.utils.container.ContainerGetter;
 import com.sic777.utils.container.tuple.TwoTuple;
-import com.alibaba.fastjson.JSONObject;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientOptions;
 import com.mongodb.MongoCredential;
@@ -41,10 +39,9 @@ public abstract class Mongo {
      *
      * @throws Exception
      */
-    public static void init() throws Exception {
+    public static void init() {
         logger.info("init mongo ...");
-        JSONObject jsonObject = PropertiesUtil.loadJsonAutomatic();
-        MongoConfig.init(jsonObject);//初始化配置文件
+        MongoConfig.init();//初始化配置文件
         MongoClientOptions.Builder potionBuilder = MongoClientOptions.builder();
         potionBuilder.connectionsPerHost(MongoConfig.getConnectionsPerHost());
         potionBuilder.threadsAllowedToBlockForConnectionMultiplier(MongoConfig.getThreadsAllowedToBlockForConnectionMultiplier());

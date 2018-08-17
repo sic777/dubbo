@@ -9,7 +9,7 @@ import com.sic777.db.mongo.Mongo;
  * @version v1.0
  * @since 2017-12-26 14:53
  */
-class CorpMongo extends Mongo {
+public class CorpMongo extends Mongo {
     CorpMongo(String dbName) {
         super(dbName);
     }
