@@ -36,8 +36,6 @@ public abstract class Mongo {
 
     /**
      * 初始化mongo db
-     *
-     * @throws Exception
      */
     public static void init() {
         logger.info("init mongo ...");
@@ -56,12 +54,7 @@ public abstract class Mongo {
         for (TwoTuple<String, Integer> TwoTuple : hosts) {
             seeds.add(new ServerAddress(TwoTuple.first, TwoTuple.second));
         }
-        try {
-            mongoClient = new MongoClient(seeds, credentials, potionBuilder.build());
-        } catch (Exception e) {
-            logger.error("", e);
-            System.exit(-1);
-        }
+        mongoClient = new MongoClient(seeds, credentials, potionBuilder.build());
     }
 
     public MongoDatabase getMongoDatabase() {
