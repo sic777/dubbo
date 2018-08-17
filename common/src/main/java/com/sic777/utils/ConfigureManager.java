@@ -26,11 +26,11 @@ public class ConfigureManager {
     /**
      * 配置文件
      */
-    private Properties properties = new Properties();
+    private Properties properties;
     /**
      * 配置文件
      */
-    private JSONObject config = new JSONObject();
+    private JSONObject config;
 
     private AtomicBoolean atomicBoolean = new AtomicBoolean(false);
 
@@ -47,34 +47,18 @@ public class ConfigureManager {
     }
 
     /**
-     * 初始化，优先初始化json配置文件，如果json配置文件不存在，才会初始化properties配置文件
+     * 初始化
      */
     private void init() {
         if (atomicBoolean.compareAndSet(false, true)) {
             try {
                 config = PropertiesUtil.loadJsonAutomatic();
-            } catch (Exception e) {
-                logger.warn("Automatic loading of json configuration file failed, try to automatically load properties configuration file...");
-                try {
-                    properties = PropertiesUtil.loadPropertiesAutomatic();
-                } catch (Exception e1) {
-                    logger.warn("Automatic loading properties configuration file failed", e1);
-                    System.exit(-1);
-                }
-            }
-        }
-    }
-
-    /**
-     * 初始化，会同时初始化json配置文件和properties配置文件
-     */
-    private void initAll() {
-        if (atomicBoolean.compareAndSet(false, true)) {
-            try {
-                config = PropertiesUtil.loadJsonAutomatic();
                 properties = PropertiesUtil.loadPropertiesAutomatic();
+                if (config == null && properties == null) {
+                    throw new Exception();
+                }
             } catch (Exception e) {
-                logger.error("Automatic loading of json configuration file and  properties configuration file failed...");
+                logger.warn("Automatic loading configuration file failed", e);
                 System.exit(-1);
             }
         }
@@ -88,11 +72,13 @@ public class ConfigureManager {
      */
     public JSONObject getJsonObject(String key) {
         JSONObject rs = null;
-        JSONObject configTmp = config;
-        String[] ks = key.split("\\.");
-        for (String k : ks) {
-            rs = configTmp.getJSONObject(k);
-            configTmp = rs;
+        if (null != config) {
+            JSONObject configTmp = config;
+            String[] ks = key.split("\\.");
+            for (String k : ks) {
+                rs = configTmp.getJSONObject(k);
+                configTmp = rs;
+            }
         }
         return rs;
     }
@@ -105,14 +91,18 @@ public class ConfigureManager {
      */
     public String getString(String key) {
         Object rs;
-        JSONObject configTmp = config;
-        String[] ks = key.split("\\.");
-        for (String k : ks) {
-            rs = configTmp.get(k);
-            if (rs instanceof JSONObject) {
-                configTmp = (JSONObject) rs;
-            } else {
-                return rs.toString();
+        if (null != config) {
+            JSONObject configTmp = config;
+            String[] ks = key.split("\\.");
+            for (String k : ks) {
+                rs = configTmp.get(k);
+                if (rs != null) {
+                    if (rs instanceof JSONObject) {
+                        configTmp = (JSONObject) rs;
+                    } else {
+                        return rs.toString();
+                    }
+                }
             }
         }
         return properties.getProperty(key);
