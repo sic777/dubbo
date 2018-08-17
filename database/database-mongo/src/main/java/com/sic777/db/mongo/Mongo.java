@@ -2,6 +2,7 @@ package com.sic777.db.mongo;
 
 
 import com.sic777.db.mongo.config.MongoConfig;
+import com.sic777.db.mongo.data.MongoSearchQuery;
 import com.sic777.utils.container.ContainerGetter;
 import com.sic777.utils.container.tuple.TwoTuple;
 import com.mongodb.MongoClient;
@@ -264,6 +265,34 @@ public abstract class Mongo {
     public MongoCursor<Document> query(String collectionName, Bson filter) {
         MongoCollection<Document> collection = mongoDatabase.getCollection(collectionName);
         return collection.find(filter).iterator();
+    }
+
+    /**
+     * 根据条件查询
+     *
+     * @param collectionName
+     * @param searchQuery
+     * @return
+     */
+    public MongoCursor<Document> query(String collectionName, MongoSearchQuery searchQuery) {
+        MongoCollection<Document> collection = mongoDatabase.getCollection(collectionName);
+        return collection.find(searchQuery.getQuery())
+                .limit(searchQuery.getLimit())
+                .skip(searchQuery.getOffset())
+                .sort(searchQuery.getSort())
+                .iterator();
+    }
+
+    /**
+     * 根据条件获取总数
+     *
+     * @param collectionName
+     * @param filter
+     * @return
+     */
+    public long count(String collectionName, Bson filter) {
+        MongoCollection<Document> collection = mongoDatabase.getCollection(collectionName);
+        return collection.count(filter);
     }
 
 
