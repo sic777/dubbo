@@ -342,7 +342,7 @@
 						<goals>
 							<goal>jar</goal>
 						</goals>
-					</execution>
+					</execution> 
 				</executions>
 			</plugin>
 			<!-- source -->
