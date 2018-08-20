@@ -1,5 +1,6 @@
 package com.sic777.microservice.response;
 
+import com.sic777.common.constants.ErrorMsg;
 import com.sic777.common.exception.CommonException;
 import com.sic777.microservice.controller.SuperRestfulController;
 import com.alibaba.fastjson.JSON;
@@ -175,58 +176,254 @@ public class ResponseManager {
     }
 
     /**
-     * 校验对象不为null,为null抛出异常
+     * 批量校验对象不为null,为null抛出异常(系统错误码)
+     *
+     * @param objects
+     * @param keys
+     */
+    public final void funcValidateObjectNotNull(Object[] objects, String[] keys) {
+        for (int i = 0, len = objects.length; i < len; i++) {
+            funcValidateObjectNotNull(objects[i], ParamException.OBJECT_NULL(), keys[i]);
+        }
+    }
+
+    /**
+     * 校验对象不为null,为null抛出异常(系统错误码)
      *
      * @param obj
      * @param key
      */
     public final void funcValidateObjectNotNull(Object obj, String key) {
+        funcValidateObjectNotNull(obj, ParamException.OBJECT_NULL(), key);
+    }
+
+    /**
+     * 校验对象不为null,为null抛出异常(自定义错误码)
+     *
+     * @param obj
+     * @param error
+     * @param format
+     */
+    public final void funcValidateObjectNotNull(Object obj, Enumeration.Value error, Object... format) {
         if (StringUtil.isNull(obj)) {
-            this.throwRestException(ParamException.OBJECT_NULL(), key);
+            this.throwRestException(error, format);
         }
     }
 
     /**
-     * 校验值不为null,null则抛出异常
+     * 校验对象不为null,为null抛出异常(自定义错误码)
+     *
+     * @param obj
+     * @param code
+     * @param key
+     */
+    public final void funcValidateObjectNotNull(Object obj, long code, String key) {
+        if (StringUtil.isNull(obj)) {
+            this.throwRestException(code, String.format(ErrorMsg.OBJECT_NULL, key), ExceptionType.EXCEPTION_400);
+        }
+    }
+
+    /**
+     * 批量校验对象不为null,为null抛出异常(自定义错误码)
+     *
+     * @param objects
+     * @param codes
+     * @param keys
+     */
+    public final void funcValidateObjectNotNull(Object[] objects, long[] codes, String[] keys) {
+        for (int i = 0, len = objects.length; i < len; i++) {
+            if (StringUtil.isNull(objects[i])) {
+                this.throwRestException(codes[i], String.format(ErrorMsg.OBJECT_NULL, keys[i]), ExceptionType.EXCEPTION_400);
+            }
+        }
+    }
+
+    /**
+     * 批量校验值不为null,null则抛出异常(系统错误码)
+     *
+     * @param values
+     * @param keys
+     */
+    public final void funcValidateValueNotNull(Object[] values, String[] keys) {
+        for (int i = 0, len = values.length; i < len; i++) {
+            funcValidateValueNotNull(values[i], ParamException.VALUE_NULL(), keys[i]);
+        }
+    }
+
+    /**
+     * 校验值不为null,null则抛出异常(系统错误码)
      *
      * @param value
      * @param key
      */
     public final void funcValidateValueNotNull(Object value, String key) {
+        this.funcValidateValueNotNull(value, ParamException.VALUE_NULL(), key);
+    }
+
+    /**
+     * 校验值不为null,null则抛出异常(自定义错误码)
+     *
+     * @param value
+     * @param error
+     * @param format
+     */
+    public final void funcValidateValueNotNull(Object value, Enumeration.Value error, Object... format) {
         if (StringUtil.isNull(value)) {
-            this.throwRestException(ParamException.VALUE_NULL(), key);
+            this.throwRestException(error, format);
         }
     }
 
     /**
-     * 校验值不为空,为空抛出异常
+     * 校验值不为null,null则抛出异常(自定义错误码)
+     *
+     * @param value
+     * @param code
+     * @param key
+     */
+    public final void funcValidateValueNotNull(Object value, long code, String key) {
+        if (StringUtil.isNull(value)) {
+            this.throwRestException(code, String.format(ErrorMsg.VALUE_NULL, key), ExceptionType.EXCEPTION_400);
+        }
+    }
+
+    /**
+     * 批量校验值不为null,null则抛出异常(自定义错误码)
+     *
+     * @param values
+     * @param codes
+     * @param keys
+     */
+    public final void funcValidateValueNotNull(Object[] values, long[] codes, String[] keys) {
+        for (int i = 0, len = values.length; i < len; i++) {
+            if (StringUtil.isNull(values[i])) {
+                this.throwRestException(codes[i], String.format(ErrorMsg.VALUE_NULL, keys[i]), ExceptionType.EXCEPTION_400);
+            }
+        }
+    }
+
+
+    /**
+     * 批量校验值不为null,null则抛出异常(系统错误码)
+     *
+     * @param values
+     * @param keys
+     */
+    public final void funcValidateValueNotEmpty(Object[] values, String[] keys) {
+        for (int i = 0, len = values.length; i < len; i++) {
+            funcValidateValueNotNull(values[i], ParamException.VALUE_EMPTY(), keys[i]);
+        }
+    }
+
+    /**
+     * 校验值不为空,为空抛出异常(系统错误码)
      *
      * @param value
      * @param key
      */
-    public final void funcValidateValueNotEmpty(Object value, String key) {
-        if (StringUtil.isNull(value)) {
-            this.throwRestException(ParamException.VALUE_EMPTY(), key);
+    public final void funcValidateValueNotEmpty(String value, String key) {
+        this.funcValidateValueNotEmpty(value, ParamException.VALUE_EMPTY(), key);
+    }
+
+    /**
+     * 校验值不为空,为空抛出异常(自定义错误码)
+     *
+     * @param value
+     * @param error
+     * @param format
+     */
+    public final void funcValidateValueNotEmpty(String value, Enumeration.Value error, Object... format) {
+        if (StringUtil.isEmpty(value)) {
+            this.throwRestException(error, format);
         }
     }
 
     /**
-     * 参数校验异常
+     * 校验值不为空,为空抛出异常(自定义错误码)
      *
-     * @param details %s 详细信息,param invalid,details:'%s'
+     * @param value
+     * @param code
+     * @param key
      */
-    public void throwParamInvalidException(String details) {
-        this.throwRestException(ParamException.PARAM_INVALID(), details);
+    public final void funcValidateValueNotEmpty(String value, long code, String key) {
+        if (StringUtil.isEmpty(value)) {
+            this.throwRestException(code, String.format(ErrorMsg.VALUE_EMPTY, key), ExceptionType.EXCEPTION_400);
+        }
     }
 
     /**
-     * 资源未找到异常
+     * 批量校验值不为空,为空抛出异常(自定义错误码)
      *
-     * @param details 详细信息
+     * @param values
+     * @param codes
+     * @param keys
+     */
+    public final void funcValidateValueNotEmpty(Object[] values, long[] codes, String[] keys) {
+        for (int i = 0, len = values.length; i < len; i++) {
+            if (StringUtil.isNull(values[i])) {
+                this.throwRestException(codes[i], String.format(ErrorMsg.VALUE_EMPTY, keys[i]), ExceptionType.EXCEPTION_400);
+            }
+        }
+    }
+
+
+    /**
+     * 参数校验异常(系统错误码)
+     *
+     * @param details param invalid,details:'%s'
+     */
+    public final void throwParamInvalidException(String details) {
+        this.throwParamInvalidException(ParamException.PARAM_INVALID(), details);
+    }
+
+    /**
+     * 参数校验异常(自定义错误码)
+     *
+     * @param error
+     * @param format
+     */
+    public final void throwParamInvalidException(Enumeration.Value error, Object... format) {
+        this.throwRestException(error, format);
+    }
+
+    /**
+     * 参数校验异常(自定义错误码)
+     *
+     * @param code
+     * @param details
+     */
+    public final void throwParamInvalidException(long code, String details) {
+        this.throwRestException(code, String.format(ErrorMsg.PARAM_INVALID, details), ExceptionType.EXCEPTION_400);
+    }
+
+    /**
+     * 资源未找到异常(系统错误码)
+     *
+     * @param details param invalid,details:'%s'
      */
     public final void throwResourceNotFoundException(String details) {
-        this.throwRestException(NotFoundException.RESOURCE_NOT_FOUND(), details);
+        this.throwResourceNotFoundException(NotFoundException.RESOURCE_NOT_FOUND(), details);
     }
+
+    /**
+     * 资源未找到异常(自定义错误码)
+     *
+     * @param error
+     * @param format
+     */
+    public final void throwResourceNotFoundException(Enumeration.Value error, Object... format) {
+        this.throwRestException(error, format);
+    }
+
+    /**
+     * 资源未找到异常(自定义错误码)
+     *
+     * @param code
+     * @param msg
+     */
+    public final void throwResourceNotFoundException(long code, String msg) {
+        this.throwRestException(code, msg, ExceptionType.EXCEPTION_404);
+    }
+
 
     /**
      * 获取异常类型
@@ -255,7 +452,7 @@ public class ResponseManager {
      * @param throwable
      * @throws AbstractRestException
      */
-    public void throwRest503Exception(Throwable throwable) throws AbstractRestException {
+    public final void throwRest503Exception(Throwable throwable) throws AbstractRestException {
         this.throwRestException(new Rest503Exception(throwable));
     }
 
@@ -266,7 +463,7 @@ public class ResponseManager {
      * @param error
      * @param format
      */
-    public void throwRestException(Enumeration.Value error, Object... format) {
+    public final void throwRestException(Enumeration.Value error, Object... format) {
         this.throwRestException(error.id(), String.format(error.toString(), format), getExceptionType(error));
     }
 
@@ -278,7 +475,7 @@ public class ResponseManager {
      * @param message
      * @param exceptionType
      */
-    public void throwRestException(long code, String message, ExceptionType exceptionType) {
+    public final void throwRestException(long code, String message, ExceptionType exceptionType) {
         this.throwRestException(code, message, exceptionType, null);
     }
 
@@ -291,7 +488,7 @@ public class ResponseManager {
      * @param exceptionType
      * @param throwable
      */
-    public void throwRestException(long code, String message, ExceptionType exceptionType, Throwable throwable) {
+    public final void throwRestException(long code, String message, ExceptionType exceptionType, Throwable throwable) {
         switch (exceptionType) {
             case EXCEPTION_200:
                 this.throwRestException(new Rest200Exception(code, message));
@@ -317,7 +514,7 @@ public class ResponseManager {
      * @param restException
      * @throws AbstractRestException
      */
-    public void throwRestException(AbstractRestException restException) throws AbstractRestException {
+    public final void throwRestException(AbstractRestException restException) throws AbstractRestException {
         throw restException;
     }
 
@@ -328,7 +525,7 @@ public class ResponseManager {
      * @param format
      * @throws CommonException
      */
-    public void throwCommonException(Enumeration.Value error, Object... format) throws CommonException {
+    public final void throwCommonException(Enumeration.Value error, Object... format) throws CommonException {
         throw new CommonException(error, format);
     }
 }
