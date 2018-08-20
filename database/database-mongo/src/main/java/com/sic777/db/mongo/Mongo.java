@@ -1,7 +1,11 @@
 package com.sic777.db.mongo;
 
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.sic777.db.mongo.config.MongoConfig;
+import com.sic777.db.mongo.data.MongoQuery;
 import com.sic777.db.mongo.data.MongoSearchQuery;
 import com.sic777.utils.container.ContainerGetter;
 import com.sic777.utils.container.tuple.TwoTuple;
@@ -19,8 +23,7 @@ import org.bson.Document;
 import org.bson.conversions.Bson;
 import org.slf4j.LoggerFactory;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by Zhengzhenxie on 2017/9/12.
@@ -29,6 +32,9 @@ public abstract class Mongo {
     private static final org.slf4j.Logger logger = LoggerFactory.getLogger(Mongo.class);
     private MongoDatabase mongoDatabase;
     private static MongoClient mongoClient;
+
+    private static final int DEFAULT_OFFSET = 0;
+    private static final int DEFAULT_LIMIT = 10;
 
     protected Mongo(String dbName) {
         mongoDatabase = mongoClient.getDatabase(dbName);
@@ -60,6 +66,97 @@ public abstract class Mongo {
 
     public MongoDatabase getMongoDatabase() {
         return mongoDatabase;
+    }
+
+    /**
+     * 可视字段处理(利用JSONObject特性)
+     *
+     * @param fields
+     * @param lists
+     * @param clz
+     * @param <T>
+     * @return
+     */
+    public <T> List<T> visibleFiled(Set<String> fields, List<T> lists, Class<T> clz) {
+        List<T> rs = new ArrayList<>();
+        for (T t : lists) {
+            rs.add(visibleFiled(fields, t, clz));
+        }
+        return rs;
+    }
+
+    /**
+     * 可视字段处理(利用JSONObject特性)
+     *
+     * @param fields
+     * @param obj
+     * @param clz
+     * @param <T>
+     * @return
+     */
+    public static <T> T visibleFiled(Set<String> fields, T obj, Class<T> clz) {
+        JSONObject rs = new JSONObject();
+        JSONObject js = (JSONObject) JSON.toJSON(obj);
+        for (String field : fields) {
+            rs.put(field, js.get(field));
+        }
+        return rs.toJavaObject(clz);
+    }
+
+    /**
+     * 获取mongo查询条件,调用者自己捕获UnsupportedOperationException异常做处理
+     *
+     * @param body
+     * @param fieldMap
+     * @return
+     * @throws UnsupportedOperationException
+     */
+    public static MongoSearchQuery funcParseSearchQuery(JSONObject body, Map<String, TwoTuple<String, MongoQuery.FieldType>> fieldMap) throws UnsupportedOperationException {
+        int offset = body.containsKey("offset") ? body.getInteger("offset") : DEFAULT_OFFSET;
+        int limit = body.containsKey("limit") ? body.getInteger("limit") : DEFAULT_LIMIT;
+        Document orderBson = new Document();
+        JSONObject order = body.getJSONObject("order");
+        if (order != null) {
+            for (Map.Entry<String, Object> entry : order.entrySet()) {
+                String key = entry.getKey();
+                String value = entry.getValue().toString();
+                orderBson.append(key, MongoQuery.OrderType.fromString(value).nosql());
+            }
+        }
+        Set<String> filters = new HashSet<>();
+        JSONArray filterArray = body.getJSONArray("filter");
+        if (null != filterArray) {
+            for (Object obj : filterArray) {
+                if (!fieldMap.containsKey(obj)) {
+                    throw new UnsupportedOperationException(String.format("field '%s' not exists.", obj));
+                }
+                filters.add((String) obj);
+            }
+        } else {
+            filters.addAll(fieldMap.keySet());
+        }
+        List<Bson> querys = new ArrayList<>();
+        JSONObject query = body.getJSONObject("query");
+        if (query != null) {
+            for (Map.Entry<String, Object> entry : query.entrySet()) {
+                String key = entry.getKey();//字段名
+                if (!fieldMap.containsKey(key)) {
+                    throw new UnsupportedOperationException(String.format("field '%s' not exists.", key));
+                }
+                JSONObject value = (JSONObject) entry.getValue();
+                for (Map.Entry<String, Object> entry_1 : value.entrySet()) {
+                    String k = entry_1.getKey();//运算符
+                    Object v = entry_1.getValue();//值
+                    MongoQuery.OperateType OperateType = MongoQuery.OperateType.fromString(k);
+                    if (OperateType == MongoQuery.OperateType.Unkown) {
+                        throw new UnsupportedOperationException(String.format("operate type'%s' unknown", k));
+                    }
+                    TwoTuple<String, MongoQuery.FieldType> tuple = fieldMap.get(key);
+                    querys.add(OperateType.getQuery(tuple.first, tuple.second, v));
+                }
+            }
+        }
+        return new MongoSearchQuery(offset, limit, filters, querys.size() > 0 ? Filters.and(querys) : new Document(), orderBson);
     }
 
     /*                             新增操作                             */

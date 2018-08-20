@@ -29,7 +29,7 @@ public class MongoQuery {
 
     }
 
-    public static enum OpreateType {
+    public static enum OperateType {
 
         /**
          * 未知
@@ -225,7 +225,7 @@ public class MongoQuery {
         };
         private final String opt;
 
-        private OpreateType(String opt) {
+        private OperateType(String opt) {
             this.opt = opt;
         }
 
@@ -237,8 +237,8 @@ public class MongoQuery {
             return opt;
         }
 
-        public static final OpreateType fromString(String opt) {
-            for (OpreateType ot : values()) {
+        public static final OperateType fromString(String opt) {
+            for (OperateType ot : values()) {
                 if (ot.opreate().equals(opt)) {
                     return ot;
                 }
