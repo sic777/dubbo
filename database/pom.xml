@@ -22,12 +22,6 @@
 			<groupId>com.sic777.framework</groupId>
 			<artifactId>common</artifactId>
 			<version>${project.parent.version}</version>
-			<exclusions>
-				<exclusion>
-					<groupId>org.scala-lang</groupId>
-					<artifactId>*</artifactId>
-				</exclusion>
-			</exclusions>
 		</dependency>
 	</dependencies>
 

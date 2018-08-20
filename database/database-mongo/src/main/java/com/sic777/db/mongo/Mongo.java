@@ -4,9 +4,11 @@ package com.sic777.db.mongo;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.sic777.common.exception.CommonException;
 import com.sic777.db.mongo.config.MongoConfig;
 import com.sic777.db.mongo.data.MongoQuery;
 import com.sic777.db.mongo.data.MongoSearchQuery;
+import com.sic777.microservice.response.exception.error.ParamException;
 import com.sic777.utils.container.ContainerGetter;
 import com.sic777.utils.container.tuple.TwoTuple;
 import com.mongodb.MongoClient;
@@ -104,14 +106,14 @@ public abstract class Mongo {
     }
 
     /**
-     * 获取mongo查询条件,调用者自己捕获UnsupportedOperationException异常做处理
+     * 获取mongo查询条件
      *
      * @param body
      * @param fieldMap
      * @return
      * @throws UnsupportedOperationException
      */
-    public static MongoSearchQuery funcParseSearchQuery(JSONObject body, Map<String, TwoTuple<String, MongoQuery.FieldType>> fieldMap) throws UnsupportedOperationException {
+    public static MongoSearchQuery funcParseSearchQuery(JSONObject body, Map<String, TwoTuple<String, MongoQuery.FieldType>> fieldMap) throws CommonException {
         int offset = body.containsKey("offset") ? body.getInteger("offset") : DEFAULT_OFFSET;
         int limit = body.containsKey("limit") ? body.getInteger("limit") : DEFAULT_LIMIT;
         Document orderBson = new Document();
@@ -128,7 +130,7 @@ public abstract class Mongo {
         if (null != filterArray) {
             for (Object obj : filterArray) {
                 if (!fieldMap.containsKey(obj)) {
-                    throw new UnsupportedOperationException(String.format("field '%s' not exists.", obj));
+                    throw new CommonException(ParamException.PARAM_INVALID(), String.format("field '%s' not exists.", obj));
                 }
                 filters.add((String) obj);
             }
@@ -141,7 +143,7 @@ public abstract class Mongo {
             for (Map.Entry<String, Object> entry : query.entrySet()) {
                 String key = entry.getKey();//字段名
                 if (!fieldMap.containsKey(key)) {
-                    throw new UnsupportedOperationException(String.format("field '%s' not exists.", key));
+                    throw new CommonException(ParamException.PARAM_INVALID(), String.format("field '%s' not exists.", key));
                 }
                 JSONObject value = (JSONObject) entry.getValue();
                 for (Map.Entry<String, Object> entry_1 : value.entrySet()) {
@@ -149,7 +151,7 @@ public abstract class Mongo {
                     Object v = entry_1.getValue();//值
                     MongoQuery.OperateType OperateType = MongoQuery.OperateType.fromString(k);
                     if (OperateType == MongoQuery.OperateType.Unkown) {
-                        throw new UnsupportedOperationException(String.format("operate type'%s' unknown", k));
+                        throw new CommonException(ParamException.PARAM_INVALID(), String.format("operate type'%s' unknown", k));
                     }
                     TwoTuple<String, MongoQuery.FieldType> tuple = fieldMap.get(key);
                     querys.add(OperateType.getQuery(tuple.first, tuple.second, v));
