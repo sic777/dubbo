@@ -48,17 +48,16 @@ public abstract class Mongo {
      */
     public static void init() {
         logger.info("init mongo ...");
-        MongoConfig.init();//初始化配置文件
         MongoClientOptions.Builder potionBuilder = MongoClientOptions.builder();
-        potionBuilder.connectionsPerHost(MongoConfig.getConnectionsPerHost());
-        potionBuilder.threadsAllowedToBlockForConnectionMultiplier(MongoConfig.getThreadsAllowedToBlockForConnectionMultiplier());
-        potionBuilder.connectTimeout(MongoConfig.getConnectTimeout());
-        potionBuilder.maxWaitTime(MongoConfig.getMaxWaitTime());
-        potionBuilder.socketKeepAlive(MongoConfig.isSocketKeepAlive());
-        potionBuilder.socketTimeout(MongoConfig.getSocketTimeout());
+        potionBuilder.connectionsPerHost(MongoConfig.CONNECTIONS_PER_HOST);
+        potionBuilder.threadsAllowedToBlockForConnectionMultiplier(MongoConfig.THREADS_ALLOWED_TO_BLOCK_FOR_CONNECTION_MULTIPLIER);
+        potionBuilder.connectTimeout(MongoConfig.CONNECT_TIMEOUT);
+        potionBuilder.maxWaitTime(MongoConfig.MAX_WAIT_TIME);
+        potionBuilder.socketKeepAlive(MongoConfig.SOCKET_KEEP_ALIVE);
+        potionBuilder.socketTimeout(MongoConfig.SOCKET_TIMEOUT);
 
         List<ServerAddress> seeds = ContainerGetter.arrayList();
-        List<MongoCredential> credentials = Arrays.asList(MongoCredential.createScramSha1Credential(MongoConfig.getUsername(), "admin", MongoConfig.getPassword().toCharArray()));
+        List<MongoCredential> credentials = Arrays.asList(MongoCredential.createScramSha1Credential(MongoConfig.USER_NAME, "admin", MongoConfig.PASSWORD.toCharArray()));
         List<TwoTuple<String, Integer>> hosts = MongoConfig.hosts;
         for (TwoTuple<String, Integer> TwoTuple : hosts) {
             seeds.add(new ServerAddress(TwoTuple.first, TwoTuple.second));

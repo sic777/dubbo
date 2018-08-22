@@ -1,7 +1,10 @@
 package com.sic777.utils;
 
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.serializer.SerializerFeature;
+import com.sic777.common.constants.BaseConstant;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -53,12 +56,26 @@ public class ConfigureManager {
         if (atomicBoolean.compareAndSet(false, true)) {
             try {
                 config = PropertiesUtil.loadJsonAutomatic();
-                properties = PropertiesUtil.loadPropertiesAutomatic();
-                if (config == null && properties == null) {
-                    throw new Exception();
-                }
+                logger.info("============================================================");
+                logger.info("======================  " + BaseConstant.DEFAULT_JSON_NAME + " =====================");
+                logger.info("============================================================");
+                logger.info("\n" + JSON.toJSONString(config, SerializerFeature.PrettyFormat, SerializerFeature.DisableCircularReferenceDetect));
             } catch (Exception e) {
-                logger.warn("Automatic loading configuration file failed", e);
+                logger.warn("Automatic " + BaseConstant.DEFAULT_JSON_NAME + " configuration file failed");
+            }
+
+            try {
+                properties = PropertiesUtil.loadPropertiesAutomatic();
+                logger.info("============================================================");
+                logger.info("==================  " + BaseConstant.DEFAULT_PROPERTIES_NAME + " =================");
+                logger.info("============================================================");
+                logger.info("\n" + JSON.toJSONString(properties, SerializerFeature.PrettyFormat, SerializerFeature.DisableCircularReferenceDetect));
+            } catch (Exception e) {
+                logger.warn("Automatic " + BaseConstant.DEFAULT_PROPERTIES_NAME + " configuration file failed");
+            }
+
+            if (null == config && null == properties) {
+                logger.error("Automatic loading configuration file failed");
                 System.exit(-1);
             }
         }
