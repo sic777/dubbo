@@ -36,9 +36,4 @@ public class HostUtil {
             return "";
         }
     }
-
-    public static void main(String[] args) {
-        System.out.println(getHostName());
-        System.out.println(getHostAddress());
-    }
 }
