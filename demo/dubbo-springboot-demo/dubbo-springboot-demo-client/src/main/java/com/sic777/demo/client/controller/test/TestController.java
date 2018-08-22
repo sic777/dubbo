@@ -24,6 +24,25 @@ public class TestController extends BaseController {
     @Autowired
     private ITestService testService;
 
+    /**
+     * @apiUse request_body
+     * @apiUse dynamic_error
+     * @apiUse access_token
+     * @apiPermission CORP
+     * @api {POST} /tests test
+     * @apiVersion 2.0.0
+     * @apiGroup test
+     * @apiDescription api test
+     * @apiParamExample {json} 请求示例
+     * {
+     * "msg":"信息"
+     * }
+     * @apiSuccessExample 成功示例
+     * {
+     * "id":"id"
+     * }
+     * @apiSuccess (成功说明) {string} id 主键
+     */
     @Permission({USER})
     @PostMapping(TESTS)
     void create(@RequestBody TestDto dto) throws Exception {
