@@ -5,7 +5,7 @@
  * @apiErrorExample {json} 失败示例
  * {
  *   "code" : 21002,
- *   "message" : "name must not be null",
+ *   "message" : "error message",
  *   "data" : null
  * }
  *

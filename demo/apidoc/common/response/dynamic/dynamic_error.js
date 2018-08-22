@@ -7,7 +7,7 @@
  *{
  * "error" : {
  *   "code" : 21002,
- *   "message" : "'name' must not be null"
+ *   "message" : "error message"
  * }
  *}
  *

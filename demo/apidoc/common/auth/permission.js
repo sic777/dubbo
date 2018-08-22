@@ -1,6 +1,6 @@
 /**
- * @apiDefine CORP 企业
- * 持有企业级别的Access-Token可以访问
+ * @apiDefine BIZ 商家
+ * 持有商家级别的Access-Token可以访问
  */
 
 /**
@@ -9,6 +9,6 @@
  */
 
 /**
- * @apiDefine XLINK Xlink级别
- * 持有Xlink级别的Access-Token可以访问
+ * @apiDefine MEMBER 内部成员
+ * 持有内部成员级别的Access-Token可以访问
  */

@@ -28,9 +28,9 @@ public class TestController extends BaseController {
      * @apiUse request_body
      * @apiUse dynamic_error
      * @apiUse access_token
-     * @apiPermission CORP
-     * @api {POST} /tests test
-     * @apiVersion 2.0.0
+     * @apiPermission MEMBER
+     * @api {POST} /tests 新增
+     * @apiVersion 1.0.0
      * @apiGroup test
      * @apiDescription api test
      * @apiParamExample {json} 请求示例
@@ -43,7 +43,7 @@ public class TestController extends BaseController {
      * }
      * @apiSuccess (成功说明) {string} id 主键
      */
-    @Permission({USER})
+    @Permission({MEMBER})
     @PostMapping(TESTS)
     void create(@RequestBody TestDto dto) throws Exception {
         ResponseManager.instance().funcValidateValueNotEmpty(dto.getMsg(), "msg");
@@ -51,6 +51,17 @@ public class TestController extends BaseController {
         ResponseManager.instance().successId(this, id);
     }
 
+    /**
+     * @apiUse dynamic_error
+     * @apiUse access_token
+     * @apiPermission MEMBER
+     * @apiPermission USER
+     * @api {DELETE} /tests/:id 删除
+     * @apiParam (请求参数) {string} id 主键
+     * @apiVersion 1.0.0
+     * @apiGroup test
+     * @apiDescription api test
+     */
     @Permission({MEMBER, USER})
     @DeleteMapping(TESTS_ID)
     void delete(@PathVariable String id) throws Exception {
@@ -58,6 +69,20 @@ public class TestController extends BaseController {
         ResponseManager.instance().success(this);
     }
 
+    /**
+     * @apiUse dynamic_error
+     * @apiUse access_token
+     * @apiPermission USER
+     * @api {PUT} /tests/:id 更新
+     * @apiParam (请求参数) {string} id 主键
+     * @apiVersion 1.0.0
+     * @apiGroup test
+     * @apiDescription api test
+     * @apiParamExample {json} 请求示例
+     * {
+     * "msg":"信息"
+     * }
+     */
     @Permission({USER})
     @PutMapping(TESTS_ID)
     void update(@PathVariable String id, @RequestBody TestDto dto) throws Exception {
@@ -67,12 +92,37 @@ public class TestController extends BaseController {
         ResponseManager.instance().success(this);
     }
 
+    /**
+     * @apiUse dynamic_error
+     * @api {GET} /tests/:id 获取
+     * @apiParam (请求参数) {string} id 主键
+     * @apiVersion 1.0.0
+     * @apiGroup test
+     * @apiDescription api test
+     * @apiSuccessExample 成功示例
+     * {
+     * "id":"id",
+     * "msg":"msg"
+     * }
+     * @apiSuccess (成功说明) {string} id 主键
+     * @apiSuccess (成功说明) {string} msg 信息
+     */
     @GetMapping(TESTS_ID)
     void get(@PathVariable String id) throws Exception {
         TestDto dto = testService.get(id);
         ResponseManager.instance().success(this, dto);
     }
 
+    /**
+     * @apiUse dynamic_response_list
+     * @apiUse dynamic_error
+     * @api {GET} /tests 列表
+     * @apiVersion 1.0.0
+     * @apiGroup test
+     * @apiDescription api test
+     * @apiSuccess (成功说明) {string} list.id 主键
+     * @apiSuccess (成功说明) {string} list.msg 信息
+     */
     @GetMapping(TESTS)
     void list() throws Exception {
         List<TestDto> ls = testService.list();

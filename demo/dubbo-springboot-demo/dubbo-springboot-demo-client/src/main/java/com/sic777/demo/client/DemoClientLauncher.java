@@ -28,7 +28,7 @@ public class DemoClientLauncher {
             @Override
             public void before() {
                 System.out.println("Spring容器启动前");
-                ResponseManager.instance().init(ResponseBodyType.FIXED);
+                ResponseManager.instance().init(ResponseBodyType.DYNAMIC);
             }
 
             @Override
