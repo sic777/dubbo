@@ -310,7 +310,7 @@ public class ResponseManager {
      */
     public final void funcValidateValueNotEmpty(Object[] values, String[] keys) {
         for (int i = 0, len = values.length; i < len; i++) {
-            funcValidateValueNotNull(values[i], ParamException.VALUE_EMPTY(), keys[i]);
+            funcValidateValueNotEmpty(values[i], ParamException.VALUE_EMPTY(), keys[i]);
         }
     }
 
@@ -320,7 +320,7 @@ public class ResponseManager {
      * @param value
      * @param key
      */
-    public final void funcValidateValueNotEmpty(String value, String key) {
+    public final void funcValidateValueNotEmpty(Object value, String key) {
         this.funcValidateValueNotEmpty(value, ParamException.VALUE_EMPTY(), key);
     }
 
@@ -331,7 +331,7 @@ public class ResponseManager {
      * @param error
      * @param format
      */
-    public final void funcValidateValueNotEmpty(String value, Enumeration.Value error, Object... format) {
+    public final void funcValidateValueNotEmpty(Object value, Enumeration.Value error, Object... format) {
         if (StringUtil.isEmpty(value)) {
             this.throwRestException(error, format);
         }
@@ -344,7 +344,7 @@ public class ResponseManager {
      * @param code
      * @param key
      */
-    public final void funcValidateValueNotEmpty(String value, long code, String key) {
+    public final void funcValidateValueNotEmpty(Object value, long code, String key) {
         if (StringUtil.isEmpty(value)) {
             this.throwRestException(code, String.format(ErrorMsg.VALUE_EMPTY, key), ExceptionType.EXCEPTION_400);
         }
@@ -359,7 +359,7 @@ public class ResponseManager {
      */
     public final void funcValidateValueNotEmpty(Object[] values, long[] codes, String[] keys) {
         for (int i = 0, len = values.length; i < len; i++) {
-            if (StringUtil.isNull(values[i])) {
+            if (StringUtil.isEmpty(values[i])) {
                 this.throwRestException(codes[i], String.format(ErrorMsg.VALUE_EMPTY, keys[i]), ExceptionType.EXCEPTION_400);
             }
         }

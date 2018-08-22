@@ -63,8 +63,8 @@ public class StringUtil {
      * @param str
      * @return
      */
-    public static boolean isEmpty(String str) {
-        return isNull(str) || str.isEmpty();
+    public static boolean isEmpty(Object str) {
+        return isNull(str) || str.toString().isEmpty();
     }
 
     /**
@@ -73,7 +73,7 @@ public class StringUtil {
      * @param str
      * @return
      */
-    public static boolean isNotEmpty(String str) {
+    public static boolean isNotEmpty(Object str) {
         return !isEmpty(str);
     }
 
