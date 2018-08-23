@@ -29,6 +29,14 @@ public final class ErrorMsg {
      */
     public final static String INVALID_ACCESS = "invalid access";
     /**
+     * URL找不到
+     */
+    public final static String URL_NOT_FOUND = "requested path: '%s' not found";
+    /**
+     * 请求的方法不支持
+     */
+    public final static String METHOD_NOT_ALLOWED = "Method {%s} Not Allowed,URI {'%s'}";
+    /**
      * 服务器发生异常
      */
     public final static String SERVICE_EXCEPTION = "service unavailable";

@@ -100,8 +100,7 @@ public class RestExceptionHandler {
     @ExceptionHandler(value = HttpRequestMethodNotSupportedException.class)
     public Object methodNotSupportedExceptionHandler(HttpServletRequest request, HttpServletResponse response, Exception e) {
         int code = HttpStatus.METHOD_NOT_ALLOWED.value();
-        String msg = "Method {%s} Not Allowed,URI {'%s'}";
         response.setStatus(code);
-        return ResponseManager.instance().getErrorResponseBody(code, String.format(msg, request.getMethod(), request.getRequestURI()));
+        return ResponseManager.instance().getErrorResponseBody(code, String.format(ErrorMsg.METHOD_NOT_ALLOWED, request.getMethod(), request.getRequestURI()));
     }
 }

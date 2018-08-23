@@ -14,7 +14,7 @@ object ExceptionCode {
   /**
     * <p>
     * '参数校验错误'异常错误码
-    * 说明：使用者的错误码从11000开始，10000~10999位为系统保留
+    * 说明：使用者的错误码从11000xxxxx开始，10000xxxxx~10999xxxxx位为系统保留(xxxxx可以用作系统标识,也可为空)
     * </p>
     *
     * @author Zhengzhenxie
@@ -44,7 +44,7 @@ object ExceptionCode {
   /**
     * <p>
     * '认证/权限错误'异常错误码
-    * 说明：使用者的错误码从21000开始，20000~20999位为系统保留
+    * 说明：使用者的错误码从21000xxxxx开始，20000xxxxx~20999xxxxx位为系统保留(xxxxx可以用作系统标识,也可为空)
     * </p>
     *
     * @author Zhengzhenxie
@@ -56,17 +56,16 @@ object ExceptionCode {
       * 禁止访问
       */
     val INVALID_ACCESS: Value = Value(20000, ErrorMsg.INVALID_ACCESS)
-
     /**
       * Access-Token 为空
       */
-    val ACCESS_TOKEN_VALUE_EMPTY: Value = Value(20001, String.format("'%s' value must not be empty", BaseConstant.ACCESS_TOKEN_FLAG))
+    val ACCESS_TOKEN_VALUE_EMPTY: Value = Value(20001, String.format(ErrorMsg.VALUE_EMPTY, BaseConstant.ACCESS_TOKEN_FLAG))
   }
 
   /**
     * <p>
     * '资源未找到'异常错误码
-    * 说明：使用者的错误码从31000开始，30000~30999位为系统保留
+    * 说明：使用者的错误码从31000xxxxx开始，30000xxxxx~30999xxxxx位为系统保留(xxxxx可以用作系统标识,也可为空)
     * </p>
     *
     * @author Zhengzhenxie
@@ -77,11 +76,7 @@ object ExceptionCode {
     /**
       * 资源未找到
       */
-    val RESOURCE_NOT_FOUND: Value = Value(30000, "%s")
-    /**
-      * URI找不到
-      */
-    val URI_NOT_FOUND: Value = Value(30001, "requested path: '%s' not found")
+    val RESOURCE_NOT_FOUND: Value = Value(30000)
   }
 
 
@@ -92,14 +87,14 @@ object ExceptionCode {
     * @return
     */
   def parse(code: Int): Object = {
-    if (code >= 10000 && code <= 19999) {
+    val codeStr = code.toString
+    if (codeStr.startsWith("1") || codeStr.startsWith("400")) {
       ParamException
-    } else if (code >= 20000 && code <= 29999) {
+    } else if (codeStr.startsWith("2") || codeStr.startsWith("403")) {
       AuthenticationException
-    } else if (code >= 30000 && code <= 39999) {
+    } else if (codeStr.startsWith("3") || codeStr.startsWith("404")) {
       NotFoundException
-    } else {
-      null
     }
+    null
   }
 }

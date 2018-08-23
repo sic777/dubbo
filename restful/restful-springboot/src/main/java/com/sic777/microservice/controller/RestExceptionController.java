@@ -40,8 +40,9 @@ public class RestExceptionController extends RestfulController implements ErrorC
     private Object error(HttpServletRequest request) {
         RequestAttributes requestAttributes = new ServletRequestAttributes(request);
         Map<String, Object> ea = errorAttributes.getErrorAttributes(requestAttributes, false);
-        return HttpStatus.NOT_FOUND.value() == (Integer) ea.get("status")
-                ? ResponseManager.instance().getErrorResponseBody(NotFoundException.URI_NOT_FOUND(), ea.get("path"))
+        int code = HttpStatus.NOT_FOUND.value();
+        return code == (Integer) ea.get("status")
+                ? ResponseManager.instance().getErrorResponseBody(code, String.format(ErrorMsg.URL_NOT_FOUND, ea.get("path")))
                 : ResponseManager.instance().getErrorResponseBody(HttpStatus.SERVICE_UNAVAILABLE.value(), ErrorMsg.SERVICE_EXCEPTION);
     }
 
