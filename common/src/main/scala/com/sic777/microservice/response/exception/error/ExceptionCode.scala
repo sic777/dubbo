@@ -13,7 +13,7 @@ object ExceptionCode {
 
   /**
     * <p>
-    * '参数校验错误'异常错误码
+    * '参数校验错误'异常错误码(400...)
     * 说明：使用者的错误码从11000xxxxx开始，10000xxxxx~10999xxxxx位为系统保留(xxxxx可以用作系统标识,也可为空)
     * </p>
     *
@@ -43,7 +43,7 @@ object ExceptionCode {
 
   /**
     * <p>
-    * '认证/权限错误'异常错误码
+    * '认证/权限错误'异常错误码(403...)
     * 说明：使用者的错误码从21000xxxxx开始，20000xxxxx~20999xxxxx位为系统保留(xxxxx可以用作系统标识,也可为空)
     * </p>
     *
@@ -64,7 +64,7 @@ object ExceptionCode {
 
   /**
     * <p>
-    * '资源未找到'异常错误码
+    * '资源未找到'异常错误码(404...)
     * 说明：使用者的错误码从31000xxxxx开始，30000xxxxx~30999xxxxx位为系统保留(xxxxx可以用作系统标识,也可为空)
     * </p>
     *
@@ -74,9 +74,47 @@ object ExceptionCode {
     */
   class NotFoundException extends Enumeration {
     /**
+      * URL未找到
+      */
+    val URL_NOT_FOUND: Value = Value(30000, ErrorMsg.URL_NOT_FOUND)
+    /**
       * 资源未找到
       */
-    val RESOURCE_NOT_FOUND: Value = Value(30000)
+    val RESOURCE_NOT_FOUND: Value = Value(30001)
+  }
+
+  /**
+    * <p>
+    * '不支持的操作'异常错误码(405...)
+    * 说明：使用者的错误码从41000xxxxx开始，40000xxxxx~40999xxxxx位为系统保留(xxxxx可以用作系统标识,也可为空)
+    * </p>
+    *
+    * @author Zhengzhenxie
+    * @version v1.0
+    * @since 2018-08-23
+    */
+  class NotAllowException extends Enumeration {
+    /**
+      * 请求方法不支持
+      */
+    val METHOD_NOT_ALLOW: Value = Value(40000, ErrorMsg.METHOD_NOT_ALLOWED)
+  }
+
+  /**
+    * <p>
+    * '服务器不可用'异常错误码(503...)
+    * 说明：使用者的错误码从51000xxxxx开始，50000xxxxx~50999xxxxx位为系统保留(xxxxx可以用作系统标识,也可为空)
+    * </p>
+    *
+    * @author Zhengzhenxie
+    * @version v1.0
+    * @since 2018-08-23
+    */
+  class ServiceUnavailableException extends Enumeration {
+    /**
+      * 服务不可用
+      */
+    val SERVICE_UNAVAILABLE: Value = Value(50000, ErrorMsg.SERVICE_EXCEPTION)
   }
 
 
@@ -94,7 +132,10 @@ object ExceptionCode {
       AuthenticationException
     } else if (codeStr.startsWith("3") || codeStr.startsWith("404")) {
       NotFoundException
+    } else if (codeStr.startsWith("4") || codeStr.startsWith("405")) {
+      NotAllowException
+    } else {
+      ServiceUnavailableException
     }
-    null
   }
 }

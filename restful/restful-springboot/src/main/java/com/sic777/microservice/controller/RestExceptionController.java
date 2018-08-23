@@ -1,9 +1,9 @@
 package com.sic777.microservice.controller;
 
-import com.sic777.common.constants.ErrorMsg;
 import com.sic777.microservice.response.HttpStatus;
 import com.sic777.microservice.response.ResponseManager;
 import com.sic777.microservice.response.exception.error.NotFoundException;
+import com.sic777.microservice.response.exception.error.ServiceUnavailableException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.web.ErrorAttributes;
 import org.springframework.boot.autoconfigure.web.ErrorController;
@@ -40,10 +40,9 @@ public class RestExceptionController extends RestfulController implements ErrorC
     private Object error(HttpServletRequest request) {
         RequestAttributes requestAttributes = new ServletRequestAttributes(request);
         Map<String, Object> ea = errorAttributes.getErrorAttributes(requestAttributes, false);
-        int code = HttpStatus.NOT_FOUND.value();
-        return code == (Integer) ea.get("status")
-                ? ResponseManager.instance().getErrorResponseBody(code, String.format(ErrorMsg.URL_NOT_FOUND, ea.get("path")))
-                : ResponseManager.instance().getErrorResponseBody(HttpStatus.SERVICE_UNAVAILABLE.value(), ErrorMsg.SERVICE_EXCEPTION);
+        return HttpStatus.NOT_FOUND.value() == (Integer) ea.get("status")
+                ? ResponseManager.instance().getErrorResponseBody(NotFoundException.URL_NOT_FOUND(), ea.get("path"))
+                : ResponseManager.instance().getErrorResponseBody(ServiceUnavailableException.SERVICE_UNAVAILABLE());
     }
 
     @Override

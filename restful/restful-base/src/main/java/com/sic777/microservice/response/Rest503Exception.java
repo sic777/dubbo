@@ -1,7 +1,7 @@
 package com.sic777.microservice.response;
 
 
-import com.sic777.common.constants.ErrorMsg;
+import com.sic777.microservice.response.exception.error.ServiceUnavailableException;
 
 /**
  * <p></p>
@@ -14,8 +14,10 @@ import com.sic777.common.constants.ErrorMsg;
 final class Rest503Exception extends AbstractRestException {
     private static final long serialVersionUID = -9219530146399136414L;
 
+
     Rest503Exception(Throwable throwable) {
-        super(HttpStatus.SERVICE_UNAVAILABLE.value(), ErrorMsg.SERVICE_EXCEPTION, throwable);
+        super(ServiceUnavailableException.SERVICE_UNAVAILABLE().id(),
+                ServiceUnavailableException.SERVICE_UNAVAILABLE().toString(), throwable);
     }
 
     @Override

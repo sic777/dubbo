@@ -12,6 +12,7 @@ public enum ExceptionType {
     EXCEPTION_400(400),
     EXCEPTION_403(403),
     EXCEPTION_404(404),
+    EXCEPTION_405(405),
     EXCEPTION_503(503);
 
     private final int code;

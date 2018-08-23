@@ -82,9 +82,9 @@ public class ResponseManager {
         switch (responseBodyType) {
             case FIXED:
                 JSONObject resp = new JSONObject();
-                resp.put(MicroConstants.CODE_FLAG, HttpStatus.OK.value());
+                resp.put(MicroConstants.CODE_FLAG, 0);
                 resp.put(MicroConstants.DATA_FLAG, object);
-                resp.put(MicroConstants.MSG_FLAG, HttpStatus.OK.getReasonPhrase());
+                resp.put(MicroConstants.MSG_FLAG, "OK");
                 response = resp;
                 break;
             default:
@@ -440,6 +440,8 @@ public class ResponseManager {
             exceptionType = ExceptionType.EXCEPTION_403;
         } else if (obj instanceof ExceptionCode.NotFoundException) {//404
             exceptionType = ExceptionType.EXCEPTION_404;
+        } else if (obj instanceof ExceptionCode.NotAllowException) {//405
+            exceptionType = ExceptionType.EXCEPTION_405;
         } else {//503
             exceptionType = ExceptionType.EXCEPTION_503;
         }
@@ -501,6 +503,9 @@ public class ResponseManager {
                 break;
             case EXCEPTION_404:
                 this.throwRestException(new Rest404Exception(code, message));
+                break;
+            case EXCEPTION_405:
+                this.throwRestException(new Rest405Exception(code, message));
                 break;
             default:
                 this.throwRestException(new Rest503Exception(throwable));

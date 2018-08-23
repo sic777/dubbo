@@ -1,8 +1,9 @@
 package com.sic777.microservice.response.exception.handler;
 
-import com.sic777.common.constants.ErrorMsg;
 import com.sic777.common.exception.CommonException;
 import com.sic777.microservice.response.*;
+import com.sic777.microservice.response.exception.error.NotAllowException;
+import com.sic777.microservice.response.exception.error.ServiceUnavailableException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
@@ -63,7 +64,8 @@ public class RestExceptionHandler {
     @ExceptionHandler(value = {Exception.class, RuntimeException.class})
     public Object defaultExceptionHandler(HttpServletRequest request, HttpServletResponse response, Exception e) {
         logger.error("restful response error", e);
-        return ResponseManager.instance().getErrorResponseBody(HttpStatus.SERVICE_UNAVAILABLE.value(), ErrorMsg.SERVICE_EXCEPTION);
+        response.setStatus(HttpStatus.SERVICE_UNAVAILABLE.value());
+        return ResponseManager.instance().getErrorResponseBody(ServiceUnavailableException.SERVICE_UNAVAILABLE());
     }
 
     /**
@@ -99,8 +101,7 @@ public class RestExceptionHandler {
     @ResponseBody
     @ExceptionHandler(value = HttpRequestMethodNotSupportedException.class)
     public Object methodNotSupportedExceptionHandler(HttpServletRequest request, HttpServletResponse response, Exception e) {
-        int code = HttpStatus.METHOD_NOT_ALLOWED.value();
-        response.setStatus(code);
-        return ResponseManager.instance().getErrorResponseBody(code, String.format(ErrorMsg.METHOD_NOT_ALLOWED, request.getMethod(), request.getRequestURI()));
+        response.setStatus(HttpStatus.METHOD_NOT_ALLOWED.value());
+        return ResponseManager.instance().getErrorResponseBody(NotAllowException.METHOD_NOT_ALLOW(), request.getMethod(), request.getRequestURI());
     }
 }
