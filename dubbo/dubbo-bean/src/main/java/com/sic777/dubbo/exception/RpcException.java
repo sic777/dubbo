@@ -12,6 +12,11 @@ import com.sic777.common.exception.SuperRuntimeException;
  */
 public class RpcException extends SuperRuntimeException {
     /**
+     *
+     */
+    private static final long serialVersionUID = -8080433427358664852L;
+    /**
+     * /**
      * 异常类型
      */
     private final RpcExceptionType type;

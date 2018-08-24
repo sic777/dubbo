@@ -45,6 +45,11 @@ public class RestExceptionHandler {
         Object[] format = commonException.getFormat();
         ExceptionType exceptionType = ResponseManager.instance().getExceptionType(v);
         return this.restExceptionHandler(request, response, new AbstractRestException(v, format) {
+            /**
+             *
+             */
+            private static final long serialVersionUID = -1751113735780800156L;
+
             @Override
             public HttpStatus getHttpStatus() {
                 return HttpStatus.valueOf(exceptionType.getCode());

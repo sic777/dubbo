@@ -64,6 +64,7 @@
 		<maven-javadoc-plugin.version>2.10.4</maven-javadoc-plugin.version>
 		<scala-maven-plugin.version>3.2.0</scala-maven-plugin.version>
 		<build-helper-maven-plugin.version>3.0.0</build-helper-maven-plugin.version>
+		<maven-scala-plugin.version>2.15.2</maven-scala-plugin.version>
 	</properties>
 
 
@@ -84,6 +85,14 @@
 				<version>${scala.version}</version>
 				<scope>compile</scope>
 			</dependency>
+			<!-- scala plugin-->
+			<dependency>
+				<groupId>org.scala-tools</groupId>
+				<artifactId>maven-scala-plugin</artifactId>
+				<version>${maven-scala-plugin.version}</version>
+				<optional>true</optional>
+			</dependency>
+
 
 			<!-- netty -->
 			<dependency>
@@ -324,7 +333,7 @@
 						</goals>
 					</execution>
 				</executions>
-			</plugin> 
+			</plugin>
 			<!-- javadoc -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -342,7 +351,7 @@
 						<goals>
 							<goal>jar</goal>
 						</goals>
-					</execution> 
+					</execution>
 				</executions>
 			</plugin>
 			<!-- source -->
@@ -364,6 +373,38 @@
 		<!-- plugins management -->
 		<pluginManagement>
 			<plugins>
+				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											net.alchim31.maven
+										</groupId>
+										<artifactId>
+											scala-maven-plugin
+										</artifactId>
+										<versionRange>
+											[3.2.0,)
+										</versionRange>
+										<goals>
+											<goal>compile</goal>
+											<goal>testCompile</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
 				<!-- scala -->
 				<plugin>
 					<groupId>net.alchim31.maven</groupId>
@@ -390,6 +431,26 @@
 					<configuration>
 						<scalaVersion>${scala.version}</scalaVersion>
 					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>build-helper-maven-plugin</artifactId>
+					<version>${build-helper-maven-plugin.version}</version>
+					<executions>
+						<execution>
+							<id>add-source</id>
+							<phase>generate-sources</phase>
+							<goals>
+								<goal>add-source</goal>
+							</goals>
+							<configuration>
+								<sources>
+									<source>src/main/scala</source>
+									<source>src/main/java</source>
+								</sources>
+							</configuration>
+						</execution>
+					</executions>
 				</plugin>
 			</plugins>
 		</pluginManagement>
