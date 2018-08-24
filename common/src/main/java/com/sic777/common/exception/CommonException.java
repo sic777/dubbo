@@ -11,6 +11,10 @@ import scala.Enumeration;
  */
 public class CommonException extends SuperRuntimeException {
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = -6106546564795439880L;
+	/**
      * 错误枚举(Scala)
      */
     private final Enumeration.Value error;

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<parent>
 		<artifactId>base-framework</artifactId>
 		<groupId>com.sic777.framework</groupId>
@@ -15,7 +14,6 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
-			<version>${spring-boot.version}</version>
 			<exclusions>
 				<exclusion>
 					<groupId>org.springframework</groupId>
@@ -72,6 +70,10 @@
 			<groupId>org.scala-lang</groupId>
 			<artifactId>scala-compiler</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.scala-tools</groupId>
+			<artifactId>maven-scala-plugin</artifactId>
+		</dependency>
 
 	</dependencies>
 
@@ -80,6 +82,10 @@
 			<plugin>
 				<groupId>net.alchim31.maven</groupId>
 				<artifactId>scala-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
 	</build>
