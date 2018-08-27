@@ -18,14 +18,14 @@ public class RedisSets {
      * 向Set添加一条记录
      *
      * @param key
-     * @param member
+     * @param members
      * @return 如果member已存在返回0, 否则返回1
      */
-    public long sadd(String key, String member) {
+    public long sadd(String key, String... members) {
         Jedis jedis = null;
         try {
             jedis = Redis.instance().getRedisPool().getResource();
-            long s = jedis.sadd(key, member);
+            long s = jedis.sadd(key, members);
             return s;
         } finally {
             if (jedis != null) {
@@ -249,14 +249,14 @@ public class RedisSets {
      * 从集合中删除指定成员
      *
      * @param key
-     * @param member 要删除的成员
+     * @param members 要删除的成员
      * @return 状态码，成功返回1，成员不存在返回0
      */
-    public long srem(String key, String member) {
+    public long srem(String key, String...members) {
         Jedis jedis = null;
         try {
             jedis = Redis.instance().getRedisPool().getResource();
-            long s = jedis.srem(key, member);
+            long s = jedis.srem(key, members);
             return s;
         } finally {
             if (jedis != null) {
