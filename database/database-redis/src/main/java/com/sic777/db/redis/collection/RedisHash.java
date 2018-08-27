@@ -20,14 +20,14 @@ public class RedisHash {
      * 从hash中删除指定的存储
      *
      * @param key
-     * @param field 存储的名字
+     * @param fields 存储的名字
      * @return 状态码，1成功，0失败
      */
-    public long hdel(String key, String field) {
+    public long hdel(String key, String... fields) {
         Jedis jedis = null;
         try {
             jedis = Redis.instance().getRedisPool().getResource();
-            long s = jedis.hdel(key, field);
+            long s = jedis.hdel(key, fields);
             return s;
         } finally {
             if (jedis != null) {
@@ -35,6 +35,26 @@ public class RedisHash {
             }
         }
     }
+
+    /**
+     * 从hash中删除指定的存储
+     *
+     * @param keys
+     * @return
+     */
+    public long hdelKeys(String... keys) {
+        Jedis jedis = null;
+        try {
+            jedis = Redis.instance().getRedisPool().getResource();
+            long s = jedis.del(keys);
+            return s;
+        } finally {
+            if (jedis != null) {
+                Redis.instance().closeJedis(jedis);
+            }
+        }
+    }
+
 
     /**
      * 从hash中删除指定的存储
