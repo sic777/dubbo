@@ -12,11 +12,10 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
- * <p>当前环境缓存</p>
+ * <p>当前环境缓存
  *
- * @author Zhengzhenxie
- * @version v1.0
- * @since 2018-05-31
+ * @author sic777
+ * @since 0.0.1
  */
 public final class CurrentEnvironment {
     private static CurrentEnvironment singleton = new CurrentEnvironment();
@@ -31,26 +30,26 @@ public final class CurrentEnvironment {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     /**
-     * 当前环境
+     * 当前环境,默认为DEVELOP
      */
     private Environment environment = Environment.DEVELOP;
     /**
-     * 是否为默认的环境
+     * 是否为默认的环境,默认为true
      */
     private boolean isDefault = true;
     /**
-     * 是否设置过环境（是否初始化过该类）
+     * 是否设置过环境（是否初始化过该类）,默认为false
      */
     private AtomicBoolean isInit = new AtomicBoolean(false);
 
     /**
      * 初始化环境,仅白名单下的类可以调用
      *
-     * @param environment
+     * @param environment 环境枚举
      */
     public void init(Environment environment) {
-        checkWhite();
         if (isInit.compareAndSet(false, true)) {
+            checkWhite();
             this.environment = environment;
             this.isDefault = environment == Environment.DEVELOP;
         }
@@ -60,11 +59,7 @@ public final class CurrentEnvironment {
      * 初始化环境,仅白名单下的类可以调用
      */
     public void init() {
-        checkWhite();
-        if (isInit.compareAndSet(false, true)) {
-            this.environment = Environment.fromEnvironment(System.getProperty(BaseConstant.ENVIRONMENT_FLAG));
-            this.isDefault = environment == Environment.DEVELOP;
-        }
+        init(Environment.fromEnvironment(System.getProperty(BaseConstant.ENVIRONMENT_FLAG)));
     }
 
     /**
@@ -98,7 +93,7 @@ public final class CurrentEnvironment {
     }
 
     /**
-     * 是否为默认(开发)环境
+     * 是否为默认(DEVELOP)环境
      *
      * @return
      */

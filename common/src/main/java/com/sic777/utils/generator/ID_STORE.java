@@ -3,12 +3,10 @@ package com.sic777.utils.generator;
 import java.util.Random;
 
 /**
- * <p>ID生成库</p>
+ * <p>ID生成库
  *
- * @author Zhengzhenxie<br>
- *         <br>2018-01-01
- * @version v1.0
- * @since 1.7
+ * @author sic777
+ * @since 0.0.1
  * @deprecated
  */
 public class ID_STORE {

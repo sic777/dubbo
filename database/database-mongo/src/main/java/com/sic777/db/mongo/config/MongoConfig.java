@@ -12,7 +12,6 @@ import java.util.List;
  * Created by Zhengzhenxie on 2017/9/29.
  */
 public class MongoConfig {
-
     public static int CONNECTIONS_PER_HOST = ConfigureManager.instance().getInt(MongoConstant.CONNECTIONS_PER_HOST);
 
     public static int THREADS_ALLOWED_TO_BLOCK_FOR_CONNECTION_MULTIPLIER = ConfigureManager.instance().getInt(MongoConstant.THREADS_ALLOWED_TO_BLOCK_FOR_CONNECTION_MULTIPLIER);
@@ -49,4 +48,6 @@ public class MongoConfig {
             throw new UnsupportedOperationException("sorry, the host config is empty,plz check it");
         }
     }
+
 }
+

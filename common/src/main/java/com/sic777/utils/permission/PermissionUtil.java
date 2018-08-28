@@ -2,13 +2,14 @@ package com.sic777.utils.permission;
 
 
 /**
- * <p>权限校验工具</p>
+ * <p>权限校验工具
  *
- * @author Zhengzhenxie
- * @version v1.0
- * @since 2018-01-24 18:19
+ * @author sic777
+ * @since 0.0.1
  */
 public class PermissionUtil {
+    private PermissionUtil() {
+    }
 
     public static int permission(int... permissions) throws Exception {
         int len = permissions.length - 1;

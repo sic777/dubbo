@@ -1,13 +1,15 @@
 package com.sic777.common.constants;
 
 /**
- * <p>错误信息常量</p>
+ * <p>错误信息常量
  *
- * @author Zhengzhenxie
- * @version v1.0
- * @since 2018-06-05
+ * @author sic777
+ * @since 0.0.1
  */
 public final class ErrorMsg {
+    private ErrorMsg() {
+    }
+
     /**
      * 参数校验错误
      */

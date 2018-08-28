@@ -2,12 +2,12 @@ package com.sic777.utils.generator;
 
 
 /**
- * <p>使用这套算法必须调用setServerIndex进行初始化</p>
+ * <p>全球唯一ID生成器
+ * <br>
+ * 使用这套算法必须调用setServerIndex进行初始化
  *
- * @author Zhengzhenxie<br>
- * <br>2018-01-01
- * @version v1.0
- * @since 1.7
+ * @author sic777
+ * @since 0.0.1
  */
 public class GuidManager {
     private static final GuidManager singleton = new GuidManager();

@@ -6,12 +6,10 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 /**
- * <p>MD5加密</p>
+ * <p>MD5工具
  *
- * @author Zhengzhenxie<br>
- * <br>2017-12-09 17:55
- * @version v1.0
- * @since 2018-03-03 17:15
+ * @author sic777
+ * @since 0.0.1
  */
 public class MD5Utils {
 

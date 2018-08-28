@@ -1,12 +1,15 @@
 package com.sic777.utils.encrypt.crc;
 
 /**
- * Created by anthony on 11.05.2017.
+ * <p>
+ *
+ * @author sic777
+ * @since 0.0.1
  */
 class CrcCalculator {
 
-    public AlgoParams Parameters;
-    public byte HashSize = 8;
+    AlgoParams Parameters;
+    byte HashSize = 8;
     private long _mask = 0xFFFFFFFFFFFFFFFFL;
     private long[] _table = new long[256];
 

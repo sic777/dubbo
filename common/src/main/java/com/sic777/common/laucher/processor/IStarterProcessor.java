@@ -1,11 +1,10 @@
 package com.sic777.common.laucher.processor;
 
 /**
- * <p>启动类处理接口</p>
+ * <p>启动类处理接口
  *
- * @author Zhengzhenxie
- * @version v1.0
- * @since 2018-05-31
+ * @author sic777
+ * @since 0.0.1
  */
 public interface IStarterProcessor {
     /**

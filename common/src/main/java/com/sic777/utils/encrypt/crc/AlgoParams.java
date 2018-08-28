@@ -1,7 +1,11 @@
 package com.sic777.utils.encrypt.crc;
 
+
 /**
- * Created by anthony on 11.05.2017.
+ * <p>
+ *
+ * @author sic777
+ * @since 0.0.1
  */
 class AlgoParams {
 

@@ -2,41 +2,219 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<parent>
-		<artifactId>base-framework</artifactId>
-		<groupId>com.sic777.framework</groupId>
-		<version>0.0.1_beta</version>
-	</parent>
 	<modelVersion>4.0.0</modelVersion>
-	<packaging>pom</packaging>
+	<groupId>com.sic777</groupId>
 	<artifactId>demo</artifactId>
+	<version>0.0.1_BETA</version>
+	<packaging>pom</packaging>
+	<name>${project.artifactId}</name>
+
 	<modules>
 		<module>dubbo-springboot-demo</module>
 	</modules>
 
-	<properties>
-		<maven-jar-plugin.version>2.4</maven-jar-plugin.version>
-		<maven-assembly-plugin.version>2.4</maven-assembly-plugin.version>
-	</properties>
+	<inceptionYear>2018</inceptionYear>
+	<description>sic777 basic framework demo</description>
 
 	<repositories>
 		<repository>
-			<id>xlink</id>
-			<url>http://54.223.57.0:8333/nexus/content/groups/public/</url>
+			<id>wq</id>
+			<url>http://120.79.212.170:9911/</url>
 		</repository>
 	</repositories>
 
+
+	<developers>
+		<developer>
+			<name>ZhenXie(Zheng)</name>
+			<id>zheng.zhenx</id>
+			<email>3646406 (AT) qq.com</email>
+			<roles>
+				<role>Developer</role>
+			</roles>
+			<timezone>+8</timezone>
+		</developer>
+	</developers>
+
+
+	<properties>
+		<!-- base version -->
+		<java.version>1.8</java.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+		<!-- jars version -->
+		<junit.version>4.12</junit.version>
+		<framework.version>0.0.1_BETA</framework.version>
+		<scala.version>2.12.6</scala.version>
+
+		<!-- plugins version -->
+		<maven-jar-plugin.version>2.4</maven-jar-plugin.version>
+		<maven-assembly-plugin.version>2.4</maven-assembly-plugin.version>
+		<maven-resources-plugin.version>2.4.3</maven-resources-plugin.version>
+		<maven-surefire-plugin.version>2.6</maven-surefire-plugin.version>
+		<versions-maven-plugin.version>2.2</versions-maven-plugin.version>
+		<build-helper-maven-plugin.version>3.0.0</build-helper-maven-plugin.version>
+		<maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
+		<scala-maven-plugin.version>3.2.0</scala-maven-plugin.version>
+	</properties>
+
+	<profiles>
+		<profile>
+			<id>beta</id>
+			<properties>
+				<profiles.environment>test</profiles.environment>
+				<profiles.nextVersion>0.0.1</profiles.nextVersion>
+				<profiles.suffix>_BETA</profiles.suffix>
+			</properties>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+		</profile>
+		<profile>
+			<id>release</id>
+			<properties>
+				<profiles.environment>product</profiles.environment>
+				<profiles.nextVersion>0.0.1</profiles.nextVersion>
+				<profiles.suffix>_RC</profiles.suffix>
+			</properties>
+		</profile>
+	</profiles>
+
+
+	<!-- default dependencies -->
 	<dependencies>
 		<dependency>
-			<groupId>com.sic777.framework</groupId>
-			<artifactId>common</artifactId>
-			<version>${project.parent.version}</version>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 
 	<build>
+		<!-- default plugins -->
+		<plugins>
+			<!-- versions -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>versions-maven-plugin</artifactId>
+				<version>${versions-maven-plugin.version}</version>
+				<configuration>
+					<newVersion>${profiles.nextVersion}${profiles.suffix}</newVersion>
+					<generateBackupPoms>false</generateBackupPoms>
+				</configuration>
+			</plugin>
+			<!-- resources -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>${maven-resources-plugin.version}</version>
+				<executions>
+					<execution>
+						<phase>compile</phase>
+					</execution>
+				</executions>
+				<configuration>
+					<encoding>${project.build.sourceEncoding}</encoding>
+				</configuration>
+			</plugin>
+			<!-- surefire -->
+			<plugin>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>${maven-surefire-plugin.version}</version>
+				<configuration>
+					<skip>true</skip>
+				</configuration>
+			</plugin>
+			<!-- build helper -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<version>${build-helper-maven-plugin.version}</version>
+				<executions>
+					<execution>
+						<id>add-source</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>add-source</goal>
+						</goals>
+						<configuration>
+							<sources>
+								<source>src/main/scala</source>
+								<source>src/main/java</source>
+							</sources>
+						</configuration>
+					</execution>
+					<execution>
+						<id>timestamp-property</id>
+						<goals>
+							<goal>timestamp-property</goal>
+						</goals>
+						<configuration>
+							<name>current.time</name>
+							<pattern>yyyyMMdd-HHmmss</pattern>
+							<timeZone>GMT+8</timeZone>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<!-- compiler -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven-compiler-plugin.version}</version>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+					<encoding>${project.build.sourceEncoding}</encoding>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>compile</phase>
+						<goals>
+							<goal>compile</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+
+		<!-- plugins management -->
 		<pluginManagement>
-			<plugins><!--jar plugin -->
+			<plugins>
+				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											net.alchim31.maven
+										</groupId>
+										<artifactId>
+											scala-maven-plugin
+										</artifactId>
+										<versionRange>
+											[3.2.0,)
+										</versionRange>
+										<goals>
+											<goal>compile</goal>
+											<goal>testCompile</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+				<!--jar plugin -->
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-jar-plugin</artifactId>
@@ -73,6 +251,33 @@
 							</goals>
 						</execution>
 					</executions>
+				</plugin>
+				<!-- scala -->
+				<plugin>
+					<groupId>net.alchim31.maven</groupId>
+					<artifactId>scala-maven-plugin</artifactId>
+					<version>${scala-maven-plugin.version}</version>
+					<executions>
+						<execution>
+							<id>compile-scala</id>
+							<phase>compile</phase>
+							<goals>
+								<goal>add-source</goal>
+								<goal>compile</goal>
+							</goals>
+						</execution>
+						<execution>
+							<id>test-compile-scala</id>
+							<phase>test-compile</phase>
+							<goals>
+								<goal>add-source</goal>
+								<goal>testCompile</goal>
+							</goals>
+						</execution>
+					</executions>
+					<configuration>
+						<scalaVersion>${scala.version}</scalaVersion>
+					</configuration>
 				</plugin>
 			</plugins>
 		</pluginManagement>

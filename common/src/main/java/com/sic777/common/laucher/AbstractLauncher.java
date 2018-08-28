@@ -1,14 +1,12 @@
 package com.sic777.common.laucher;
 
-
 import com.sic777.common.laucher.processor.IStarterProcessor;
 
 /**
- * <p>启动基类</p>
+ * <p>启动基类
  *
- * @author Zhengzhenxie
- * @version v1.0
- * @since 2018-06-11
+ * @author sic777
+ * @since 0.0.1
  */
 public abstract class AbstractLauncher {
 

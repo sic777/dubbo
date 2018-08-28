@@ -1,8 +1,8 @@
 package com.sic777.db.mongo.services;
 
-import com.mongodb.client.MongoDatabase;
 import com.sic777.db.mongo.config.MongoCollectionName;
 import com.sic777.db.mongo.instance.Sic777Mongo;
+import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
 
 public class MIdIndexService {

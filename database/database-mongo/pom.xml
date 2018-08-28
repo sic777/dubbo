@@ -5,7 +5,7 @@
 	<parent>
 		<artifactId>database</artifactId>
 		<groupId>com.sic777.framework</groupId>
-		<version>0.0.1_beta</version>
+		<version>0.0.1_BETA</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 
@@ -17,15 +17,15 @@
 			<groupId>org.mongodb</groupId>
 			<artifactId>mongo-java-driver</artifactId>
 		</dependency>
+		<!-- slf4j api -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
-			<optional>true</optional>
 		</dependency>
+		<!-- fast json -->
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>fastjson</artifactId>
-			<optional>true</optional>
 		</dependency>
 	</dependencies>
 </project>

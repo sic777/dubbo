@@ -2,11 +2,10 @@ package com.sic777.common.laucher;
 
 
 /**
- * <p>Spring容器服务端启动类</p>
+ * <p>Spring容器服务端启动类
  *
- * @author Zhengzhenxie
- * @version v1.0
- * @since 2018-06-11
+ * @author sic777
+ * @since 0.0.1
  */
 public final class SpringServerContainerLauncher extends SpringContainerLauncher {
     private static SpringServerContainerLauncher singleton = new SpringServerContainerLauncher();

@@ -1,1 +1,1 @@
-exceptionFilterProvider=com.sic777.dubbo.provider.spi.extend.filter.ProviderExceptionFilterExtend
+exceptionFilterProvider=com.sic777.dubbo.provider.common.spi.extend.filter.ProviderExceptionFilterExtend

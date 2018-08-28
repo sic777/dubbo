@@ -1,12 +1,10 @@
 package com.sic777.utils.generator;
 
 /**
- * <p>ID生成器</p>
+ * <p>Hex16ID生成器
  *
- * @author Zhengzhenxie<br>
- *         <br>2018-01-01
- * @version v1.0
- * @since 1.7
+ * @author sic777
+ * @since 0.0.1
  */
 public class Hex16Generator implements IGenerator<String> {
     private static final Hex16Generator singleton = new Hex16Generator();

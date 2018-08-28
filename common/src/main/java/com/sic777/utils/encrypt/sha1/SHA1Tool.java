@@ -6,13 +6,15 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 /**
- * <p></p>
+ * <p>SHA1工具
  *
- * @author Zhengzhenxie
- * @version v1.0
- * @since 2018-02-11 10:58
+ * @author sic777
+ * @since 0.0.1
  */
 public class SHA1Tool {
+    private SHA1Tool() {
+    }
+
     /**
      * sha1加密
      *
@@ -20,7 +22,7 @@ public class SHA1Tool {
      * @return
      * @throws NoSuchAlgorithmException
      */
-    public final static String SHA1(String sourceString) throws NoSuchAlgorithmException {
+    public static String SHA1(String sourceString) throws NoSuchAlgorithmException {
         String resultString;
         try {
             resultString = new String(sourceString);
@@ -33,7 +35,7 @@ public class SHA1Tool {
     }
 
 
-    public final static String SHA256(String sourceString) throws NoSuchAlgorithmException {
+    public static String SHA256(String sourceString) throws NoSuchAlgorithmException {
         String resultString;
         try {
             resultString = new String(sourceString);

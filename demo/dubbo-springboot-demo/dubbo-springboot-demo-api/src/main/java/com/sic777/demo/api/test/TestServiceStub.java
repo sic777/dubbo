@@ -2,7 +2,7 @@ package com.sic777.demo.api.test;
 
 import com.sic777.common.constants.ErrorMsg;
 import com.sic777.dubbo.bean.RpcResponse;
-import com.sic777.dubbo.exception.RpcExceptionType;
+import com.sic777.dubbo.bean.exception.RpcExceptionType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

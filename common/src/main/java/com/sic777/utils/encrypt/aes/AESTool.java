@@ -8,12 +8,10 @@ import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 
 /**
- * <p>AES加密工具类</p>
+ * <p>AES加密工具类
  *
- * @author Zhengzhenxie<br>
- * <br>2017-12-09 17:55
- * @version v1.0
- * @since 2018-03-03 17:15
+ * @author sic777
+ * @since 0.0.1
  */
 public class AESTool {
     private AESTool() {

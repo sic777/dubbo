@@ -3,12 +3,12 @@ package com.sic777.utils;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+
 /**
- * <p>日期格式化工具</p>
+ * <p>日期格式化工具
  *
- * @author Zhengzhenxie
- * @version v1.0
- * @since 2018-01-10 17:43
+ * @author sic777
+ * @since 0.0.1
  */
 public class DateFormatTools {
 
@@ -16,6 +16,13 @@ public class DateFormatTools {
         throw new IllegalStateException("Utility class");
     }
 
+    /**
+     * 根据格式化方式获取日期字符串
+     *
+     * @param date   日期对象
+     * @param format 格式化
+     * @return
+     */
     public static String funcGetDateWithFormat(Date date, String format) {
         try {
             SimpleDateFormat dateFormat = new SimpleDateFormat(format);
@@ -25,6 +32,13 @@ public class DateFormatTools {
         }
     }
 
+    /**
+     * 根据格式化方式获取日期对象
+     *
+     * @param date   日期字符串
+     * @param format 格式化
+     * @return
+     */
     public static Date funcGetDateWithFormat(String date, String format) {
         if (null == date) {
             return null;
@@ -40,7 +54,7 @@ public class DateFormatTools {
     /**
      * yyyy-MM-dd'T'HH:mm:ss.SS'Z'
      *
-     * @param date
+     * @param date 日期对象
      * @return
      */
     public static String funcGetDate(Date date) {
@@ -50,7 +64,7 @@ public class DateFormatTools {
     /**
      * yyyy-MM-dd'T'HH:mm:ss.SS'Z'
      *
-     * @param date
+     * @param date 日期字符串
      * @return
      */
     public static Date funcGetDate(String date) {
@@ -60,7 +74,7 @@ public class DateFormatTools {
     /**
      * yyyy-MM-dd
      *
-     * @param date
+     * @param date 日期对象
      * @return
      */
     public static String funcGetDay(Date date) {
@@ -70,7 +84,7 @@ public class DateFormatTools {
     /**
      * yyyy-MM-dd
      *
-     * @param date
+     * @param date 日期字符串
      * @return
      */
     public static Date funcGetDay(String date) {
@@ -80,8 +94,8 @@ public class DateFormatTools {
     /**
      * 计算相差天数
      *
-     * @param begin
-     * @param end
+     * @param begin 开始日期
+     * @param end   结束日期
      * @return
      * @throws Exception
      */
@@ -96,8 +110,8 @@ public class DateFormatTools {
     /**
      * 计算相差小时数
      *
-     * @param begin
-     * @param end
+     * @param begin 开始日期
+     * @param end   结束日期
      * @return
      * @throws Exception
      */
@@ -112,7 +126,7 @@ public class DateFormatTools {
     /**
      * 将小时数格式文本化：xx天xx小时 / xx小时
      *
-     * @param hours
+     * @param hours 小时数
      * @return
      */
     public static String formatHoursToText(int hours) {

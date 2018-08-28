@@ -5,12 +5,13 @@
 	<parent>
 		<artifactId>base-framework</artifactId>
 		<groupId>com.sic777.framework</groupId>
-		<version>0.0.1_beta</version>
+		<version>0.0.1_BETA</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 
 	<artifactId>database</artifactId>
 	<packaging>pom</packaging>
+
 	<modules>
 		<module>database-springboot-mybatis</module>
 		<module>database-redis</module>

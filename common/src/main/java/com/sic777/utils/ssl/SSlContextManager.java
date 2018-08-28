@@ -12,11 +12,10 @@ import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
 
 /**
- * <p></p>
+ * <p>SSL上下文管理器
  *
- * @author Zhengzhenxie
- * @version v1.0
- * @since 2018-02-10 17:13
+ * @author sic777
+ * @since 0.0.1
  */
 public class SSlContextManager {
 

@@ -10,12 +10,12 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+
 /**
- * <p>防痴呆检测工具</p>
+ * <p>防痴呆检测工具
  *
- * @author Zhengzhenxie
- * @version v1.0
- * @since 2018-05-28
+ * @author sic777
+ * @since 0.0.1
  */
 public final class SystemUtil {
     private final static Logger logger = LoggerFactory.getLogger(SystemUtil.class);

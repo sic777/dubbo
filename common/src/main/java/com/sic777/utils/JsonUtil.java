@@ -3,16 +3,18 @@ package com.sic777.utils;
 import com.alibaba.fastjson.JSONObject;
 
 /**
- * <p></p>
+ * <p>Json工具类
  *
- * @author Zhengzhenxie
- * @version v1.0
- * @since 2018-05-08
+ * @author sic777
+ * @since 0.0.1
  */
 public class JsonUtil {
+    private JsonUtil() {
+    }
+
     /**
-     * @param key
-     * @param value
+     * @param key   键
+     * @param value 值
      * @return
      */
     public static JSONObject putSingle(String key, String value) {
@@ -25,8 +27,8 @@ public class JsonUtil {
     }
 
     /**
-     * @param keys
-     * @param values
+     * @param keys   键数组
+     * @param values 值数组
      * @return
      * @throws Exception
      */
@@ -44,8 +46,8 @@ public class JsonUtil {
     /**
      * 判断是否存在某一个key
      *
-     * @param js
-     * @param key
+     * @param js  JSONObject
+     * @param key 键
      * @return
      */
     public static boolean containsKey(JSONObject js, String key) {
@@ -55,8 +57,8 @@ public class JsonUtil {
     /**
      * 判断是否存在某一个值
      *
-     * @param js
-     * @param value
+     * @param js    JSONObject
+     * @param value 值
      * @return
      */
     public static boolean containsValue(JSONObject js, Object value) {

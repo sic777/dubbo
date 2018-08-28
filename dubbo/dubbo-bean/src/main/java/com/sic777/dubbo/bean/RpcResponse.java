@@ -1,8 +1,8 @@
 package com.sic777.dubbo.bean;
 
 
-import com.sic777.dubbo.exception.RpcException;
-import com.sic777.dubbo.exception.RpcExceptionType;
+import com.sic777.dubbo.bean.exception.RpcException;
+import com.sic777.dubbo.bean.exception.RpcExceptionType;
 
 import java.io.Serializable;
 

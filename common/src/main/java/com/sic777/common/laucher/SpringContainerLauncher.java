@@ -15,12 +15,12 @@ import org.springframework.core.annotation.Order;
 
 import java.util.concurrent.CountDownLatch;
 
+
 /**
- * <p>Spring容器启动基类</p>
+ * <p>Spring容器启动基类
  *
- * @author Zhengzhenxie
- * @version v1.0
- * @since 2018-06-11
+ * @author sic777
+ * @since 0.0.1
  */
 @Order(0)
 @SpringBootApplication(scanBasePackages = {BaseConstant.BASE_SPRING_SCAN_PACKAGE, BaseConstant.ISV_SPRING_SCAN_PACKAGE})

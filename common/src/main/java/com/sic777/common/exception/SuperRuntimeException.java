@@ -1,31 +1,49 @@
 package com.sic777.common.exception;
 
 /**
- * <p>运行时异常基类</p>
+ * <p>运行时异基类
  *
- * @author Zhengzhenxie
- * @version v1.0
- * @since 2018-06-15
+ * @author sic777
+ * @since 0.0.1
  */
 public abstract class SuperRuntimeException extends RuntimeException {
+    /**
+     *
+     */
     private static final long serialVersionUID = 1957474075268725412L;
 
     public SuperRuntimeException() {
         super();
     }
 
+    /**
+     * @param message 错误信息
+     */
     public SuperRuntimeException(String message) {
         super(message);
     }
 
+    /**
+     * @param message 错误信息
+     * @param cause   异常
+     */
     public SuperRuntimeException(String message, Throwable cause) {
         super(message, cause);
     }
 
+    /**
+     * @param cause 异常
+     */
     public SuperRuntimeException(Throwable cause) {
         super(cause);
     }
 
+    /**
+     * @param message            错误信息
+     * @param cause              异常
+     * @param enableSuppression
+     * @param writableStackTrace
+     */
     public SuperRuntimeException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
         super(message, cause, enableSuppression, writableStackTrace);
     }
@@ -33,7 +51,7 @@ public abstract class SuperRuntimeException extends RuntimeException {
     /**
      * 覆盖父方法,不爬栈,提升性能
      *
-     * @return
+     * @return 异常对象
      */
     @Override
     public synchronized Throwable fillInStackTrace() {

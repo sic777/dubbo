@@ -10,7 +10,7 @@ JAR=${project.artifactId}-${project.version}.jar
 #main class
 MAIN_CLASS=${MainClass}
 #environment
-ENVIRONMENT=test
+ENVIRONMENT=${profiles.environment}
 
 #pid file path
 PID_FILE_PATH=${WK_PATH}/${project.artifactId}.pid

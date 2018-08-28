@@ -3,19 +3,21 @@ package com.sic777.utils;
 import java.util.regex.Pattern;
 
 /**
- * <p>正则校验工具</p>
+ * <p>正则校验工具
  *
- * @author Zhengzhenxie
- * @version v1.0
- * @since 2018-01-18 10:59
+ * @author sic777
+ * @since 0.0.1
  */
 public class PatternUtils {
+    private PatternUtils() {
+    }
+
     /**
      * 校验用户名
      *
-     * @param userName
-     * @param min
-     * @param max
+     * @param userName 用户名
+     * @param min      最小位数
+     * @param max      最大位数
      * @return
      */
     public static boolean validateUserName(String userName, int min, int max) {
@@ -25,8 +27,8 @@ public class PatternUtils {
     /**
      * 校验邮箱
      *
-     * @param email
-     * @param max
+     * @param email 邮箱
+     * @param max   最大位数
      * @return
      */
     public static boolean validateEmail(String email, int max) {
@@ -36,7 +38,7 @@ public class PatternUtils {
     /**
      * 校验手机号码
      *
-     * @param phoneNumber
+     * @param phoneNumber 手机号码
      * @return
      */
     public static boolean checkMobile(String phoneNumber) {
@@ -47,8 +49,8 @@ public class PatternUtils {
     /**
      * 校验验证码
      *
-     * @param length
-     * @param validateCode
+     * @param length       长度
+     * @param validateCode 验证码
      * @return
      */
     public static boolean checkValidateCode(int length, String validateCode) {

@@ -1,13 +1,16 @@
 package com.sic777.utils;
 
+
 /**
- * <p></p>
+ * <p>布尔工具类
  *
- * @author Zhengzhenxie
- * @version v1.0
- * @since 2018-01-10 17:43
+ * @author sic777
+ * @since 0.0.1
  */
 public class BooleanUtil {
+    private BooleanUtil() {
+    }
+
     /**
      * boolean转int,true转1，false转0
      *

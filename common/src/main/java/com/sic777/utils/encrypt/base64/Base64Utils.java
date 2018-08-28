@@ -1,16 +1,13 @@
 package com.sic777.utils.encrypt.base64;
 
-import java.io.UnsupportedEncodingException;
 
 import com.alibaba.fastjson.util.Base64;
 
 /**
- * <p>Base64双向加密工具</p>
+ * <p>Base64双向加密工具
  *
- * @author Zhengzhenxie<br>
- * <br>2017-12-09 17:55
- * @version v1.0
- * @since 2018-03-03 17:15
+ * @author sic777
+ * @since 0.0.1
  */
 @SuppressWarnings("deprecation")
 public class Base64Utils {
@@ -59,9 +56,8 @@ public class Base64Utils {
      *
      * @param str 密文
      * @return 明文的字节数组
-     * @throws UnsupportedEncodingException
      */
-    public static byte[] decode(String str) throws UnsupportedEncodingException {
+    public static byte[] decode(String str) {
         return Base64.decodeFast(str);
     }
 }

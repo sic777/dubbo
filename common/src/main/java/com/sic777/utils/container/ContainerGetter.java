@@ -13,11 +13,10 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.CopyOnWriteArraySet;
 
 /**
- * <p>容器获取工具类</p>
+ * <p>容器获取工具类
  *
- * @author Zhengzhenxie
- * @version v1.0
- * @since 2018-02-11 10:58
+ * @author sic777
+ * @since 0.0.1
  */
 public class ContainerGetter {
     public static <K, V> HashMap<K, V> hashMap() {

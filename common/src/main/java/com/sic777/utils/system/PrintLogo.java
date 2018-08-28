@@ -4,13 +4,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * <p></p>
+ * <p>打印系统标识
  *
- * @author Zhengzhenxie
- * @version v1.0
- * @since 2017-12-28 23:08
+ * @author sic777
+ * @since 0.0.1
  */
 public class PrintLogo {
+    private PrintLogo() {
+    }
+
     private final static String DEFAULT_HEADER = "佛祖保佑  永无BUG";
     private final static String DEFAULT_BOTTOM = "欢迎使用零BUG启动模式";
     private final static StringBuilder sb = new StringBuilder();
@@ -21,7 +23,6 @@ public class PrintLogo {
      * @param header   头部信息
      * @param bottom   底部信息
      * @param isLogger 是否打印日志
-     *
      * @return
      */
     public static String logo(String header, String bottom, boolean isLogger) {
@@ -65,7 +66,6 @@ public class PrintLogo {
 
     /**
      * @param isLogger 是否打印日志
-     *
      * @return
      */
     public static String logo(boolean isLogger) {

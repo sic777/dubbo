@@ -10,5 +10,5 @@
 
 /**
  * @apiDefine MEMBER 内部成员
- * 持有内部成员级别的Access-Token可以访问
+ * 持有成员级别的Access-Token可以访问
  */

@@ -6,12 +6,10 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * <p>定义不参与混淆的代码</p>
+ * <p>定义不参与混淆的代码
  *
- * @author Zhengzhenxie<br>
- *         <br>2017-11-27 11:52
- * @version v1.0
- * @since 1.7
+ * @author sic777
+ * @since 0.0.1
  */
 @Retention(RetentionPolicy.CLASS)
 @Target({ElementType.TYPE, ElementType.METHOD, ElementType.CONSTRUCTOR, ElementType.FIELD})

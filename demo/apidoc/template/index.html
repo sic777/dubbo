@@ -158,7 +158,7 @@
     <ul class="nav nav-tabs nav-tabs-examples">
         {{#each article.examples}}
         <li
-                {{#if_eq @index compare=0}} class="active"{{/if_eq}}>
+        {{#if_eq @index compare=0}} class="active"{{/if_eq}}>
         <a href="#examples-{{../id}}-{{@index}}">{{title}}</a>
         </li>
         {{/each}}
@@ -188,7 +188,7 @@
     <ul class="nav nav-tabs nav-tabs-examples">
         {{#each params.examples}}
         <li
-                {{#if_eq @index compare=0}} class="active"{{/if_eq}}>
+        {{#if_eq @index compare=0}} class="active"{{/if_eq}}>
         <a href="#{{../section}}-examples-{{../id}}-{{@index}}">{{title}}</a>
         </li>
         {{/each}}
@@ -371,14 +371,14 @@
         {{#each_compare_title article.examples compare.examples}}
         {{#if typeSame}}
         <li
-                {{#if_eq index compare=0}} class="active"{{/if_eq}}>
+        {{#if_eq index compare=0}} class="active"{{/if_eq}}>
         <a href="#compare-examples-{{../../article.id}}-{{index}}">{{{showDiff source.title compare.title}}}</a>
         </li>
         {{/if}}
 
         {{#if typeIns}}
         <li
-                {{#if_eq index compare=0}} class="active"{{/if_eq}}>
+        {{#if_eq index compare=0}} class="active"{{/if_eq}}>
         <a href="#compare-examples-{{../../article.id}}-{{index}}">
             <ins>{{{source.title}}}</ins>
         </a>
@@ -387,7 +387,7 @@
 
         {{#if typeDel}}
         <li
-                {{#if_eq index compare=0}} class="active"{{/if_eq}}>
+        {{#if_eq index compare=0}} class="active"{{/if_eq}}>
         <a href="#compare-examples-{{../../article.id}}-{{index}}">
             <del>{{{compare.title}}}</del>
         </a>
@@ -578,7 +578,7 @@
         {{#each_compare_title source.examples compare.examples}}
         {{#if typeSame}}
         <li
-                {{#if_eq index compare=0}} class="active"{{/if_eq}}>
+        {{#if_eq index compare=0}} class="active"{{/if_eq}}>
         <a href="#{{../../section}}-compare-examples-{{../../article.id}}-{{index}}">{{{showDiff source.title
             compare.title}}}</a>
         </li>
@@ -586,7 +586,7 @@
 
         {{#if typeIns}}
         <li
-                {{#if_eq index compare=0}} class="active"{{/if_eq}}>
+        {{#if_eq index compare=0}} class="active"{{/if_eq}}>
         <a href="#{{../../section}}-compare-examples-{{../../article.id}}-{{index}}">
             <ins>{{{source.title}}}</ins>
         </a>
@@ -595,7 +595,7 @@
 
         {{#if typeDel}}
         <li
-                {{#if_eq index compare=0}} class="active"{{/if_eq}}>
+        {{#if_eq index compare=0}} class="active"{{/if_eq}}>
         <a href="#{{../../section}}-compare-examples-{{../../article.id}}-{{index}}">
             <del>{{{compare.title}}}</del>
         </a>

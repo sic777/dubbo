@@ -8,15 +8,16 @@ import java.util.Map;
 import java.util.Random;
 import java.util.Map.Entry;
 
+
 /**
- * <p>权重随机</p>
+ * <p>权重随机
  *
- * @author Zhengzhenxie<br>
- *         <br>2017-12-09 17:55
- * @version v1.0
- * @since 2018-03-03 17:15
+ * @author sic777
+ * @since 0.0.1
  */
 public class ProbabilityUtils {
+    private ProbabilityUtils() {
+    }
 
     /**
      * 根据权重返回

@@ -5,12 +5,12 @@ import java.util.Date;
 import com.sic777.utils.DateFormatTools;
 import org.apache.commons.beanutils.Converter;
 
+
 /**
- * <p>日期转换器</p>
+ * <p>日期转换器
  *
- * @author Zhengzhenxie
- * @version v1.0
- * @since 2018-01-25 16:21
+ * @author sic777
+ * @since 0.0.1
  */
 public class DateConvert implements Converter {
 

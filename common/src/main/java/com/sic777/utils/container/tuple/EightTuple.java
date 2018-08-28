@@ -1,11 +1,10 @@
 package com.sic777.utils.container.tuple;
 
 /**
- * <p></p>
+ * <p>
  *
- * @author Zhengzhenxie
- * @version v1.0
- * @since 2018-01-25 16:21
+ * @author sic777
+ * @since 0.0.1
  */
 public class EightTuple<A, B, C, D, E, F, G, H> extends SevenTuple<A, B, C, D, E, F, G> {
 

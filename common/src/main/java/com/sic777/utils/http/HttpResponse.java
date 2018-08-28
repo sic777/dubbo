@@ -4,14 +4,13 @@ import java.util.Map;
 
 import com.sic777.utils.container.ContainerGetter;
 
-/**
- * <p>Http响应对象s</p>
- *
- * @author Zhengzhenxie
- * @version v1.0
- * @since 2018-08-16
- */
 
+/**
+ * <p>Http响应对象
+ *
+ * @author sic777
+ * @since 0.0.1
+ */
 public class HttpResponse {
     /**
      * HTTP状态码

@@ -1,13 +1,15 @@
 package com.sic777.common.constants;
 
 /**
- * <p>基础常量</p>
+ * <p>基础常量
  *
- * @author Zhengzhenxie
- * @version v1.0
- * @since 2018-06-10
+ * @author sic777
+ * @since 0.0.1
  */
 public class BaseConstant {
+    private BaseConstant() {
+    }
+
     /**
      * Spring扫描路径
      */
@@ -29,7 +31,7 @@ public class BaseConstant {
      */
     public final static String DEFAULT_JSON_NAME = "configure.json";
     /**
-     * 环境标识(值为：开发、测试、生产...)
+     * 环境标识
      */
     public final static String ENVIRONMENT_FLAG = "environment";
     /**

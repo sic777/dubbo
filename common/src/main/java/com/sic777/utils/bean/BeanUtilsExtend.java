@@ -8,12 +8,12 @@ import org.apache.commons.beanutils.ConvertUtils;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Date;
 
+
 /**
- * <p>BeanUtils扩展</p>
+ * <p>BeanUtils扩展
  *
- * @author Zhengzhenxie
- * @version v1.0
- * @since 2018-01-25 16:14
+ * @author sic777
+ * @since 0.0.1
  */
 public class BeanUtilsExtend extends BeanUtils {
     static {

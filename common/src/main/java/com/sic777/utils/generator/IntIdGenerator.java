@@ -5,12 +5,10 @@ import java.nio.charset.Charset;
 
 
 /**
- * <p>随机32位整形，每个数字2千万以上</p>
+ * <p>随机32位整形，每个数字2千万以上
  *
- * @author Zhengzhenxie<br>
- *         <br>2018-01-01
- * @version v1.0
- * @since 1.7
+ * @author sic777
+ * @since 0.0.1
  * @deprecated
  */
 public class IntIdGenerator implements IGenerator<Integer> {

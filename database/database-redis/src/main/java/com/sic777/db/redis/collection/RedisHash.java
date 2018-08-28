@@ -36,6 +36,7 @@ public class RedisHash {
         }
     }
 
+
     /**
      * 从hash中删除指定的存储
      *
@@ -54,7 +55,6 @@ public class RedisHash {
             }
         }
     }
-
 
     /**
      * 从hash中删除指定的存储

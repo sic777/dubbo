@@ -4,13 +4,15 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 /**
- * <p></p>
+ * <p>Host工具类
  *
- * @author Zhengzhenxie
- * @version v1.0
- * @since 2018-04-23
+ * @author sic777
+ * @since 0.0.1
  */
 public class HostUtil {
+    private HostUtil() {
+    }
+
     /**
      * 获取机器名
      *

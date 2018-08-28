@@ -1,11 +1,10 @@
 package com.sic777.utils.ssl;
 
 /**
- * <p>信任库</p>
+ * <p>信任库实体
  *
- * @author Zhengzhenxie
- * @version v1.0
- * @since 2018-02-10 17:13
+ * @author sic777
+ * @since 0.0.1
  */
 public class TrustKeyStore {
     /**
@@ -43,5 +42,14 @@ public class TrustKeyStore {
 
     public boolean isLocal() {
         return local;
+    }
+
+    @Override
+    public String toString() {
+        return "TrustKeyStore{" +
+                "field='" + field + '\'' +
+                ", pwd='" + pwd + '\'' +
+                ", local=" + local +
+                '}';
     }
 }

@@ -8,12 +8,10 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 
 /**
- * <p>Http线程池</p>
+ * <p>Http线程池
  *
- * @author Zhengzhenxie<br>
- *         <br>2017-11-17 10:14
- * @version v1.0
- * @since 1.7
+ * @author sic777
+ * @since 0.0.1
  */
 public class PoolHttpConnectionManager {
     private static PoolHttpConnectionManager singleton;

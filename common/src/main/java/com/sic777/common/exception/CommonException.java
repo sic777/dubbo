@@ -1,40 +1,38 @@
 package com.sic777.common.exception;
 
-import scala.Enumeration;
 
 /**
- * <p>通用异常</p>
+ * <p>通用异常
  *
- * @author Zhengzhenxie
- * @version v1.0
- * @since 2018-06-15
+ * @author sic777
+ * @since 0.0.1
  */
 public class CommonException extends SuperRuntimeException {
     /**
-	 * 
-	 */
-	private static final long serialVersionUID = -6106546564795439880L;
-	/**
-     * 错误枚举(Scala)
+     *
      */
-    private final Enumeration.Value error;
-    /**
-     * 格式化，用于String.format()
-     */
-    private final Object[] format;
+    private static final long serialVersionUID = -702270821179079289L;
+    private final long code;
+    private final String msg;
 
-
-    public CommonException(Enumeration.Value error, Object... format) {
-        this.error = error;
-        this.format = format;
+    public CommonException(long code, String msg) {
+        this.code = code;
+        this.msg = msg;
     }
 
-    public Enumeration.Value getError() {
-        return error;
+    public long getCode() {
+        return code;
     }
 
-    public Object[] getFormat() {
-        return format;
+    public String getMsg() {
+        return msg;
     }
 
+    @Override
+    public String toString() {
+        return "CommonException{" +
+                "code=" + code +
+                ", msg='" + msg + '\'' +
+                '}';
+    }
 }

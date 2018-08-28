@@ -15,7 +15,10 @@ import java.net.URL;
 import java.util.Properties;
 
 /**
- * Created by Zhengzhenxie on 2017/9/12.
+ * <p>配置文件工具类
+ *
+ * @author sic777
+ * @since 0.0.1
  */
 public final class PropertiesUtil {
     private PropertiesUtil() {

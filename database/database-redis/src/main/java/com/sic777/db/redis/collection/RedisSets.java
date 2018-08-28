@@ -252,7 +252,7 @@ public class RedisSets {
      * @param members 要删除的成员
      * @return 状态码，成功返回1，成员不存在返回0
      */
-    public long srem(String key, String...members) {
+    public long srem(String key, String... members) {
         Jedis jedis = null;
         try {
             jedis = Redis.instance().getRedisPool().getResource();

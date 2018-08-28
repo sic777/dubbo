@@ -7,11 +7,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * <p></p>
+ * <p>Jar包版本工具
  *
- * @author Zhengzhenxie
- * @version v1.0
- * @since 2018-05-28
+ * @author sic777
+ * @since 0.0.1
  */
 public final class Version {
 

@@ -3,8 +3,8 @@ package com.sic777.demo.client.controller.test;
 import com.sic777.demo.api.test.TestDto;
 import com.sic777.demo.client.controller.BaseController;
 import com.sic777.demo.client.service.test.ITestService;
-import com.sic777.microservice.permission.Permission;
-import com.sic777.microservice.response.ResponseManager;
+import com.sic777.restful.base.permission.Permission;
+import com.sic777.restful.base.response.ResponseManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,7 +28,7 @@ public class TestController extends BaseController {
      * @apiUse request_body
      * @apiUse dynamic_error
      * @apiUse access_token
-     * @apiPermission MEMBER
+     * @apiPermission BIZ
      * @api {POST} /tests 新增
      * @apiVersion 1.0.0
      * @apiGroup test
@@ -43,7 +43,7 @@ public class TestController extends BaseController {
      * }
      * @apiSuccess (成功说明) {string} id 主键
      */
-    @Permission({MEMBER})
+    @Permission({BIZ})
     @PostMapping(TESTS)
     void create(@RequestBody TestDto dto) throws Exception {
         ResponseManager.instance().funcValidateValueNotEmpty(dto.getMsg(), "msg");
@@ -54,7 +54,7 @@ public class TestController extends BaseController {
     /**
      * @apiUse dynamic_error
      * @apiUse access_token
-     * @apiPermission MEMBER
+     * @apiPermission BIZ
      * @apiPermission USER
      * @api {DELETE} /tests/:id 删除
      * @apiParam (请求参数) {string} id 主键
@@ -62,7 +62,7 @@ public class TestController extends BaseController {
      * @apiGroup test
      * @apiDescription api test
      */
-    @Permission({MEMBER, USER})
+    @Permission({BIZ, USER})
     @DeleteMapping(TESTS_ID)
     void delete(@PathVariable String id) throws Exception {
         testService.delete(id);

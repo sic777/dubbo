@@ -14,15 +14,17 @@ import org.slf4j.LoggerFactory;
 import java.io.IOException;
 import java.util.Map;
 
+
 /**
- * <p>Http客户端</p>
+ * <p>Http客户端
  *
- * @author Zhengzhenxie<br>
- * <br>2017-11-17 10:14
- * @version v1.0
- * @since 1.7
+ * @author sic777
+ * @since 0.0.1
  */
 public class Http {
+    private Http() {
+    }
+
     private final static int DEFAULT_SOCKET_TIMEOUT = 10000;
     private final static int DEFAULT_CONNECT_TIMEOUT = 10000;
 

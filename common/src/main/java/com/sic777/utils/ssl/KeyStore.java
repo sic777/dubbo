@@ -1,11 +1,11 @@
 package com.sic777.utils.ssl;
 
+
 /**
- * <p>证书实体</p>
+ * <p>证书实体
  *
- * @author Zhengzhenxie
- * @version v1.0
- * @since 2018-02-10 17:12
+ * @author sic777
+ * @since 0.0.1
  */
 public class KeyStore {
     /**
@@ -68,5 +68,15 @@ public class KeyStore {
 
     public boolean isLocal() {
         return local;
+    }
+
+    @Override
+    public String toString() {
+        return "KeyStore{" +
+                "field='" + field + '\'' +
+                ", pwd='" + pwd + '\'' +
+                ", type=" + type +
+                ", local=" + local +
+                '}';
     }
 }
