@@ -64,7 +64,6 @@
 		<maven-javadoc-plugin.version>2.10.4</maven-javadoc-plugin.version>
 		<scala-maven-plugin.version>3.2.0</scala-maven-plugin.version>
 		<build-helper-maven-plugin.version>3.0.0</build-helper-maven-plugin.version>
-		<maven-scala-plugin.version>2.15.2</maven-scala-plugin.version>
 	</properties>
 
 
@@ -85,14 +84,6 @@
 				<version>${scala.version}</version>
 				<scope>compile</scope>
 			</dependency>
-			<!-- scala plugin-->
-			<dependency>
-				<groupId>org.scala-tools</groupId>
-				<artifactId>maven-scala-plugin</artifactId>
-				<version>${maven-scala-plugin.version}</version>
-				<optional>true</optional>
-			</dependency>
-
 
 			<!-- netty -->
 			<dependency>
