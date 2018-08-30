@@ -14,6 +14,9 @@ import java.io.FileReader;
 import java.net.URL;
 import java.util.Properties;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * <p>配置文件工具类
  *
@@ -21,6 +24,9 @@ import java.util.Properties;
  * @since 0.0.1
  */
 public final class PropertiesUtil {
+
+    private final static Logger logger = LoggerFactory.getLogger(PropertiesUtil.class);
+
     private PropertiesUtil() {
     }
 
@@ -241,8 +247,11 @@ public final class PropertiesUtil {
     private static TwoTuple<String, Boolean> getPathAutomatic(String fileName, String filePath) throws Exception {
         String os = System.getProperty("os.name");
         String userDir = StringUtil.parsePath(System.getProperty("user.dir"));
-        return CurrentEnvironment.instance().isDefault()
-                ? Tuple.tuple(fileName, true)
-                : Tuple.tuple(String.format("%s%s%s", userDir, String.format(os.toLowerCase().startsWith("win") ? "\\%s\\" : "/%s/", filePath), fileName), false);
+        boolean isDefault = CurrentEnvironment.instance().isDefault();
+        String rsFileName = isDefault ? fileName :
+                String.format("%s%s%s", userDir, String.format(os.toLowerCase().startsWith("win") ? "\\%s\\" : "/%s/", filePath), fileName);
+        logger.info("file name:" + fileName + ",path:" + filePath + ",current environment:" + CurrentEnvironment.instance().getEnvironment().getEnvironment());
+        return Tuple.tuple(rsFileName, isDefault);
     }
 }
+

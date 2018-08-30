@@ -25,6 +25,7 @@ public final class CurrentEnvironment {
     }
 
     private CurrentEnvironment() {
+        init(false);
     }
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -48,18 +49,42 @@ public final class CurrentEnvironment {
      * @param environment 环境枚举
      */
     public void init(Environment environment) {
-        if (isInit.compareAndSet(false, true)) {
-            checkWhite();
-            this.environment = environment;
-            this.isDefault = environment == Environment.DEVELOP;
-        }
+        init(environment, true);
     }
 
     /**
      * 初始化环境,仅白名单下的类可以调用
      */
     public void init() {
-        init(Environment.fromEnvironment(System.getProperty(BaseConstant.ENVIRONMENT_FLAG)));
+        init(true);
+    }
+
+    /**
+     * 初始化环境
+     *
+     * @param check 是否需要检查白名单
+     */
+    private void init(boolean check) {
+        String e = System.getProperty(BaseConstant.ENVIRONMENT_FLAG);
+        logger.info("-d" + BaseConstant.ENVIRONMENT_FLAG + "=" + e);
+        init(Environment.fromEnvironment(e), check);
+    }
+
+    /**
+     * 初始化环境
+     *
+     * @param environment
+     * @param check       是否需要检查白名单
+     */
+    private void init(Environment environment, boolean check) {
+        if (isInit.compareAndSet(false, true)) {
+            if (check) {
+                checkWhite();
+            }
+            this.environment = environment;
+            this.isDefault = environment == Environment.DEVELOP;
+            logger.info("init current environment:" + environment.getEnvironment());
+        }
     }
 
     /**
@@ -101,3 +126,4 @@ public final class CurrentEnvironment {
         return isDefault;
     }
 }
+
