@@ -35,7 +35,6 @@ abstract class SpringContainerLauncher extends AbstractLauncher implements Comma
     @Override
     void startImpl(IStarterProcessor process, Thread hook) {
         try {
-            CurrentEnvironment.instance().init();//初始化环境
             if (null != process) {
                 process.before();
             }
