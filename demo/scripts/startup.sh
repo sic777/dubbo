@@ -52,7 +52,7 @@ fi
 
 ${JAVA_CMD} -version
 
-/usr/bin/nohup ${JAVA_CMD} -Denvironment=${ENVIRONMENT} -Dlog4j.configurationFile=${WK_PATH}/config/log4j2.xml ${JVM_OPT} -cp ${WK_PATH}/lib/${JAR}:${WK_PATH}/lib/* ${MAIN_CLASS} ${ARGS} >/dev/null 2>&1 &
+/usr/bin/nohup ${JAVA_CMD} -Denvironment=${ENVIRONMENT} -Dlog4j.configurationFile=${WK_PATH}/config/log4j2.xml -Dlogging.config=${WK_PATH}/config/log4j2.xml ${JVM_OPT} -cp ${WK_PATH}/lib/${JAR}:${WK_PATH}/lib/* ${MAIN_CLASS} ${ARGS} >/dev/null 2>&1 &
 
 if [ $? -ne 0 ];then
     exit
