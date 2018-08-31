@@ -1,10 +1,12 @@
 package com.sic777.utils.system;
 
+import com.sic777.common.system.CurrentEnvironment;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 
 /**
  * <p>Jar包版本工具
@@ -21,14 +23,15 @@ public final class Version {
 
     private static final Pattern VERSION_PATTERN = Pattern.compile("([0-9][0-9\\.\\-]*)\\.jar");
 
-    private static final String VERSION = getVersion(Version.class, "development version");
+    private static final String VERSION = getVersion(Version.class,
+            CurrentEnvironment.instance().isDefault() ? "source code version" : "Unknown Implementation-Version In MANIFEST.MF");
 
     /**
-     * 获取版本
+     * 获取框架版本
      *
      * @return
      */
-    public static String getVersion() {
+    public static String getFrameworkVersion() {
         return VERSION;
     }
 
@@ -66,4 +69,6 @@ public final class Version {
     }
 
 }
+
+
 

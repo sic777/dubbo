@@ -40,10 +40,10 @@ public class ProviderExceptionFilterExtend implements Filter {
         logger.error("rpc response error:", throwable);
         RpcContext rpcContext = RpcContext.getContext();
         String sideText = "provider";
-        String version = Version.getVersion();
+        String version = Version.getFrameworkVersion();
         Object interfaceName = rpcContext.getUrl().getAbsolutePath();
         String remoteAddress = rpcContext.getRemoteAddressString();
-        String template = "an exception occurs at '%s' side when the server '%s' is invoked, params: ' interface : %s, method : %s, params : %s, jar version : %s'";
+        String template = "an exception occurs at '%s' side when the server '%s' is invoked, params: ' interface : %s, method : %s, params : %s, framework jar version : %s'";
         Object[] params = new Object[]{sideText, remoteAddress, interfaceName, rpcContext.getMethodName(), JSON.toJSONString(rpcContext.getArguments()), version};
         String msg = String.format(template, params);
         return new RpcResult(new RpcResponse<>(RpcExceptionType.SERVICE_EXCEPTION, msg));

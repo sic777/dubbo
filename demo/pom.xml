@@ -45,7 +45,6 @@
 		<!-- jars version -->
 		<junit.version>4.12</junit.version>
 		<framework.version>0.0.1_BETA</framework.version>
-		<scala.version>2.12.6</scala.version>
 
 		<!-- plugins version -->
 		<maven-jar-plugin.version>2.4</maven-jar-plugin.version>
@@ -55,7 +54,6 @@
 		<versions-maven-plugin.version>2.2</versions-maven-plugin.version>
 		<build-helper-maven-plugin.version>3.0.0</build-helper-maven-plugin.version>
 		<maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
-		<scala-maven-plugin.version>3.2.0</scala-maven-plugin.version>
 	</properties>
 
 	<profiles>
@@ -140,7 +138,6 @@
 						</goals>
 						<configuration>
 							<sources>
-								<source>src/main/scala</source>
 								<source>src/main/java</source>
 							</sources>
 						</configuration>
@@ -182,38 +179,6 @@
 		<!-- plugins management -->
 		<pluginManagement>
 			<plugins>
-				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
-				<plugin>
-					<groupId>org.eclipse.m2e</groupId>
-					<artifactId>lifecycle-mapping</artifactId>
-					<version>1.0.0</version>
-					<configuration>
-						<lifecycleMappingMetadata>
-							<pluginExecutions>
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>
-											net.alchim31.maven
-										</groupId>
-										<artifactId>
-											scala-maven-plugin
-										</artifactId>
-										<versionRange>
-											[3.2.0,)
-										</versionRange>
-										<goals>
-											<goal>compile</goal>
-											<goal>testCompile</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<ignore></ignore>
-									</action>
-								</pluginExecution>
-							</pluginExecutions>
-						</lifecycleMappingMetadata>
-					</configuration>
-				</plugin>
 				<!--jar plugin -->
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
@@ -224,6 +189,8 @@
 							<addMavenDescriptor>true</addMavenDescriptor>
 							<manifest>
 								<addClasspath>true</addClasspath>
+								<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+								<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
 								<!--<mainClass>由子模块填写</mainClass>-->
 							</manifest>
 						</archive>
@@ -251,33 +218,6 @@
 							</goals>
 						</execution>
 					</executions>
-				</plugin>
-				<!-- scala -->
-				<plugin>
-					<groupId>net.alchim31.maven</groupId>
-					<artifactId>scala-maven-plugin</artifactId>
-					<version>${scala-maven-plugin.version}</version>
-					<executions>
-						<execution>
-							<id>compile-scala</id>
-							<phase>compile</phase>
-							<goals>
-								<goal>add-source</goal>
-								<goal>compile</goal>
-							</goals>
-						</execution>
-						<execution>
-							<id>test-compile-scala</id>
-							<phase>test-compile</phase>
-							<goals>
-								<goal>add-source</goal>
-								<goal>testCompile</goal>
-							</goals>
-						</execution>
-					</executions>
-					<configuration>
-						<scalaVersion>${scala.version}</scalaVersion>
-					</configuration>
 				</plugin>
 			</plugins>
 		</pluginManagement>

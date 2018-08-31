@@ -48,7 +48,7 @@ abstract class SpringContainerLauncher extends AbstractLauncher implements Comma
             if (null != process) {
                 process.after();
             }
-            logger.info(String.format("jar version: '%s', environment:'%s'", Version.getVersion(), CurrentEnvironment.instance().getEnvironment().getEnvironment()));
+            logger.info(String.format("framework jar version: '%s', environment:'%s'", Version.getFrameworkVersion(), CurrentEnvironment.instance().getEnvironment().getEnvironment()));
             CountDownLatch closeLatch = ctx.getBean(CountDownLatch.class);
             closeLatch.await();
         } catch (Exception e) {
