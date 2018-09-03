@@ -2,6 +2,7 @@ package com.sic777.restful.springboot.filters;
 
 
 import com.sic777.restful.base.constants.HttpConstants;
+import com.sic777.utils.proguard.NoProguard;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
@@ -11,6 +12,7 @@ import java.io.IOException;
 
 
 @WebFilter(urlPatterns = "/*")
+@NoProguard
 public class RequestMethodFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {

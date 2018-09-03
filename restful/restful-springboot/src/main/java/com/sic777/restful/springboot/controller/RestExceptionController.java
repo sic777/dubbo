@@ -2,6 +2,7 @@ package com.sic777.restful.springboot.controller;
 
 import com.sic777.restful.base.response.HttpStatus;
 import com.sic777.restful.base.response.ResponseManager;
+import com.sic777.utils.proguard.NoProguard;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.web.ErrorAttributes;
 import org.springframework.boot.autoconfigure.web.ErrorController;
@@ -23,6 +24,7 @@ import static com.sic777.common.exception.ExceptionType.NotFoundExceptionType.*;
  * @since 2018-04-11
  */
 @RestController
+@NoProguard
 public class RestExceptionController extends RestfulController implements ErrorController {
     private static final String PATH = "/error";
 
