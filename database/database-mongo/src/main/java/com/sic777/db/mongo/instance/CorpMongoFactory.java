@@ -2,6 +2,7 @@ package com.sic777.db.mongo.instance;
 
 
 import com.sic777.db.mongo.config.MongoDataBase;
+import com.sic777.utils.proguard.NoProguard;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -14,6 +15,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * @version v1.0
  * @since 2017-12-26 14:56
  */
+@NoProguard
 public class CorpMongoFactory {
     /**
      * 数据库名与mongo映射
@@ -22,7 +24,7 @@ public class CorpMongoFactory {
 
     public static CorpMongo instance(String corpId) {
         if (null == corpId || corpId.trim().length() == 0) {
-            throw new UnsupportedOperationException();
+            throw new UnsupportedOperationException("unknown corpId");
         }
         String dbName = String.format(MongoDataBase.CORP_DB_NAME, corpId);
 

@@ -4,6 +4,7 @@ import com.sic777.dubbo.common.config.SuperDubboApplicationConfig;
 import com.sic777.dubbo.common.config.build.DubboApplicationConfigManager;
 import com.sic777.dubbo.common.constants.DubboConstant;
 import com.alibaba.dubbo.config.ApplicationConfig;
+import com.sic777.utils.proguard.NoProguard;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,6 +18,7 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 @ConfigurationProperties(prefix = DubboConstant.APPLICATION_CONFIG_PREFIX)
+@NoProguard
 public class SpringBootDubboApplicationConfig extends SuperDubboApplicationConfig {
 
     @Bean

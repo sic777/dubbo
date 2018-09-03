@@ -1,5 +1,7 @@
 package com.sic777.utils.system;
 
+import com.sic777.utils.proguard.NoProguard;
+
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
@@ -9,6 +11,7 @@ import java.net.UnknownHostException;
  * @author sic777
  * @since 0.0.1
  */
+@NoProguard
 public class HostUtil {
     private HostUtil() {
     }

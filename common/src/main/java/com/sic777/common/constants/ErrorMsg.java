@@ -1,11 +1,14 @@
 package com.sic777.common.constants;
 
+import com.sic777.utils.proguard.NoProguard;
+
 /**
  * <p>错误信息常量
  *
  * @author sic777
  * @since 0.0.1
  */
+@NoProguard
 public final class ErrorMsg {
     private ErrorMsg() {
     }

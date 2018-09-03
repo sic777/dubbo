@@ -2,6 +2,7 @@ package com.sic777.utils.bean;
 
 
 import com.sic777.utils.bean.convert.DateConvert;
+import com.sic777.utils.proguard.NoProguard;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.beanutils.ConvertUtils;
 
@@ -15,6 +16,7 @@ import java.util.Date;
  * @author sic777
  * @since 0.0.1
  */
+@NoProguard
 public class BeanUtilsExtend extends BeanUtils {
     static {
         ConvertUtils.register(new DateConvert(), Date.class);

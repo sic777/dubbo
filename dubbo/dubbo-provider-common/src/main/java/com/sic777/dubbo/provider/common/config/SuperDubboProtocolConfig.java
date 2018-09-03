@@ -1,5 +1,7 @@
 package com.sic777.dubbo.provider.common.config;
 
+import com.sic777.utils.proguard.NoProguard;
+
 import java.util.List;
 
 /**
@@ -9,6 +11,7 @@ import java.util.List;
  * @version v1.0
  * @since 2018-04-24
  */
+@NoProguard
 public abstract class SuperDubboProtocolConfig {
     /**
      * 协议BeanId，可以在<dubbo:service protocol="">中引用此ID，如果ID不填，缺省和name属性值一样，重复则在name后加序号。

@@ -1,11 +1,14 @@
 package com.sic777.utils.container.tuple;
 
+import com.sic777.utils.proguard.NoProguard;
+
 /**
  * <p>
  *
  * @author sic777
  * @since 0.0.1
  */
+@NoProguard
 public class Tuple {
     public static <A, B> TwoTuple<A, B> tuple(A a, B b) {
         return new TwoTuple<>(a, b);

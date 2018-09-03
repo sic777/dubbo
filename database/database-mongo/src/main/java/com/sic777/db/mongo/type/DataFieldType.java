@@ -1,5 +1,7 @@
 package com.sic777.db.mongo.type;
 
+import com.sic777.utils.proguard.NoProguard;
+
 /**
  * <p></p>
  *
@@ -7,6 +9,7 @@ package com.sic777.db.mongo.type;
  * @version v1.0
  * @since 2018-08-15
  */
+@NoProguard
 public enum DataFieldType {
 
     Unkown("unkown"),

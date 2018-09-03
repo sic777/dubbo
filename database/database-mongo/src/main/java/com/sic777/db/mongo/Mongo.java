@@ -20,6 +20,7 @@ import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.FindOneAndUpdateOptions;
 import com.mongodb.client.model.UpdateOptions;
+import com.sic777.utils.proguard.NoProguard;
 import org.bson.Document;
 import org.bson.conversions.Bson;
 import org.slf4j.LoggerFactory;
@@ -31,6 +32,7 @@ import static com.sic777.common.exception.ExceptionType.ParamExceptionType.*;
 /**
  * Created by Zhengzhenxie on 2017/9/12.
  */
+@NoProguard
 public abstract class Mongo {
     private static final org.slf4j.Logger logger = LoggerFactory.getLogger(Mongo.class);
     private MongoDatabase mongoDatabase;

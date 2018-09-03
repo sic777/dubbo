@@ -2,6 +2,7 @@ package com.sic777.utils.generator;
 
 import com.sic777.utils.encrypt.base64.Base64Utils;
 import com.sic777.utils.encrypt.sha1.SHA1Tool;
+import com.sic777.utils.proguard.NoProguard;
 
 import java.security.NoSuchAlgorithmException;
 
@@ -11,6 +12,7 @@ import java.security.NoSuchAlgorithmException;
  * @author sic777
  * @since 0.0.1
  */
+@NoProguard
 public class AccessTokenGenerator {
     /**
      * 密钥

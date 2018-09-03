@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.sic777.framework</groupId>
 	<artifactId>base-framework</artifactId>
-	<version>0.0.1_RC</version>
+	<version>0.0.2_BETA</version>
 	<packaging>pom</packaging>
 	<name>${project.artifactId}</name>
 
@@ -36,7 +36,7 @@
 		<profile>
 			<id>beta</id>
 			<properties>
-				<profiles.nextVersion>0.0.2</profiles.nextVersion>
+				<profiles.nextVersion>0.0.3</profiles.nextVersion>
 				<profiles.suffix>_BETA</profiles.suffix>
 			</properties>
 			<activation>
@@ -46,7 +46,7 @@
 		<profile>
 			<id>release</id>
 			<properties>
-				<profiles.nextVersion>0.0.1</profiles.nextVersion>
+				<profiles.nextVersion>0.0.2</profiles.nextVersion>
 				<profiles.suffix>_RC</profiles.suffix>
 			</properties>
 		</profile>
@@ -74,6 +74,7 @@
 		<slf4j.version>1.7.25</slf4j.version>
 		<log4j.version>2.7</log4j.version>
 		<netty.version>4.1.1.Final</netty.version>
+		<proguard.version>5.3.3</proguard.version>
 
 		<!-- plugins version -->
 		<maven-jar-plugin.version>2.4</maven-jar-plugin.version>
@@ -85,6 +86,7 @@
 		<maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
 		<maven-source-plugin.version>3.0.1</maven-source-plugin.version>
 		<maven-javadoc-plugin.version>2.10.4</maven-javadoc-plugin.version>
+		<proguard-maven-plugin.version>2.0.8</proguard-maven-plugin.version>
 	</properties>
 
 
@@ -311,6 +313,39 @@
 	</dependencies>
 
 	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>com.github.wvengen</groupId>
+					<artifactId>proguard-maven-plugin</artifactId>
+					<version>${proguard-maven-plugin.version}</version>
+					<executions>
+						<execution>
+							<phase>package</phase>
+							<goals>
+								<goal>proguard</goal>
+							</goals>
+						</execution>
+					</executions>
+					<configuration>
+						<proguardVersion>${proguard.version}</proguardVersion>
+						<obfuscate>true</obfuscate>
+						<libs>
+							<lib>${java.home}/lib/rt.jar</lib>
+							<lib>${java.home}/lib/jce.jar</lib>
+						</libs>
+					</configuration>
+					<dependencies>
+						<dependency>
+							<groupId>net.sf.proguard</groupId>
+							<artifactId>proguard-base</artifactId>
+							<version>${proguard.version}</version>
+							<scope>runtime</scope>
+						</dependency>
+					</dependencies>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 		<!-- default plugins -->
 		<plugins>
 			<!-- compiler -->
@@ -416,39 +451,39 @@
 				</configuration>
 			</plugin>
 			<!-- javadoc -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>${maven-javadoc-plugin.version}</version>
-				<configuration>
-					<encoding>${project.build.sourceEncoding}</encoding>
-					<aggregate>true</aggregate>
-					<charset>${project.build.sourceEncoding}</charset>
-					<docencoding>${project.build.sourceEncoding}</docencoding>
-				</configuration>
-				<executions>
-					<execution>
-						<id>attach-javadocs</id>
-						<goals>
-							<goal>jar</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
+			<!--<plugin>-->
+				<!--<groupId>org.apache.maven.plugins</groupId>-->
+				<!--<artifactId>maven-javadoc-plugin</artifactId>-->
+				<!--<version>${maven-javadoc-plugin.version}</version>-->
+				<!--<configuration>-->
+					<!--<encoding>${project.build.sourceEncoding}</encoding>-->
+					<!--<aggregate>true</aggregate>-->
+					<!--<charset>${project.build.sourceEncoding}</charset>-->
+					<!--<docencoding>${project.build.sourceEncoding}</docencoding>-->
+				<!--</configuration>-->
+				<!--<executions>-->
+					<!--<execution>-->
+						<!--<id>attach-javadocs</id>-->
+						<!--<goals>-->
+							<!--<goal>jar</goal>-->
+						<!--</goals>-->
+					<!--</execution>-->
+				<!--</executions>-->
+			<!--</plugin>-->
 			<!-- source -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-source-plugin</artifactId>
-				<version>${maven-source-plugin.version}</version>
-				<executions>
-					<execution>
-						<id>attach-sources</id>
-						<goals>
-							<goal>jar</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
+			<!--<plugin>-->
+				<!--<groupId>org.apache.maven.plugins</groupId>-->
+				<!--<artifactId>maven-source-plugin</artifactId>-->
+				<!--<version>${maven-source-plugin.version}</version>-->
+				<!--<executions>-->
+					<!--<execution>-->
+						<!--<id>attach-sources</id>-->
+						<!--<goals>-->
+							<!--<goal>jar</goal>-->
+						<!--</goals>-->
+					<!--</execution>-->
+				<!--</executions>-->
+			<!--</plugin>-->
 		</plugins>
 		<!-- ssh -->
 		<extensions>

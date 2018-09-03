@@ -5,6 +5,7 @@ import com.alibaba.dubbo.rpc.RpcException;
 import com.alibaba.dubbo.rpc.cluster.Cluster;
 import com.alibaba.dubbo.rpc.cluster.Directory;
 import com.alibaba.dubbo.rpc.cluster.support.wrapper.MockClusterWrapper;
+import com.sic777.utils.proguard.NoProguard;
 
 /**
  * <p></p>
@@ -13,6 +14,7 @@ import com.alibaba.dubbo.rpc.cluster.support.wrapper.MockClusterWrapper;
  * @version v1.0
  * @since 2018-06-01
  */
+@NoProguard
 public class MockClusterWrapperExtend extends MockClusterWrapper {
     private final Cluster cluster;
 

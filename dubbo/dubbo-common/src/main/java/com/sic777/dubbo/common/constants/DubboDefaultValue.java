@@ -1,6 +1,7 @@
 package com.sic777.dubbo.common.constants;
 
 import com.sic777.dubbo.common.enums.*;
+import com.sic777.utils.proguard.NoProguard;
 
 /**
  * <p>Dubbo默认值常量</p>
@@ -9,6 +10,7 @@ import com.sic777.dubbo.common.enums.*;
  * @version v1.0
  * @since 2018-05-02
  */
+@NoProguard
 public class DubboDefaultValue {
     /**
      * 默认编码

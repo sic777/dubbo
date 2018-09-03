@@ -1,5 +1,6 @@
 package com.sic777.db.mongo.data;
 
+import com.sic777.utils.proguard.NoProguard;
 import org.bson.conversions.Bson;
 
 import java.util.Set;
@@ -11,6 +12,7 @@ import java.util.Set;
  * @version v1.0
  * @since 2018-08-15
  */
+@NoProguard
 public class MongoSearchQuery {
     private final int offset;
     private final int limit;

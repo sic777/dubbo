@@ -3,8 +3,10 @@ package com.sic777.db.mongo.services;
 import com.sic777.db.mongo.config.MongoCollectionName;
 import com.sic777.db.mongo.instance.Sic777Mongo;
 import com.mongodb.client.MongoDatabase;
+import com.sic777.utils.proguard.NoProguard;
 import org.bson.Document;
 
+@NoProguard
 public class MIdIndexService {
 
     private static final MIdIndexService singleton = new MIdIndexService();

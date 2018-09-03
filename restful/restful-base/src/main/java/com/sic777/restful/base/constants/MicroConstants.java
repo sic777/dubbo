@@ -1,5 +1,7 @@
 package com.sic777.restful.base.constants;
 
+import com.sic777.utils.proguard.NoProguard;
+
 /**
  * <p>常量</p>
  *
@@ -7,6 +9,7 @@ package com.sic777.restful.base.constants;
  * @version v1.0
  * @since 2018-04-11
  */
+@NoProguard
 public class MicroConstants {
     /**
      * 默认id key

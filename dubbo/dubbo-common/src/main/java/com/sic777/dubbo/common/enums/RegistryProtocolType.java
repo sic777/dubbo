@@ -1,5 +1,7 @@
 package com.sic777.dubbo.common.enums;
 
+import com.sic777.utils.proguard.NoProguard;
+
 /**
  * <p>注册中心协议类型枚举</p>
  *
@@ -7,6 +9,7 @@ package com.sic777.dubbo.common.enums;
  * @version v1.0
  * @since 2018-04-24
  */
+@NoProguard
 public enum RegistryProtocolType {
     UNKNOWN("unknown"),
     ZOOKEEPER("zookeeper"),

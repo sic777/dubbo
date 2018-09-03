@@ -1,5 +1,7 @@
 package com.sic777.restful.base.response;
 
+import com.sic777.utils.proguard.NoProguard;
+
 /**
  * <p></p>
  *
@@ -7,6 +9,7 @@ package com.sic777.restful.base.response;
  * @version v1.0
  * @since 2018-07-03
  */
+@NoProguard
 public enum ResponseBodyType {
     /**
      * 返回的数据格式:

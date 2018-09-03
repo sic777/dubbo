@@ -3,6 +3,7 @@ package com.sic777.utils.http;
 import java.util.Map;
 
 import com.sic777.utils.container.ContainerGetter;
+import com.sic777.utils.proguard.NoProguard;
 
 
 /**
@@ -11,6 +12,7 @@ import com.sic777.utils.container.ContainerGetter;
  * @author sic777
  * @since 0.0.1
  */
+@NoProguard
 public class HttpResponse {
     /**
      * HTTP状态码

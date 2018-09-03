@@ -1,5 +1,7 @@
 package com.sic777.utils;
 
+import com.sic777.utils.proguard.NoProguard;
+
 import java.net.URLDecoder;
 
 /**
@@ -8,6 +10,7 @@ import java.net.URLDecoder;
  * @author sic777
  * @since 0.0.1
  */
+@NoProguard
 public class StringUtil {
     private StringUtil() {
     }

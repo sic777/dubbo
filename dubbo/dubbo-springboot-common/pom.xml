@@ -5,7 +5,7 @@
     <parent>
         <artifactId>dubbo</artifactId>
         <groupId>com.sic777.framework</groupId>
-	    <version>0.0.1_RC</version>
+	    <version>0.0.2_BETA</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -45,4 +45,15 @@
             <artifactId>spring-expression</artifactId>
         </dependency>
     </dependencies>
+	<!--<build>-->
+		<!--<plugins>-->
+			<!--<plugin>-->
+				<!--<groupId>com.github.wvengen</groupId>-->
+				<!--<artifactId>proguard-maven-plugin</artifactId>-->
+				<!--<configuration>-->
+					<!--<proguardInclude>../../proguard.conf</proguardInclude>-->
+				<!--</configuration>-->
+			<!--</plugin>-->
+		<!--</plugins>-->
+	<!--</build>-->
 </project>

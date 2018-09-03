@@ -9,6 +9,8 @@ import com.sic777.restful.base.permission.RestPermission;
 import com.sic777.utils.container.tuple.Tuple;
 import com.sic777.utils.container.tuple.TwoTuple;
 import com.sic777.utils.permission.PermissionUtil;
+import com.sic777.utils.proguard.NoProguard;
+
 import static com.sic777.common.exception.ExceptionType.AuthenticationExceptionType.*;
 
 /**
@@ -18,6 +20,7 @@ import static com.sic777.common.exception.ExceptionType.AuthenticationExceptionT
  * @version v1.0
  * @since 2018-06-05
  */
+@NoProguard
 public abstract class SuperAuthInterceptor {
 
     /**

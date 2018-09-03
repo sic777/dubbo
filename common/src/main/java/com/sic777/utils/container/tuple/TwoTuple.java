@@ -1,11 +1,14 @@
 package com.sic777.utils.container.tuple;
 
+import com.sic777.utils.proguard.NoProguard;
+
 /**
  * <p>
  *
  * @author sic777
  * @since 0.0.1
  */
+@NoProguard
 public class TwoTuple<A, B> implements java.io.Serializable {
     /**
      *

@@ -6,6 +6,7 @@ import com.sic777.dubbo.provider.common.config.build.DubboProviderConfigManager;
 import com.sic777.dubbo.springboot.common.config.SpringBootDubboApplicationConfig;
 import com.sic777.dubbo.springboot.common.config.SpringBootDubboRegistryConfig;
 import com.alibaba.dubbo.config.ProviderConfig;
+import com.sic777.utils.proguard.NoProguard;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -21,6 +22,7 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 @ConfigurationProperties(prefix = DubboConstant.PROVIDER_CONFIG_PREFIX)
+@NoProguard
 public class SpringBootDubboProviderConfig extends SuperDubboProviderConfig {
 
     @Autowired

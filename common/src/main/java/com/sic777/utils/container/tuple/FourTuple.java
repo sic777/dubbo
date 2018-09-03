@@ -1,11 +1,14 @@
 package com.sic777.utils.container.tuple;
 
+import com.sic777.utils.proguard.NoProguard;
+
 /**
  * <p>
  *
  * @author sic777
  * @since 0.0.1
  */
+@NoProguard
 public class FourTuple<A, B, C, D> extends ThreeTuple<A, B, C> {
     /**
      *

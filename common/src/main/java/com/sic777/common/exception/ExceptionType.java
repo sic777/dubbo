@@ -3,6 +3,7 @@ package com.sic777.common.exception;
 import com.sic777.common.constants.BaseConstant;
 import com.sic777.common.constants.ErrorMsg;
 import com.sic777.utils.StringUtil;
+import com.sic777.utils.proguard.NoProguard;
 
 /**
  * <p></p>
@@ -11,6 +12,7 @@ import com.sic777.utils.StringUtil;
  * @version v1.0
  * @since 2018-07-03
  */
+@NoProguard
 public enum ExceptionType {
     EXCEPTION_200(200),
     EXCEPTION_400(400),
@@ -35,6 +37,7 @@ public enum ExceptionType {
      * @param code 错误码
      * @return
      */
+    @NoProguard
     public static ExceptionType parse(long code) {
         String codeStr = StringUtil.getString(code);
         if (codeStr.startsWith("1") || codeStr.startsWith("400")) {
@@ -58,6 +61,7 @@ public enum ExceptionType {
      * @author sic777
      * @since 0.0.1
      */
+    @NoProguard
     public enum ParamExceptionType {
         /**
          * 参数校验错误
@@ -101,6 +105,7 @@ public enum ExceptionType {
      * @author sic777
      * @since 0.0.1
      */
+    @NoProguard
     public enum AuthenticationExceptionType {
         /**
          * 禁止访问
@@ -135,6 +140,7 @@ public enum ExceptionType {
      * @author sic777
      * @since 0.0.1
      */
+    @NoProguard
     public enum NotFoundExceptionType {
         /**
          * URL未找到
@@ -170,6 +176,7 @@ public enum ExceptionType {
      * @author sic777
      * @since 0.0.1
      */
+    @NoProguard
     public enum NotAllowExceptionType {
         /**
          * 请求方法不支持
@@ -201,6 +208,7 @@ public enum ExceptionType {
      * @author sic777
      * @since 0.0.1
      */
+    @NoProguard
     public enum ServiceUnavailableExceptionType {
         /**
          * 服务不可用

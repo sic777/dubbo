@@ -1,6 +1,7 @@
 package com.sic777.db.redis.collection;
 
 import com.sic777.db.redis.Redis;
+import com.sic777.utils.proguard.NoProguard;
 import redis.clients.jedis.Jedis;
 
 import java.util.Set;
@@ -13,6 +14,7 @@ import java.util.Set;
  * @version v1.0
  * @since 2018-02-11 10:58
  */
+@NoProguard
 public class RedisSortSets {
 
     /**

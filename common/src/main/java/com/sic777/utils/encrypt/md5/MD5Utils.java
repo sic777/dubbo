@@ -1,6 +1,7 @@
 package com.sic777.utils.encrypt.md5;
 
 import com.sic777.utils.StringUtil;
+import com.sic777.utils.proguard.NoProguard;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -11,6 +12,7 @@ import java.security.NoSuchAlgorithmException;
  * @author sic777
  * @since 0.0.1
  */
+@NoProguard
 public class MD5Utils {
 
     /**

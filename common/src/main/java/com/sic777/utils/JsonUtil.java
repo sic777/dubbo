@@ -1,6 +1,7 @@
 package com.sic777.utils;
 
 import com.alibaba.fastjson.JSONObject;
+import com.sic777.utils.proguard.NoProguard;
 
 /**
  * <p>Json工具类
@@ -8,6 +9,7 @@ import com.alibaba.fastjson.JSONObject;
  * @author sic777
  * @since 0.0.1
  */
+@NoProguard
 public class JsonUtil {
     private JsonUtil() {
     }

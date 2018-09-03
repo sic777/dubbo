@@ -3,6 +3,7 @@ package com.sic777.restful.springboot.controller;
 import com.sic777.restful.base.constants.MicroConstants;
 import com.sic777.restful.base.controller.SuperRestfulController;
 import com.alibaba.fastjson.JSONObject;
+import com.sic777.utils.proguard.NoProguard;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
@@ -17,6 +18,7 @@ import java.io.PrintWriter;
  * @version v1.0
  * @since 2018-04-11
  */
+@NoProguard
 public abstract class RestfulController extends SuperRestfulController {
 
     @Override

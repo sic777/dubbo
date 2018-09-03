@@ -1,12 +1,15 @@
 package com.sic777.utils.ssl;
 
 
+import com.sic777.utils.proguard.NoProguard;
+
 /**
  * <p>证书类型
  *
  * @author sic777
  * @since 0.0.1
  */
+@NoProguard
 public enum KeyStoreType {
     /**
      * PKCS12

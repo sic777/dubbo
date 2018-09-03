@@ -1,12 +1,15 @@
 package com.sic777.utils.ssl;
 
 
+import com.sic777.utils.proguard.NoProguard;
+
 /**
  * <p>证书实体
  *
  * @author sic777
  * @since 0.0.1
  */
+@NoProguard
 public class KeyStore {
     /**
      * 证书文件

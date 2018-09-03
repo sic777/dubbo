@@ -2,6 +2,7 @@ package com.sic777.dubbo.provider.common.spi.extend.filter;
 
 import com.sic777.dubbo.bean.RpcResponse;
 import com.sic777.dubbo.bean.exception.RpcExceptionType;
+import com.sic777.utils.proguard.NoProguard;
 import com.sic777.utils.system.Version;
 import com.alibaba.dubbo.rpc.*;
 import com.alibaba.dubbo.rpc.service.GenericService;
@@ -16,6 +17,7 @@ import org.slf4j.LoggerFactory;
  * @version v1.0
  * @since 2018-05-29
  */
+@NoProguard
 public class ProviderExceptionFilterExtend implements Filter {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 

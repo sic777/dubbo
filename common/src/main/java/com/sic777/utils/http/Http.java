@@ -1,5 +1,6 @@
 package com.sic777.utils.http;
 
+import com.sic777.utils.proguard.NoProguard;
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.StatusLine;
@@ -21,6 +22,7 @@ import java.util.Map;
  * @author sic777
  * @since 0.0.1
  */
+@NoProguard
 public class Http {
     private Http() {
     }

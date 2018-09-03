@@ -1,5 +1,7 @@
 package com.sic777.dubbo.bean.exception;
 
+import com.sic777.utils.proguard.NoProguard;
+
 /**
  * <p>rpc异常类型</p>
  *
@@ -7,6 +9,7 @@ package com.sic777.dubbo.bean.exception;
  * @version v1.0
  * @since 2018-06-05
  */
+@NoProguard
 public enum RpcExceptionType {
     /**
      * 未知错误

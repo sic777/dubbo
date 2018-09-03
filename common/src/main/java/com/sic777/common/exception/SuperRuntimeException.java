@@ -1,11 +1,14 @@
 package com.sic777.common.exception;
 
+import com.sic777.utils.proguard.NoProguard;
+
 /**
  * <p>运行时异基类
  *
  * @author sic777
  * @since 0.0.1
  */
+@NoProguard
 public abstract class SuperRuntimeException extends RuntimeException {
     /**
      *

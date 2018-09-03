@@ -2,6 +2,7 @@ package com.sic777.restful.base.response;
 
 
 import com.sic777.common.exception.SuperRuntimeException;
+import com.sic777.utils.proguard.NoProguard;
 
 /**
  * <p></p>
@@ -11,6 +12,7 @@ import com.sic777.common.exception.SuperRuntimeException;
  * @version v1.0
  * @since 1.7
  */
+@NoProguard
 public abstract class AbstractRestException extends SuperRuntimeException {
     /**
      *

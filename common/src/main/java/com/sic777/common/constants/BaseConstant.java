@@ -1,11 +1,14 @@
 package com.sic777.common.constants;
 
+import com.sic777.utils.proguard.NoProguard;
+
 /**
  * <p>基础常量
  *
  * @author sic777
  * @since 0.0.1
  */
+@NoProguard
 public class BaseConstant {
     private BaseConstant() {
     }

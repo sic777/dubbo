@@ -1,5 +1,7 @@
 package com.sic777.restful.base.permission;
 
+import com.sic777.utils.proguard.NoProguard;
+
 import java.lang.annotation.*;
 
 /**
@@ -13,6 +15,7 @@ import java.lang.annotation.*;
 @Retention(value = RetentionPolicy.RUNTIME)
 @Documented
 @Inherited
+@NoProguard
 public @interface Permission {
 
     int[] value() default RestPermission.ANYBODY;

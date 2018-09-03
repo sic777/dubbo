@@ -2,6 +2,7 @@ package com.sic777.dubbo.bean.exception;
 
 
 import com.sic777.common.exception.SuperRuntimeException;
+import com.sic777.utils.proguard.NoProguard;
 
 /**
  * <p>dubbo rpc异常</p>
@@ -10,9 +11,10 @@ import com.sic777.common.exception.SuperRuntimeException;
  * @version v1.0
  * @since 2018-06-05
  */
+@NoProguard
 public class RpcException extends SuperRuntimeException {
     /**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = -8080433427358664852L;
 	/**

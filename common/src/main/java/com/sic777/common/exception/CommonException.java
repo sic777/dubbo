@@ -1,12 +1,15 @@
 package com.sic777.common.exception;
 
 
+import com.sic777.utils.proguard.NoProguard;
+
 /**
  * <p>通用异常
  *
  * @author sic777
  * @since 0.0.1
  */
+@NoProguard
 public class CommonException extends SuperRuntimeException {
     /**
      *

@@ -1,5 +1,7 @@
 package com.sic777.dubbo.provider.common.config;
 
+import com.sic777.utils.proguard.NoProguard;
+
 /**
  * <p>服务提供者缺省配置</p>
  *
@@ -7,6 +9,7 @@ package com.sic777.dubbo.provider.common.config;
  * @version v1.0
  * @since 2018-04-24
  */
+@NoProguard
 public abstract class SuperDubboProviderConfig {
 
     /**

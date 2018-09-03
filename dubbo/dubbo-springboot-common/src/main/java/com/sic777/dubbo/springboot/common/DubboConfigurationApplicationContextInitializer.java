@@ -1,6 +1,7 @@
 package com.sic777.dubbo.springboot.common;
 
 import com.alibaba.dubbo.config.spring.AnnotationBean;
+import com.sic777.utils.proguard.NoProguard;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
@@ -18,6 +19,7 @@ import org.springframework.core.env.Environment;
 
 
 @SuppressWarnings("deprecation")
+@NoProguard
 public class DubboConfigurationApplicationContextInitializer implements ApplicationContextInitializer<ConfigurableApplicationContext> {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 

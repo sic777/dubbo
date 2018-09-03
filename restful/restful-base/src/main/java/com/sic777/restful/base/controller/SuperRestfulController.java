@@ -4,6 +4,7 @@ import com.sic777.common.constants.BaseConstant;
 import com.sic777.restful.base.constants.MicroConstants;
 import com.sic777.restful.base.permission.RestPermission;
 import com.alibaba.fastjson.JSONObject;
+import com.sic777.utils.proguard.NoProguard;
 
 /**
  * <p></p>
@@ -12,6 +13,7 @@ import com.alibaba.fastjson.JSONObject;
  * @version v1.0
  * @since 2018-06-05
  */
+@NoProguard
 public abstract class SuperRestfulController implements RestPermission {
     /**
      * 获取当前accessToken对应的权限

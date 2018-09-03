@@ -8,6 +8,7 @@ import com.sic777.dubbo.common.enums.RegistryTransportType;
 import com.sic777.dubbo.provider.common.config.SuperDubboProtocolConfig;
 import com.sic777.utils.StringUtil;
 import com.alibaba.dubbo.config.ProtocolConfig;
+import com.sic777.utils.proguard.NoProguard;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -23,6 +24,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
  * @version v1.0
  * @since 2018-06-05
  */
+@NoProguard
 public class DubboProtocolConfigManager {
     private static DubboProtocolConfigManager singleton = new DubboProtocolConfigManager();
 

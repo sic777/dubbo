@@ -1,5 +1,7 @@
 package com.sic777.utils;
 
+import com.sic777.utils.proguard.NoProguard;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -10,6 +12,7 @@ import java.util.Date;
  * @author sic777
  * @since 0.0.1
  */
+@NoProguard
 public class DateFormatTools {
 
     private DateFormatTools() {

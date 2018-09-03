@@ -3,6 +3,7 @@ package com.sic777.dubbo.common.spi.extend.logger;
 import com.alibaba.dubbo.common.logger.Level;
 import com.alibaba.dubbo.common.logger.Logger;
 import com.alibaba.dubbo.common.logger.LoggerAdapter;
+import com.sic777.utils.proguard.NoProguard;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.Appender;
 import org.apache.logging.log4j.core.LoggerContext;
@@ -21,6 +22,7 @@ import java.util.Map;
  * @version v1.0
  * @since 2018-06-04
  */
+@NoProguard
 public class Log4j2LoggerAdapter implements LoggerAdapter {
 
     public Log4j2LoggerAdapter() {

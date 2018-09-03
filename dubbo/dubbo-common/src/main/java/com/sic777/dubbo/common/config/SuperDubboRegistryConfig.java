@@ -1,5 +1,7 @@
 package com.sic777.dubbo.common.config;
 
+import com.sic777.utils.proguard.NoProguard;
+
 import java.util.List;
 
 /**
@@ -9,6 +11,7 @@ import java.util.List;
  * @version v1.0
  * @since 2018-04-24
  */
+@NoProguard
 public abstract class SuperDubboRegistryConfig {
     /**
      * 注册中心引用BeanId，可以在<dubbo:service registry="">或<dubbo:reference registry="">中引用此ID

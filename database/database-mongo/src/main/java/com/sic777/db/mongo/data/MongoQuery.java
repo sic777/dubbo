@@ -6,6 +6,7 @@ import java.util.List;
 import com.sic777.db.mongo.type.DataFieldType;
 import com.sic777.utils.DateFormatTools;
 import com.sic777.utils.container.ContainerGetter;
+import com.sic777.utils.proguard.NoProguard;
 import org.bson.Document;
 import org.bson.conversions.Bson;
 
@@ -20,7 +21,7 @@ import com.mongodb.client.model.Filters;
  * @version v1.0
  * @since 2018-08-15
  */
-
+@NoProguard
 public class MongoQuery {
 
     public static enum FieldType {

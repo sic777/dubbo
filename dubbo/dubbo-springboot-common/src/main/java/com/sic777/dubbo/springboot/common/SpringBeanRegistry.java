@@ -1,5 +1,6 @@
 package com.sic777.dubbo.springboot.common;
 
+import com.sic777.utils.proguard.NoProguard;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Component;
  * @since 2018-04-25
  */
 @Component
+@NoProguard
 public class SpringBeanRegistry {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
     @Autowired

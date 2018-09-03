@@ -1,6 +1,7 @@
 package com.sic777.utils.encrypt.sha1;
 
 import com.sic777.utils.StringUtil;
+import com.sic777.utils.proguard.NoProguard;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -11,6 +12,7 @@ import java.security.NoSuchAlgorithmException;
  * @author sic777
  * @since 0.0.1
  */
+@NoProguard
 public class SHA1Tool {
     private SHA1Tool() {
     }

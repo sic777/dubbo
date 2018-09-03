@@ -3,6 +3,7 @@ package com.sic777.common.system;
 import com.sic777.common.constants.BaseConstant;
 import com.sic777.common.constants.enums.Environment;
 import com.sic777.common.laucher.AbstractLauncher;
+import com.sic777.utils.proguard.NoProguard;
 import com.sic777.utils.system.SystemUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,6 +17,7 @@ import java.util.List;
  * @author sic777
  * @since 0.0.1
  */
+@NoProguard
 public final class CurrentEnvironment {
     private static CurrentEnvironment singleton = new CurrentEnvironment();
 

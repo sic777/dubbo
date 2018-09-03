@@ -1,6 +1,7 @@
 package com.sic777.db.mongo.data;
 
 import com.sic777.db.mongo.type.MongoLogicalType;
+import com.sic777.utils.proguard.NoProguard;
 import org.bson.conversions.Bson;
 
 import java.util.Map;
@@ -13,6 +14,7 @@ import java.util.Set;
  * @version v1.0
  * @since 2018-08-15
  */
+@NoProguard
 public class MongoAggregateSearchQuery {
 
     private final int offset;

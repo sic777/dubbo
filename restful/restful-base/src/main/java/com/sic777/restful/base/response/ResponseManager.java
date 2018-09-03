@@ -6,6 +6,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.sic777.restful.base.constants.MicroConstants;
 import com.sic777.utils.StringUtil;
+import com.sic777.utils.proguard.NoProguard;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.sic777.common.exception.ExceptionType;
@@ -22,6 +23,7 @@ import static com.sic777.common.exception.ExceptionType.NotFoundExceptionType.*;
  * @version v1.0
  * @since 2018-07-03
  */
+@NoProguard
 public class ResponseManager {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
     private static ResponseManager singleton = new ResponseManager();

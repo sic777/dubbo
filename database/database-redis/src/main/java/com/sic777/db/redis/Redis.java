@@ -2,6 +2,7 @@ package com.sic777.db.redis;
 
 
 import com.sic777.db.redis.collection.*;
+import com.sic777.utils.proguard.NoProguard;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import redis.clients.jedis.Jedis;
@@ -19,6 +20,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
  * @version v1.0
  * @since 2017-09-29 09:11
  */
+@NoProguard
 public final class Redis {
     private static Redis singleton = new Redis();
 

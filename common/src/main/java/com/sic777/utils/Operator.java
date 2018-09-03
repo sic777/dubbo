@@ -1,12 +1,15 @@
 package com.sic777.utils;
 
 
+import com.sic777.utils.proguard.NoProguard;
+
 /**
  * <p>运算符枚举
  *
  * @author sic777
  * @since 0.0.1
  */
+@NoProguard
 public enum Operator {
     /**
      * 大于

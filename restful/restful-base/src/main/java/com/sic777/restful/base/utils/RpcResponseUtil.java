@@ -5,6 +5,7 @@ import com.sic777.dubbo.bean.exception.RpcException;
 import com.sic777.dubbo.bean.exception.RpcExceptionType;
 import com.sic777.dubbo.bean.RpcResponse;
 import com.sic777.dubbo.bean.RpcResponseStatus;
+import com.sic777.utils.proguard.NoProguard;
 
 import static com.sic777.common.exception.ExceptionType.ParamExceptionType.*;
 import static com.sic777.common.exception.ExceptionType.AuthenticationExceptionType.*;
@@ -16,6 +17,7 @@ import static com.sic777.common.exception.ExceptionType.NotFoundExceptionType.*;
  * @version v1.0
  * @since 2018-06-05
  */
+@NoProguard
 public class RpcResponseUtil {
     /**
      * 检验rpc响应是否存在异常

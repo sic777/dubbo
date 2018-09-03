@@ -1,5 +1,7 @@
 package com.sic777.dubbo.common.config;
 
+import com.sic777.utils.proguard.NoProguard;
+
 /**
  * <p>应用信息配置</p>
  *
@@ -7,6 +9,7 @@ package com.sic777.dubbo.common.config;
  * @version v1.0
  * @since 2018-04-24
  */
+@NoProguard
 public abstract class SuperDubboApplicationConfig {
     /**
      * <p>

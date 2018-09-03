@@ -1,12 +1,15 @@
 package com.sic777.utils;
 
 
+import com.sic777.utils.proguard.NoProguard;
+
 /**
  * <p>数值工具类
  *
  * @author sic777
  * @since 0.0.1
  */
+@NoProguard
 public class ValueUtil {
     private ValueUtil() {
     }
