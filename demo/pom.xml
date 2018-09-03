@@ -44,7 +44,7 @@
 
 		<!-- jars version -->
 		<junit.version>4.12</junit.version>
-		<framework.version>0.0.2_BETA</framework.version>
+		<framework.version>1.0.0_beta</framework.version>
 
 		<!-- plugins version -->
 		<maven-jar-plugin.version>2.4</maven-jar-plugin.version>

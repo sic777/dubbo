@@ -5,7 +5,7 @@
     <parent>
         <artifactId>dubbo</artifactId>
         <groupId>com.sic777.framework</groupId>
-	    <version>0.0.1_BETA</version>
+	    <version>1.0.0_beta</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -23,15 +23,15 @@
             <version>${project.parent.version}</version>
         </dependency>
     </dependencies>
-	<!--<build>-->
-		<!--<plugins>-->
-			<!--<plugin>-->
-				<!--<groupId>com.github.wvengen</groupId>-->
-				<!--<artifactId>proguard-maven-plugin</artifactId>-->
-				<!--<configuration>-->
-					<!--<proguardInclude>../../proguard.conf</proguardInclude>-->
-				<!--</configuration>-->
-			<!--</plugin>-->
-		<!--</plugins>-->
-	<!--</build>-->
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>com.github.wvengen</groupId>
+				<artifactId>proguard-maven-plugin</artifactId>
+				<configuration>
+					<proguardInclude>../../proguard.conf</proguardInclude>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>

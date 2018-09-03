@@ -6,7 +6,6 @@ import com.sic777.dubbo.comsumer.common.config.build.DubboConsumerConfigManager;
 import com.sic777.dubbo.springboot.common.config.SpringBootDubboApplicationConfig;
 import com.sic777.dubbo.springboot.common.config.SpringBootDubboRegistryConfig;
 import com.alibaba.dubbo.config.ConsumerConfig;
-import com.sic777.utils.proguard.NoProguard;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -21,7 +20,6 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 @ConfigurationProperties(prefix = DubboConstant.CONSUMER_CONFIG_PREFIX)
-@NoProguard
 public class SpringBootDubboConsumerConfig extends SuperDubboConsumerConfig {
 
     @Autowired

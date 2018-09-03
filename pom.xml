@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.sic777.framework</groupId>
 	<artifactId>base-framework</artifactId>
-	<version>0.0.1_BETA</version>
+	<version>1.0.0_beta</version>
 	<packaging>pom</packaging>
 	<name>${project.artifactId}</name>
 
@@ -36,8 +36,8 @@
 		<profile>
 			<id>beta</id>
 			<properties>
-				<profiles.nextVersion>0.0.2</profiles.nextVersion>
-				<profiles.suffix>_BETA</profiles.suffix>
+				<profiles.nextVersion>1.0.0</profiles.nextVersion>
+				<profiles.suffix>_beta</profiles.suffix>
 			</properties>
 			<activation>
 				<activeByDefault>true</activeByDefault>
@@ -46,8 +46,8 @@
 		<profile>
 			<id>release</id>
 			<properties>
-				<profiles.nextVersion>0.0.2</profiles.nextVersion>
-				<profiles.suffix>_RC</profiles.suffix>
+				<profiles.nextVersion>1.0.0</profiles.nextVersion>
+				<profiles.suffix>_release</profiles.suffix>
 			</properties>
 		</profile>
 	</profiles>

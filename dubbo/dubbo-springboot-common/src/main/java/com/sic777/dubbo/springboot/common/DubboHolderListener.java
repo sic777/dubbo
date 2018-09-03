@@ -1,6 +1,5 @@
 package com.sic777.dubbo.springboot.common;
 
-import com.sic777.utils.proguard.NoProguard;
 import org.springframework.boot.context.event.ApplicationPreparedEvent;
 import org.springframework.context.ApplicationEvent;
 import org.springframework.context.ApplicationListener;
@@ -13,7 +12,6 @@ import org.springframework.context.event.ContextClosedEvent;
  * @version v1.0
  * @since 2018-06-04
  */
-@NoProguard
 public class DubboHolderListener<T extends ApplicationEvent> implements ApplicationListener<T> {
     private static Thread holdThread;
     private static Boolean running;
