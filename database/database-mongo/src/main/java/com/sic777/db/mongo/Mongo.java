@@ -82,7 +82,7 @@ public abstract class Mongo {
      * @param <T>
      * @return
      */
-    public <T> List<T> visibleFiled(Set<String> fields, List<T> lists, Class<T> clz) {
+    public static <T> List<T> visibleFiled(Set<String> fields, List<T> lists, Class<T> clz) {
         List<T> rs = new ArrayList<>();
         for (T t : lists) {
             rs.add(visibleFiled(fields, t, clz));
@@ -102,6 +102,9 @@ public abstract class Mongo {
     public static <T> T visibleFiled(Set<String> fields, T obj, Class<T> clz) {
         JSONObject rs = new JSONObject();
         JSONObject js = (JSONObject) JSON.toJSON(obj);
+        if (null == fields || fields.isEmpty()) {
+            return js.toJavaObject(clz);
+        }
         for (String field : fields) {
             rs.put(field, js.get(field));
         }
@@ -137,8 +140,6 @@ public abstract class Mongo {
                 }
                 filters.add((String) obj);
             }
-        } else {
-            filters.addAll(fieldMap.keySet());
         }
         List<Bson> querys = new ArrayList<>();
         JSONObject query = body.getJSONObject("query");
