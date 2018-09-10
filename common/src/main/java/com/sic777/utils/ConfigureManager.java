@@ -162,6 +162,30 @@ public class ConfigureManager {
         return null != rs ? rs : defaultValue;
     }
 
+
+    /**
+     * get long value
+     *
+     * @param key
+     * @return
+     */
+    public Long getLong(String key) {
+        String value = getString(key);
+        return null != value ? Long.parseLong(value) : null;
+    }
+
+    /**
+     * get long value
+     *
+     * @param key
+     * @param defaultValue
+     * @return
+     */
+    public long getLong(String key, long defaultValue) {
+        Long rs = getLong(key);
+        return null != rs ? rs : defaultValue;
+    }
+
     /**
      * get boolean value
      *

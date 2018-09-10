@@ -3,9 +3,11 @@ package com.sic777.restful.springboot.interceptor;
 
 import com.sic777.common.constants.BaseConstant;
 import com.sic777.restful.base.constants.MicroConstants;
+import com.sic777.restful.base.counter.RestfulCounterManager;
 import com.sic777.restful.base.interceptor.SuperAuthInterceptor;
 import com.sic777.restful.base.permission.Permission;
 import com.sic777.restful.base.spi.auth.IAuthSPI;
+import com.sic777.utils.StringUtil;
 import com.sic777.utils.container.tuple.TwoTuple;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,9 +36,7 @@ public class AuthInterceptor extends SuperAuthInterceptor implements HandlerInte
      * @param request
      * @param response
      * @param handler
-     *
      * @return
-     *
      * @throws Exception
      */
     @Override
@@ -54,6 +54,10 @@ public class AuthInterceptor extends SuperAuthInterceptor implements HandlerInte
             //将token缓存的数据和解析出来的权限携带给控制器
             tuple.first.put(MicroConstants.PERMISSION_FLAG, tuple.second);
             request.setAttribute(MicroConstants.ACK_ATTRIBUTE_FLAG, tuple.first);
+            //只统计有权限访问的调用次数
+            Object uri = request.getAttribute("org.springframework.web.servlet.HandlerMapping.bestMatchingPattern");
+            String method = request.getMethod();
+            RestfulCounterManager.instance().inc(StringUtil.getString(uri), method);
         }
         return true;
     }
