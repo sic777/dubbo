@@ -24,13 +24,16 @@ public class RestfulCounterManager {
         return singleton;
     }
 
-    private ServiceLoader<ICounterStoreSPI> storeSpi = ServiceLoader.load(ICounterStoreSPI.class);
-
-    private final Iterator<ICounterStoreSPI> i;
+    private final ICounterStoreSPI spi;
 
     private RestfulCounterManager() {
         ServiceLoader<ICounterStoreSPI> storeSpi = ServiceLoader.load(ICounterStoreSPI.class);
-        this.i = storeSpi.iterator();
+        Iterator<ICounterStoreSPI> i = storeSpi.iterator();
+        if (i.hasNext()) {//只取第一个实现类
+            spi = i.next();
+        } else {
+            spi = null;
+        }
     }
 
     private Map<String, AtomicLong> counter = ContainerGetter.concurHashMap();
@@ -54,12 +57,9 @@ public class RestfulCounterManager {
             counter.putIfAbsent(key, c);
         }
         long n = c.incrementAndGet();
-        logger.debug(String.format("[counter] uri:%s,type:%s,count:%s", uri, method, n));
-
-        for (; i.hasNext(); ) {
-            ICounterStoreSPI spi = i.next();
-            spi.inc(uri, method);
-        }
+        logger.debug(String.format("[counter] uri:%s,type:%s,local count:%s", uri, method, n));
+        //inc
+        spi.inc(uri, method);
     }
 
     /**
