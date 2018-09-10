@@ -1,7 +1,5 @@
 package com.sic777.restful.base.counter;
 
-import java.util.List;
-
 /**
  * <p>
  *
@@ -11,9 +9,10 @@ import java.util.List;
  */
 public interface ICounterStoreSPI {
     /**
-     * 持久化
+     * 递增持久化
      *
-     * @param counters
+     * @param uri
+     * @param method
      */
-    void store(List<RestfulCounter> counters);
+    void inc(String uri, String method);
 }

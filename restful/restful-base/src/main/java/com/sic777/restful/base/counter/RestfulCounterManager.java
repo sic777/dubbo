@@ -1,6 +1,5 @@
 package com.sic777.restful.base.counter;
 
-import com.sic777.restful.base.constants.ConfigureConstants;
 import com.sic777.utils.container.ContainerGetter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,30 +26,11 @@ public class RestfulCounterManager {
 
     private ServiceLoader<ICounterStoreSPI> storeSpi = ServiceLoader.load(ICounterStoreSPI.class);
 
+    private final Iterator<ICounterStoreSPI> i;
+
     private RestfulCounterManager() {
-        //TODO 线程池队列处理（优雅关闭时可以继续统计），优先级最低。
-        Iterator<ICounterStoreSPI> i = storeSpi.iterator();
-        for (int index = 0; i.hasNext(); index++) {
-            ICounterStoreSPI spi = i.next();
-            Thread th = new Thread(() -> {
-                try {
-                    for (; ; ) {
-                        List<RestfulCounter> counters = new ArrayList<>();
-                        Set<String> keys = counter.keySet();
-                        for (String key : keys) {
-                            String[] ss = key.split("_");
-                            counters.add(new RestfulCounter(ss[0], ss[1], counter.get(key).get()));
-                        }
-                        spi.store(counters);
-                        Thread.sleep(ConfigureConstants.COUNTER_CYCLE);
-                    }
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            });
-            th.setName("restful-counter-" + index);
-            th.start();
-        }
+        ServiceLoader<ICounterStoreSPI> storeSpi = ServiceLoader.load(ICounterStoreSPI.class);
+        this.i = storeSpi.iterator();
     }
 
     private Map<String, AtomicLong> counter = ContainerGetter.concurHashMap();
@@ -75,6 +55,11 @@ public class RestfulCounterManager {
         }
         long n = c.incrementAndGet();
         logger.debug(String.format("[counter] uri:%s,type:%s,count:%s", uri, method, n));
+
+        for (; i.hasNext(); ) {
+            ICounterStoreSPI spi = i.next();
+            spi.inc(uri, method);
+        }
     }
 
     /**

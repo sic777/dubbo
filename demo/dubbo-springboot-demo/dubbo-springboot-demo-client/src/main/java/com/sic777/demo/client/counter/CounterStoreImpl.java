@@ -1,9 +1,6 @@
 package com.sic777.demo.client.counter;
 
 import com.sic777.restful.base.counter.ICounterStoreSPI;
-import com.sic777.restful.base.counter.RestfulCounter;
-
-import java.util.List;
 
 /**
  * <p>
@@ -14,7 +11,7 @@ import java.util.List;
  */
 public class CounterStoreImpl implements ICounterStoreSPI {
     @Override
-    public void store(List<RestfulCounter> counters) {
-        System.out.println(counters);
+    public void inc(String uri, String method) {
+        System.out.println(uri + ":" + method);
     }
 }
