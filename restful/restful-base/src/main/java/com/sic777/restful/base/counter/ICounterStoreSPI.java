@@ -1,5 +1,7 @@
 package com.sic777.restful.base.counter;
 
+import java.util.List;
+
 /**
  * <p>
  *
@@ -9,10 +11,9 @@ package com.sic777.restful.base.counter;
  */
 public interface ICounterStoreSPI {
     /**
-     * 递增持久化
+     * URI统计持久化
      *
-     * @param uri
-     * @param method
+     * @param uriCounters
      */
-    void inc(String uri, String method);
+    void statistics(List<UriCounter> uriCounters);
 }

@@ -12,7 +12,13 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.annotation.Order;
+import org.springframework.web.method.HandlerMethod;
+import org.springframework.web.servlet.mvc.method.RequestMappingInfo;
+import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.CountDownLatch;
 
 
@@ -27,6 +33,8 @@ import java.util.concurrent.CountDownLatch;
 abstract class SpringContainerLauncher extends AbstractLauncher implements CommandLineRunner {
     private static final Logger logger = LoggerFactory.getLogger(SpringContainerLauncher.class);
 
+    private static final Set<String> uris = new HashSet<>();
+
     @Bean
     public CountDownLatch closeLatch() {
         return new CountDownLatch(1);
@@ -38,10 +46,14 @@ abstract class SpringContainerLauncher extends AbstractLauncher implements Comma
             if (null != process) {
                 process.before();
             }
+            boolean isWeb = isWebEnvironment();
             ApplicationContext ctx = new SpringApplicationBuilder()
                     .sources(SpringContainerLauncher.class)
-                    .web(isWebEnvironment())
+                    .web(isWeb)
                     .run();
+            if (isWeb) {
+                setUri(ctx);
+            }
             if (null != hook) {
                 Runtime.getRuntime().addShutdownHook(hook);
             }
@@ -60,5 +72,28 @@ abstract class SpringContainerLauncher extends AbstractLauncher implements Comma
     @Override
     public void run(String... strings) {
         logger.info("The program is started successfully, and initialization is to be executed ...");
+    }
+
+    /**
+     * 获取所有的uri
+     *
+     * @return
+     */
+    public Set<String> getAllUri() {
+        return uris;
+    }
+
+    /**
+     * 获取所有的uri
+     *
+     * @param ctx
+     */
+    private void setUri(ApplicationContext ctx) {
+        RequestMappingHandlerMapping mapping = ctx.getBean(RequestMappingHandlerMapping.class);
+        Map<RequestMappingInfo, HandlerMethod> map = mapping.getHandlerMethods();
+        for (RequestMappingInfo info : map.keySet()) {
+            Set<String> patterns = info.getPatternsCondition().getPatterns();
+            uris.addAll(patterns);
+        }
     }
 }

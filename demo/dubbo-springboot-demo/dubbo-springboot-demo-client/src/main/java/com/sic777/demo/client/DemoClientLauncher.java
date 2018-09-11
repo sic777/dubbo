@@ -2,6 +2,7 @@ package com.sic777.demo.client;
 
 import com.sic777.common.laucher.SpringWebContainerLauncher;
 import com.sic777.common.laucher.processor.IStarterProcessor;
+import com.sic777.restful.base.counter.RestfulCounterManager;
 import com.sic777.restful.base.response.ResponseBodyType;
 import com.sic777.restful.base.response.ResponseManager;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -34,7 +35,8 @@ public class DemoClientLauncher {
             @Override
             public void after() {
                 System.out.println("Spring容器启动后");
-
+                //启动统计线程
+                RestfulCounterManager.instance().start();
             }
         }, new Thread() {
             @Override

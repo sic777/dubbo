@@ -56,8 +56,7 @@ public class AuthInterceptor extends SuperAuthInterceptor implements HandlerInte
             request.setAttribute(MicroConstants.ACK_ATTRIBUTE_FLAG, tuple.first);
             //只统计有权限访问的调用次数
             Object uri = request.getAttribute("org.springframework.web.servlet.HandlerMapping.bestMatchingPattern");
-            String method = request.getMethod();
-            RestfulCounterManager.instance().inc(StringUtil.getString(uri), method);
+            RestfulCounterManager.instance().offer(StringUtil.getString(uri));
         }
         return true;
     }
