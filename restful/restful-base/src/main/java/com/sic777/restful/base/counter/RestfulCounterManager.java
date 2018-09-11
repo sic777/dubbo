@@ -80,6 +80,7 @@ public class RestfulCounterManager extends Thread {
                 counterStoreSPIS.add(it.next());
             }
             super.start();
+            hook();
         }
     }
 
@@ -91,36 +92,43 @@ public class RestfulCounterManager extends Thread {
         long lastUpdate = System.currentTimeMillis();
         for (; ; ) {
             try {
-
-                if (queue.isEmpty()) {
-                    Thread.sleep(10);
-                    continue;
-                }
-
+                lastUpdate = statistics(lastUpdate);
                 if (queue.peek() != null) {
                     String uri = queue.poll();
                     long n = counter.get(uri).incrementAndGet();
                     logger.debug(String.format("[counter] uri:%s,local cache count:%s", uri, n));
-                }
-
-                if (System.currentTimeMillis() - lastUpdate > COUNTER_CYCLE) {
-                    List<UriCounter> uriCounters = ContainerGetter.arrayList();
-                    for (String uri : allUri) {
-                        long c = counter.get(uri).getAndSet(0);
-                        if (c != 0) {
-                            uriCounters.add(new UriCounter(uri, c));
-                        }
-                    }
-                    for (ICounterStoreSPI spi : counterStoreSPIS) {
-                        spi.statistics(uriCounters);
-                    }
-                    lastUpdate = System.currentTimeMillis();
+                } else {
+                    Thread.sleep(10L);
                 }
             } catch (Exception e) {
-                lastUpdate = System.currentTimeMillis();
                 logger.error("RestfulCounterManager Thread", e);
             }
         }
+    }
+
+    /**
+     * 统计
+     *
+     * @param lastUpdate
+     * @return
+     */
+    private long statistics(long lastUpdate) {
+        if (System.currentTimeMillis() - lastUpdate > COUNTER_CYCLE) {
+            List<UriCounter> uriCounters = ContainerGetter.arrayList();
+            for (String uri : allUri) {
+                long c = counter.get(uri).getAndSet(0);
+                if (c != 0) {
+                    uriCounters.add(new UriCounter(uri, c));
+                }
+            }
+            if (!uriCounters.isEmpty()) {
+                for (ICounterStoreSPI spi : counterStoreSPIS) {
+                    spi.statistics(uriCounters);
+                }
+            }
+            return System.currentTimeMillis();
+        }
+        return lastUpdate;
     }
 
     /**
@@ -134,5 +142,32 @@ public class RestfulCounterManager extends Thread {
             return;
         }
         queue.offer(uri);
+    }
+
+    /**
+     * JVM钩子
+     */
+    private void hook() {
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            logger.info("RestfulCounterManager Thread Shutdown Hook Start...");
+            for (; queue.peek() != null; ) {
+                String uri = queue.poll();
+                long n = counter.get(uri).incrementAndGet();
+                logger.info(String.format("[counter] uri:%s,local cache count:%s", uri, n));
+            }
+
+            List<UriCounter> uriCounters = ContainerGetter.arrayList();
+            for (String uri : allUri) {
+                long c = counter.get(uri).get();
+                if (c != 0) {
+                    uriCounters.add(new UriCounter(uri, c));
+                }
+            }
+            if (!uriCounters.isEmpty()) {
+                for (ICounterStoreSPI spi : counterStoreSPIS) {
+                    spi.statistics(uriCounters);
+                }
+            }
+        }));
     }
 }

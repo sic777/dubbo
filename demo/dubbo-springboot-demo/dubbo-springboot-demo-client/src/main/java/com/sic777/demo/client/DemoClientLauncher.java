@@ -38,11 +38,8 @@ public class DemoClientLauncher {
                 //启动统计线程
                 RestfulCounterManager.instance().start();
             }
-        }, new Thread() {
-            @Override
-            public void run() {
-                System.out.println("优雅关闭处理");
-            }
-        });
+        }, new Thread(() -> {
+            System.out.println("优雅关闭处理");
+        }));
     }
 }
