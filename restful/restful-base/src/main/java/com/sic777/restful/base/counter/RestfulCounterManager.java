@@ -58,8 +58,11 @@ public class RestfulCounterManager {
         }
         long n = c.incrementAndGet();
         logger.debug(String.format("[counter] uri:%s,type:%s,local count:%s", uri, method, n));
+
         //inc
-        spi.inc(uri, method);
+        if (null != spi) {
+            spi.inc(uri, method);
+        }
     }
 
     /**
