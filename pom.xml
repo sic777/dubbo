@@ -5,16 +5,27 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.sic777.framework</groupId>
 	<artifactId>base-framework</artifactId>
-	<version>2.0.0_BETA</version>
+	<version>3.0.0_BETA</version>
 	<packaging>pom</packaging>
 	<name>${project.artifactId}</name>
 
 	<modules>
 		<module>common</module>
 		<module>logger</module>
-		<module>database</module>
-		<module>dubbo</module>
-		<module>restful</module>
+		<module>database-mongo</module>
+		<module>database-redis</module>
+		<module>database-springboot-mybatis</module>
+		<module>dubbo-bean</module>
+		<module>dubbo-common</module>
+		<module>dubbo-consumer-common</module>
+		<module>dubbo-provider-common</module>
+		<module>dubbo-springboot-common</module>
+		<module>dubbo-springboot-consumer</module>
+		<module>dubbo-springboot-provider</module>
+		<module>restful-base</module>
+		<module>restful-netty</module>
+		<module>restful-restexpress</module>
+		<module>restful-springboot</module>
 	</modules>
 
 	<inceptionYear>2018</inceptionYear>
@@ -36,7 +47,7 @@
 		<profile>
 			<id>beta</id>
 			<properties>
-				<profiles.nextVersion>2.0.0</profiles.nextVersion>
+				<profiles.nextVersion>3.1.0</profiles.nextVersion>
 				<profiles.suffix>_BETA</profiles.suffix>
 			</properties>
 			<activation>
@@ -46,7 +57,7 @@
 		<profile>
 			<id>release</id>
 			<properties>
-				<profiles.nextVersion>2.0.0</profiles.nextVersion>
+				<profiles.nextVersion>3.0.0</profiles.nextVersion>
 				<profiles.suffix>_RC</profiles.suffix>
 			</properties>
 		</profile>

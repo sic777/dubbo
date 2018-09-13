@@ -40,7 +40,6 @@ public final class CurrentEnvironment {
      */
     private boolean isDefault = true;
 
-
     /**
      * 初始化环境
      */
@@ -83,5 +82,6 @@ public final class CurrentEnvironment {
     public boolean isDefault() {
         return isDefault;
     }
+
 }
 

@@ -40,13 +40,13 @@ public enum ExceptionType {
     @NoProguard
     public static ExceptionType parse(long code) {
         String codeStr = StringUtil.getString(code);
-        if (codeStr.startsWith("1") || codeStr.startsWith("400")) {
+        if (codeStr.startsWith("1")) {
             return ExceptionType.EXCEPTION_400;
-        } else if (codeStr.startsWith("2") || codeStr.startsWith("403")) {
+        } else if (codeStr.startsWith("2")) {
             return ExceptionType.EXCEPTION_403;
-        } else if (codeStr.startsWith("3") || codeStr.startsWith("404")) {
+        } else if (codeStr.startsWith("3")) {
             return ExceptionType.EXCEPTION_404;
-        } else if (codeStr.startsWith("4") || codeStr.startsWith("405")) {
+        } else if (codeStr.startsWith("4")) {
             return ExceptionType.EXCEPTION_405;
         } else {
             return ExceptionType.EXCEPTION_503;
@@ -55,8 +55,13 @@ public enum ExceptionType {
 
     /**
      * <p>
-     * '参数校验错误'异常错误码(400...)
-     * 说明：使用者的错误码从11000xxxxx开始，10000xxxxx~10999xxxxx位为系统保留(xxxxx可以用作系统标识,也可为空)
+     * '参数校验错误'异常错误码
+     * <p>
+     * 格式：(f|xxxx|yyyy)
+     * <p>
+     * f:错误类型标识
+     * xxxx:系统标识（0000为系统默认保留，从0001开始）
+     * yyyy：错误码（0000~9999）
      *
      * @author sic777
      * @since 0.0.1
@@ -66,19 +71,19 @@ public enum ExceptionType {
         /**
          * 参数校验错误
          */
-        PARAM_INVALID(10000, ErrorMsg.PARAM_INVALID),
+        PARAM_INVALID(100000000, ErrorMsg.PARAM_INVALID),
         /**
          * key或者对象不存在
          */
-        OBJECT_NULL(10001, ErrorMsg.OBJECT_NULL),
+        OBJECT_NULL(100000001, ErrorMsg.OBJECT_NULL),
         /**
          * 参数值为空
          */
-        VALUE_EMPTY(10002, ErrorMsg.VALUE_EMPTY),
+        VALUE_EMPTY(100000002, ErrorMsg.VALUE_EMPTY),
         /**
          * 参数值为NULL
          */
-        VALUE_NULL(10003, ErrorMsg.VALUE_NULL);
+        VALUE_NULL(100000003, ErrorMsg.VALUE_NULL);
 
         private final long id;
         private final String msg;
@@ -99,8 +104,13 @@ public enum ExceptionType {
 
     /**
      * <p>
-     * '认证/权限错误'异常错误码(403...)
-     * 说明：使用者的错误码从21000xxxxx开始，20000xxxxx~20999xxxxx位为系统保留(xxxxx可以用作系统标识,也可为空)
+     * '认证/权限错误'异常错误码
+     * <p>
+     * 格式：(f|xxxx|yyyy)
+     * <p>
+     * f:错误类型标识
+     * xxxx:系统标识（0000为系统默认保留，从0001开始）
+     * yyyy：错误码（0000~9999）
      *
      * @author sic777
      * @since 0.0.1
@@ -110,11 +120,11 @@ public enum ExceptionType {
         /**
          * 禁止访问
          */
-        INVALID_ACCESS(20000, ErrorMsg.INVALID_ACCESS),
+        INVALID_ACCESS(200000000, ErrorMsg.INVALID_ACCESS),
         /**
          * Access-Token 为空
          */
-        ACCESS_TOKEN_VALUE_EMPTY(20001, String.format(ErrorMsg.VALUE_EMPTY, BaseConstant.ACCESS_TOKEN_FLAG));
+        ACCESS_TOKEN_VALUE_EMPTY(200000001, String.format(ErrorMsg.VALUE_EMPTY, BaseConstant.ACCESS_TOKEN_FLAG));
         private final long id;
         private final String msg;
 
@@ -134,8 +144,13 @@ public enum ExceptionType {
 
     /**
      * <p>
-     * '资源未找到'异常错误码(404...)
-     * 说明：使用者的错误码从31000xxxxx开始，30000xxxxx~30999xxxxx位为系统保留(xxxxx可以用作系统标识,也可为空)
+     * '资源未找到'异常错误码
+     * <p>
+     * 格式：(f|xxxx|yyyy)
+     * <p>
+     * f:错误类型标识
+     * xxxx:系统标识（0000为系统默认保留，从0001开始）
+     * yyyy：错误码（0000~9999）
      *
      * @author sic777
      * @since 0.0.1
@@ -145,11 +160,11 @@ public enum ExceptionType {
         /**
          * URL未找到
          */
-        URL_NOT_FOUND(30000, ErrorMsg.URL_NOT_FOUND),
+        URL_NOT_FOUND(300000000, ErrorMsg.URL_NOT_FOUND),
         /**
          * 资源未找到
          */
-        RESOURCE_NOT_FOUND(30001, "");
+        RESOURCE_NOT_FOUND(300000001, "resource not found");
 
         private final long id;
         private final String msg;
@@ -170,8 +185,13 @@ public enum ExceptionType {
 
     /**
      * <p>
-     * '不支持的操作'异常错误码(405...)
-     * 说明：使用者的错误码从41000xxxxx开始，40000xxxxx~40999xxxxx位为系统保留(xxxxx可以用作系统标识,也可为空)
+     * '不支持的操作'异常错误码
+     * <p>
+     * 格式：(f|xxxx|yyyy)
+     * <p>
+     * f:错误类型标识
+     * xxxx:系统标识（0000为系统默认保留，从0001开始）
+     * yyyy：错误码（0000~9999）
      *
      * @author sic777
      * @since 0.0.1
@@ -181,7 +201,7 @@ public enum ExceptionType {
         /**
          * 请求方法不支持
          */
-        METHOD_NOT_ALLOW(40000, ErrorMsg.METHOD_NOT_ALLOWED),;
+        METHOD_NOT_ALLOW(400000000, ErrorMsg.METHOD_NOT_ALLOWED),;
 
         private final long id;
         private final String msg;
@@ -202,8 +222,13 @@ public enum ExceptionType {
 
     /**
      * <p>
-     * '服务器不可用'异常错误码(503...)
-     * 说明：使用者的错误码从51000xxxxx开始，50000xxxxx~50999xxxxx位为系统保留(xxxxx可以用作系统标识,也可为空)
+     * '服务器不可用'异常错误码
+     * <p>
+     * 格式：(f|xxxx|yyyy)
+     * <p>
+     * f:错误类型标识
+     * xxxx:系统标识（0000为系统默认保留，从0001开始）
+     * yyyy：错误码（0000~9999）
      *
      * @author sic777
      * @since 0.0.1
@@ -213,7 +238,7 @@ public enum ExceptionType {
         /**
          * 服务不可用
          */
-        SERVICE_UNAVAILABLE(50000, ErrorMsg.SERVICE_EXCEPTION);
+        SERVICE_UNAVAILABLE(500000000, ErrorMsg.SERVICE_EXCEPTION);
         private final long id;
         private final String msg;
 
