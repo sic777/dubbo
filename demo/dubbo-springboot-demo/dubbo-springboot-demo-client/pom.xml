@@ -44,6 +44,9 @@
 						<manifest>
 							<mainClass>${MainClass}</mainClass>
 						</manifest>
+						<manifestEntries>
+							<Class-Path>..</Class-Path>
+						</manifestEntries>
 					</archive>
 					<excludes>
 						<exclude>static/**</exclude>
