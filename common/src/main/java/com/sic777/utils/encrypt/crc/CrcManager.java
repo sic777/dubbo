@@ -1,5 +1,6 @@
 package com.sic777.utils.encrypt.crc;
 
+import com.sic777.utils.StringUtil;
 import com.sic777.utils.proguard.NoProguard;
 
 /**
@@ -20,5 +21,11 @@ public class CrcManager {
      */
     public static long getCrc16Maxim(byte[] data) {
         return calculator.Calc(data);
+    }
+
+    public static void main(String[] args) {
+        byte[] data = StringUtil.parseHexStr2Byte("015a0009283f6e22e8e465080b");
+        long x = CrcManager.getCrc16Maxim(data);
+        System.out.println(x);
     }
 }

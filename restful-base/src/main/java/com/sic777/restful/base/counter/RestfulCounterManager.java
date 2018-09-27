@@ -163,9 +163,18 @@ public class RestfulCounterManager extends Thread {
                     uriCounters.add(new UriCounter(uri, c));
                 }
             }
-            if (!uriCounters.isEmpty()) {
-                for (ICounterStoreSPI spi : counterStoreSPIS) {
-                    spi.statistics(uriCounters);
+            boolean close;
+            for (; ; ) {
+                if (!uriCounters.isEmpty()) {
+                    for (ICounterStoreSPI spi : counterStoreSPIS) {
+                        spi.statistics(uriCounters);
+                    }
+                    close = true;
+                } else {
+                    close = false;
+                }
+                if (close) {
+                    break;
                 }
             }
         }));
