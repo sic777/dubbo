@@ -15,7 +15,7 @@ import java.util.Set;
  * @since 2018-02-11 10:58
  */
 @NoProguard
-public class RedisSortSets {
+public class RedisZSet {
 
     /**
      * 向集合中增加一条记录,如果这个值已存在，这个值对应的权重将被置为新的权重

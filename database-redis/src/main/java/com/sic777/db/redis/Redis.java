@@ -38,13 +38,12 @@ public final class Redis {
     private RedisHash HASH = new RedisHash();
     private RedisKeys KEYS = new RedisKeys();
     private RedisList LIST = new RedisList();
-    private RedisSets SETS = new RedisSets();
-    private RedisSortSets SORTSETS = new RedisSortSets();
-    private RedisStrings STRINGS = new RedisStrings();
+    private RedisSet SET = new RedisSet();
+    private RedisZSet Z_SET = new RedisZSet();
+    private RedisString STRING = new RedisString();
 
     /**
      * redis初始化
-     *
      */
     public void init() {
         if (isInit.compareAndSet(false, true)) {
@@ -72,7 +71,7 @@ public final class Redis {
     /**
      * 获取Jedis连接池
      *
-     * @return
+     * @return Jedis连接池
      */
     public Pool<Jedis> getRedisPool() {
         return jedisPool;
@@ -102,27 +101,27 @@ public final class Redis {
         jedis.close();
     }
 
-    public RedisHash HASH() {
+    public RedisHash Hash() {
         return HASH;
     }
 
-    public RedisKeys KEYS() {
+    public RedisKeys Keys() {
         return KEYS;
     }
 
-    public RedisList LIST() {
+    public RedisList List() {
         return LIST;
     }
 
-    public RedisSets SETS() {
-        return SETS;
+    public RedisSet Sets() {
+        return SET;
     }
 
-    public RedisSortSets SORTSETS() {
-        return SORTSETS;
+    public RedisZSet ZSet() {
+        return Z_SET;
     }
 
-    public RedisStrings STRINGS() {
-        return STRINGS;
+    public RedisString String() {
+        return STRING;
     }
 }

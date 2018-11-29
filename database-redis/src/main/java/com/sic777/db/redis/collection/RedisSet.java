@@ -14,7 +14,7 @@ import java.util.Set;
  * @since 2018-02-11 10:58
  */
 @NoProguard
-public class RedisSets {
+public class RedisSet {
 
     /**
      * 向Set添加一条记录

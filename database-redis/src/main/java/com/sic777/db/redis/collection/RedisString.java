@@ -15,7 +15,7 @@ import java.util.List;
  * @since 2018-02-11 10:58
  */
 @NoProguard
-public class RedisStrings {
+public class RedisString {
 
     /**
      * 判断key是否存在
