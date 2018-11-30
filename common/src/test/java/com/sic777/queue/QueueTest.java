@@ -1,7 +1,6 @@
 package com.sic777.queue;
 
 import com.sic777.common.constants.enums.QueueType;
-import com.sic777.common.queue.AbstractQueueSic777;
 import com.sic777.common.thread.pool.QueueThreadPoolManager;
 
 /**
@@ -14,17 +13,18 @@ import com.sic777.common.thread.pool.QueueThreadPoolManager;
 public class QueueTest {
 
     public static void main(String[] args) {
-        String name1 = "aaa";
-        String name2 = "bbb";
+        String tj_name = "统计";
+        QueueThreadPoolManager.instance().init(4, tj_name, QueueType.CONCURRENT_LINKED_QUEUE, null);
 
-        QueueThreadPoolManager.instance().init(4, name1, QueueType.LINKED_BLOCKING_QUEUE, null);
-        QueueThreadPoolManager.instance().init(4, name2, QueueType.ARRAY_BLOCKING_QUEUE, 100);
+        String lj_name = "逻辑";
+        QueueThreadPoolManager.instance().init(4, lj_name, QueueType.CONCURRENT_LINKED_QUEUE, null);
 
         for (int i = 0; i < 100; i++) {
-            QueueThreadPoolManager.instance().offer(name1, new AbstractQueueSic777() {
-            });
-            QueueThreadPoolManager.instance().offer(name2, new AbstractQueueSic777() {
-            });
+            Sic777Queue q_logic = new Sic777Queue(Constants.LOGIC, i, "sic777_" + i);
+            QueueThreadPoolManager.instance().offer(lj_name, i, q_logic);
+
+            Sic777Queue q_counter = new Sic777Queue(Constants.COUNTER, i, "sic777_" + i);
+            QueueThreadPoolManager.instance().offer(tj_name, i, q_counter);
         }
     }
 }

@@ -17,17 +17,19 @@ import java.util.concurrent.atomic.AtomicReference;
  * @since 0.0.1
  */
 public class SpiManager {
-    private static SpiManager singleton = new SpiManager();
+    private SpiManager() {
+    }
+
+    private static class SpiManagerHolder {
+        static SpiManager singleton = new SpiManager();
+    }
 
     public static SpiManager instance() {
-        return singleton;
+        return SpiManagerHolder.singleton;
     }
 
     private final AtomicReference<ClassState> queueProcessSpiInit = new AtomicReference<>(ClassState.UNINITIALIZED);
     private QueueProcessSpi[] queueProcessSpis;
-
-    private SpiManager() {
-    }
 
     /**
      * 获取队列处理spi

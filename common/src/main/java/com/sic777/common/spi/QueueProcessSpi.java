@@ -16,4 +16,11 @@ public interface QueueProcessSpi {
      * @param queue
      */
     void process(AbstractQueueSic777 queue);
+
+    /**
+     * 标识一个实现类
+     *
+     * @return
+     */
+    Object key();
 }

@@ -8,7 +8,6 @@ import org.slf4j.LoggerFactory;
 
 import java.util.AbstractQueue;
 
-
 /**
  * <p>
  *
@@ -37,7 +36,10 @@ public class QueueThread extends Thread {
                         AbstractQueueSic777 queue = abstractQueue.poll();
                         QueueProcessSpi[] processSpis = SpiManager.instance().getQueueProcessSpi();
                         for (int i = 0, len = processSpis.length; i < len; i++) {
-                            processSpis[i].process(queue);
+                            QueueProcessSpi spi = processSpis[i];
+                            if (queue.getSpiKey() == spi.key()) {
+                                spi.process(queue);
+                            }
                         }
                     } catch (Throwable e) {
                         logger.error(uniqueName + "-" + index + "-QueueThread.run.sleep:", e);

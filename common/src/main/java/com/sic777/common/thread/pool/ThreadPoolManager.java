@@ -15,13 +15,16 @@ import java.util.concurrent.atomic.AtomicReference;
  * @since 0.0.1
  */
 public class ThreadPoolManager {
-    private static ThreadPoolManager singleton = new ThreadPoolManager();
-
-    public static ThreadPoolManager instance() {
-        return singleton;
-    }
 
     private ThreadPoolManager() {
+    }
+
+    private static class ThreadPoolManagerHolder {
+        static ThreadPoolManager singleton = new ThreadPoolManager();
+    }
+
+    public static ThreadPoolManager instance() {
+        return ThreadPoolManagerHolder.singleton;
     }
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());

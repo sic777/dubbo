@@ -18,10 +18,13 @@ import java.util.concurrent.*;
  * @since 0.0.1
  */
 public class QueueThreadPoolManager {
-    private static QueueThreadPoolManager singleton = new QueueThreadPoolManager();
+
+    private static class QueueThreadPoolManagerHolder {
+        static QueueThreadPoolManager singleton = new QueueThreadPoolManager();
+    }
 
     public static QueueThreadPoolManager instance() {
-        return singleton;
+        return QueueThreadPoolManagerHolder.singleton;
     }
 
     private QueueThreadPoolManager() {
