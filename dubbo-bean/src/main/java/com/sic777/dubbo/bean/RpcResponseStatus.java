@@ -1,6 +1,6 @@
 package com.sic777.dubbo.bean;
 
-import com.sic777.utils.proguard.NoProguard;
+import com.sic777.common.utils.proguard.NoProguard;
 
 /**
  * <p>Rpc响应状态实体</p>

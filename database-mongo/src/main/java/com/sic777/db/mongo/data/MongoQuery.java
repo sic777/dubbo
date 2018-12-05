@@ -4,9 +4,9 @@ package com.sic777.db.mongo.data;
 import java.util.List;
 
 import com.sic777.db.mongo.type.DataFieldType;
-import com.sic777.utils.DateFormatTools;
-import com.sic777.utils.container.ContainerGetter;
-import com.sic777.utils.proguard.NoProguard;
+import com.sic777.common.utils.date.DateFormatUtil;
+import com.sic777.common.utils.container.ContainerGetter;
+import com.sic777.common.utils.proguard.NoProguard;
 import org.bson.Document;
 import org.bson.conversions.Bson;
 
@@ -252,7 +252,7 @@ public class MongoQuery {
                 case Bool:
                     return null != v && Boolean.parseBoolean(v.toString());
                 case Date:
-                    return DateFormatTools.funcGetDateWithFormat(v.toString(), "yyyy-MM-dd'T'HH:mm:ss.SS'Z'");
+                    return DateFormatUtil.funcGetDateWithFormat(v.toString(), DateFormatUtil.DATE_FORMAT);
                 case Int:
                     return Integer.parseInt(v.toString());
                 case String:
@@ -276,7 +276,7 @@ public class MongoQuery {
                 case Boolean:
                     return null != v && Boolean.parseBoolean(v.toString());
                 case Date:
-                    return DateFormatTools.funcGetDateWithFormat(v.toString(), "yyyy-MM-dd'T'HH:mm:ss.SS'Z'");
+                    return DateFormatUtil.funcGetDateWithFormat(v.toString(), DateFormatUtil.DATE_FORMAT);
                 case Integer:
                     return Integer.parseInt(v.toString());
                 case String:

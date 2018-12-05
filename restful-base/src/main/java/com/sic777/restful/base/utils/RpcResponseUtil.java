@@ -5,7 +5,7 @@ import com.sic777.dubbo.bean.exception.RpcException;
 import com.sic777.dubbo.bean.exception.RpcExceptionType;
 import com.sic777.dubbo.bean.RpcResponse;
 import com.sic777.dubbo.bean.RpcResponseStatus;
-import com.sic777.utils.proguard.NoProguard;
+import com.sic777.common.utils.proguard.NoProguard;
 
 import static com.sic777.common.exception.ExceptionType.AuthenticationExceptionType.INVALID_ACCESS;
 import static com.sic777.common.exception.ExceptionType.NotFoundExceptionType.RESOURCE_NOT_FOUND;

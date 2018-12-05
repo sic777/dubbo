@@ -1,6 +1,6 @@
 package com.sic777.dubbo.provider.common.config;
 
-import com.sic777.utils.proguard.NoProguard;
+import com.sic777.common.utils.proguard.NoProguard;
 
 import java.util.List;
 

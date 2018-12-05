@@ -3,7 +3,7 @@ package com.sic777.restful.springboot.controller;
 import com.sic777.restful.base.constants.MicroConstants;
 import com.sic777.restful.base.controller.SuperRestfulController;
 import com.alibaba.fastjson.JSONObject;
-import com.sic777.utils.proguard.NoProguard;
+import com.sic777.common.utils.proguard.NoProguard;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 

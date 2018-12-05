@@ -1,6 +1,6 @@
 package com.sic777.common.laucher.processor;
 
-import com.sic777.utils.proguard.NoProguard;
+import com.sic777.common.utils.proguard.NoProguard;
 
 /**
  * <p>启动类处理接口

@@ -1,6 +1,6 @@
 package com.sic777.restful.base.permission;
 
-import com.sic777.utils.proguard.NoProguard;
+import com.sic777.common.utils.proguard.NoProguard;
 
 import java.lang.annotation.*;
 

@@ -1,7 +1,7 @@
 package com.sic777.common.constants.enums;
 
 /**
- * <p>
+ * <p>类在JVM下的状态
  *
  * @author sic777
  * @version 0.0.1

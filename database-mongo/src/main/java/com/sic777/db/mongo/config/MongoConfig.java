@@ -1,10 +1,10 @@
 package com.sic777.db.mongo.config;
 
-import com.sic777.utils.ConfigureManager;
-import com.sic777.utils.StringUtil;
-import com.sic777.utils.container.ContainerGetter;
-import com.sic777.utils.container.tuple.Tuple;
-import com.sic777.utils.container.tuple.TwoTuple;
+import com.sic777.common.utils.conf.ConfigureManager;
+import com.sic777.common.utils.lang.StringUtil;
+import com.sic777.common.utils.container.ContainerGetter;
+import com.sic777.common.utils.container.tuple.Tuple;
+import com.sic777.common.utils.container.tuple.TwoTuple;
 
 import java.util.List;
 

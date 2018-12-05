@@ -12,12 +12,12 @@ import com.sic777.dubbo.common.enums.LoadBalanceType;
 import com.sic777.dubbo.common.enums.ProtocolThreadPoolType;
 import com.sic777.dubbo.provider.common.config.SuperDubboProtocolConfig;
 import com.sic777.dubbo.provider.common.config.SuperDubboProviderConfig;
-import com.sic777.utils.StringUtil;
+import com.sic777.common.utils.lang.StringUtil;
 import com.alibaba.dubbo.config.ApplicationConfig;
 import com.alibaba.dubbo.config.ProtocolConfig;
 import com.alibaba.dubbo.config.ProviderConfig;
 import com.alibaba.dubbo.config.RegistryConfig;
-import com.sic777.utils.proguard.NoProguard;
+import com.sic777.common.utils.proguard.NoProguard;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

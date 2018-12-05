@@ -3,7 +3,7 @@ package com.sic777.dubbo.bean;
 
 import com.sic777.dubbo.bean.exception.RpcException;
 import com.sic777.dubbo.bean.exception.RpcExceptionType;
-import com.sic777.utils.proguard.NoProguard;
+import com.sic777.common.utils.proguard.NoProguard;
 
 import java.io.Serializable;
 

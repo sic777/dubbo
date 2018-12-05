@@ -1,7 +1,7 @@
 package com.sic777.restful.springboot.config;
 
 import com.sic777.restful.springboot.filters.RequestMethodFilter;
-import com.sic777.utils.proguard.NoProguard;
+import com.sic777.common.utils.proguard.NoProguard;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

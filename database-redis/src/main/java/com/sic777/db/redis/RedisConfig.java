@@ -1,7 +1,7 @@
 package com.sic777.db.redis;
 
 
-import com.sic777.utils.ConfigureManager;
+import com.sic777.common.utils.conf.ConfigureManager;
 
 /**
  * <p>Redis配置</p>

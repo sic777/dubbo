@@ -1,6 +1,6 @@
 package com.sic777.db.mongo.data;
 
-import com.sic777.utils.proguard.NoProguard;
+import com.sic777.common.utils.proguard.NoProguard;
 import org.bson.conversions.Bson;
 
 import java.util.Set;

@@ -1,6 +1,6 @@
 package com.sic777.dubbo.bean.exception;
 
-import com.sic777.utils.proguard.NoProguard;
+import com.sic777.common.utils.proguard.NoProguard;
 
 /**
  * <p>rpc异常类型</p>

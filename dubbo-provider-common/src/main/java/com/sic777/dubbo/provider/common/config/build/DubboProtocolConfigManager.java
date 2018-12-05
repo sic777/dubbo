@@ -6,9 +6,9 @@ import com.sic777.dubbo.common.enums.DubboProtocolType;
 import com.sic777.dubbo.common.enums.ProtocolThreadPoolType;
 import com.sic777.dubbo.common.enums.RegistryTransportType;
 import com.sic777.dubbo.provider.common.config.SuperDubboProtocolConfig;
-import com.sic777.utils.StringUtil;
+import com.sic777.common.utils.lang.StringUtil;
 import com.alibaba.dubbo.config.ProtocolConfig;
-import com.sic777.utils.proguard.NoProguard;
+import com.sic777.common.utils.proguard.NoProguard;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

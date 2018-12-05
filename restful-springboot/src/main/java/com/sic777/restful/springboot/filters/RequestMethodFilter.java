@@ -2,7 +2,7 @@ package com.sic777.restful.springboot.filters;
 
 
 import com.sic777.restful.base.constants.HttpConstants;
-import com.sic777.utils.proguard.NoProguard;
+import com.sic777.common.utils.proguard.NoProguard;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;

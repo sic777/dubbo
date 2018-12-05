@@ -2,7 +2,7 @@ package com.sic777.db.redis;
 
 
 import com.sic777.db.redis.collection.*;
-import com.sic777.utils.proguard.NoProguard;
+import com.sic777.common.utils.proguard.NoProguard;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import redis.clients.jedis.Jedis;

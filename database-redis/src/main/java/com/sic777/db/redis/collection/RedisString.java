@@ -1,7 +1,7 @@
 package com.sic777.db.redis.collection;
 
 import com.sic777.db.redis.Redis;
-import com.sic777.utils.proguard.NoProguard;
+import com.sic777.common.utils.proguard.NoProguard;
 import redis.clients.jedis.Jedis;
 import redis.clients.util.SafeEncoder;
 

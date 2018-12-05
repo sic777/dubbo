@@ -1,6 +1,6 @@
 package com.sic777.common.constants.enums;
 
-import com.sic777.utils.proguard.NoProguard;
+import com.sic777.common.utils.proguard.NoProguard;
 
 /**
  * <p>环境枚举
@@ -22,13 +22,14 @@ public enum Environment {
      * 生产环境
      */
     PRODUCT("product");
-
     /**
      * 环境标识
      */
     private final String environment;
 
     /**
+     * 构造类
+     *
      * @param environment 环境标识
      */
     Environment(String environment) {
@@ -36,7 +37,7 @@ public enum Environment {
     }
 
     /**
-     * 获取环境
+     * 获取环境标识
      *
      * @return 环境枚举标识
      */
@@ -45,7 +46,7 @@ public enum Environment {
     }
 
     /**
-     * 字符串转换成环境枚举
+     * 环境标识（字符串）转换成环境对象（枚举）
      * <br>
      * default:DEVELOP
      *

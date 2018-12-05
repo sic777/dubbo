@@ -2,7 +2,7 @@ package com.sic777.restful.springboot.controller;
 
 import com.sic777.restful.base.response.HttpStatus;
 import com.sic777.restful.base.response.ResponseManager;
-import com.sic777.utils.proguard.NoProguard;
+import com.sic777.common.utils.proguard.NoProguard;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.web.ErrorAttributes;
 import org.springframework.boot.autoconfigure.web.ErrorController;

@@ -1,6 +1,6 @@
 package com.sic777.dubbo.common.enums;
 
-import com.sic777.utils.proguard.NoProguard;
+import com.sic777.common.utils.proguard.NoProguard;
 
 /**
  * <p>负载均衡策略枚举</p>

@@ -3,8 +3,8 @@ package com.sic777.common.system;
 import com.sic777.common.constants.BaseConstant;
 import com.sic777.common.constants.enums.Environment;
 import com.sic777.common.laucher.AbstractLauncher;
-import com.sic777.utils.proguard.NoProguard;
-import com.sic777.utils.system.SystemUtil;
+import com.sic777.common.utils.classes.ClassUtil;
+import com.sic777.common.utils.proguard.NoProguard;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -57,9 +57,9 @@ public final class CurrentEnvironment {
      * @deprecated
      */
     private void checkWhite() {
-        List<String> callerList = Arrays.asList(SystemUtil.getCallers());
+        List<String> callerList = Arrays.asList(ClassUtil.getCallers());
         if (!callerList.contains(AbstractLauncher.class.getName())) {
-            String topCaller = SystemUtil.getTopCaller();
+            String topCaller = ClassUtil.getTopCaller();
             logger.error("you have no permission to access this class: " + this.getClass().getName() + ",your class:" + topCaller);
             System.exit(-1);
         }

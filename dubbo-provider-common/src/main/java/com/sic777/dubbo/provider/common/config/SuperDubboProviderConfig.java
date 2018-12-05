@@ -1,6 +1,6 @@
 package com.sic777.dubbo.provider.common.config;
 
-import com.sic777.utils.proguard.NoProguard;
+import com.sic777.common.utils.proguard.NoProguard;
 
 /**
  * <p>服务提供者缺省配置</p>

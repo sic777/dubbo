@@ -1,6 +1,6 @@
 package com.sic777.dubbo.common.config;
 
-import com.sic777.utils.proguard.NoProguard;
+import com.sic777.common.utils.proguard.NoProguard;
 
 /**
  * <p>应用信息配置</p>

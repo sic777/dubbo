@@ -3,7 +3,7 @@ package com.sic777.common.laucher;
 import com.sic777.common.constants.BaseConstant;
 import com.sic777.common.laucher.processor.IStarterProcessor;
 import com.sic777.common.system.CurrentEnvironment;
-import com.sic777.utils.system.Version;
+import com.sic777.common.utils.system.VersionUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -60,7 +60,7 @@ abstract class SpringContainerLauncher extends AbstractLauncher implements Comma
             if (null != process) {
                 process.after();
             }
-            logger.info(String.format("framework jar version: '%s', environment:'%s'", Version.getFrameworkVersion(), CurrentEnvironment.instance().getEnvironment().getEnvironment()));
+            logger.info(String.format("framework jar version: '%s', environment:'%s'", VersionUtil.getFrameworkVersion(), CurrentEnvironment.instance().getEnvironment().getEnvironment()));
             CountDownLatch closeLatch = ctx.getBean(CountDownLatch.class);
             closeLatch.await();
         } catch (Exception e) {

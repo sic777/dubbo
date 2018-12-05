@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.sic777.framework</groupId>
 	<artifactId>base-framework</artifactId>
-	<version>3.0.0_BETA</version>
+	<version>1.0.0_BETA</version>
 	<packaging>pom</packaging>
 	<name>${project.artifactId}</name>
 
@@ -47,7 +47,7 @@
 		<profile>
 			<id>beta</id>
 			<properties>
-				<profiles.nextVersion>3.1.0</profiles.nextVersion>
+				<profiles.nextVersion>1.0.0</profiles.nextVersion>
 				<profiles.suffix>_BETA</profiles.suffix>
 			</properties>
 			<activation>
@@ -57,7 +57,7 @@
 		<profile>
 			<id>release</id>
 			<properties>
-				<profiles.nextVersion>3.0.0</profiles.nextVersion>
+				<profiles.nextVersion>1.0.0</profiles.nextVersion>
 				<profiles.suffix>_RC</profiles.suffix>
 			</properties>
 		</profile>
@@ -510,7 +510,7 @@
 	<distributionManagement>
 		<repository>
 			<id>wq</id>
-			<url>scp://120.79.212.170/modules/mvn_rep</url>
+			<url>scp://127.0.0.1/Users/sic777/dev/maven_3.5.0/zzxRep</url>
 		</repository>
 	</distributionManagement>
 </project>

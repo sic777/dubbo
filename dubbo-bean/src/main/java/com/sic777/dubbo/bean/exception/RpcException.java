@@ -2,7 +2,7 @@ package com.sic777.dubbo.bean.exception;
 
 
 import com.sic777.common.exception.SuperRuntimeException;
-import com.sic777.utils.proguard.NoProguard;
+import com.sic777.common.utils.proguard.NoProguard;
 
 /**
  * <p>dubbo rpc异常</p>

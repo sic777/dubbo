@@ -1,6 +1,6 @@
 package com.sic777.dubbo.springboot.common.commandline;
 
-import com.sic777.utils.system.PrintLogo;
+import com.sic777.common.utils.system.PrintLogo;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;

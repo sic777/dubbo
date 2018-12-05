@@ -2,8 +2,8 @@ package com.sic777.dubbo.provider.common.spi.extend.filter;
 
 import com.sic777.dubbo.bean.RpcResponse;
 import com.sic777.dubbo.bean.exception.RpcExceptionType;
-import com.sic777.utils.proguard.NoProguard;
-import com.sic777.utils.system.Version;
+import com.sic777.common.utils.proguard.NoProguard;
+import com.sic777.common.utils.system.VersionUtil;
 import com.alibaba.dubbo.rpc.*;
 import com.alibaba.dubbo.rpc.service.GenericService;
 import com.alibaba.fastjson.JSON;
@@ -42,7 +42,7 @@ public class ProviderExceptionFilterExtend implements Filter {
         logger.error("rpc response error:", throwable);
         RpcContext rpcContext = RpcContext.getContext();
         String sideText = "provider";
-        String version = Version.getFrameworkVersion();
+        String version = VersionUtil.getFrameworkVersion();
         Object interfaceName = rpcContext.getUrl().getAbsolutePath();
         String remoteAddress = rpcContext.getRemoteAddressString();
         String template = "an exception occurs at '%s' side when the server '%s' is invoked, params: ' interface : %s, method : %s, params : %s, framework jar version : %s'";

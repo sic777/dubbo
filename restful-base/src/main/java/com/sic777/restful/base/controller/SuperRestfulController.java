@@ -4,7 +4,7 @@ import com.sic777.common.constants.BaseConstant;
 import com.sic777.restful.base.constants.MicroConstants;
 import com.sic777.restful.base.permission.RestPermission;
 import com.alibaba.fastjson.JSONObject;
-import com.sic777.utils.proguard.NoProguard;
+import com.sic777.common.utils.proguard.NoProguard;
 
 /**
  * <p></p>

@@ -1,9 +1,9 @@
 package com.sic777.common.exception;
 
-import com.sic777.utils.proguard.NoProguard;
+import com.sic777.common.utils.proguard.NoProguard;
 
 /**
- * <p>运行时异基类
+ * <p>运行时异抽象类,所有运行时异常均可继承该类
  *
  * @author sic777
  * @since 0.0.1

@@ -1,6 +1,6 @@
 package com.sic777.restful.base.response;
 
-import com.sic777.utils.proguard.NoProguard;
+import com.sic777.common.utils.proguard.NoProguard;
 
 /**
  * <p></p>
@@ -397,11 +397,11 @@ public enum HttpStatus {
      */
     GATEWAY_TIMEOUT(504, "Gateway Timeout"),
     /**
-     * {@code 505 HTTP Version Not Supported}.
+     * {@code 505 HTTP VersionUtil Not Supported}.
      *
      * @see <a href="http://tools.ietf.org/html/rfc7231#section-6.6.6">HTTP/1.1: Semantics and Content, section 6.6.6</a>
      */
-    HTTP_VERSION_NOT_SUPPORTED(505, "HTTP Version not supported"),
+    HTTP_VERSION_NOT_SUPPORTED(505, "HTTP VersionUtil not supported"),
     /**
      * {@code 506 Variant Also Negotiates}
      *

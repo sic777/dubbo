@@ -6,9 +6,9 @@ import com.sic777.dubbo.common.constants.DubboConstant;
 import com.sic777.dubbo.common.constants.DubboDefaultValue;
 import com.sic777.dubbo.common.enums.ApplicationCompilerType;
 import com.sic777.dubbo.common.enums.ApplicationLogType;
-import com.sic777.utils.StringUtil;
+import com.sic777.common.utils.lang.StringUtil;
 import com.alibaba.dubbo.config.ApplicationConfig;
-import com.sic777.utils.proguard.NoProguard;
+import com.sic777.common.utils.proguard.NoProguard;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

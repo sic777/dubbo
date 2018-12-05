@@ -1,10 +1,10 @@
 package com.sic777.common.exception;
 
 
-import com.sic777.utils.proguard.NoProguard;
+import com.sic777.common.utils.proguard.NoProguard;
 
 /**
- * <p>通用异常
+ * <p>通用的运行时异常
  *
  * @author sic777
  * @since 0.0.1

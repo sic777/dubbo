@@ -1,7 +1,7 @@
 package com.sic777.dubbo.comsumer.common.spi.extend.filter;
 
 import com.alibaba.dubbo.rpc.*;
-import com.sic777.utils.proguard.NoProguard;
+import com.sic777.common.utils.proguard.NoProguard;
 
 /**
  * <p>Rpc客户端拦截器</p>

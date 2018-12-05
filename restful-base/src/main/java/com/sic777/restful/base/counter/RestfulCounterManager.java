@@ -1,7 +1,7 @@
 package com.sic777.restful.base.counter;
 
-import com.sic777.utils.ConfigureManager;
-import com.sic777.utils.container.ContainerGetter;
+import com.sic777.common.utils.conf.ConfigureManager;
+import com.sic777.common.utils.container.ContainerGetter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

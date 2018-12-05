@@ -1,7 +1,7 @@
 package com.sic777.common.laucher;
 
 
-import com.sic777.utils.proguard.NoProguard;
+import com.sic777.common.utils.proguard.NoProguard;
 
 /**
  * <p>Spring容器服务端启动类

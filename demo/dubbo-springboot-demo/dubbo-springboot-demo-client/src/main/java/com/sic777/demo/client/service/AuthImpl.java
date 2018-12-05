@@ -3,8 +3,8 @@ package com.sic777.demo.client.service;
 import com.alibaba.fastjson.JSONObject;
 import com.sic777.demo.client.PermissionExtends;
 import com.sic777.restful.base.spi.auth.IAuthSPI;
-import com.sic777.utils.container.tuple.Tuple;
-import com.sic777.utils.container.tuple.TwoTuple;
+import com.sic777.common.utils.container.tuple.Tuple;
+import com.sic777.common.utils.container.tuple.TwoTuple;
 import org.springframework.stereotype.Component;
 
 /**

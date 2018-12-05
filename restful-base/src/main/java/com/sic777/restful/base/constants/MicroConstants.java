@@ -1,6 +1,6 @@
 package com.sic777.restful.base.constants;
 
-import com.sic777.utils.proguard.NoProguard;
+import com.sic777.common.utils.proguard.NoProguard;
 
 /**
  * <p>常量</p>

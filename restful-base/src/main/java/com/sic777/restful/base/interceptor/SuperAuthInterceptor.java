@@ -2,14 +2,14 @@ package com.sic777.restful.base.interceptor;
 
 import com.sic777.restful.base.response.ResponseManager;
 import com.sic777.restful.base.spi.auth.IAuthSPI;
-import com.sic777.utils.StringUtil;
+import com.sic777.common.utils.lang.StringUtil;
 import com.alibaba.fastjson.JSONObject;
 import com.sic777.restful.base.permission.Permission;
 import com.sic777.restful.base.permission.RestPermission;
-import com.sic777.utils.container.tuple.Tuple;
-import com.sic777.utils.container.tuple.TwoTuple;
-import com.sic777.utils.permission.PermissionUtil;
-import com.sic777.utils.proguard.NoProguard;
+import com.sic777.common.utils.container.tuple.Tuple;
+import com.sic777.common.utils.container.tuple.TwoTuple;
+import com.sic777.common.utils.permission.PermissionUtil;
+import com.sic777.common.utils.proguard.NoProguard;
 
 import static com.sic777.common.exception.ExceptionType.AuthenticationExceptionType.*;
 

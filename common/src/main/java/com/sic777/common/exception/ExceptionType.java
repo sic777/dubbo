@@ -2,15 +2,14 @@ package com.sic777.common.exception;
 
 import com.sic777.common.constants.BaseConstant;
 import com.sic777.common.constants.ErrorMsg;
-import com.sic777.utils.StringUtil;
-import com.sic777.utils.proguard.NoProguard;
+import com.sic777.common.utils.lang.StringUtil;
+import com.sic777.common.utils.proguard.NoProguard;
 
 /**
- * <p></p>
+ * <p>异常枚举
  *
- * @author Zhengzhenxie
- * @version v1.0
- * @since 2018-07-03
+ * @author sic777
+ * @since 0.0.1
  */
 @NoProguard
 public enum ExceptionType {

@@ -2,8 +2,8 @@ package com.sic777.restful.base.spi.auth;
 
 
 import com.alibaba.fastjson.JSONObject;
-import com.sic777.utils.container.tuple.TwoTuple;
-import com.sic777.utils.proguard.NoProguard;
+import com.sic777.common.utils.container.tuple.TwoTuple;
+import com.sic777.common.utils.proguard.NoProguard;
 
 /**
  * <p>鉴权SPI接口，由ISV实现</p>
