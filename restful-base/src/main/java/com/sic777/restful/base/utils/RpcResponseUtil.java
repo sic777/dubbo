@@ -7,9 +7,9 @@ import com.sic777.dubbo.bean.RpcResponse;
 import com.sic777.dubbo.bean.RpcResponseStatus;
 import com.sic777.common.utils.proguard.NoProguard;
 
-import static com.sic777.common.exception.ExceptionType.AuthenticationExceptionType.INVALID_ACCESS;
-import static com.sic777.common.exception.ExceptionType.NotFoundExceptionType.RESOURCE_NOT_FOUND;
-import static com.sic777.common.exception.ExceptionType.ParamExceptionType.PARAM_INVALID;
+import static com.sic777.restful.base.exception.ExceptionType.AuthenticationExceptionType.INVALID_ACCESS;
+import static com.sic777.restful.base.exception.ExceptionType.NotFoundExceptionType.RESOURCE_NOT_FOUND;
+import static com.sic777.restful.base.exception.ExceptionType.ParamExceptionType.PARAM_INVALID;
 
 /**
  * <p>rpc响应处理工具类</p>

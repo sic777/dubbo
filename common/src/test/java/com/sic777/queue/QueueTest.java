@@ -1,6 +1,6 @@
 package com.sic777.queue;
 
-import com.sic777.common.constants.enums.QueueType;
+import com.sic777.common.enums.QueueType;
 import com.sic777.common.thread.pool.QueueThreadPoolManager;
 
 /**

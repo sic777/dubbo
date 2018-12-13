@@ -1,8 +1,7 @@
 package com.sic777.common.system;
 
-import com.sic777.common.constants.BaseConstant;
-import com.sic777.common.constants.enums.Environment;
-import com.sic777.common.laucher.AbstractLauncher;
+import com.sic777.common.constants.CommonConstant;
+import com.sic777.common.enums.Environment;
 import com.sic777.common.utils.classes.ClassUtil;
 import com.sic777.common.utils.proguard.NoProguard;
 import org.slf4j.Logger;
@@ -44,8 +43,8 @@ public final class CurrentEnvironment {
      * 初始化环境
      */
     private void init() {
-        String e = System.getProperty(BaseConstant.ENVIRONMENT_FLAG);
-        logger.info("-d" + BaseConstant.ENVIRONMENT_FLAG + "=" + e);
+        String e = System.getProperty(CommonConstant.ENVIRONMENT_FLAG);
+        logger.info("-d" + CommonConstant.ENVIRONMENT_FLAG + "=" + e);
         this.environment = Environment.fromEnvironment(e);
         this.isDefault = environment == Environment.DEVELOP;
         logger.info("init current environment:" + environment.getEnvironment());
@@ -54,11 +53,12 @@ public final class CurrentEnvironment {
     /**
      * 校验调用者是否在白名单里
      *
+     * @param clz
      * @deprecated
      */
-    private void checkWhite() {
+    private void checkWhite(Class<?> clz) {
         List<String> callerList = Arrays.asList(ClassUtil.getCallers());
-        if (!callerList.contains(AbstractLauncher.class.getName())) {
+        if (!callerList.contains(clz.getName())) {
             String topCaller = ClassUtil.getTopCaller();
             logger.error("you have no permission to access this class: " + this.getClass().getName() + ",your class:" + topCaller);
             System.exit(-1);

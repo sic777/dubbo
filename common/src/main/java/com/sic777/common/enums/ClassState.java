@@ -1,4 +1,4 @@
-package com.sic777.common.constants.enums;
+package com.sic777.common.enums;
 
 /**
  * <p>类在JVM下的状态

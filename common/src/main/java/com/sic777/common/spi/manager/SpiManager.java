@@ -1,6 +1,6 @@
 package com.sic777.common.spi.manager;
 
-import com.sic777.common.constants.enums.ClassState;
+import com.sic777.common.enums.ClassState;
 import com.sic777.common.spi.QueueProcessSpi;
 
 import java.util.ArrayList;

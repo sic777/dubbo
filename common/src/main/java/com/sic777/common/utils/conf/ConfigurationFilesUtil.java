@@ -3,7 +3,7 @@ package com.sic777.common.utils.conf;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.sic777.common.constants.BaseConstant;
+import com.sic777.common.constants.CommonConstant;
 import com.sic777.common.system.CurrentEnvironment;
 import com.sic777.common.utils.lang.StringUtil;
 import com.sic777.common.utils.container.tuple.Tuple;
@@ -98,7 +98,7 @@ public final class ConfigurationFilesUtil {
      * @throws Exception
      */
     public static Properties loadPropertiesAutomatic() throws Exception {
-        return loadPropertiesAutomatic(BaseConstant.DEFAULT_PROPERTIES_NAME, BaseConstant.DEFAULT_CONFIG_PATH_NAME);
+        return loadPropertiesAutomatic(CommonConstant.DEFAULT_PROPERTIES_NAME, CommonConstant.DEFAULT_CONFIG_PATH_NAME);
     }
 
 
@@ -167,7 +167,7 @@ public final class ConfigurationFilesUtil {
      * @return
      */
     public static JSONObject loadJsonAutomatic() throws Exception {
-        return loadJsonAutomatic(BaseConstant.DEFAULT_JSON_NAME, BaseConstant.DEFAULT_CONFIG_PATH_NAME);
+        return loadJsonAutomatic(CommonConstant.DEFAULT_JSON_NAME, CommonConstant.DEFAULT_CONFIG_PATH_NAME);
     }
 
 
@@ -236,7 +236,7 @@ public final class ConfigurationFilesUtil {
      * @return
      */
     public static JSONArray loadArrayAutomatic() throws Exception {
-        return loadArrayAutomatic(BaseConstant.DEFAULT_JSON_NAME, BaseConstant.DEFAULT_CONFIG_PATH_NAME);
+        return loadArrayAutomatic(CommonConstant.DEFAULT_JSON_NAME, CommonConstant.DEFAULT_CONFIG_PATH_NAME);
     }
 
     /**

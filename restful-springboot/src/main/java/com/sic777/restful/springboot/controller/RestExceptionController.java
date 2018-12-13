@@ -14,8 +14,8 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
-import static com.sic777.common.exception.ExceptionType.ServiceUnavailableExceptionType.*;
-import static com.sic777.common.exception.ExceptionType.NotFoundExceptionType.*;
+import static com.sic777.restful.base.exception.ExceptionType.ServiceUnavailableExceptionType.*;
+import static com.sic777.restful.base.exception.ExceptionType.NotFoundExceptionType.*;
 /**
  * <p></p>
  *

@@ -1,4 +1,4 @@
-package com.sic777.common.constants.enums;
+package com.sic777.common.enums;
 
 /**
  * <p>队列枚举

@@ -9,7 +9,7 @@
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 
-	<artifactId>restful-base</artifactId>
+	<artifactId>common-springboot</artifactId>
 
 	<dependencies>
 		<dependency>
@@ -17,24 +17,27 @@
 			<artifactId>common</artifactId>
 			<version>${project.parent.version}</version>
 		</dependency>
+
 		<dependency>
-			<groupId>com.sic777.framework</groupId>
-			<artifactId>common-springboot</artifactId>
-			<version>${project.parent.version}</version>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>*</artifactId>
+				</exclusion>
+			</exclusions>
+			<optional>true</optional>
 		</dependency>
 		<dependency>
-			<groupId>com.sic777.framework</groupId>
-			<artifactId>dubbo-bean</artifactId>
-			<version>${project.parent.version}</version>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<optional>true</optional>
 		</dependency>
 		<dependency>
-			<groupId>com.sic777.framework</groupId>
-			<artifactId>logger</artifactId>
-			<version>${project.parent.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.alibaba</groupId>
-			<artifactId>fastjson</artifactId>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<optional>true</optional>
 		</dependency>
 	</dependencies>
 </project>

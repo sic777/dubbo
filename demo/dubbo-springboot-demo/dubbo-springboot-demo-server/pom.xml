@@ -18,6 +18,10 @@
 
 	<dependencies>
 		<dependency>
+			<groupId>com.sic777.framework</groupId>
+			<artifactId>common-springboot</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>com.sic777</groupId>
 			<artifactId>dubbo-springboot-demo-api</artifactId>
 			<version>${project.parent.version}</version>

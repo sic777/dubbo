@@ -11,7 +11,7 @@ import com.sic777.common.utils.container.tuple.TwoTuple;
 import com.sic777.common.utils.permission.PermissionUtil;
 import com.sic777.common.utils.proguard.NoProguard;
 
-import static com.sic777.common.exception.ExceptionType.AuthenticationExceptionType.*;
+import static com.sic777.restful.base.exception.ExceptionType.AuthenticationExceptionType.*;
 
 /**
  * <p></p>

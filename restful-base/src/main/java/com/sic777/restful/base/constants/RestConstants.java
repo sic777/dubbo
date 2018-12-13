@@ -10,7 +10,7 @@ import com.sic777.common.utils.proguard.NoProguard;
  * @since 2018-04-11
  */
 @NoProguard
-public class MicroConstants {
+public class RestConstants {
     /**
      * 默认id key
      */
@@ -48,5 +48,10 @@ public class MicroConstants {
      * 接口权限标识
      */
     public static final String PERMISSION_FLAG = "REST_PERMISSION";
+
+    /**
+     * 鉴权标识,子类可覆盖
+     */
+    public static String ACCESS_TOKEN_FLAG = "Access-Token";
 
 }

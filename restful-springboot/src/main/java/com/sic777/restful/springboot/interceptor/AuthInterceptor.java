@@ -1,8 +1,7 @@
 package com.sic777.restful.springboot.interceptor;
 
 
-import com.sic777.common.constants.BaseConstant;
-import com.sic777.restful.base.constants.MicroConstants;
+import com.sic777.restful.base.constants.RestConstants;
 import com.sic777.restful.base.counter.RestfulCounterManager;
 import com.sic777.restful.base.interceptor.SuperAuthInterceptor;
 import com.sic777.restful.base.permission.Permission;
@@ -49,11 +48,11 @@ public class AuthInterceptor extends SuperAuthInterceptor implements HandlerInte
             if (null == methodPermission) {
                 classPermission = controller.getClass().getAnnotation(Permission.class);//类权限注解
             }
-            String accessToken = request.getHeader(BaseConstant.ACCESS_TOKEN_FLAG);
+            String accessToken = request.getHeader(RestConstants.ACCESS_TOKEN_FLAG);
             TwoTuple<JSONObject, Integer> tuple = super.validate(accessToken, methodPermission, classPermission, auth);
             //将token缓存的数据和解析出来的权限携带给控制器
-            tuple.first.put(MicroConstants.PERMISSION_FLAG, tuple.second);
-            request.setAttribute(MicroConstants.ACK_ATTRIBUTE_FLAG, tuple.first);
+            tuple.first.put(RestConstants.PERMISSION_FLAG, tuple.second);
+            request.setAttribute(RestConstants.ACK_ATTRIBUTE_FLAG, tuple.first);
             //只统计有权限访问的调用次数
             Object uri = request.getAttribute("org.springframework.web.servlet.HandlerMapping.bestMatchingPattern");
             RestfulCounterManager.instance().offer(StringUtil.getString(uri));

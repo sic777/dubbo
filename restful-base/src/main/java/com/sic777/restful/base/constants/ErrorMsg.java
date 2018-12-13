@@ -1,4 +1,4 @@
-package com.sic777.common.constants;
+package com.sic777.restful.base.constants;
 
 import com.sic777.common.utils.proguard.NoProguard;
 

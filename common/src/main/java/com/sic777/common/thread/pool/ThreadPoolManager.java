@@ -1,6 +1,6 @@
 package com.sic777.common.thread.pool;
 
-import com.sic777.common.constants.enums.ClassState;
+import com.sic777.common.enums.ClassState;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

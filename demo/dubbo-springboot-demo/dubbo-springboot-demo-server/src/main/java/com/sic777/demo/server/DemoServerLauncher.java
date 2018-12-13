@@ -1,7 +1,7 @@
 package com.sic777.demo.server;
 
-import com.sic777.common.laucher.processor.IStarterProcessor;
-import com.sic777.common.laucher.SpringServerContainerLauncher;
+import com.sic777.common.springboot.laucher.SpringServerContainerLauncher;
+import com.sic777.common.springboot.laucher.processor.IStarterProcessor;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import javax.annotation.PostConstruct;

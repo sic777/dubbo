@@ -10,8 +10,9 @@
 	<name>${project.artifactId}</name>
 
 	<modules>
-		<module>common</module>
 		<module>logger</module>
+		<module>common</module>
+		<module>common-springboot</module>
 		<module>database-mongo</module>
 		<module>database-redis</module>
 		<module>database-springboot-mybatis</module>

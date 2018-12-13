@@ -1,6 +1,6 @@
 package com.sic777.common.thread.pool;
 
-import com.sic777.common.constants.enums.QueueType;
+import com.sic777.common.enums.QueueType;
 import com.sic777.common.queue.AbstractQueueSic777;
 import com.sic777.common.thread.QueueThread;
 import org.slf4j.Logger;
@@ -45,7 +45,7 @@ public class QueueThreadPoolManager {
      *                   在ConcurrentLinkedQueue无效
      *                   在ArrayBlockingQueue中必填,且大于0
      *                   在LinkedBlockingQueue选填,为0或者为null时,默认为Integer.MAX_VALUE
-     * @see com.sic777.common.constants.enums.QueueType
+     * @see com.sic777.common.enums.QueueType
      */
     public void init(int threadSize, String uniqueName, QueueType queueType, Integer capacity) {
         if (threadMap.containsKey(uniqueName)) {

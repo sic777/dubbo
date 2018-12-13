@@ -1,7 +1,6 @@
 package com.sic777.restful.base.controller;
 
-import com.sic777.common.constants.BaseConstant;
-import com.sic777.restful.base.constants.MicroConstants;
+import com.sic777.restful.base.constants.RestConstants;
 import com.sic777.restful.base.permission.RestPermission;
 import com.alibaba.fastjson.JSONObject;
 import com.sic777.common.utils.proguard.NoProguard;
@@ -21,7 +20,7 @@ public abstract class SuperRestfulController implements RestPermission {
      * @return
      */
     protected final int getPermission() {
-        return this.getAccessTokenData().getIntValue(MicroConstants.PERMISSION_FLAG);
+        return this.getAccessTokenData().getIntValue(RestConstants.PERMISSION_FLAG);
     }
 
     /**
@@ -30,7 +29,7 @@ public abstract class SuperRestfulController implements RestPermission {
      * @return
      */
     protected final String getAccessTokenString() {
-        return this.getAccessTokenData().getString(BaseConstant.ACCESS_TOKEN_FLAG);
+        return this.getAccessTokenData().getString(RestConstants.ACCESS_TOKEN_FLAG);
     }
 
     /**

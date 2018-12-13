@@ -1,6 +1,6 @@
-package com.sic777.common.laucher;
+package com.sic777.common.springboot.laucher;
 
-import com.sic777.common.laucher.processor.IStarterProcessor;
+import com.sic777.common.springboot.laucher.processor.IStarterProcessor;
 
 /**
  * <p>启动基类

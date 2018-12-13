@@ -1,9 +1,9 @@
-package com.sic777.common.exception;
+package com.sic777.restful.base.exception;
 
-import com.sic777.common.constants.BaseConstant;
-import com.sic777.common.constants.ErrorMsg;
 import com.sic777.common.utils.lang.StringUtil;
 import com.sic777.common.utils.proguard.NoProguard;
+import com.sic777.restful.base.constants.ErrorMsg;
+import com.sic777.restful.base.constants.RestConstants;
 
 /**
  * <p>异常枚举
@@ -123,7 +123,7 @@ public enum ExceptionType {
         /**
          * Access-Token 为空
          */
-        ACCESS_TOKEN_VALUE_EMPTY(200000001, String.format(ErrorMsg.VALUE_EMPTY, BaseConstant.ACCESS_TOKEN_FLAG));
+        ACCESS_TOKEN_VALUE_EMPTY(200000001, String.format(ErrorMsg.VALUE_EMPTY, RestConstants.ACCESS_TOKEN_FLAG));
         private final long id;
         private final String msg;
 

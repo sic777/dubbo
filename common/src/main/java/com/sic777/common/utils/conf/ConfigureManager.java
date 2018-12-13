@@ -1,7 +1,7 @@
 package com.sic777.common.utils.conf;
 
 
-import com.sic777.common.constants.BaseConstant;
+import com.sic777.common.constants.CommonConstant;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.serializer.SerializerFeature;
@@ -59,21 +59,21 @@ public class ConfigureManager {
             try {
                 config = ConfigurationFilesUtil.loadJsonAutomatic();
                 logger.info("============================================================");
-                logger.info("======================  " + BaseConstant.DEFAULT_JSON_NAME + " =====================");
+                logger.info("======================  " + CommonConstant.DEFAULT_JSON_NAME + " =====================");
                 logger.info("============================================================");
                 logger.info("\n" + JSON.toJSONString(config, SerializerFeature.PrettyFormat, SerializerFeature.DisableCircularReferenceDetect));
             } catch (Exception e) {
-                logger.warn("Automatic " + BaseConstant.DEFAULT_JSON_NAME + " configuration file failed");
+                logger.warn("Automatic " + CommonConstant.DEFAULT_JSON_NAME + " configuration file failed");
             }
 
             try {
                 properties = ConfigurationFilesUtil.loadPropertiesAutomatic();
                 logger.info("============================================================");
-                logger.info("==================  " + BaseConstant.DEFAULT_PROPERTIES_NAME + " =================");
+                logger.info("==================  " + CommonConstant.DEFAULT_PROPERTIES_NAME + " =================");
                 logger.info("============================================================");
                 logger.info("\n" + JSON.toJSONString(properties, SerializerFeature.PrettyFormat, SerializerFeature.DisableCircularReferenceDetect));
             } catch (Exception e) {
-                logger.warn("Automatic " + BaseConstant.DEFAULT_PROPERTIES_NAME + " configuration file failed");
+                logger.warn("Automatic " + CommonConstant.DEFAULT_PROPERTIES_NAME + " configuration file failed");
             }
 
             if (null == config && null == properties) {

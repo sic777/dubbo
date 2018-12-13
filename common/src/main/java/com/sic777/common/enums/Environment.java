@@ -1,4 +1,4 @@
-package com.sic777.common.constants.enums;
+package com.sic777.common.enums;
 
 import com.sic777.common.utils.proguard.NoProguard;
 

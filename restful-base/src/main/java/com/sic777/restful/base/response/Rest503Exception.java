@@ -1,7 +1,7 @@
 package com.sic777.restful.base.response;
 
 
-import com.sic777.common.exception.ExceptionType;
+import com.sic777.restful.base.exception.ExceptionType;
 
 /**
  * <p></p>

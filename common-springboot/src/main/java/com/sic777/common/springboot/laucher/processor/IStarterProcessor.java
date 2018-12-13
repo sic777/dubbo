@@ -1,4 +1,4 @@
-package com.sic777.common.laucher.processor;
+package com.sic777.common.springboot.laucher.processor;
 
 import com.sic777.common.utils.proguard.NoProguard;
 

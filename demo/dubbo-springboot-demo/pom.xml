@@ -21,6 +21,11 @@
 		<dependencies>
 			<dependency>
 				<groupId>com.sic777.framework</groupId>
+				<artifactId>common-springboot</artifactId>
+				<version>${framework.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.sic777.framework</groupId>
 				<artifactId>logger</artifactId>
 				<version>${framework.version}</version>
 				<optional>true</optional>

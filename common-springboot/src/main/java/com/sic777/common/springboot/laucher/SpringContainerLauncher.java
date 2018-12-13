@@ -1,7 +1,7 @@
-package com.sic777.common.laucher;
+package com.sic777.common.springboot.laucher;
 
-import com.sic777.common.constants.BaseConstant;
-import com.sic777.common.laucher.processor.IStarterProcessor;
+import com.sic777.common.springboot.constants.SpringBootConstant;
+import com.sic777.common.springboot.laucher.processor.IStarterProcessor;
 import com.sic777.common.system.CurrentEnvironment;
 import com.sic777.common.utils.system.VersionUtil;
 import org.slf4j.Logger;
@@ -29,7 +29,7 @@ import java.util.concurrent.CountDownLatch;
  * @since 0.0.1
  */
 @Order(0)
-@SpringBootApplication(scanBasePackages = {BaseConstant.BASE_SPRING_SCAN_PACKAGE, BaseConstant.ISV_SPRING_SCAN_PACKAGE})
+@SpringBootApplication(scanBasePackages = {SpringBootConstant.BASE_SPRING_SCAN_PACKAGE, SpringBootConstant.ISV_SPRING_SCAN_PACKAGE})
 abstract class SpringContainerLauncher extends AbstractLauncher implements CommandLineRunner {
     private static final Logger logger = LoggerFactory.getLogger(SpringContainerLauncher.class);
 

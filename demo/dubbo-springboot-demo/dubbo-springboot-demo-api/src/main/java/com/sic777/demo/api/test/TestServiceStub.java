@@ -1,6 +1,5 @@
 package com.sic777.demo.api.test;
 
-import com.sic777.common.constants.ErrorMsg;
 import com.sic777.dubbo.bean.RpcResponse;
 import com.sic777.dubbo.bean.exception.RpcExceptionType;
 import org.slf4j.Logger;
@@ -26,7 +25,7 @@ public class TestServiceStub implements ITestService {
     @Override
     public RpcResponse<String> create(TestDto testDto) {
         if (testDto.getMsg() == null) {
-            return new RpcResponse<>(RpcExceptionType.PARAM_INVALID, String.format(ErrorMsg.VALUE_NULL, "msg"));
+            return new RpcResponse<>(RpcExceptionType.PARAM_INVALID, "msg null");
         }
         return testService.create(testDto);
     }

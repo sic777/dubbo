@@ -1,21 +1,21 @@
 package com.sic777.restful.base.response;
 
-import com.sic777.common.constants.ErrorMsg;
+import com.sic777.restful.base.constants.ErrorMsg;
 import com.sic777.restful.base.controller.SuperRestfulController;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.sic777.restful.base.constants.MicroConstants;
+import com.sic777.restful.base.constants.RestConstants;
 import com.sic777.common.utils.lang.StringUtil;
 import com.sic777.common.utils.proguard.NoProguard;
+import com.sic777.restful.base.exception.ExceptionType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import com.sic777.common.exception.ExceptionType;
 
 import java.util.Collection;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import static com.sic777.common.exception.ExceptionType.ParamExceptionType.*;
-import static com.sic777.common.exception.ExceptionType.NotFoundExceptionType.*;
+import static com.sic777.restful.base.exception.ExceptionType.ParamExceptionType.*;
+import static com.sic777.restful.base.exception.ExceptionType.NotFoundExceptionType.*;
 
 /**
  * <p></p>
@@ -83,9 +83,9 @@ public class ResponseManager {
         switch (responseBodyType) {
             case FIXED:
                 JSONObject resp = new JSONObject();
-                resp.put(MicroConstants.CODE_FLAG, 0);
-                resp.put(MicroConstants.DATA_FLAG, object);
-                resp.put(MicroConstants.MSG_FLAG, "OK");
+                resp.put(RestConstants.CODE_FLAG, 0);
+                resp.put(RestConstants.DATA_FLAG, object);
+                resp.put(RestConstants.MSG_FLAG, "OK");
                 response = resp;
                 break;
             default:
@@ -109,8 +109,8 @@ public class ResponseManager {
     public final void successCollections(SuperRestfulController restfulController, Collection<?> dataCollections,
                                          long count) throws Exception {
         JSONObject js = new JSONObject();
-        js.put(MicroConstants.COUNT_FLAG, count);
-        js.put(MicroConstants.LIST_FLAG, dataCollections);
+        js.put(RestConstants.COUNT_FLAG, count);
+        js.put(RestConstants.LIST_FLAG, dataCollections);
         success(restfulController, js);
     }
 
@@ -138,7 +138,7 @@ public class ResponseManager {
      */
     public final void successId(SuperRestfulController restfulController, Object idValue) throws Exception {
         JSONObject js = new JSONObject();
-        js.put(MicroConstants.ID_FLAG, idValue);
+        js.put(RestConstants.ID_FLAG, idValue);
         success(restfulController, js);
     }
 
@@ -152,12 +152,12 @@ public class ResponseManager {
      */
     public final JSONObject getErrorResponseBody(long code, String msg) {
         JSONObject json = new JSONObject();
-        json.put(MicroConstants.CODE_FLAG, code);
-        json.put(MicroConstants.MSG_FLAG, msg);
+        json.put(RestConstants.CODE_FLAG, code);
+        json.put(RestConstants.MSG_FLAG, msg);
         switch (responseBodyType) {
             case DYNAMIC:
                 JSONObject resp = new JSONObject();
-                resp.put(MicroConstants.ERROR_FLAG, json);
+                resp.put(RestConstants.ERROR_FLAG, json);
                 return resp;
             default:
                 return json;

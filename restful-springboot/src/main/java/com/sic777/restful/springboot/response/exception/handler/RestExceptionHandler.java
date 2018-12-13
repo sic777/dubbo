@@ -1,7 +1,5 @@
 package com.sic777.restful.springboot.response.exception.handler;
 
-import com.sic777.common.exception.CommonException;
-import com.sic777.common.exception.ExceptionType;
 import com.sic777.restful.base.response.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,8 +10,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import static com.sic777.common.exception.ExceptionType.ServiceUnavailableExceptionType.*;
-import static com.sic777.common.exception.ExceptionType.NotAllowExceptionType.*;
+
+import static com.sic777.restful.base.exception.ExceptionType.ServiceUnavailableExceptionType.*;
+import static com.sic777.restful.base.exception.ExceptionType.NotAllowExceptionType.*;
 
 /**
  * <p>Rest异常处理器</p>
@@ -27,32 +26,6 @@ public class RestExceptionHandler {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-
-    /**
-     * 通用异常
-     *
-     * @param request
-     * @param response
-     * @param e
-     * @return
-     */
-    @ResponseBody
-    @ExceptionHandler(value = {CommonException.class})
-    public Object commonExceptionHandler(HttpServletRequest request, HttpServletResponse response, Exception e) {
-        CommonException commonException = (CommonException) e;
-        ExceptionType exceptionType = ExceptionType.parse(commonException.getCode());
-        return this.restExceptionHandler(request, response, new AbstractRestException(commonException.getCode(), commonException.getMsg(), null) {
-            /**
-             *
-             */
-            private static final long serialVersionUID = -1751113735780800156L;
-
-            @Override
-            public HttpStatus getHttpStatus() {
-                return HttpStatus.valueOf(exceptionType.getCode());
-            }
-        });
-    }
 
     /**
      * 系统异常

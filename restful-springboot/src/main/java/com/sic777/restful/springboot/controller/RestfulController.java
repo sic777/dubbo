@@ -1,6 +1,6 @@
 package com.sic777.restful.springboot.controller;
 
-import com.sic777.restful.base.constants.MicroConstants;
+import com.sic777.restful.base.constants.RestConstants;
 import com.sic777.restful.base.controller.SuperRestfulController;
 import com.alibaba.fastjson.JSONObject;
 import com.sic777.common.utils.proguard.NoProguard;
@@ -23,7 +23,7 @@ public abstract class RestfulController extends SuperRestfulController {
 
     @Override
     protected final JSONObject getAccessTokenData() {
-        return (JSONObject) this.getAttribute(MicroConstants.ACK_ATTRIBUTE_FLAG);
+        return (JSONObject) this.getAttribute(RestConstants.ACK_ATTRIBUTE_FLAG);
     }
 
     /**
