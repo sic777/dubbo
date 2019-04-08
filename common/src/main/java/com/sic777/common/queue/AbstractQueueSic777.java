@@ -1,7 +1,7 @@
 package com.sic777.common.queue;
 
 /**
- * <p>
+ * <p>自定义抽象队列
  *
  * @author sic777
  * @version 0.0.1

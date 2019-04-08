@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.sic777.framework</groupId>
 	<artifactId>base-framework</artifactId>
-	<version>1.0.0_BETA</version>
+	<version>1.0.0</version>
 	<packaging>pom</packaging>
 	<name>${project.artifactId}</name>
 
@@ -44,27 +44,11 @@
 		</developer>
 	</developers>
 
-	<profiles>
-		<profile>
-			<id>beta</id>
-			<properties>
-				<profiles.nextVersion>1.0.0</profiles.nextVersion>
-				<profiles.suffix>_BETA</profiles.suffix>
-			</properties>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
-		</profile>
-		<profile>
-			<id>release</id>
-			<properties>
-				<profiles.nextVersion>1.0.0</profiles.nextVersion>
-				<profiles.suffix>_RC</profiles.suffix>
-			</properties>
-		</profile>
-	</profiles>
-
 	<properties>
+
+		<!-- version -->
+		<r.version>1.0.0</r.version>
+
 		<!-- base version -->
 		<java.version>1.8</java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -393,7 +377,7 @@
 				<artifactId>versions-maven-plugin</artifactId>
 				<version>${versions-maven-plugin.version}</version>
 				<configuration>
-					<newVersion>${profiles.nextVersion}${profiles.suffix}</newVersion>
+					<newVersion>${r.version}</newVersion>
 					<generateBackupPoms>false</generateBackupPoms>
 				</configuration>
 			</plugin>
@@ -510,7 +494,7 @@
 
 	<distributionManagement>
 		<repository>
-			<id>wq</id>
+			<id>sic777</id>
 			<url>scp://127.0.0.1/Users/sic777/dev/maven_3.5.0/zzxRep</url>
 		</repository>
 	</distributionManagement>

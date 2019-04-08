@@ -126,7 +126,7 @@ public abstract class Mongo {
             for (Map.Entry<String, Object> entry : order.entrySet()) {
                 String key = entry.getKey();
                 String value = entry.getValue().toString();
-                orderBson.append(key, MongoQuery.OrderType.fromString(value).nosql());
+                orderBson.append(key, MongoQuery.OrderType.fromString(value).nosql());// TODO key可能需要根据field转换
             }
         }
         Set<String> filters = new HashSet<>();
