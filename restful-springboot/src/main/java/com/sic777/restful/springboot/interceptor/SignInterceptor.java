@@ -1,5 +1,6 @@
 package com.sic777.restful.springboot.interceptor;
 
+import com.alibaba.fastjson.JSONObject;
 import com.sic777.common.utils.encrypt.md5.MD5Util;
 import com.sic777.common.utils.lang.StringUtil;
 import com.sic777.restful.base.response.ResponseManager;
@@ -13,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.net.URLDecoder;
+import java.util.Map;
 
 /**
  * <p>
@@ -32,7 +34,7 @@ public class SignInterceptor implements HandlerInterceptor {
             String requestId = request.getHeader("_requestId");
             String timestamp = request.getHeader("_timestamp");
 
-            String sign = request.getParameter("_sign");
+            String sign = request.getHeader("_sign");
 
             ResponseManager.instance().funcValidateValueNotEmpty(
                     new Object[]{requestId, timestamp, sign},
@@ -58,28 +60,27 @@ public class SignInterceptor implements HandlerInterceptor {
             String salt = signSPI.salt();
 
             sb.append("_uri=").append(uri)
-                    .append("_requestId=").append(requestId)
-                    .append("_timestamp").append(timestamp)
-                    .append("_salt=").append(salt);
+                    .append("&").append("_requestId=").append(requestId)
+                    .append("&").append("_timestamp=").append(timestamp)
+                    .append("&").append("_salt=").append(salt);
 
             String queryString = URLDecoder.decode(request.getQueryString(), "UTF-8");
             String[] query = queryString.split("&");
             for (String que : query) {
-                if (que.startsWith("_sign")) {
-                    continue;
-                }
-                sb.append(que);
+                sb.append("&").append(que);
             }
 
             String body = HttpHelper.getBodyString(request);
-            if (StringUtil.isNotEmpty(body)) {
-                sb.append("_body=").append(MD5Util.md5(body));
+            if (StringUtil.isNotEmpty(body)) {//暂时只先支持json object
+                JSONObject bodyJson = JSONObject.parseObject(body);
+                for (Map.Entry<String, Object> entry : bodyJson.entrySet()) {
+                    sb.append("&").append(entry.getKey()).append("=").append(entry.getValue());
+                }
             }
             String secret = signSPI.secret();
-            sb.append(secret);
+            sb.append("&").append(secret);
 
-            String sbString = sb.toString();
-            String mySign = MD5Util.md5(sbString);
+            String mySign = MD5Util.md5(sb.toString());
             if (!mySign.equals(sign)) {
                 ResponseManager.instance().throwParamInvalidException("sign error.");
             }
