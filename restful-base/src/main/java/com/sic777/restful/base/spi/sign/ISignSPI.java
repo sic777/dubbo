@@ -9,5 +9,7 @@ package com.sic777.restful.base.spi.sign;
  * @since 0.0.1
  */
 public interface ISignSPI {
-    boolean preHandle(Sign sign) throws Exception;
+    String salt();
+
+    String secret();
 }
