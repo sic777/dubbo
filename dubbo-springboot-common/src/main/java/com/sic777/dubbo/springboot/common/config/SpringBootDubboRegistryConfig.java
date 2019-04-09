@@ -4,7 +4,7 @@ import com.sic777.dubbo.common.config.SuperDubboRegistryConfig;
 import com.sic777.dubbo.common.config.build.DubboRegistryConfigManager;
 import com.sic777.dubbo.common.constants.DubboConstant;
 import com.sic777.dubbo.springboot.common.SpringBeanRegistry;
-import com.alibaba.dubbo.config.RegistryConfig;
+import org.apache.dubbo.config.RegistryConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;

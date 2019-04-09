@@ -1,10 +1,10 @@
 package com.sic777.dubbo.comsumer.common.spi.extend.cluster;
 
-import com.alibaba.dubbo.rpc.Invoker;
-import com.alibaba.dubbo.rpc.RpcException;
-import com.alibaba.dubbo.rpc.cluster.Cluster;
-import com.alibaba.dubbo.rpc.cluster.Directory;
-import com.alibaba.dubbo.rpc.cluster.support.wrapper.MockClusterWrapper;
+import org.apache.dubbo.rpc.Invoker;
+import org.apache.dubbo.rpc.RpcException;
+import org.apache.dubbo.rpc.cluster.Cluster;
+import org.apache.dubbo.rpc.cluster.Directory;
+import org.apache.dubbo.rpc.cluster.support.wrapper.MockClusterWrapper;
 import com.sic777.common.utils.proguard.NoProguard;
 
 /**

@@ -4,7 +4,7 @@ import com.sic777.demo.api.test.TestDto;
 import com.sic777.dubbo.bean.RpcResponse;
 import com.sic777.restful.base.response.ResponseManager;
 import com.sic777.restful.base.utils.RpcResponseUtil;
-import com.alibaba.dubbo.config.annotation.Reference;
+import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

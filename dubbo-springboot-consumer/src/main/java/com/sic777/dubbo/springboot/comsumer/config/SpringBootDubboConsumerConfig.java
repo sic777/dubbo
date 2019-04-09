@@ -5,7 +5,7 @@ import com.sic777.dubbo.comsumer.common.config.SuperDubboConsumerConfig;
 import com.sic777.dubbo.comsumer.common.config.build.DubboConsumerConfigManager;
 import com.sic777.dubbo.springboot.common.config.SpringBootDubboApplicationConfig;
 import com.sic777.dubbo.springboot.common.config.SpringBootDubboRegistryConfig;
-import com.alibaba.dubbo.config.ConsumerConfig;
+import org.apache.dubbo.config.ConsumerConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;

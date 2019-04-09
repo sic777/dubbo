@@ -1,6 +1,6 @@
 package com.sic777.demo.server.test;
 
-import com.alibaba.dubbo.config.annotation.Service;
+import org.apache.dubbo.config.annotation.Service;
 import com.sic777.demo.api.test.ITestService;
 import com.sic777.demo.api.test.TestDto;
 import com.sic777.dubbo.bean.RpcResponse;

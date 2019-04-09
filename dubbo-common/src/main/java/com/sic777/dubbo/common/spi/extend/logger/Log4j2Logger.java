@@ -1,6 +1,6 @@
 package com.sic777.dubbo.common.spi.extend.logger;
 
-import com.alibaba.dubbo.common.logger.Logger;
+import org.apache.dubbo.common.logger.Logger;
 
 /**
  * <p></p>

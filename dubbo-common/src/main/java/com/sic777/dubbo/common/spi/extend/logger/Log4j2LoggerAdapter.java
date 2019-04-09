@@ -1,9 +1,9 @@
 package com.sic777.dubbo.common.spi.extend.logger;
 
-import com.alibaba.dubbo.common.logger.Level;
-import com.alibaba.dubbo.common.logger.Logger;
-import com.alibaba.dubbo.common.logger.LoggerAdapter;
+import org.apache.dubbo.common.logger.LoggerAdapter;
 import com.sic777.common.utils.proguard.NoProguard;
+import org.apache.dubbo.common.logger.Level;
+import org.apache.dubbo.common.logger.Logger;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.Appender;
 import org.apache.logging.log4j.core.LoggerContext;

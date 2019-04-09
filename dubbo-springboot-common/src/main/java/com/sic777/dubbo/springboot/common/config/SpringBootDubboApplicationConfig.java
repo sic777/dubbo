@@ -3,7 +3,7 @@ package com.sic777.dubbo.springboot.common.config;
 import com.sic777.dubbo.common.config.SuperDubboApplicationConfig;
 import com.sic777.dubbo.common.config.build.DubboApplicationConfigManager;
 import com.sic777.dubbo.common.constants.DubboConstant;
-import com.alibaba.dubbo.config.ApplicationConfig;
+import org.apache.dubbo.config.ApplicationConfig;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

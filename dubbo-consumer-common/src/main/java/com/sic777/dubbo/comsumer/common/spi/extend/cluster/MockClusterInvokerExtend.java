@@ -2,9 +2,10 @@ package com.sic777.dubbo.comsumer.common.spi.extend.cluster;
 
 import com.sic777.dubbo.bean.RpcResponse;
 import com.sic777.dubbo.bean.exception.RpcExceptionType;
-import com.alibaba.dubbo.rpc.*;
-import com.alibaba.dubbo.rpc.cluster.Directory;
-import com.alibaba.dubbo.rpc.cluster.support.wrapper.MockClusterInvoker;
+import org.apache.dubbo.rpc.*;
+import org.apache.dubbo.rpc.cluster.Directory;
+import org.apache.dubbo.rpc.RpcResult;
+import org.apache.dubbo.rpc.cluster.support.wrapper.MockClusterInvoker;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
