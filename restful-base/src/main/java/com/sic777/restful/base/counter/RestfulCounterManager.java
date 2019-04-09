@@ -148,35 +148,35 @@ public class RestfulCounterManager extends Thread {
      * JVM钩子
      */
     private void hook() {
-        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
-            logger.info("RestfulCounterManager Thread Shutdown Hook Start...");
-            for (; queue.peek() != null; ) {
-                String uri = queue.poll();
-                long n = counter.get(uri).incrementAndGet();
-                logger.info(String.format("[counter] uri:%s,local cache count:%s", uri, n));
-            }
-
-            List<UriCounter> uriCounters = ContainerGetter.arrayList();
-            for (String uri : allUri) {
-                long c = counter.get(uri).get();
-                if (c != 0) {
-                    uriCounters.add(new UriCounter(uri, c));
-                }
-            }
-            boolean close;
-            for (; ; ) {
-                if (!uriCounters.isEmpty()) {
-                    for (ICounterStoreSPI spi : counterStoreSPIS) {
-                        spi.statistics(uriCounters);
-                    }
-                    close = true;
-                } else {
-                    close = false;
-                }
-                if (close) {
-                    break;
-                }
-            }
-        }));
+//        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+//            logger.info("RestfulCounterManager Thread Shutdown Hook Start...");
+//            for (; queue.peek() != null; ) {
+//                String uri = queue.poll();
+//                long n = counter.get(uri).incrementAndGet();
+//                logger.info(String.format("[counter] uri:%s,local cache count:%s", uri, n));
+//            }
+//
+//            List<UriCounter> uriCounters = ContainerGetter.arrayList();
+//            for (String uri : allUri) {
+//                long c = counter.get(uri).get();
+//                if (c != 0) {
+//                    uriCounters.add(new UriCounter(uri, c));
+//                }
+//            }
+//            boolean close;
+//            for (; ; ) {
+//                if (!uriCounters.isEmpty()) {
+//                    for (ICounterStoreSPI spi : counterStoreSPIS) {
+//                        spi.statistics(uriCounters);
+//                    }
+//                    close = true;
+//                } else {
+//                    close = false;
+//                }
+//                if (close) {
+//                    break;
+//                }
+//            }
+//        }));
     }
 }

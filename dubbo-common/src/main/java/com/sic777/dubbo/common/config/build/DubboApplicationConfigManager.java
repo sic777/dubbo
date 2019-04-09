@@ -46,6 +46,8 @@ public class DubboApplicationConfigManager {
     public final ApplicationConfig build(SuperDubboApplicationConfig dubboApplicationConfig) {
         if (isBuild.compareAndSet(false, true)) {
             ApplicationConfig applicationConfig = new ApplicationConfig();
+            applicationConfig.setQosEnable(false);
+
             String name = dubboApplicationConfig.getName();
             String owner = dubboApplicationConfig.getOwner();
             String organization = dubboApplicationConfig.getOrganization();
