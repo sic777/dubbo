@@ -64,10 +64,15 @@ public class SignInterceptor implements HandlerInterceptor {
                     .append("&").append("_timestamp=").append(timestamp)
                     .append("&").append("_salt=").append(salt);
 
-            String queryString = URLDecoder.decode(request.getQueryString(), "UTF-8");
-            String[] query = queryString.split("&");
-            for (String que : query) {
-                sb.append("&").append(que);
+            String q = request.getQueryString();
+            if (StringUtil.isNotEmpty(q)) {
+                String queryString = URLDecoder.decode(q, "UTF-8");
+                if (StringUtil.isNotEmpty(queryString)) {
+                    String[] query = queryString.split("&");
+                    for (String que : query) {
+                        sb.append("&").append(que);
+                    }
+                }
             }
 
             String body = HttpHelper.getBodyString(request);
