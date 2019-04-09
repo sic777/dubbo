@@ -16,12 +16,12 @@
 	<inceptionYear>2018</inceptionYear>
 	<description>sic777 basic framework demo</description>
 
-	<repositories>
-		<repository>
-			<id>wq</id>
-			<url>http://120.79.212.170:9911/</url>
-		</repository>
-	</repositories>
+	<!--<repositories>-->
+		<!--<repository>-->
+			<!--<id>sic777</id>-->
+			<!--<url>http://127.0.0.1</url>-->
+		<!--</repository>-->
+	<!--</repositories>-->
 
 
 	<developers>
