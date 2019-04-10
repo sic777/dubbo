@@ -210,7 +210,7 @@ public class HttpUtil {
      * @throws IOException
      */
     public static HttpResponse post(String url) throws IOException {
-        return post(url, null, null, DEFAULT_CONNECT_TIMEOUT, DEFAULT_SOCKET_TIMEOUT);
+        return post(url, "{}", null, DEFAULT_CONNECT_TIMEOUT, DEFAULT_SOCKET_TIMEOUT);
     }
 
     /**
