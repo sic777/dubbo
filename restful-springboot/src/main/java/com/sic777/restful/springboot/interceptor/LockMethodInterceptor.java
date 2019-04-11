@@ -54,7 +54,26 @@ public class LockMethodInterceptor {
             LoggerHelper.instance().error(msg);
             ResponseManager.instance().throwRest503Exception(new Exception(msg));
         }
-        boolean rs = lockMethodRedisProcess.process(lockKey, lock.expire(), lock.timeUnit());
+        int expire = lock.expire();
+        switch (lock.timeUnit()) {
+            case DAYS:
+                expire *= 60 * 60 * 24;
+                break;
+            case HOURS:
+                expire *= 60 * 60;
+                break;
+            case MINUTES:
+                expire *= 60;
+                break;
+            case SECONDS:
+                break;
+            default:
+                String msg = "Unsupported time unit.";
+                LoggerHelper.instance().error(msg);
+                ResponseManager.instance().throwRest503Exception(new Exception(msg));
+        }
+
+        boolean rs = lockMethodRedisProcess.process(lockKey, expire);
         if (!rs) {
             ResponseManager.instance().throwRestException(FREQUENT_OPERATION.getId(), FREQUENT_OPERATION.getMsg());
         }

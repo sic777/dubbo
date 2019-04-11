@@ -20,6 +20,9 @@ public @interface CacheLock {
 
     int expire() default 5;
 
+    /**
+     * 仅支持'天'、'小时'、'分钟'、'秒'
+     */
     TimeUnit timeUnit() default TimeUnit.SECONDS;
 
     String delimiter() default ":";
