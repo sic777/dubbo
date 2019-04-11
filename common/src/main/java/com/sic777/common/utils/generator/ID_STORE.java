@@ -19,8 +19,8 @@ public class ID_STORE {
         int[] a = new int[a_count - a_start];
         int[] b = new int[b_count - b_start];
 
-        StringBuffer a_buffer = new StringBuffer();
-        StringBuffer b_buffer = new StringBuffer();
+        StringBuilder a_buffer = new StringBuilder();
+        StringBuilder b_buffer = new StringBuilder();
         for (int ix = a_start, index = 0, len = a_count; ix < len; ++ix, ++index) {
             a[index] = ix;
         }

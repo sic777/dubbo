@@ -309,7 +309,7 @@ public class HttpUtil {
      * @return
      */
     private static String url(Map<String, Object> params, String url) {
-        StringBuffer param = new StringBuffer();
+        StringBuilder param = new StringBuilder();
         if (null != params) {
             int i = 0;
             int size = params.size() - 1;

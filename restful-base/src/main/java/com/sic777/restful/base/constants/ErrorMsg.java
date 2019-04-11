@@ -27,6 +27,10 @@ public class ErrorMsg {
      */
     public static String VALUE_NULL = "'%s' value must not be null";
     /**
+     * 操作频繁
+     */
+    public static String FREQUENT_OPERATION = "frequent operation";
+    /**
      * 权限不足,子类可覆盖
      */
     public static String INVALID_ACCESS = "invalid access";

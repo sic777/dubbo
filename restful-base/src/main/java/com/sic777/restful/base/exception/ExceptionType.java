@@ -82,7 +82,11 @@ public enum ExceptionType {
         /**
          * 参数值为NULL
          */
-        VALUE_NULL(100000003, ErrorMsg.VALUE_NULL);
+        VALUE_NULL(100000003, ErrorMsg.VALUE_NULL),
+        /**
+         * 操作频繁
+         */
+        FREQUENT_OPERATION(100000004, ErrorMsg.FREQUENT_OPERATION);
 
         private final long id;
         private final String msg;

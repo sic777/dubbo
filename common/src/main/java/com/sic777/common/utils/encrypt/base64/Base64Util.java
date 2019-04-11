@@ -24,7 +24,7 @@ public class Base64Util {
      * @return 密文字符串
      */
     public static String encode(byte[] data) {
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         int len = data.length;
         int i = 0;
         int b1, b2, b3;
