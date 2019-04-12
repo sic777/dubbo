@@ -38,6 +38,10 @@ import static com.sic777.restful.base.exception.ExceptionType.ParamExceptionType
 @Configuration
 public class LockMethodInterceptor {
 
+    private final static String LIMIT_FLAG = "_method_limit:";
+    private final static String LOCK_FLAG = "_method_lock:";
+
+
     @Around("execution(* *(..)) && @annotation(com.sic777.common.annotation.MethodLock)")
     public Object interceptor(ProceedingJoinPoint pjp) throws Throwable {
         MethodSignature signature = (MethodSignature) pjp.getSignature();
@@ -83,7 +87,7 @@ public class LockMethodInterceptor {
                 ResponseManager.instance().throwRest503Exception(new Exception(msg));
             }
             Pipeline pipeline = Redis.instance().getJedis().pipelined();
-            String KEY = methodLock.value() + "_LIMIT";
+            String KEY = LIMIT_FLAG + methodLock.value();
             String i = Redis.instance().String().get(KEY);
             if (i != null && Integer.parseInt(i) == methodLock.limit()) {
                 ResponseManager.instance().throwRestException(FREQUENT_OPERATION.getId(), FREQUENT_OPERATION.getMsg());
@@ -91,7 +95,7 @@ public class LockMethodInterceptor {
             pipeline.incrBy(KEY, 1);
             pipeline.expire(KEY, methodLock.expire());
             pipeline.sync();
-            return methodLock.value();
+            return LOCK_FLAG + methodLock.value();
         }
 
         final Parameter[] parameters = method.getParameters();
@@ -133,6 +137,6 @@ public class LockMethodInterceptor {
                 }
             }
         }
-        return methodLock.value() + ":" + MD5Util.md5(builder.toString());
+        return LOCK_FLAG + methodLock.value() + ":" + MD5Util.md5(builder.toString());
     }
 }
