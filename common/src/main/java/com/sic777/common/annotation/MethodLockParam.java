@@ -1,5 +1,6 @@
 package com.sic777.common.annotation;
 
+
 import java.lang.annotation.*;
 
 /**
@@ -13,8 +14,10 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Inherited
-public @interface CacheParam {
-
-    String name() default "";
+public @interface MethodLockParam {
+    /**
+     * 当MethodLockParam为com.alibaba.fastjson.JSONObject时候，指定其中的参数，用于区分锁
+     */
+    String[] lockParams() default {};
 }
 

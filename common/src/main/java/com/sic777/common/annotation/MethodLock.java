@@ -14,11 +14,24 @@ import java.util.concurrent.TimeUnit;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Inherited
-public @interface CacheLock {
+public @interface MethodLock {
 
-    String prefix() default "";
+    /**
+     * prefix
+     */
+    String value();
 
     int expire() default 5;
+
+    /**
+     * 是否限制访问数量，如果是，意味着该接口#expire秒内，仅允许#limit个访问（统计限制的过期时间为最后一个访问的#expire秒之后）
+     */
+    boolean isLimit() default false;
+
+    /**
+     * 当isLimit为true时,限制访问控制的数量
+     */
+    int limit() default 1;
 
     /**
      * 仅支持'天'、'小时'、'分钟'、'秒'

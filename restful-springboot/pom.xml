@@ -12,6 +12,13 @@
 	<artifactId>restful-springboot</artifactId>
 
 	<dependencies>
+		<!-- 此处的Redis有点侵入性，后续改造 -->
+		<dependency>
+			<groupId>com.sic777.framework</groupId>
+			<artifactId>database-redis</artifactId>
+			<version>${project.parent.version}</version>
+			<optional>true</optional>
+		</dependency>
 		<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjweaver</artifactId>

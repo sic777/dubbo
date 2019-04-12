@@ -1,26 +1,29 @@
 package com.sic777.restful.springboot.interceptor;
 
 
-import com.sic777.common.annotation.CacheLock;
-import com.sic777.common.annotation.CacheParam;
+import com.alibaba.fastjson.JSONObject;
+import com.sic777.common.annotation.MethodLock;
+import com.sic777.common.annotation.MethodLockParam;
 import com.sic777.common.utils.encrypt.md5.MD5Util;
 import com.sic777.common.utils.lang.StringUtil;
+import com.sic777.db.redis.Redis;
+import com.sic777.db.redis.RedisDistributedLock;
 import com.sic777.logger.LoggerHelper;
 import com.sic777.restful.base.response.ResponseManager;
-import com.sic777.restful.springboot.spi.ILockMethodRedisProcess;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.reflect.MethodSignature;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.util.ReflectionUtils;
+import redis.clients.jedis.Pipeline;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
 import java.security.NoSuchAlgorithmException;
+import java.util.concurrent.TimeUnit;
 
 import static com.sic777.restful.base.exception.ExceptionType.ParamExceptionType.*;
 
@@ -35,25 +38,17 @@ import static com.sic777.restful.base.exception.ExceptionType.ParamExceptionType
 @Configuration
 public class LockMethodInterceptor {
 
-    @Autowired(required = false)
-    private ILockMethodRedisProcess lockMethodRedisProcess;
-
-    @Around("execution(* *(..)) && @annotation(com.sic777.common.annotation.CacheLock)")
+    @Around("execution(* *(..)) && @annotation(com.sic777.common.annotation.MethodLock)")
     public Object interceptor(ProceedingJoinPoint pjp) throws Throwable {
         MethodSignature signature = (MethodSignature) pjp.getSignature();
         Method method = signature.getMethod();
-        CacheLock lock = method.getAnnotation(CacheLock.class);
-        if (StringUtil.isEmpty(lock.prefix())) {
-            String msg = "@CacheLock prefix error.";
+        MethodLock lock = method.getAnnotation(MethodLock.class);
+        if (StringUtil.isEmpty(lock.value())) {
+            String msg = "@MethodLock prefix error.";
             LoggerHelper.instance().error(msg);
             ResponseManager.instance().throwRest503Exception(new Exception(msg));
         }
-        String lockKey = getLockKey(pjp);
-        if (lockMethodRedisProcess == null) {
-            String msg = "No com.sic777.restful.springboot.spi.ILockMethodRedisProcess implementation class was found.";
-            LoggerHelper.instance().error(msg);
-            ResponseManager.instance().throwRest503Exception(new Exception(msg));
-        }
+        String lockKey = getLockKey(method, lock, pjp.getArgs());
         int expire = lock.expire();
         switch (lock.timeUnit()) {
             case DAYS:
@@ -73,27 +68,55 @@ public class LockMethodInterceptor {
                 ResponseManager.instance().throwRest503Exception(new Exception(msg));
         }
 
-        boolean rs = lockMethodRedisProcess.process(lockKey, expire);
+        boolean rs = RedisDistributedLock.tryGetDistributedLock(lockKey, "lock", expire);
         if (!rs) {
             ResponseManager.instance().throwRestException(FREQUENT_OPERATION.getId(), FREQUENT_OPERATION.getMsg());
         }
         return pjp.proceed();
     }
 
+    private static String getLockKey(Method method, MethodLock methodLock, final Object[] args) throws NoSuchAlgorithmException {
+        if (methodLock.isLimit()) {
+            if (methodLock.timeUnit() != TimeUnit.SECONDS) {
+                String msg = "Time unit must be SECONDS";
+                LoggerHelper.instance().error(msg);
+                ResponseManager.instance().throwRest503Exception(new Exception(msg));
+            }
+            Pipeline pipeline = Redis.instance().getJedis().pipelined();
+            String KEY = methodLock.value() + "_LIMIT";
+            String i = Redis.instance().String().get(KEY);
+            if (i != null && Integer.parseInt(i) == methodLock.limit()) {
+                ResponseManager.instance().throwRestException(FREQUENT_OPERATION.getId(), FREQUENT_OPERATION.getMsg());
+            }
+            pipeline.incrBy(KEY, 1);
+            pipeline.expire(KEY, methodLock.expire());
+            pipeline.sync();
+            return methodLock.value();
+        }
 
-    private static String getLockKey(ProceedingJoinPoint pjp) throws NoSuchAlgorithmException {
-        MethodSignature signature = (MethodSignature) pjp.getSignature();
-        Method method = signature.getMethod();
-        CacheLock lockAnnotation = method.getAnnotation(CacheLock.class);
-        final Object[] args = pjp.getArgs();
         final Parameter[] parameters = method.getParameters();
         StringBuilder builder = new StringBuilder();
         for (int i = 0; i < parameters.length; i++) {
-            final CacheParam annotation = parameters[i].getAnnotation(CacheParam.class);
+            final MethodLockParam annotation = parameters[i].getAnnotation(MethodLockParam.class);
             if (annotation == null) {
                 continue;
             }
-            builder.append(lockAnnotation.delimiter()).append(args[i]);
+            builder.append(methodLock.delimiter());
+            Object obj = args[i];
+            if (obj instanceof JSONObject) {
+                String[] lockParams = annotation.lockParams();
+                if (lockParams.length == 0) {
+                    String msg = "No values of lockParams was found.";
+                    LoggerHelper.instance().error(msg);
+                    ResponseManager.instance().throwRest503Exception(new Exception(msg));
+                }
+                JSONObject js = (JSONObject) obj;
+                for (String lockParam : lockParams) {
+                    builder.append(js.getString(lockParam));
+                }
+            } else {
+                builder.append(obj);
+            }
         }
         if (StringUtil.isEmpty(builder.toString())) {
             final Annotation[][] parameterAnnotations = method.getParameterAnnotations();
@@ -101,15 +124,15 @@ public class LockMethodInterceptor {
                 final Object object = args[i];
                 final Field[] fields = object.getClass().getDeclaredFields();
                 for (Field field : fields) {
-                    final CacheParam annotation = field.getAnnotation(CacheParam.class);
+                    final MethodLockParam annotation = field.getAnnotation(MethodLockParam.class);
                     if (annotation == null) {
                         continue;
                     }
                     field.setAccessible(true);
-                    builder.append(lockAnnotation.delimiter()).append(ReflectionUtils.getField(field, object));
+                    builder.append(methodLock.delimiter()).append(ReflectionUtils.getField(field, object));
                 }
             }
         }
-        return lockAnnotation.prefix() + ":" + MD5Util.md5(builder.toString());
+        return methodLock.value() + ":" + MD5Util.md5(builder.toString());
     }
 }
