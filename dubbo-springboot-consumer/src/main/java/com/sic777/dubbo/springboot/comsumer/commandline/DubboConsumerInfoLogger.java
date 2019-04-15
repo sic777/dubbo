@@ -21,7 +21,7 @@ import org.springframework.stereotype.Component;
  * @since 2018-04-24
  */
 @Component
-@Order(2)
+@Order(96)
 public class DubboConsumerInfoLogger implements CommandLineRunner {
     private static final Logger logger = LoggerFactory.getLogger(DubboConsumerInfoLogger.class);
     @Autowired

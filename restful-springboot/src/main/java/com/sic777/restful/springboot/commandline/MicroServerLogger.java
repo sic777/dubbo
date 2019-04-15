@@ -18,7 +18,7 @@ import org.springframework.stereotype.Component;
  * @since 2018-05-04
  */
 @Component
-@Order(3)
+@Order(98)
 public class MicroServerLogger implements CommandLineRunner {
     @Autowired
     private ServerProperties serverProperties;

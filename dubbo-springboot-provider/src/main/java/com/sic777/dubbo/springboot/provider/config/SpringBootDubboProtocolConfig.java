@@ -20,7 +20,7 @@ import java.util.Map;
  */
 @Configuration
 @ConfigurationProperties(prefix = DubboConstant.PROTOCOL_CONFIG_PREFIX)
-@Order(1)
+@Order(95)
 public class SpringBootDubboProtocolConfig extends SuperDubboProtocolConfig {
 
     @Bean
