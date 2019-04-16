@@ -11,7 +11,7 @@ import java.util.UUID;
  * @since 0.0.1
  */
 @NoProguard
-public class UUIDGenerator implements IGenerator<String> {
+public class UUIDGenerator {
     private static final UUIDGenerator singleton = new UUIDGenerator();
 
     public static final UUIDGenerator instance() {
@@ -21,7 +21,6 @@ public class UUIDGenerator implements IGenerator<String> {
     private UUIDGenerator() {
     }
 
-    @Override
     public String next() {
         return UUID.randomUUID().toString();
     }

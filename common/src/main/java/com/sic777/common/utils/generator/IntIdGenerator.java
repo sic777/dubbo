@@ -11,7 +11,7 @@ import java.nio.charset.Charset;
  * @since 0.0.1
  * @deprecated
  */
-public class IntIdGenerator implements IGenerator<Integer> {
+public class IntIdGenerator {
     private static final IntIdGenerator singleton = new IntIdGenerator();
 
     private static final int A_LENGTH = 180000;
@@ -56,7 +56,6 @@ public class IntIdGenerator implements IGenerator<Integer> {
         }
     }
 
-    @Override
     public Integer next() throws Exception {
         return next(1)[0];
     }

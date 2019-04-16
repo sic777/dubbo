@@ -7,7 +7,7 @@ package com.sic777.common.utils.generator;
  * @version 0.0.1
  * @since 0.0.1
  */
-public class PasswordSaltGenerator implements IGenerator<String> {
+public class PasswordSaltGenerator{
     private static final PasswordSaltGenerator singleton = new PasswordSaltGenerator();
 
     public static PasswordSaltGenerator instance() {
@@ -17,11 +17,9 @@ public class PasswordSaltGenerator implements IGenerator<String> {
     private PasswordSaltGenerator() {
     }
 
-    @Override
-    public String next() {
+    public String next(String dict) {
         int length = 8;
         String ret;
-        String dict = "1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM";
         int len = dict.length();
         boolean bDone = true;
         do {

@@ -17,7 +17,6 @@ public class AccessTokenGenerator {
     /**
      * 密钥
      */
-    private static final String KEY = "sic777.server.789456800$%&^!@#$~!@#";
     private static final AccessTokenGenerator singleton = new AccessTokenGenerator();
 
     public static final AccessTokenGenerator instance() {
@@ -27,7 +26,7 @@ public class AccessTokenGenerator {
     private AccessTokenGenerator() {
     }
 
-    public String next(String customData) throws NoSuchAlgorithmException {
-        return Base64Util.encode(SHA1Tool.sha256(customData + KEY + UUIDGenerator.instance().next()).getBytes());
+    public String next(String key, String customData) throws NoSuchAlgorithmException {
+        return Base64Util.encode(SHA1Tool.sha256(customData + key + UUIDGenerator.instance().next()).getBytes());
     }
 }

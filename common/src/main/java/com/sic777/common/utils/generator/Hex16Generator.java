@@ -9,7 +9,7 @@ import com.sic777.common.utils.proguard.NoProguard;
  * @since 0.0.1
  */
 @NoProguard
-public class Hex16Generator implements IGenerator<String> {
+public class Hex16Generator {
     private static final Hex16Generator singleton = new Hex16Generator();
 
     public static final Hex16Generator instance() {
@@ -19,7 +19,6 @@ public class Hex16Generator implements IGenerator<String> {
     private Hex16Generator() {
     }
 
-    @Override
     public String next() throws Exception {
         long guid = GuidManager.instance().generateGuid(8);
         return Long.toHexString(guid);
