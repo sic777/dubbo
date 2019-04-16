@@ -21,7 +21,7 @@ public @interface MethodLock {
      */
     String value();
 
-    int expire() default 5;
+    int expire() default 3;
 
     /**
      * 是否限制访问数量，如果是，意味着该接口#expire秒内，仅允许#limit个访问（统计限制的过期时间为最后一个访问的#expire秒之后）
