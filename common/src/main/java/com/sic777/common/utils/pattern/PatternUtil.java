@@ -60,4 +60,19 @@ public class PatternUtil {
         String regex = "^[0-9]{" + length + "}$";
         return Pattern.matches(regex, validateCode);
     }
+
+    /**
+     * 校验密码
+     *
+     * @param password 密码
+     * @param min      最小位数
+     * @param max      最大位数
+     * @return
+     */
+    public static boolean checkPassword(String password, int min, int max) {
+        String minS = String.valueOf(min - 1);
+        String maxS = String.valueOf(max - 1);
+        String regex = "^[a-zA-Z][a-zA-Z0-9_]{" + minS + "," + maxS + "}+$";
+        return Pattern.matches(regex, password);
+    }
 }
