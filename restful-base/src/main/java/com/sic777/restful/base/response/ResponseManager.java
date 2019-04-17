@@ -171,8 +171,9 @@ public class ResponseManager {
      * @param obj
      * @param code
      * @param key
+     * @throws Exception
      */
-    public final void funcValidateObjectNotNull(Object obj, long code, String key) {
+    public final void funcValidateObjectNotNull(Object obj, long code, String key) throws Exception {
         if (StringUtil.isNull(obj)) {
             this.throwRestException(code, String.format(ErrorMsg.OBJECT_NULL, key));
         }
@@ -185,8 +186,9 @@ public class ResponseManager {
      * @param objects
      * @param codes
      * @param keys
+     * @throws Exception
      */
-    public final void funcValidateObjectNotNull(Object[] objects, long[] codes, String[] keys) {
+    public final void funcValidateObjectNotNull(Object[] objects, long[] codes, String[] keys) throws Exception {
         for (int i = 0, len = objects.length; i < len; i++) {
             this.funcValidateObjectNotNull(objects[i], codes[i], keys[i]);
         }
@@ -197,8 +199,9 @@ public class ResponseManager {
      *
      * @param objects
      * @param keys
+     * @throws Exception
      */
-    public final void funcValidateObjectNotNull(Object[] objects, String[] keys) {
+    public final void funcValidateObjectNotNull(Object[] objects, String[] keys) throws Exception {
         for (int i = 0, len = objects.length; i < len; i++) {
             funcValidateObjectNotNull(objects[i], OBJECT_NULL.getId(), keys[i]);
         }
@@ -209,8 +212,9 @@ public class ResponseManager {
      *
      * @param obj
      * @param key
+     * @throws Exception
      */
-    public final void funcValidateObjectNotNull(Object obj, String key) {
+    public final void funcValidateObjectNotNull(Object obj, String key) throws Exception {
         funcValidateObjectNotNull(obj, OBJECT_NULL.getId(), key);
     }
 
@@ -221,8 +225,9 @@ public class ResponseManager {
      * @param value
      * @param code
      * @param key
+     * @throws Exception
      */
-    public final void funcValidateValueNotNull(Object value, long code, String key) {
+    public final void funcValidateValueNotNull(Object value, long code, String key) throws Exception {
         if (StringUtil.isNull(value)) {
             this.throwRestException(code, String.format(ErrorMsg.VALUE_NULL, key));
         }
@@ -233,8 +238,9 @@ public class ResponseManager {
      *
      * @param values
      * @param keys
+     * @throws Exception
      */
-    public final void funcValidateValueNotNull(Object[] values, String[] keys) {
+    public final void funcValidateValueNotNull(Object[] values, String[] keys) throws Exception {
         for (int i = 0, len = values.length; i < len; i++) {
             funcValidateValueNotNull(values[i], VALUE_NULL.getId(), keys[i]);
         }
@@ -245,8 +251,9 @@ public class ResponseManager {
      *
      * @param value
      * @param key
+     * @throws Exception
      */
-    public final void funcValidateValueNotNull(Object value, String key) {
+    public final void funcValidateValueNotNull(Object value, String key) throws Exception {
         this.funcValidateValueNotNull(value, VALUE_NULL.getId(), key);
     }
 
@@ -257,8 +264,9 @@ public class ResponseManager {
      * @param values
      * @param codes
      * @param keys
+     * @throws Exception
      */
-    public final void funcValidateValueNotNull(Object[] values, long[] codes, String[] keys) {
+    public final void funcValidateValueNotNull(Object[] values, long[] codes, String[] keys) throws Exception {
         for (int i = 0, len = values.length; i < len; i++) {
             this.funcValidateObjectNotNull(values[i], codes[i], keys[i]);
         }
@@ -271,8 +279,9 @@ public class ResponseManager {
      * @param value
      * @param code
      * @param key
+     * @throws Exception
      */
-    public final void funcValidateValueNotEmpty(Object value, long code, String key) {
+    public final void funcValidateValueNotEmpty(Object value, long code, String key) throws Exception {
         if (StringUtil.isEmpty(value)) {
             this.throwRestException(code, String.format(ErrorMsg.VALUE_EMPTY, key));
         }
@@ -284,8 +293,9 @@ public class ResponseManager {
      * @param values
      * @param codes
      * @param keys
+     * @throws Exception
      */
-    public final void funcValidateValueNotEmpty(Object[] values, long[] codes, String[] keys) {
+    public final void funcValidateValueNotEmpty(Object[] values, long[] codes, String[] keys) throws Exception {
         for (int i = 0, len = values.length; i < len; i++) {
             this.funcValidateValueNotEmpty(values[i], codes[i], keys[i]);
         }
@@ -296,8 +306,9 @@ public class ResponseManager {
      *
      * @param values
      * @param keys
+     * @throws Exception
      */
-    public final void funcValidateValueNotEmpty(Object[] values, String[] keys) {
+    public final void funcValidateValueNotEmpty(Object[] values, String[] keys) throws Exception {
         for (int i = 0, len = values.length; i < len; i++) {
             funcValidateValueNotEmpty(values[i], VALUE_EMPTY.getId(), keys[i]);
         }
@@ -308,8 +319,9 @@ public class ResponseManager {
      *
      * @param value
      * @param key
+     * @throws Exception
      */
-    public final void funcValidateValueNotEmpty(Object value, String key) {
+    public final void funcValidateValueNotEmpty(Object value, String key) throws Exception {
         this.funcValidateValueNotEmpty(value, VALUE_EMPTY.getId(), key);
     }
 
@@ -317,8 +329,9 @@ public class ResponseManager {
      * 参数校验异常(系统错误码)
      *
      * @param details param invalid,details:'%s'
+     * @throws Exception
      */
-    public final void throwParamInvalidException(String details) {
+    public final void throwParamInvalidException(String details) throws Exception {
         this.throwRestException(PARAM_INVALID.getId(), String.format(PARAM_INVALID.getMsg(), details));
     }
 
@@ -326,8 +339,9 @@ public class ResponseManager {
      * 资源未找到异常(系统错误码)
      *
      * @param msg
+     * @throws Exception
      */
-    public final void throwResourceNotFoundException(String msg) {
+    public final void throwResourceNotFoundException(String msg) throws Exception {
         this.throwRestException(RESOURCE_NOT_FOUND.getId(), msg);
     }
 
@@ -346,8 +360,9 @@ public class ResponseManager {
      *
      * @param code
      * @param message
+     * @throws Exception
      */
-    public final void throwRestException(long code, String message) {
+    public final void throwRestException(long code, String message) throws Exception {
         this.throwRestException(code, message, null);
     }
 
@@ -357,8 +372,9 @@ public class ResponseManager {
      * @param code
      * @param message
      * @param throwable
+     * @throws Exception
      */
-    public final void throwRestException(long code, String message, Throwable throwable) {
+    public final void throwRestException(long code, String message, Throwable throwable) throws Exception {
         ExceptionType exceptionType = ExceptionType.parse(code);
         switch (exceptionType) {
             case EXCEPTION_200:

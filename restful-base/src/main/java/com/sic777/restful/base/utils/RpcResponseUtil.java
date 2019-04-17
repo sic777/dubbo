@@ -24,8 +24,9 @@ public class RpcResponseUtil {
      * 检验rpc响应是否存在异常
      *
      * @param rs
+     * @throws Exception
      */
-    public static boolean check(RpcResponse<?> rs) {
+    public static boolean check(RpcResponse<?> rs) throws Exception{
         boolean isSuccess = rs.getStatus() == RpcResponseStatus.SUCCESS;
         if (!isSuccess) {//Rpc返回失败的时候，检验为何种错误
             RpcException er = rs.getException();

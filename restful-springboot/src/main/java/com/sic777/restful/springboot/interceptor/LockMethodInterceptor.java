@@ -31,7 +31,7 @@ import static com.sic777.restful.base.exception.ExceptionType.ParamExceptionType
 public class LockMethodInterceptor extends BaseAop {
 
     @Before("execution(* *(..)) && @annotation(com.sic777.common.annotation.MethodLock)")
-    public void before(JoinPoint pjp) {
+    public void before(JoinPoint pjp) throws Exception {
         MethodSignature signature = (MethodSignature) pjp.getSignature();
         Method method = signature.getMethod();
         MethodLock lock = method.getAnnotation(MethodLock.class);
@@ -47,7 +47,7 @@ public class LockMethodInterceptor extends BaseAop {
     }
 
     @AfterThrowing(value = "execution(* *(..)) && @annotation(com.sic777.common.annotation.MethodLock)", throwing = "e")
-    public void afterThrowing(JoinPoint pjp, Throwable e) {
+    public void afterThrowing(JoinPoint pjp, Throwable e) throws Exception {
         if (e instanceof AbstractRestException) {
             AbstractRestException ex = (AbstractRestException) e;
             if (ex.getCode() != FREQUENT_OPERATION.getId()) {

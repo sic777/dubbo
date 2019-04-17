@@ -33,7 +33,7 @@ public abstract class BaseAop {
     private final static String LOCK_FLAG = "_method_lock:";
     private final static String CLIENT_FLAG = "LOCK:";
 
-    private final String getLockMethodKey(Method method, MethodLock methodLock, final Object[] pjpArgs) {
+    private final String getLockMethodKey(Method method, MethodLock methodLock, final Object[] pjpArgs) throws Exception {
         if (methodLock == null) {
             return null;
         }
@@ -101,7 +101,7 @@ public abstract class BaseAop {
         }
     }
 
-    protected final boolean lock(Method method, MethodLock methodLock, final Object[] pjpArgs) {
+    protected final boolean lock(Method method, MethodLock methodLock, final Object[] pjpArgs) throws Exception {
         int expire = methodLock.expire();
         switch (methodLock.timeUnit()) {
             case DAYS:
@@ -123,7 +123,7 @@ public abstract class BaseAop {
         return RedisDistributedLock.tryGetDistributedLock(this.getLockMethodKey(method, methodLock, pjpArgs), CLIENT_FLAG, expire);
     }
 
-    protected final boolean unlock(Method method, MethodLock methodLock, final Object[] pjpArgs) {
+    protected final boolean unlock(Method method, MethodLock methodLock, final Object[] pjpArgs) throws Exception {
         return RedisDistributedLock.releaseDistributedLock(this.getLockMethodKey(method, methodLock, pjpArgs), CLIENT_FLAG);
     }
 }
