@@ -1,7 +1,7 @@
 package com.sic777.dubbo.bean.exception;
 
 
-import com.sic777.common.exception.SuperRuntimeException;
+import com.sic777.common.exception.SuperException;
 import com.sic777.common.utils.proguard.NoProguard;
 
 /**
@@ -12,7 +12,7 @@ import com.sic777.common.utils.proguard.NoProguard;
  * @since 2018-06-05
  */
 @NoProguard
-public class RpcException extends SuperRuntimeException {
+public class RpcException extends SuperException {
     /**
      *
      */

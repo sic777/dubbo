@@ -1,7 +1,7 @@
 package com.sic777.restful.base.response;
 
 
-import com.sic777.common.exception.SuperRuntimeException;
+import com.sic777.common.exception.SuperException;
 import com.sic777.common.utils.proguard.NoProguard;
 
 /**
@@ -13,7 +13,7 @@ import com.sic777.common.utils.proguard.NoProguard;
  * @since 1.7
  */
 @NoProguard
-public abstract class AbstractRestException extends SuperRuntimeException {
+public abstract class AbstractRestException extends SuperException {
     /**
      *
      */

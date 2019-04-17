@@ -9,20 +9,20 @@ import com.sic777.common.utils.proguard.NoProguard;
  * @since 0.0.1
  */
 @NoProguard
-public abstract class SuperRuntimeException extends RuntimeException {
+public abstract class SuperException extends Exception {
     /**
      *
      */
     private static final long serialVersionUID = 1957474075268725412L;
 
-    public SuperRuntimeException() {
+    public SuperException() {
         super();
     }
 
     /**
      * @param message 错误信息
      */
-    public SuperRuntimeException(String message) {
+    public SuperException(String message) {
         super(message);
     }
 
@@ -30,14 +30,14 @@ public abstract class SuperRuntimeException extends RuntimeException {
      * @param message 错误信息
      * @param cause   异常
      */
-    public SuperRuntimeException(String message, Throwable cause) {
+    public SuperException(String message, Throwable cause) {
         super(message, cause);
     }
 
     /**
      * @param cause 异常
      */
-    public SuperRuntimeException(Throwable cause) {
+    public SuperException(Throwable cause) {
         super(cause);
     }
 
@@ -47,7 +47,7 @@ public abstract class SuperRuntimeException extends RuntimeException {
      * @param enableSuppression
      * @param writableStackTrace
      */
-    public SuperRuntimeException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+    public SuperException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
         super(message, cause, enableSuppression, writableStackTrace);
     }
 
