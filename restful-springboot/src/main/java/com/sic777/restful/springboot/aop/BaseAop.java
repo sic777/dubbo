@@ -31,9 +31,9 @@ import static com.sic777.restful.base.exception.ExceptionType.ParamExceptionType
 public abstract class BaseAop {
     private final static String LIMIT_FLAG = "_method_limit:";
     private final static String LOCK_FLAG = "_method_lock:";
-    private final static String CLIENT_FLAG = "LOCK:";
+    private final static String CLIENT_FLAG = "LOCK";
 
-    private final String getLockMethodKey(Method method, MethodLock methodLock, final Object[] pjpArgs) throws Exception {
+    private String getLockMethodKey(Method method, MethodLock methodLock, final Object[] pjpArgs) throws Exception {
         if (methodLock == null) {
             return null;
         }
@@ -94,10 +94,11 @@ public abstract class BaseAop {
                 }
             }
         }
+        String module = StringUtil.isNotEmpty(methodLock.module()) ? methodLock.module() + ":" : "";
         try {
-            return LOCK_FLAG + methodLock.value() + ":" + MD5Util.md5(builder.toString());
+            return module + LOCK_FLAG + methodLock.value() + ":" + MD5Util.md5(builder.toString());
         } catch (NoSuchAlgorithmException e) {
-            return LOCK_FLAG + methodLock.value() + ":" + builder.toString();
+            return module + LOCK_FLAG + methodLock.value() + ":" + builder.toString();
         }
     }
 

@@ -21,6 +21,14 @@ public @interface MethodLock {
      */
     String value();
 
+    /**
+     * 所属模块
+     */
+    String module() default "";
+
+    /**
+     * 过期时间
+     */
     int expire() default 3;
 
     /**
