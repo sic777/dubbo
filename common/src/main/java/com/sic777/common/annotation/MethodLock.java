@@ -17,7 +17,7 @@ import java.util.concurrent.TimeUnit;
 public @interface MethodLock {
 
     /**
-     * prefix
+     * value
      */
     String value();
 

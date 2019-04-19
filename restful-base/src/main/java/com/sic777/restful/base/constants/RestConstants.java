@@ -48,7 +48,6 @@ public class RestConstants {
      * 接口权限标识
      */
     public static final String PERMISSION_FLAG = "REST_PERMISSION";
-
     /**
      * 鉴权标识,子类可覆盖
      */

@@ -29,11 +29,11 @@ import static com.sic777.restful.base.exception.ExceptionType.ParamExceptionType
  * @since 0.0.1
  */
 public abstract class BaseAop {
-    private final static String LIMIT_FLAG = "_method_limit:";
-    private final static String LOCK_FLAG = "_method_lock:";
+    private final static String LIMIT_FLAG = "_method_limit";
+    private final static String LOCK_FLAG = "_method_lock";
     private final static String CLIENT_FLAG = "LOCK";
 
-    private String getLockMethodKey(Method method, MethodLock methodLock, final Object[] pjpArgs) throws Exception {
+    private String getLockMethodKey(Method method, MethodLock methodLock, final Object[] pjpArgs, Object callerId) throws Exception {
         if (methodLock == null) {
             return null;
         }
@@ -44,7 +44,7 @@ public abstract class BaseAop {
                 ResponseManager.instance().throwRest503Exception(new Exception(msg));
             }
             Pipeline pipeline = Redis.instance().getJedis().pipelined();
-            String KEY = LIMIT_FLAG + methodLock.value();
+            String KEY = getLimitKey(methodLock);
             String i = Redis.instance().String().get(KEY);
             if (i != null && Integer.parseInt(i) == methodLock.limit()) {
                 ResponseManager.instance().throwRestException(FREQUENT_OPERATION.getId(), FREQUENT_OPERATION.getMsg());
@@ -52,7 +52,7 @@ public abstract class BaseAop {
             pipeline.incrBy(KEY, 1);
             pipeline.expire(KEY, methodLock.expire());
             pipeline.sync();
-            return LOCK_FLAG + methodLock.value();
+            return getLocalKey(methodLock, null, callerId);
         }
 
         final Parameter[] parameters = method.getParameters();
@@ -94,15 +94,14 @@ public abstract class BaseAop {
                 }
             }
         }
-        String module = StringUtil.isNotEmpty(methodLock.module()) ? methodLock.module() + ":" : "";
         try {
-            return module + LOCK_FLAG + methodLock.value() + ":" + MD5Util.md5(builder.toString());
+            return getLocalKey(methodLock, MD5Util.md5(builder.toString()), callerId);
         } catch (NoSuchAlgorithmException e) {
-            return module + LOCK_FLAG + methodLock.value() + ":" + builder.toString();
+            return getLocalKey(methodLock, builder.toString(), callerId);
         }
     }
 
-    protected final boolean lock(Method method, MethodLock methodLock, final Object[] pjpArgs) throws Exception {
+    protected final boolean lock(Method method, MethodLock methodLock, final Object[] pjpArgs, Object callerId) throws Exception {
         int expire = methodLock.expire();
         switch (methodLock.timeUnit()) {
             case DAYS:
@@ -121,10 +120,24 @@ public abstract class BaseAop {
                 LoggerHelper.instance().error(msg);
                 ResponseManager.instance().throwRest503Exception(new Exception(msg));
         }
-        return RedisDistributedLock.tryGetDistributedLock(this.getLockMethodKey(method, methodLock, pjpArgs), CLIENT_FLAG, expire);
+        return RedisDistributedLock.tryGetDistributedLock(this.getLockMethodKey(method, methodLock, pjpArgs, callerId), CLIENT_FLAG, expire);
     }
 
-    protected final boolean unlock(Method method, MethodLock methodLock, final Object[] pjpArgs) throws Exception {
-        return RedisDistributedLock.releaseDistributedLock(this.getLockMethodKey(method, methodLock, pjpArgs), CLIENT_FLAG);
+    protected final boolean unlock(Method method, MethodLock methodLock, final Object[] pjpArgs, Object callerId) throws Exception {
+        return RedisDistributedLock.releaseDistributedLock(this.getLockMethodKey(method, methodLock, pjpArgs, callerId), CLIENT_FLAG);
+    }
+
+    private String getLocalKey(MethodLock methodLock, String parameters, Object callerId) {
+        boolean isLimit = methodLock.isLimit();
+        String module = StringUtil.isNotEmpty(methodLock.module()) ? methodLock.module() + methodLock.delimiter() : "";
+        callerId = callerId != null && StringUtil.isNotEmpty(callerId) ? callerId + "_" : "";
+        return isLimit
+                ? module + LOCK_FLAG + methodLock.delimiter() + callerId + methodLock.value()
+                : module + LOCK_FLAG + methodLock.delimiter() + callerId + methodLock.value() + methodLock.delimiter() + parameters;
+    }
+
+    private String getLimitKey(MethodLock methodLock) {
+        String module = StringUtil.isNotEmpty(methodLock.module()) ? methodLock.module() + methodLock.delimiter() : "";
+        return module + LIMIT_FLAG + methodLock.delimiter() + methodLock.value();
     }
 }

@@ -24,6 +24,15 @@ public abstract class SuperRestfulController implements RestPermission {
     }
 
     /**
+     * 获取接口调用者id
+     *
+     * @return
+     */
+    protected final Object getCallerId() {
+        return this.getAccessTokenData().get("id");
+    }
+
+    /**
      * 获取accessToken字符串
      *
      * @return
