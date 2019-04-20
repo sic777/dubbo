@@ -31,14 +31,14 @@ public class SignInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         if (null != signSPI) {
-            String requestId = request.getHeader("_requestId");
-            String timestamp = request.getHeader("_timestamp");
+            String requestId = request.getHeader("requestId");
+            String timestamp = request.getHeader("timestamp");
 
-            String sign = request.getHeader("_sign");
+            String sign = request.getHeader("sign");
 
             ResponseManager.instance().funcValidateValueNotEmpty(
                     new Object[]{requestId, timestamp, sign},
-                    new String[]{"_requestId", "_timestamp", "_sign"});
+                    new String[]{"requestId", "timestamp", "sign"});
 
             if (timestamp.trim().length() != 13) {
                 ResponseManager.instance().throwParamInvalidException("timestamp format error.");
@@ -59,10 +59,10 @@ public class SignInterceptor implements HandlerInterceptor {
             String uri = request.getRequestURI();
             String salt = signSPI.salt();
 
-            sb.append("_uri=").append(uri)
-                    .append("&").append("_requestId=").append(requestId)
-                    .append("&").append("_timestamp=").append(timestamp)
-                    .append("&").append("_salt=").append(salt);
+            sb.append("uri=").append(uri)
+                    .append("&").append("requestId=").append(requestId)
+                    .append("&").append("timestamp=").append(timestamp)
+                    .append("&").append("salt=").append(salt);
 
             String q = request.getQueryString();
             if (StringUtil.isNotEmpty(q)) {
