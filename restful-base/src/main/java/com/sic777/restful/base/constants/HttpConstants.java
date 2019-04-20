@@ -23,7 +23,7 @@ public class HttpConstants {
     public static final String HEADER_VALUE_ALLOW_METHODS = "GET, POST, PUT, DELETE, OPTIONS";
 
     public static final String HEADER_KEY_ALLOW_HEADERS = "Access-Control-Allow-Headers";
-    public static final String HEADER_VALUE_ALLOW_HEADERS = "Access-Token,Content-Type";
+    public static final String HEADER_VALUE_ALLOW_HEADERS = "Access-Token,Content-Type,_requestId,_timestamp,_sign";
 
     public static final String HEADER_KEY_ALLOW_CREDENTIALS = "Access-Control-Allow-Credentials";
     public static final String HEADER_VALUE_ALLOW_CREDENTIALS = "true";
