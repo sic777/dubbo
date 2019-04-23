@@ -1,6 +1,5 @@
 package com.sic777.common.utils.date;
 
-import com.sic777.common.utils.proguard.NoProguard;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -13,7 +12,6 @@ import java.util.Date;
  * @author sic777
  * @since 0.0.1
  */
-@NoProguard
 public class DateFormatUtil {
 
     public final static String DATE_FORMAT = "yyyy-MM-dd'T'HH:mm:ss.SS'Z'";

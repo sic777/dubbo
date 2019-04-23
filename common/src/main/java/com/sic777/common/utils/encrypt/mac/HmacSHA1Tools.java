@@ -1,6 +1,5 @@
 package com.sic777.common.utils.encrypt.mac;
 
-import com.sic777.common.utils.proguard.NoProguard;
 
 import javax.crypto.Mac;
 import javax.crypto.SecretKey;
@@ -12,7 +11,6 @@ import javax.crypto.spec.SecretKeySpec;
  * @author sic777
  * @since 0.0.1
  */
-@NoProguard
 public class HmacSHA1Tools {
     private static final String MAC_NAME = "HmacSHA1";
     private static final String ENCODING = "UTF-8";

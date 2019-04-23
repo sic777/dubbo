@@ -1,6 +1,5 @@
 package com.sic777.common.constants;
 
-import com.sic777.common.utils.proguard.NoProguard;
 
 /**
  * <p>通用基础常量
@@ -8,7 +7,6 @@ import com.sic777.common.utils.proguard.NoProguard;
  * @author sic777
  * @since 0.0.1
  */
-@NoProguard
 public class CommonConstant {
     /**
      * 默认配置文件所在文件夹名称,子类可覆盖

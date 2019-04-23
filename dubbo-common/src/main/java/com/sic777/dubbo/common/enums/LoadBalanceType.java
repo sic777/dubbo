@@ -1,6 +1,5 @@
 package com.sic777.dubbo.common.enums;
 
-import com.sic777.common.utils.proguard.NoProguard;
 
 /**
  * <p>负载均衡策略枚举</p>
@@ -9,7 +8,6 @@ import com.sic777.common.utils.proguard.NoProguard;
  * @version v1.0
  * @since 2018-04-24
  */
-@NoProguard
 public enum LoadBalanceType {
     /**
      * 未配置

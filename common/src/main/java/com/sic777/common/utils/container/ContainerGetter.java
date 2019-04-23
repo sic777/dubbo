@@ -5,7 +5,6 @@ import com.sic777.common.utils.container.tuple.FiveTupleList;
 import com.sic777.common.utils.container.tuple.SixTupleList;
 import com.sic777.common.utils.container.tuple.ThreeTupleList;
 import com.sic777.common.utils.container.tuple.TwoTupleList;
-import com.sic777.common.utils.proguard.NoProguard;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
@@ -19,7 +18,6 @@ import java.util.concurrent.CopyOnWriteArraySet;
  * @author sic777
  * @since 0.0.1
  */
-@NoProguard
 public class ContainerGetter {
     public static <K, V> HashMap<K, V> hashMap() {
         return new HashMap<>();

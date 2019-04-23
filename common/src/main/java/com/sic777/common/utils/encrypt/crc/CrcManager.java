@@ -1,6 +1,5 @@
 package com.sic777.common.utils.encrypt.crc;
 
-import com.sic777.common.utils.proguard.NoProguard;
 
 /**
  * <p>Crc管理器
@@ -8,7 +7,6 @@ import com.sic777.common.utils.proguard.NoProguard;
  * @author sic777
  * @since 0.0.1
  */
-@NoProguard
 public class CrcManager {
     private static CrcCalculator calculator = new CrcCalculator(Crc16.Crc16Maxim);
 

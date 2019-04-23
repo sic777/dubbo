@@ -1,30 +1,5 @@
 [![Travis](https://img.shields.io/travis/rust-lang/rust.svg)]()
 
-# 工程结构说明
-
-    base-framework                                      基础框架父工程
-        |---common                                      通用工程(框架无关)
-        |---database-redis                              Redis工程(框架无关)
-        |---database-springboot-mybatis                 Mybatis工程
-        |---database-mongo                              MongoDB工程
-        |---dubbo-bean                                  Dubbo基本实体定义(框架无关)
-        |---dubbo-common                                Dubbo通用工程(框架无关)
-        |---dubbo-consumer-common                       Dubbo服务消费者通用工程(框架无关)
-        |---dubbo-provider-common                       Dubbo服务提供者通用工程(框架无关)
-        |---dubbo-springboot-common                     Dubbo-SpringBoot通用工程
-        |---dubbo-springboot-consumer                   Dubbo-SpringBoot服务消费者
-        |---dubbo-springboot-provider                   Dubbo-SpringBoot服务提供者
-        |---logger                                      日志工程
-        |---restful-base                                Restful基本封装(框架无关)
-        |---restful-netty                               基于Netty的Restful框架
-        |---restful-restexpress                         基于restexpress的Restful框架(本身也基于Netty)
-        |---restful-springboot                          基于SpringBoot的Restful框架
-        |---demo                                        Demo父工程
-            |---dubbo-springboot-demo                   Dubbo集成Springboot例子
-                    |---dubbo-springboot-demo-api       Dubbo-SpringBoot公用Api包
-                    |---dubbo-springboot-demo-client    Dubbo-SpringBoot服务消费者
-                    |---dubbo-springboot-demo-server    Dubbo-SpringBoot服务提供者
-
 # 数据格式说明
 
 
@@ -94,6 +69,7 @@
 | 100000001   |       '%s' must not be null       |
 | 100000002   |       '%s' value must not be empty|
 | 100000003   |       '%s' value must not be null |
+| 100000004   |       frequent operation          |
 
 ### **权限相关错误码**
 

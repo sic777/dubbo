@@ -1,6 +1,5 @@
 package com.sic777.common.utils.container.tuple;
 
-import com.sic777.common.utils.proguard.NoProguard;
 
 /**
  * <p>
@@ -8,7 +7,6 @@ import com.sic777.common.utils.proguard.NoProguard;
  * @author sic777
  * @since 0.0.1
  */
-@NoProguard
 public class SevenTuple<A, B, C, D, E, F, G> extends SixTuple<A, B, C, D, E, F> {
 
     private static final long serialVersionUID = 1L;

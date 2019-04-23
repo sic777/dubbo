@@ -1,7 +1,6 @@
 package com.sic777.common.utils.lang;
 
 
-import com.sic777.common.utils.proguard.NoProguard;
 
 /**
  * <p>区间运算工具类
@@ -9,7 +8,6 @@ import com.sic777.common.utils.proguard.NoProguard;
  * @author sic777
  * @since 0.0.1
  */
-@NoProguard
 public class IntervalUtil {
     private IntervalUtil() {
     }

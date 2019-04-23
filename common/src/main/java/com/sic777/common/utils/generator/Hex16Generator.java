@@ -1,6 +1,5 @@
 package com.sic777.common.utils.generator;
 
-import com.sic777.common.utils.proguard.NoProguard;
 
 /**
  * <p>Hex16ID生成器
@@ -8,7 +7,6 @@ import com.sic777.common.utils.proguard.NoProguard;
  * @author sic777
  * @since 0.0.1
  */
-@NoProguard
 public class Hex16Generator {
     private static final Hex16Generator singleton = new Hex16Generator();
 

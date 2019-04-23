@@ -1,6 +1,5 @@
 package com.sic777.common.utils.system;
 
-import com.sic777.common.utils.proguard.NoProguard;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -10,7 +9,6 @@ import org.slf4j.LoggerFactory;
  * @author sic777
  * @since 0.0.1
  */
-@NoProguard
 public class PrintLogo {
     private PrintLogo() {
     }

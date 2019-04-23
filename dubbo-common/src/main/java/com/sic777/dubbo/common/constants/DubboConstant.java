@@ -1,6 +1,5 @@
 package com.sic777.dubbo.common.constants;
 
-import com.sic777.common.utils.proguard.NoProguard;
 
 /**
  * <p>Dubbo常量</p>
@@ -9,7 +8,6 @@ import com.sic777.common.utils.proguard.NoProguard;
  * @version v1.0
  * @since 2018-04-26
  */
-@NoProguard
 public class DubboConstant {
     /**
      * dubbo应用配置 前缀

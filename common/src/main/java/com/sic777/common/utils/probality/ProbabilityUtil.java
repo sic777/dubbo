@@ -1,7 +1,6 @@
 package com.sic777.common.utils.probality;
 
 import com.sic777.common.utils.container.ContainerGetter;
-import com.sic777.common.utils.proguard.NoProguard;
 
 import java.util.Iterator;
 import java.util.List;
@@ -16,7 +15,6 @@ import java.util.Map.Entry;
  * @author sic777
  * @since 0.0.1
  */
-@NoProguard
 public class ProbabilityUtil {
     private ProbabilityUtil() {
     }

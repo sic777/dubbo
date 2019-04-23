@@ -1,6 +1,5 @@
 package com.sic777.common.enums;
 
-import com.sic777.common.utils.proguard.NoProguard;
 
 /**
  * <p>环境枚举
@@ -8,7 +7,6 @@ import com.sic777.common.utils.proguard.NoProguard;
  * @author sic777
  * @since 0.0.1
  */
-@NoProguard
 public enum Environment {
     /**
      * 开发环境

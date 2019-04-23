@@ -1,6 +1,5 @@
 package com.sic777.common.utils.pattern;
 
-import com.sic777.common.utils.proguard.NoProguard;
 
 import java.util.regex.Pattern;
 
@@ -10,7 +9,6 @@ import java.util.regex.Pattern;
  * @author sic777
  * @since 0.0.1
  */
-@NoProguard
 public class PatternUtil {
     private PatternUtil() {
     }

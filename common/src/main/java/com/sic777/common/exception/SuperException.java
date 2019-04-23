@@ -1,6 +1,5 @@
 package com.sic777.common.exception;
 
-import com.sic777.common.utils.proguard.NoProguard;
 
 /**
  * <p>运行时异抽象类,所有运行时异常均可继承该类
@@ -8,7 +7,6 @@ import com.sic777.common.utils.proguard.NoProguard;
  * @author sic777
  * @since 0.0.1
  */
-@NoProguard
 public abstract class SuperException extends Exception {
     /**
      *

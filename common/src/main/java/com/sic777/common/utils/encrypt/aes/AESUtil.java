@@ -1,6 +1,5 @@
 package com.sic777.common.utils.encrypt.aes;
 
-import com.sic777.common.utils.proguard.NoProguard;
 
 import java.security.SecureRandom;
 
@@ -15,7 +14,6 @@ import javax.crypto.spec.SecretKeySpec;
  * @author sic777
  * @since 0.0.1
  */
-@NoProguard
 public class AESUtil {
     private AESUtil() {
     }

@@ -1,9 +1,8 @@
 package com.sic777.dubbo.bean;
 
 
-import com.sic777.dubbo.bean.exception.RpcException;
-import com.sic777.dubbo.bean.exception.RpcExceptionType;
-import com.sic777.common.utils.proguard.NoProguard;
+import com.sic777.dubbo.exception.RpcException;
+import com.sic777.dubbo.exception.RpcExceptionType;
 
 import java.io.Serializable;
 
@@ -14,7 +13,6 @@ import java.io.Serializable;
  * @version v1.0
  * @since 2018-01-13 14:02
  */
-@NoProguard
 public final class RpcResponse<T> implements Serializable {
     private static final long serialVersionUID = -7402179064110127428L;
 

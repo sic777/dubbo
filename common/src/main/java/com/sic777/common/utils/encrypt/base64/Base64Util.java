@@ -2,7 +2,6 @@ package com.sic777.common.utils.encrypt.base64;
 
 
 import com.alibaba.fastjson.util.Base64;
-import com.sic777.common.utils.proguard.NoProguard;
 
 /**
  * <p>Base64双向加密工具
@@ -10,7 +9,6 @@ import com.sic777.common.utils.proguard.NoProguard;
  * @author sic777
  * @since 0.0.1
  */
-@NoProguard
 @SuppressWarnings("deprecation")
 public class Base64Util {
     private static char[] base64EncodeChars = new char[]{'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R',

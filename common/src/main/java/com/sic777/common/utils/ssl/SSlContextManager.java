@@ -1,7 +1,6 @@
 package com.sic777.common.utils.ssl;
 
 
-import com.sic777.common.utils.proguard.NoProguard;
 import org.apache.http.ssl.SSLContextBuilder;
 import org.apache.http.ssl.SSLContexts;
 import org.apache.http.ssl.TrustStrategy;
@@ -18,7 +17,6 @@ import java.security.cert.X509Certificate;
  * @author sic777
  * @since 0.0.1
  */
-@NoProguard
 public class SSlContextManager {
 
     /**

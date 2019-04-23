@@ -8,7 +8,6 @@ import com.sic777.dubbo.common.enums.ApplicationCompilerType;
 import com.sic777.dubbo.common.enums.ApplicationLogType;
 import com.sic777.common.utils.lang.StringUtil;
 import org.apache.dubbo.config.ApplicationConfig;
-import com.sic777.common.utils.proguard.NoProguard;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -21,7 +20,6 @@ import java.util.concurrent.atomic.AtomicBoolean;
  * @version v1.0
  * @since 2018-06-05
  */
-@NoProguard
 public class DubboApplicationConfigManager {
     private static DubboApplicationConfigManager singleton = new DubboApplicationConfigManager();
 

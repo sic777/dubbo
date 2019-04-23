@@ -1,6 +1,5 @@
 package com.sic777.common.utils.http;
 
-import com.sic777.common.utils.proguard.NoProguard;
 import org.apache.http.config.RegistryBuilder;
 import org.apache.http.conn.socket.ConnectionSocketFactory;
 import org.apache.http.conn.socket.PlainConnectionSocketFactory;
@@ -14,7 +13,6 @@ import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
  * @author sic777
  * @since 0.0.1
  */
-@NoProguard
 public class PoolHttpConnectionManager {
     private static PoolHttpConnectionManager singleton;
     private final CloseableHttpClient httpClient;

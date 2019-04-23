@@ -1,7 +1,6 @@
 package com.sic777.common.utils.permission;
 
 
-import com.sic777.common.utils.proguard.NoProguard;
 
 /**
  * <p>权限校验工具
@@ -9,7 +8,6 @@ import com.sic777.common.utils.proguard.NoProguard;
  * @author sic777
  * @since 0.0.1
  */
-@NoProguard
 public class PermissionUtil {
     private PermissionUtil() {
     }

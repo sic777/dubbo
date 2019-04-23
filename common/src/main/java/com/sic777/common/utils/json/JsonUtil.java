@@ -1,7 +1,6 @@
 package com.sic777.common.utils.json;
 
 import com.alibaba.fastjson.JSONObject;
-import com.sic777.common.utils.proguard.NoProguard;
 import com.sic777.common.utils.lang.StringUtil;
 
 import java.util.Map;
@@ -12,7 +11,6 @@ import java.util.Map;
  * @author sic777
  * @since 0.0.1
  */
-@NoProguard
 public class JsonUtil {
     private JsonUtil() {
     }

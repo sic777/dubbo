@@ -1,9 +1,0 @@
-{
-  "name": "Rest Api Document",
-  "version": "1.0.0",
-  "title": "Rest Api Document",
-  "sampleUrl": "http://localhost:8888/v2",
-  "template": {
-    "withGenerator": false
-  }
-}

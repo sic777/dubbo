@@ -5,7 +5,6 @@ import com.sic777.common.constants.CommonConstant;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.serializer.SerializerFeature;
-import com.sic777.common.utils.proguard.NoProguard;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,7 +17,6 @@ import java.util.concurrent.atomic.AtomicBoolean;
  * @author sic777
  * @since 0.0.1
  */
-@NoProguard
 public class ConfigureManager {
     private static ConfigureManager singleton = new ConfigureManager();
 

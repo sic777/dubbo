@@ -1,7 +1,6 @@
 package com.sic777.dubbo.common.spi.extend.logger;
 
 import org.apache.dubbo.common.logger.LoggerAdapter;
-import com.sic777.common.utils.proguard.NoProguard;
 import org.apache.dubbo.common.logger.Level;
 import org.apache.dubbo.common.logger.Logger;
 import org.apache.logging.log4j.LogManager;
@@ -22,7 +21,6 @@ import java.util.Map;
  * @version v1.0
  * @since 2018-06-04
  */
-@NoProguard
 public class Log4j2LoggerAdapter implements LoggerAdapter {
 
     public Log4j2LoggerAdapter() {

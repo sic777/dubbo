@@ -1,7 +1,6 @@
 package com.sic777.common.utils.generator;
 
 
-import com.sic777.common.utils.proguard.NoProguard;
 
 /**
  * <p>全球唯一ID生成器
@@ -11,7 +10,6 @@ import com.sic777.common.utils.proguard.NoProguard;
  * @author sic777
  * @since 0.0.1
  */
-@NoProguard
 public class GuidManager {
     private static final GuidManager singleton = new GuidManager();
 

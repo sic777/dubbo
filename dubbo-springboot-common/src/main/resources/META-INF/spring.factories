@@ -1,4 +1,0 @@
-#org.springframework.context.ApplicationContextInitializer=\
-#com.sic777.dubbo.springboot.common.DubboConfigurationApplicationContextInitializer
-org.springframework.context.ApplicationListener=\
-com.sic777.dubbo.springboot.common.DubboHolderListener

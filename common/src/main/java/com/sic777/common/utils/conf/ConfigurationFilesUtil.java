@@ -15,7 +15,6 @@ import java.io.FileReader;
 import java.net.URL;
 import java.util.Properties;
 
-import com.sic777.common.utils.proguard.NoProguard;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -25,7 +24,6 @@ import org.slf4j.LoggerFactory;
  * @author sic777
  * @since 0.0.1
  */
-@NoProguard
 public final class ConfigurationFilesUtil {
 
     private final static Logger logger = LoggerFactory.getLogger(ConfigurationFilesUtil.class);
