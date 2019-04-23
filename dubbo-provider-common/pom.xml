@@ -23,15 +23,4 @@
             <version>${project.parent.version}</version>
         </dependency>
     </dependencies>
-	<!--<build>-->
-		<!--<plugins>-->
-			<!--<plugin>-->
-				<!--<groupId>com.github.wvengen</groupId>-->
-				<!--<artifactId>proguard-maven-plugin</artifactId>-->
-				<!--<configuration>-->
-					<!--<proguardInclude>../proguard.conf</proguardInclude>-->
-				<!--</configuration>-->
-			<!--</plugin>-->
-		<!--</plugins>-->
-	<!--</build>-->
 </project>

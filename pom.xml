@@ -24,8 +24,6 @@
 		<module>dubbo-springboot-consumer</module>
 		<module>dubbo-springboot-provider</module>
 		<module>restful-base</module>
-		<module>restful-netty</module>
-		<module>restful-restexpress</module>
 		<module>restful-springboot</module>
 	</modules>
 
@@ -167,29 +165,20 @@
 			</dependency>
 			<dependency>
 				<groupId>org.springframework</groupId>
+				<artifactId>spring-web</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
 				<artifactId>spring-webmvc</artifactId>
 				<version>${spring.version}</version>
 			</dependency>
 
-			<!-- spring-boot-starter-web -->
+			<!-- spring-boot-starter-tomcat -->
 			<dependency>
 				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-starter-web</artifactId>
+				<artifactId>spring-boot-starter-tomcat</artifactId>
 				<version>${spring-boot.version}</version>
-				<exclusions>
-					<exclusion>
-						<groupId>org.springframework.boot</groupId>
-						<artifactId>spring-boot-starter-logging</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>org.springframework</groupId>
-						<artifactId>*</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>com.fasterxml.jackson.core</groupId>
-						<artifactId>*</artifactId>
-					</exclusion>
-				</exclusions>
 			</dependency>
 
 			<!-- spring-boot-starter -->

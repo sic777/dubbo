@@ -28,11 +28,6 @@
             <groupId>org.apache.dubbo</groupId>
             <artifactId>dubbo</artifactId>
         </dependency>
-        <!-- fast json -->
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-        </dependency>
         <!-- curator client -->
         <dependency>
             <groupId>org.apache.curator</groupId>
@@ -43,15 +38,4 @@
 		    <artifactId>curator-recipes</artifactId>
 	    </dependency>
     </dependencies>
-	<!--<build>-->
-		<!--<plugins>-->
-			<!--<plugin>-->
-				<!--<groupId>com.github.wvengen</groupId>-->
-				<!--<artifactId>proguard-maven-plugin</artifactId>-->
-				<!--<configuration>-->
-					<!--<proguardInclude>../proguard.conf</proguardInclude>-->
-				<!--</configuration>-->
-			<!--</plugin>-->
-		<!--</plugins>-->
-	<!--</build>-->
 </project>

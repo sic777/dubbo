@@ -335,24 +335,28 @@ public class HttpUtil {
      * @throws IOException
      */
     private static HttpResponse ret(CloseableHttpResponse res) throws IOException {
-        //status
-        StatusLine statusLine = res.getStatusLine();
-        //response bean
-        HttpResponse httpResponse = new HttpResponse(statusLine.getStatusCode());
-        //headers
-        for (Header header : res.getAllHeaders()) {
-            httpResponse.setHeader(header.getName(), header.getValue());
+        HttpResponse httpResponse;
+        try {
+            //status
+            StatusLine statusLine = res.getStatusLine();
+            //response bean
+            httpResponse = new HttpResponse(statusLine.getStatusCode());
+            //headers
+            for (Header header : res.getAllHeaders()) {
+                httpResponse.setHeader(header.getName(), header.getValue());
+            }
+            //entity
+            HttpEntity respEntity = res.getEntity();
+            byte[] bResult = EntityUtils.toByteArray(respEntity);
+            if (null != bResult) {
+                String inResponse = new String(bResult, "UTF-8");
+                httpResponse.setContent(inResponse);
+                logger.debug("HttpUtil response content:\r\n" + inResponse);
+                httpResponse.setContentByte(bResult);
+            }
+        } finally {
+            res.close();
         }
-        //entity
-        HttpEntity respEntity = res.getEntity();
-        byte[] bResult = EntityUtils.toByteArray(respEntity);
-        if (null != bResult) {
-            String inResponse = new String(bResult, "UTF-8");
-            httpResponse.setContent(inResponse);
-            logger.debug("HttpUtil response content:\r\n" + inResponse);
-            httpResponse.setContentByte(bResult);
-        }
-        res.close();
         return httpResponse;
     }
 }

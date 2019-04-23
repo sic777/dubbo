@@ -22,27 +22,5 @@
 			<groupId>redis.clients</groupId>
 			<artifactId>jedis</artifactId>
 		</dependency>
-		<!-- slf4j api -->
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-		</dependency>
-		<!-- fast json -->
-		<dependency>
-			<groupId>com.alibaba</groupId>
-			<artifactId>fastjson</artifactId>
-		</dependency>
 	</dependencies>
-
-	<!--<build>-->
-		<!--<plugins>-->
-			<!--<plugin>-->
-				<!--<groupId>com.github.wvengen</groupId>-->
-				<!--<artifactId>proguard-maven-plugin</artifactId>-->
-				<!--<configuration>-->
-					<!--<proguardInclude>../proguard.conf</proguardInclude>-->
-				<!--</configuration>-->
-			<!--</plugin>-->
-		<!--</plugins>-->
-	<!--</build>-->
 </project>
