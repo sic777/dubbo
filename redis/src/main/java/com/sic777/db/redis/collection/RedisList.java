@@ -144,6 +144,49 @@ public class RedisList {
         }
     }
 
+
+    /**
+     * rpoplpush的阻塞版本，这个版本有第三个参数用于设置阻塞时间，
+     * 即如果源LIST为空，那么可以阻塞监听timeout的时间，如果有元素了则执行操作。
+     *
+     * @param source
+     * @param destination
+     * @param timeout
+     * @return
+     */
+    public String brpoplpush(String source, String destination, int timeout) {
+        Jedis jedis = null;
+        try {
+            jedis = Redis.instance().getRedisPool().getResource();
+            return jedis.brpoplpush(source, destination, timeout);
+        } finally {
+            if (jedis != null) {
+                Redis.instance().closeJedis(jedis);
+            }
+        }
+    }
+
+    /**
+     * 将列表 source 中的最后一个元素(尾元素)弹出，并返回给客户端。
+     * 将 source 弹出的元素插入到列表 destination ，作为 destination 列表的的头元素。
+     *
+     * @param source
+     * @param destination
+     * @return 获取并推入的元素
+     */
+    public String rpoplpush(String source, String destination) {
+        Jedis jedis = null;
+        try {
+            jedis = Redis.instance().getRedisPool().getResource();
+            return jedis.rpoplpush(source, destination);
+        } finally {
+            if (jedis != null) {
+                Redis.instance().closeJedis(jedis);
+            }
+        }
+    }
+
+
     /**
      * 将List中的第一条记录移出List
      *
