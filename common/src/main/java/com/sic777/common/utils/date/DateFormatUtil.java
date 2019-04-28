@@ -3,6 +3,7 @@ package com.sic777.common.utils.date;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 
@@ -125,5 +126,32 @@ public class DateFormatUtil {
         return hours < 24
                 ? hours + HOUR_FLAG
                 : (hours == 24 ? 1 + DAY_FLAG : hours / 24 + DAY_FLAG + hours % 24 + HOUR_FLAG);
+    }
+
+
+    /**
+     * 获得当天0点的Unix时间
+     *
+     * @return
+     */
+    public static int getUnixTimesMorning() {
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.HOUR_OF_DAY, 0);
+        cal.set(Calendar.SECOND, 0);
+        cal.set(Calendar.MINUTE, 0);
+        cal.set(Calendar.MILLISECOND, 0);
+        return (int) (cal.getTimeInMillis() / 1000);
+    }
+
+    /**
+     * 获得当天24点的Unix时间
+     */
+    public static int getUnixTimesNight() {
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.HOUR_OF_DAY, 24);
+        cal.set(Calendar.SECOND, 0);
+        cal.set(Calendar.MINUTE, 0);
+        cal.set(Calendar.MILLISECOND, 0);
+        return (int) (cal.getTimeInMillis() / 1000);
     }
 }

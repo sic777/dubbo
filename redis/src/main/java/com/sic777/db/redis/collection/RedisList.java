@@ -39,9 +39,7 @@ public class RedisList {
             long count = jedis.llen(key);
             return count;
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 
@@ -60,9 +58,7 @@ public class RedisList {
             String status = jedis.lset(key, index, value);
             return status;
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 
@@ -107,9 +103,7 @@ public class RedisList {
             long count = jedis.linsert(key, where, pivot, value);
             return count;
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 
@@ -138,9 +132,7 @@ public class RedisList {
             byte[] value = jedis.lindex(key, index);
             return value;
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 
@@ -153,6 +145,7 @@ public class RedisList {
      * @param destination
      * @param timeout
      * @return
+     * @deprecated
      */
     public String brpoplpush(String source, String destination, int timeout) {
         Jedis jedis = null;
@@ -160,9 +153,7 @@ public class RedisList {
             jedis = Redis.instance().getRedisPool().getResource();
             return jedis.brpoplpush(source, destination, timeout);
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 
@@ -180,9 +171,7 @@ public class RedisList {
             jedis = Redis.instance().getRedisPool().getResource();
             return jedis.rpoplpush(source, destination);
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 
@@ -210,9 +199,7 @@ public class RedisList {
             byte[] value = jedis.lpop(key);
             return value;
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 
@@ -229,9 +216,7 @@ public class RedisList {
             String value = jedis.rpop(key);
             return value;
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 
@@ -260,9 +245,7 @@ public class RedisList {
             long count = jedis.rpush(key, value);
             return count;
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 
@@ -280,9 +263,7 @@ public class RedisList {
             long count = jedis.rpush(key, value);
             return count;
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 
@@ -300,9 +281,7 @@ public class RedisList {
             long count = jedis.lpush(key, value);
             return count;
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 
@@ -321,9 +300,7 @@ public class RedisList {
             List<String> list = jedis.lrange(key, start, end);
             return list;
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 
@@ -342,9 +319,7 @@ public class RedisList {
             List<byte[]> list = jedis.lrange(key, start, end);
             return list;
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 
@@ -363,9 +338,7 @@ public class RedisList {
             long count = jedis.lrem(key, c, value);
             return count;
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 
@@ -396,9 +369,7 @@ public class RedisList {
             String str = jedis.ltrim(key, start, end);
             return str;
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 

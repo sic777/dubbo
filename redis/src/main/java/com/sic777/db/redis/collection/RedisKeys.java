@@ -41,9 +41,7 @@ public class RedisKeys {
             long status = jedis.renamenx(oldKey, neyKey);
             return status;
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 
@@ -61,9 +59,7 @@ public class RedisKeys {
             String status = jedis.rename(oldKeys, neyKeys);
             return status;
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 
@@ -81,14 +77,12 @@ public class RedisKeys {
             long count = jedis.expire(key, seconds);
             return count;
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 
     /**
-         * 设置key的过期时间,它是距历元（即格林威治标准时间 1970 年 1 月 1 日的 00:00:00，格里高利历）的偏移量。
+     * 设置key的过期时间,它是距历元（即格林威治标准时间 1970 年 1 月 1 日的 00:00:00，格里高利历）的偏移量。
      *
      * @param key
      * @param unixTime
@@ -101,9 +95,7 @@ public class RedisKeys {
             long count = jedis.expireAt(key, unixTime);
             return count;
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 
@@ -119,9 +111,7 @@ public class RedisKeys {
             jedis = Redis.instance().getRedisPool().getResource();
             return jedis.ttl(key);
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 
@@ -138,9 +128,7 @@ public class RedisKeys {
             long count = jedis.persist(key);
             return count;
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 
@@ -157,9 +145,7 @@ public class RedisKeys {
             long count = jedis.del(keys);
             return count;
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 
@@ -176,9 +162,7 @@ public class RedisKeys {
             long count = jedis.del(keys);
             return count;
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 
@@ -195,9 +179,7 @@ public class RedisKeys {
             boolean exists = jedis.exists(key);
             return exists;
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 
@@ -216,9 +198,7 @@ public class RedisKeys {
             boolean exists = jedis.exists(key);
             return exists;
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 
@@ -235,9 +215,7 @@ public class RedisKeys {
             List<String> list = jedis.sort(key);
             return list;
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 
@@ -255,9 +233,7 @@ public class RedisKeys {
             List<String> list = jedis.sort(key, params);
             return list;
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 
@@ -274,9 +250,7 @@ public class RedisKeys {
             String type = jedis.type(key);
             return type;
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 
@@ -292,9 +266,7 @@ public class RedisKeys {
             Set<String> set = jedis.keys(pattern);
             return set;
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 }

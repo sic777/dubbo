@@ -30,9 +30,7 @@ public class RedisZSet {
             long s = jedis.zadd(key, score, member);
             return s;
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 
@@ -43,9 +41,7 @@ public class RedisZSet {
             long s = jedis.zadd(key, score, member);
             return s;
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 
@@ -62,9 +58,7 @@ public class RedisZSet {
             long len = jedis.zcard(key);
             return len;
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 
@@ -82,9 +76,7 @@ public class RedisZSet {
             long len = jedis.zcount(key, min, max);
             return len;
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 
@@ -116,9 +108,7 @@ public class RedisZSet {
             double s = jedis.zincrby(key, score, member);
             return s;
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 
@@ -129,9 +119,7 @@ public class RedisZSet {
             double s = jedis.zincrby(key, score, member);
             return s;
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 
@@ -150,9 +138,7 @@ public class RedisZSet {
             Set<String> set = jedis.zrange(key, start, end);
             return set;
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 
@@ -163,9 +149,7 @@ public class RedisZSet {
             Set<byte[]> set = jedis.zrange(key, start, end);
             return set;
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 
@@ -184,9 +168,7 @@ public class RedisZSet {
             Set<String> set = jedis.zrangeByScore(key, min, max);
             return set;
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 
@@ -204,9 +186,7 @@ public class RedisZSet {
             long index = jedis.zrank(key, member);
             return index;
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 
@@ -224,9 +204,7 @@ public class RedisZSet {
             long index = jedis.zrevrank(key, member);
             return index;
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 
@@ -244,9 +222,7 @@ public class RedisZSet {
             long s = jedis.zrem(key, member);
             return s;
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 
@@ -263,9 +239,7 @@ public class RedisZSet {
             long s = jedis.del(key);
             return s;
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 
@@ -284,9 +258,7 @@ public class RedisZSet {
             long s = jedis.zremrangeByRank(key, start, end);
             return s;
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 
@@ -305,9 +277,7 @@ public class RedisZSet {
             long s = jedis.zremrangeByScore(key, min, max);
             return s;
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 
@@ -326,9 +296,7 @@ public class RedisZSet {
             Set<String> set = jedis.zrevrange(key, start, end);
             return set;
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 
@@ -348,9 +316,7 @@ public class RedisZSet {
                 return score;
             return 0;
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 }

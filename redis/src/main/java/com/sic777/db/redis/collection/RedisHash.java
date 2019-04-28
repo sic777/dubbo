@@ -30,9 +30,7 @@ public class RedisHash {
             long s = jedis.hdel(key, fields);
             return s;
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 
@@ -50,9 +48,7 @@ public class RedisHash {
             long s = jedis.del(keys);
             return s;
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 
@@ -69,9 +65,7 @@ public class RedisHash {
             long s = jedis.del(key);
             return s;
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 
@@ -89,9 +83,7 @@ public class RedisHash {
             boolean s = jedis.hexists(key, field);
             return s;
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 
@@ -109,9 +101,7 @@ public class RedisHash {
             String s = jedis.hget(key, field);
             return s;
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 
@@ -122,9 +112,7 @@ public class RedisHash {
             byte[] s = jedis.hget(key, field);
             return s;
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 
@@ -141,9 +129,7 @@ public class RedisHash {
             Map<String, String> map = jedis.hgetAll(key);
             return map;
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 
@@ -161,9 +147,7 @@ public class RedisHash {
             Map<String, String> map = jedis.hgetAll(key);
             return map;
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 
@@ -177,9 +161,7 @@ public class RedisHash {
             }
             pipeline.sync();
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 
@@ -190,9 +172,7 @@ public class RedisHash {
             jedis.select(db_index);
             jedis.hmset(key, hash);
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 
@@ -211,9 +191,7 @@ public class RedisHash {
             long s = jedis.hset(key, field, value);
             return s;
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 
@@ -224,9 +202,7 @@ public class RedisHash {
             long s = jedis.hset(key.getBytes(), field.getBytes(), value);
             return s;
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 
@@ -245,9 +221,7 @@ public class RedisHash {
             long s = jedis.hsetnx(key, field, value);
             return s;
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 
@@ -264,9 +238,7 @@ public class RedisHash {
             List<String> list = jedis.hvals(key);
             return list;
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 
@@ -285,9 +257,7 @@ public class RedisHash {
             long s = jedis.hincrBy(key, field, value);
             return s;
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 
@@ -304,9 +274,7 @@ public class RedisHash {
             Set<String> set = jedis.hkeys(key);
             return set;
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 
@@ -323,9 +291,7 @@ public class RedisHash {
             long len = jedis.hlen(key);
             return len;
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 
@@ -343,9 +309,7 @@ public class RedisHash {
             List<String> list = jedis.hmget(key, fields);
             return list;
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 
@@ -356,9 +320,7 @@ public class RedisHash {
             List<byte[]> list = jedis.hmget(key, fields);
             return list;
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 
@@ -376,9 +338,7 @@ public class RedisHash {
             String s = jedis.hmset(key, map);
             return s;
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 
@@ -396,9 +356,7 @@ public class RedisHash {
             String s = jedis.hmset(key, map);
             return s;
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 

@@ -28,9 +28,7 @@ public class RedisSet {
             long s = jedis.sadd(key, members);
             return s;
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 
@@ -48,9 +46,7 @@ public class RedisSet {
             long s = jedis.sadd(keys, members);
             return s;
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 
@@ -67,9 +63,7 @@ public class RedisSet {
             long len = jedis.scard(key);
             return len;
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 
@@ -86,9 +80,7 @@ public class RedisSet {
             Set<String> set = jedis.sdiff(keys);
             return set;
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 
@@ -106,9 +98,7 @@ public class RedisSet {
             long s = jedis.sdiffstore(neyKey, keys);
             return s;
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 
@@ -125,9 +115,7 @@ public class RedisSet {
             Set<String> set = jedis.sinter(keys);
             return set;
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 
@@ -145,9 +133,7 @@ public class RedisSet {
             long s = jedis.sinterstore(neyKey, keys);
             return s;
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 
@@ -165,9 +151,7 @@ public class RedisSet {
             boolean s = jedis.sismember(key, member);
             return s;
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 
@@ -184,9 +168,7 @@ public class RedisSet {
             Set<String> set = jedis.smembers(key);
             return set;
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 
@@ -197,9 +179,7 @@ public class RedisSet {
             Set<byte[]> set = jedis.smembers(key);
             return set;
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 
@@ -220,9 +200,7 @@ public class RedisSet {
             long s = jedis.smove(srcKey, dstKey, member);
             return s;
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 
@@ -239,9 +217,7 @@ public class RedisSet {
             String s = jedis.spop(key);
             return s;
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 
@@ -259,9 +235,7 @@ public class RedisSet {
             long s = jedis.srem(key, members);
             return s;
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 
@@ -278,9 +252,7 @@ public class RedisSet {
             Set<String> set = jedis.sunion(keys);
             return set;
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 
@@ -297,9 +269,7 @@ public class RedisSet {
             long s = jedis.sunionstore(neyKey, keys);
             return s;
         } finally {
-            if (jedis != null) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 }

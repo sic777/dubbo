@@ -74,7 +74,7 @@ public final class Redis {
     }
 
     /**
-     * 获取Jedis客户端
+     * 获取Jedis客户端,记得关闭链接
      *
      * @return
      */
@@ -94,7 +94,9 @@ public final class Redis {
      * @param jedis
      */
     public void closeJedis(Jedis jedis) {
-        jedis.close();
+        if (null != jedis) {
+            jedis.close();
+        }
     }
 
     public RedisHash Hash() {

@@ -20,6 +20,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.util.ReflectionUtils;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
+import redis.clients.jedis.Jedis;
 import redis.clients.jedis.Pipeline;
 
 import javax.servlet.http.HttpServletRequest;
@@ -188,15 +189,21 @@ public class LockMethodInterceptor {
         String lockKey = this.getLockMethodKey(method, methodLock, pjpArgs, callerId);
         boolean rs = RedisDistributedLock.tryGetDistributedLock(lockKey, CLIENT_FLAG, expire);
         if (rs && methodLock.isLimit()) {
-            Pipeline pipeline = Redis.instance().getJedis().pipelined();
-            String KEY = getLimitKey(methodLock);
-            String i = Redis.instance().String().get(KEY);
-            if (i != null && Integer.parseInt(i) == methodLock.limit()) {
-                ResponseManager.instance().throwRestException(FREQUENT_OPERATION.getId(), FREQUENT_OPERATION.getMsg());
+            Jedis jedis = null;
+            try {
+                jedis = Redis.instance().getJedis();
+                Pipeline pipeline = jedis.pipelined();
+                String KEY = getLimitKey(methodLock);
+                String i = Redis.instance().String().get(KEY);
+                if (i != null && Integer.parseInt(i) == methodLock.limit()) {
+                    ResponseManager.instance().throwRestException(FREQUENT_OPERATION.getId(), FREQUENT_OPERATION.getMsg());
+                }
+                pipeline.incrBy(KEY, 1);
+                pipeline.expire(KEY, methodLock.expire());
+                pipeline.sync();
+            } finally {
+                Redis.instance().closeJedis(jedis);
             }
-            pipeline.incrBy(KEY, 1);
-            pipeline.expire(KEY, methodLock.expire());
-            pipeline.sync();
         }
         return rs;
     }

@@ -29,9 +29,7 @@ public class RedisDistributedLock {
             String result = jedis.set(lockKey, clientFlag, "NX", "EX", expireTime);
             return "OK".equals(result);
         } finally {
-            if (null != jedis) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 
@@ -51,9 +49,7 @@ public class RedisDistributedLock {
             Object result = jedis.eval(script, Collections.singletonList(lockKey), Collections.singletonList(clientFlag));
             return RELEASE_SUCCESS.equals(result);
         } finally {
-            if (null != jedis) {
-                Redis.instance().closeJedis(jedis);
-            }
+            Redis.instance().closeJedis(jedis);
         }
     }
 }
