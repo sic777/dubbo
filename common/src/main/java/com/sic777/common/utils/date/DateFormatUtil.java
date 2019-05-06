@@ -154,4 +154,38 @@ public class DateFormatUtil {
         cal.set(Calendar.MILLISECOND, 0);
         return (int) (cal.getTimeInMillis() / 1000);
     }
+
+    /**
+     * 获取dayAfter天后的12:00:00
+     *
+     * @param now
+     * @param dayAfter
+     * @return
+     */
+    public static Date getDateAfter_12_00_00(Date now, int dayAfter) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(now);
+        calendar.set(Calendar.DATE, calendar.get(Calendar.DATE) + dayAfter);
+        calendar.set(Calendar.HOUR, 0);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
+        return calendar.getTime();
+    }
+
+    /**
+     * 获取dayAfter天后的23:59:59
+     *
+     * @param now
+     * @param dayAfter
+     * @return
+     */
+    public static Date getDateAfter_23_59_59(Date now, int dayAfter) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(now);
+        calendar.set(Calendar.DATE, calendar.get(Calendar.DATE) + dayAfter);
+        calendar.set(Calendar.HOUR, 11);
+        calendar.set(Calendar.MINUTE, 59);
+        calendar.set(Calendar.SECOND, 59);
+        return calendar.getTime();
+    }
 }
