@@ -18,7 +18,7 @@ import java.util.AbstractQueue;
 public class QueueThread extends Thread {
     private final int index;
     private final String uniqueName;
-    private final AbstractQueue<AbstractQueueSic777> abstractQueue;
+    private final AbstractQueue<? extends AbstractQueueSic777> abstractQueue;
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     public QueueThread(int index, String uniqueName, AbstractQueue<AbstractQueueSic777> abstractQueue) {
@@ -37,8 +37,10 @@ public class QueueThread extends Thread {
                         QueueProcessSpi[] processSpis = SpiManager.instance().getQueueProcessSpi();
                         for (int i = 0, len = processSpis.length; i < len; i++) {
                             QueueProcessSpi spi = processSpis[i];
-                            if (queue.getSpiKey() == spi.key()) {
-                                spi.process(queue);
+                            if (queue != null) {
+                                if (spi.key().equals(queue.getSpiKey())) {
+                                    spi.process(queue);
+                                }
                             }
                         }
                     } catch (Throwable e) {
