@@ -20,11 +20,20 @@ public class QueueThread extends Thread {
     private final String uniqueName;
     private final AbstractQueue<? extends AbstractQueueSic777> abstractQueue;
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    private final QueueProcessSpi[] processSpis;
 
     public QueueThread(int index, String uniqueName, AbstractQueue<AbstractQueueSic777> abstractQueue) {
         this.index = index;
         this.uniqueName = uniqueName;
         this.abstractQueue = abstractQueue;
+        this.processSpis = SpiManager.instance().getQueueProcessSpi();
+    }
+
+    public QueueThread(int index, String uniqueName, AbstractQueue<AbstractQueueSic777> abstractQueue, QueueProcessSpi... processSpis) {
+        this.index = index;
+        this.uniqueName = uniqueName;
+        this.abstractQueue = abstractQueue;
+        this.processSpis = processSpis;
     }
 
     @Override
@@ -34,7 +43,6 @@ public class QueueThread extends Thread {
                 while (abstractQueue.peek() != null) {
                     try {
                         AbstractQueueSic777 queue = abstractQueue.poll();
-                        QueueProcessSpi[] processSpis = SpiManager.instance().getQueueProcessSpi();
                         for (int i = 0, len = processSpis.length; i < len; i++) {
                             QueueProcessSpi spi = processSpis[i];
                             if (queue != null) {

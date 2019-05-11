@@ -2,6 +2,7 @@ package com.sic777.common.thread.pool;
 
 import com.sic777.common.enums.QueueType;
 import com.sic777.common.queue.AbstractQueueSic777;
+import com.sic777.common.spi.QueueProcessSpi;
 import com.sic777.common.thread.QueueThread;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -48,6 +49,22 @@ public class QueueThreadPoolManager {
      * @see com.sic777.common.enums.QueueType
      */
     public void init(int threadSize, String uniqueName, QueueType queueType, Integer capacity) {
+        init(threadSize, uniqueName, queueType, capacity, new QueueProcessSpi[]{});
+    }
+
+    /**
+     * 初始化队列
+     *
+     * @param threadSize       线程数
+     * @param uniqueName       唯一标识
+     * @param queueType        队列类型
+     * @param capacity         队列大小
+     *                         在ConcurrentLinkedQueue无效
+     *                         在ArrayBlockingQueue中必填,且大于0
+     *                         在LinkedBlockingQueue选填,为0或者为null时,默认为Integer.MAX_VALUE
+     * @param queueProcessSpis spi实现类
+     */
+    public void init(int threadSize, String uniqueName, QueueType queueType, Integer capacity, QueueProcessSpi... queueProcessSpis) {
         if (threadMap.containsKey(uniqueName)) {
             throw new IllegalStateException("queue thread pool already initialized,name:" + uniqueName);
         }
@@ -60,7 +77,9 @@ public class QueueThreadPoolManager {
 
         for (int i = 0; i < threadSize; i++) {
             abstractQueues[i] = createQueue(queueType, null != capacity ? capacity : 0);
-            threads[i] = new QueueThread(i, uniqueName, abstractQueues[i]);
+            threads[i] = queueProcessSpis != null && queueProcessSpis.length > 0
+                    ? new QueueThread(i, uniqueName, abstractQueues[i], queueProcessSpis)
+                    : new QueueThread(i, uniqueName, abstractQueues[i]);
             threads[i].start();
         }
 
