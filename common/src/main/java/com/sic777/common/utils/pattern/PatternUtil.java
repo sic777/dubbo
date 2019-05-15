@@ -60,7 +60,7 @@ public class PatternUtil {
     }
 
     /**
-     * 校验密码
+     * 校验密码,由字母和数字组成
      *
      * @param password 密码
      * @param min      最小位数
@@ -68,9 +68,7 @@ public class PatternUtil {
      * @return
      */
     public static boolean checkPassword(String password, int min, int max) {
-        String minS = String.valueOf(min - 1);
-        String maxS = String.valueOf(max - 1);
-        String regex = "^[a-zA-Z][a-zA-Z0-9_]{" + minS + "," + maxS + "}+$";
+        String regex = "^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{" + min + "," + max + "}$";
         return Pattern.matches(regex, password);
     }
 }
