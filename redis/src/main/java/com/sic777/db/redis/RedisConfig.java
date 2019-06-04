@@ -11,7 +11,7 @@ import com.sic777.common.utils.conf.ConfigureManager;
  * @since 2018-02-11 10:58
  */
 public class RedisConfig {
-    private final String ip;
+    private final String host;
     private final int port;
     private final String pass;
     private final int maxTotal;
@@ -22,7 +22,7 @@ public class RedisConfig {
     private final boolean testWhileIdle;
 
     public RedisConfig() {
-        this.ip = ConfigureManager.instance().getString(RedisConstant.HOST);
+        this.host = ConfigureManager.instance().getString(RedisConstant.HOST);
         this.port = ConfigureManager.instance().getInt(RedisConstant.PORT);
         this.pass = ConfigureManager.instance().getString(RedisConstant.PASSWORD);
         this.maxTotal = ConfigureManager.instance().getInt(RedisConstant.POOL_MAX_TOTAL);
@@ -33,8 +33,8 @@ public class RedisConfig {
         this.testWhileIdle = ConfigureManager.instance().getBool(RedisConstant.POOL_TEST_WHILE_IDLE);
     }
 
-    public RedisConfig(String ip, int port, String pass, int maxTotal, int maxIdle, int maxWaitMillis, boolean testOnBorrow, boolean testOnReturn, boolean testWhileIdle) {
-        this.ip = ip;
+    public RedisConfig(String host, int port, String pass, int maxTotal, int maxIdle, int maxWaitMillis, boolean testOnBorrow, boolean testOnReturn, boolean testWhileIdle) {
+        this.host = host;
         this.port = port;
         this.pass = pass;
         this.maxTotal = maxTotal;
@@ -45,8 +45,8 @@ public class RedisConfig {
         this.testWhileIdle = testWhileIdle;
     }
 
-    public String getIp() {
-        return ip;
+    public String getHost() {
+        return host;
     }
 
     public int getPort() {

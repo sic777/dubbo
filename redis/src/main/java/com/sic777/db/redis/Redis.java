@@ -60,7 +60,7 @@ public final class Redis {
         config.setTestOnBorrow(redisConfig.isTestOnBorrow());
         config.setTestOnReturn(redisConfig.isTestOnReturn());
         config.setTestWhileIdle(redisConfig.isTestWhileIdle());
-        jedisPool = new JedisPool(config, redisConfig.getIp(), redisConfig.getPort(), redisConfig.getMaxWaitMillis(), redisConfig.getPass());
+        jedisPool = new JedisPool(config, redisConfig.getHost(), redisConfig.getPort(), redisConfig.getMaxWaitMillis(), redisConfig.getPass());
     }
 
 
