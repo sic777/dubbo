@@ -39,14 +39,14 @@ public abstract class Mongo {
 
     protected Mongo(String dbName) {
         mongoDatabase = mongoClient.getDatabase(dbName);
-        LoggerHelper.instance().info("init mongo database : " + dbName);
+        LoggerHelper.info("init mongo database : " + dbName);
     }
 
     /**
      * 初始化mongo db
      */
     public static void init() {
-        LoggerHelper.instance().info("init mongo ...");
+        LoggerHelper.info("init mongo ...");
         MongoClientOptions.Builder potionBuilder = MongoClientOptions.builder();
         potionBuilder.connectionsPerHost(MongoConfig.CONNECTIONS_PER_HOST);
         potionBuilder.threadsAllowedToBlockForConnectionMultiplier(MongoConfig.THREADS_ALLOWED_TO_BLOCK_FOR_CONNECTION_MULTIPLIER);

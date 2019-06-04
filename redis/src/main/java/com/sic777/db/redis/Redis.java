@@ -43,7 +43,7 @@ public final class Redis {
      */
     public void init() {
         if (isInit.compareAndSet(false, true)) {
-            LoggerHelper.instance().info("init redis ...");
+            LoggerHelper.info("init redis ...");
             redisConfig = new RedisConfig();
             initPool();
         }
@@ -83,7 +83,7 @@ public final class Redis {
         try {
             jedis = getRedisPool().getResource();
         } catch (Exception e) {
-            LoggerHelper.instance().error("sorry,redis connect error !!", e);
+            LoggerHelper.error("sorry,redis connect error !!", e);
         }
         return jedis;
     }

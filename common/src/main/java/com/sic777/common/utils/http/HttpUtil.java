@@ -313,11 +313,12 @@ public class HttpUtil {
         if (null != params) {
             int i = 0;
             int size = params.size() - 1;
+            param.append("?");
             for (String key : params.keySet()) {
                 if (i == size) {
-                    param.append("?").append(key).append("=").append(params.get(key));
+                    param.append(key).append("=").append(params.get(key));
                 } else {
-                    param.append("?").append(key).append("=").append(params.get(key)).append("&");
+                    param.append(key).append("=").append(params.get(key)).append("&");
                 }
                 i++;
             }

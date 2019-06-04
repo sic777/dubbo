@@ -13,57 +13,48 @@ import org.slf4j.LoggerFactory;
 
 public class LoggerHelper {
     private static final Logger logger = LoggerFactory.getLogger(LoggerHelper.class);
-    private static final LoggerHelper singleton = new LoggerHelper();
 
-    private LoggerHelper() {
-
-    }
-
-    public static LoggerHelper instance() {
-        return singleton;
-    }
-
-    public void debug(String msg) {
+    public static void debug(String msg) {
         logger.debug(msg);
     }
 
-    public void info(String msg) {
+    public static void info(String msg) {
         logger.info(msg);
     }
 
-    public void warn(String msg) {
+    public static void warn(String msg) {
         logger.warn(msg);
     }
 
-    public void debug(String format, Object... arguments) {
+    public static void debug(String format, Object... arguments) {
         logger.debug(format, arguments);
 
     }
 
 
-    public void info(String format, Object... arguments) {
+    public static void info(String format, Object... arguments) {
         logger.info(format, arguments);
 
     }
 
 
-    public void warn(String format, Object... arguments) {
+    public static void warn(String format, Object... arguments) {
         logger.warn(format, arguments);
 
     }
 
 
-    public void error(String msg, Throwable t) {
+    public static void error(String msg, Throwable t) {
         logger.error(msg, t);
 
     }
 
-    public void error(String format, Object... arguments) {
+    public static void error(String format, Object... arguments) {
         logger.error(format, arguments);
 
     }
 
-    public void error(Throwable t, String format, Object... arguments) {
+    public static void error(Throwable t, String format, Object... arguments) {
         logger.error(format, arguments, t);
 
     }

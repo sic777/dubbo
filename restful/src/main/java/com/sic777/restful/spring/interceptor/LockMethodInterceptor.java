@@ -55,7 +55,7 @@ public class LockMethodInterceptor {
 
         if (StringUtil.isEmpty(lock.value())) {
             String msg = "@MethodLock prefix error.";
-            LoggerHelper.instance().error(msg);
+            LoggerHelper.error(msg);
             ResponseManager.instance().throwRest503Exception(new Exception(msg));
         }
 
@@ -105,7 +105,7 @@ public class LockMethodInterceptor {
         if (methodLock.isLimit()) {
             if (methodLock.timeUnit() != TimeUnit.SECONDS) {
                 String msg = "Time unit must be SECONDS";
-                LoggerHelper.instance().error(msg);
+                LoggerHelper.error(msg);
                 ResponseManager.instance().throwRest503Exception(new Exception(msg));
             }
             return getLocalKey(methodLock, null, callerId);
@@ -124,7 +124,7 @@ public class LockMethodInterceptor {
                 String[] lockParams = annotation.lockParams();
                 if (lockParams.length == 0) {
                     String msg = "No values of lockParams was found.";
-                    LoggerHelper.instance().error(msg);
+                    LoggerHelper.error(msg);
                     ResponseManager.instance().throwRest503Exception(new Exception(msg));
                 }
                 JSONObject js = (JSONObject) obj;
@@ -183,7 +183,7 @@ public class LockMethodInterceptor {
                 break;
             default:
                 String msg = "Unsupported time unit.";
-                LoggerHelper.instance().error(msg);
+                LoggerHelper.error(msg);
                 ResponseManager.instance().throwRest503Exception(new Exception(msg));
         }
         String lockKey = this.getLockMethodKey(method, methodLock, pjpArgs, callerId);
