@@ -123,7 +123,7 @@ public abstract class Mongo {
             for (Map.Entry<String, Object> entry : order.entrySet()) {
                 String key = fieldMap.get(entry.getKey()).first;
                 String value = entry.getValue().toString();
-                orderBson.append(key, MongoQuery.OrderType.fromString(value).nosql());// TODO key可能需要根据field转换
+                orderBson.append(key, MongoQuery.OrderType.fromString(value).nosql());
             }
         }
         Set<String> filters = new HashSet<>();
