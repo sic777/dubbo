@@ -121,7 +121,7 @@ public abstract class Mongo {
         JSONObject order = body.getJSONObject("order");
         if (order != null) {
             for (Map.Entry<String, Object> entry : order.entrySet()) {
-                String key = entry.getKey();
+                String key = fieldMap.get(entry.getKey()).first;
                 String value = entry.getValue().toString();
                 orderBson.append(key, MongoQuery.OrderType.fromString(value).nosql());// TODO key可能需要根据field转换
             }

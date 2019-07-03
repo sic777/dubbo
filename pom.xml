@@ -71,6 +71,7 @@
 		<maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
 		<maven-source-plugin.version>3.0.1</maven-source-plugin.version>
 		<maven-javadoc-plugin.version>2.10.4</maven-javadoc-plugin.version>
+		<wagon-ssh.version>2.10</wagon-ssh.version>
 	</properties>
 
 
@@ -426,5 +427,21 @@
 				</executions>
 			</plugin>
 		</plugins>
+		<!-- ssh -->
+		<extensions>
+			<extension>
+				<groupId>org.apache.maven.wagon</groupId>
+				<artifactId>wagon-ssh</artifactId>
+				<version>${wagon-ssh.version}</version>
+			</extension>
+		</extensions>
 	</build>
+
+
+	<distributionManagement>
+		<repository>
+			<id>keke</id>
+			<url>scp://47.75.88.33/data/maven_resp</url>
+		</repository>
+	</distributionManagement>
 </project>
