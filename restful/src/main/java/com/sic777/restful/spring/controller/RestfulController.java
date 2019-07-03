@@ -1,5 +1,6 @@
 package com.sic777.restful.spring.controller;
 
+import com.sic777.common.utils.lang.StringUtil;
 import com.sic777.restful.base.constants.RestConstants;
 import com.sic777.restful.base.controller.SuperRestfulController;
 import com.alibaba.fastjson.JSONObject;
@@ -18,6 +19,57 @@ import java.io.PrintWriter;
  * @since 2018-04-11
  */
 public abstract class RestfulController extends SuperRestfulController {
+    /**
+     * 当前页码标识
+     */
+    private final static String PAGE_NO_FLAG = "pageNo";
+    /**
+     * 每页数量标识
+     */
+    private final static String PAGE_SIZE_FLAG = "pageSize";
+    /**
+     * 默认当前页码
+     */
+    private final static int DEFAULT_PAGE_NO = 1;
+    /**
+     * 默认每页数据量
+     */
+    private final static int DEFAULT_PAGE_SIZE = 10;
+    /**
+     * 分页最大查询数据量
+     */
+    private final static int MAX_PAGE_SIZE = 1000;
+
+    /**
+     * get page number
+     *
+     * @return
+     */
+    protected final int getPageNo() {
+        String pageNo = this.getParameter(PAGE_NO_FLAG);
+        if (StringUtil.isEmpty(pageNo)) {
+            return DEFAULT_PAGE_NO;
+        }
+        int pageNoInt = Integer.parseInt(pageNo);
+        return pageNoInt <= DEFAULT_PAGE_NO ? DEFAULT_PAGE_NO : pageNoInt;
+    }
+
+    /**
+     * get page size
+     *
+     * @return
+     */
+    protected final int getPageSize() {
+        String pageSize = this.getParameter(PAGE_SIZE_FLAG);
+        if (StringUtil.isEmpty(pageSize)) {
+            return DEFAULT_PAGE_SIZE;
+        }
+        int pageSizeInt = Integer.parseInt(pageSize);
+        if (pageSizeInt <= 0) {
+            return DEFAULT_PAGE_SIZE;
+        }
+        return pageSizeInt > MAX_PAGE_SIZE ? MAX_PAGE_SIZE : pageSizeInt;
+    }
 
     @Override
     protected final JSONObject getAccessTokenData() {
