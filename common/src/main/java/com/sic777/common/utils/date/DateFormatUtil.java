@@ -202,4 +202,35 @@ public class DateFormatUtil {
         calendar.set(Calendar.SECOND, 59);
         return calendar.getTime();
     }
+
+    /**
+     * 获取当前为本年的第几个月
+     *
+     * @return
+     */
+    public static int getThisWeekOfYear() {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setFirstDayOfWeek(Calendar.MONDAY);
+        calendar.setTime(new Date());
+        return calendar.get(Calendar.WEEK_OF_YEAR);
+    }
+
+    /**
+     * 获取当前年份
+     *
+     * @return
+     */
+    public static int getThisYear() {
+        Calendar calendar = Calendar.getInstance();
+        return calendar.get(Calendar.YEAR);
+    }
+
+    /**
+     * 获取当前年份+当前为本年的第几个月
+     *
+     * @return 209929
+     */
+    public static String getThisYearWeek() {
+        return +getThisYear() + "" + getThisWeekOfYear();
+    }
 }
