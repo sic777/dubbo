@@ -170,6 +170,23 @@ public class DateFormatUtil {
     }
 
     /**
+     * 获取dayAfter天后的00:00:00
+     *
+     * @param now
+     * @param dayAfter
+     * @return
+     */
+    public static Date getDateAfter_00_00_00(Date now, int dayAfter) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(now);
+        calendar.set(Calendar.DATE, calendar.get(Calendar.DATE) + dayAfter - 1);
+        calendar.set(Calendar.HOUR, 12);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
+        return calendar.getTime();
+    }
+
+    /**
      * 获取dayAfter天后的12:00:00
      *
      * @param now
