@@ -350,7 +350,7 @@ public class ResponseManager {
      * @throws AbstractRestException
      */
     public final void throwRest503Exception(Throwable throwable) throws AbstractRestException {
-        this.throwRestException(new Rest503Exception(throwable));
+        throw new Rest503Exception(throwable);
     }
 
     /**
@@ -376,33 +376,17 @@ public class ResponseManager {
         ExceptionType exceptionType = ExceptionType.parse(code);
         switch (exceptionType) {
             case EXCEPTION_200:
-                this.throwRestException(new Rest200Exception(code, message));
-                break;
+                throw new Rest200Exception(code, message);
             case EXCEPTION_400:
-                this.throwRestException(new Rest400Exception(code, message));
-                break;
+                throw new Rest400Exception(code, message);
             case EXCEPTION_403:
-                this.throwRestException(new Rest403Exception(code, message));
-                break;
+                throw new Rest403Exception(code, message);
             case EXCEPTION_404:
-                this.throwRestException(new Rest404Exception(code, message));
-                break;
+                throw new Rest404Exception(code, message);
             case EXCEPTION_405:
-                this.throwRestException(new Rest405Exception(code, message));
-                break;
+                throw new Rest405Exception(code, message);
             default:
-                this.throwRestException(new Rest503Exception(throwable));
-                break;
+                throw new Rest503Exception(throwable);
         }
-    }
-
-    /**
-     * 抛出Restful异常
-     *
-     * @param restException
-     * @throws AbstractRestException
-     */
-    private void throwRestException(AbstractRestException restException) throws AbstractRestException {
-        throw restException;
     }
 }
