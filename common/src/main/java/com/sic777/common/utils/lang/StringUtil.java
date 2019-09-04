@@ -2,6 +2,7 @@ package com.sic777.common.utils.lang;
 
 
 import java.net.URLDecoder;
+import java.util.Random;
 
 /**
  * <p>字符串工具类
@@ -240,6 +241,41 @@ public class StringUtil {
                 sb.append("0");
             }
             sb.append(Long.toString((int) bytes[i] & 0xff, 16));
+        }
+        return sb.toString();
+    }
+
+    /**
+     * 根据指定长度生成字母和数字的随机数,首个字符为字母
+     *
+     * @param length
+     * @return
+     */
+    public static String createRandomCharData(int length) {
+        //0~9的ASCII为48~57
+        //A~Z的ASCII为65~90
+        //a~z的ASCII为97~122
+        StringBuilder sb = new StringBuilder();
+        Random rand = new Random();//随机用以下三个随机生成器
+        Random randData = new Random();
+        int data;
+        //首字母英文
+        data = randData.nextInt(26) + 97;//保证只会产生97~122之间的整数
+        sb.append((char) data);
+
+        for (int i = 0; i < length - 1; i++) {
+            int index = rand.nextInt(2);
+            //目的是随机选择生成数字，大小写字母
+            switch (index) {
+                case 0:
+                    data = randData.nextInt(10);//仅仅会生成0~9
+                    sb.append(data);
+                    break;
+                case 1:
+                    data = randData.nextInt(26) + 97;//保证只会产生97~122之间的整数
+                    sb.append((char) data);
+                    break;
+            }
         }
         return sb.toString();
     }
