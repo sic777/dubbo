@@ -179,7 +179,7 @@ public class DateFormatUtil {
     public static Date getDateAfterHour(Date now, int hourAfter) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(now);
-        calendar.set(Calendar.HOUR, calendar.get(Calendar.HOUR) + hourAfter);
+        calendar.set(Calendar.HOUR_OF_DAY, calendar.get(Calendar.HOUR_OF_DAY) + hourAfter);
         return calendar.getTime();
     }
 
@@ -193,8 +193,8 @@ public class DateFormatUtil {
     public static Date getDateAfter_00_00_00(Date now, int dayAfter) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(now);
-        calendar.set(Calendar.DATE, calendar.get(Calendar.DATE) + dayAfter - 1);
-        calendar.set(Calendar.HOUR, 12);
+        calendar.set(Calendar.DATE, calendar.get(Calendar.DATE) + dayAfter);
+        calendar.set(Calendar.HOUR_OF_DAY, 0);
         calendar.set(Calendar.MINUTE, 0);
         calendar.set(Calendar.SECOND, 0);
         return calendar.getTime();
@@ -211,7 +211,7 @@ public class DateFormatUtil {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(now);
         calendar.set(Calendar.DATE, calendar.get(Calendar.DATE) + dayAfter);
-        calendar.set(Calendar.HOUR, 0);
+        calendar.set(Calendar.HOUR_OF_DAY, 12);
         calendar.set(Calendar.MINUTE, 0);
         calendar.set(Calendar.SECOND, 0);
         return calendar.getTime();
@@ -228,7 +228,7 @@ public class DateFormatUtil {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(now);
         calendar.set(Calendar.DATE, calendar.get(Calendar.DATE) + dayAfter);
-        calendar.set(Calendar.HOUR, 11);
+        calendar.set(Calendar.HOUR_OF_DAY, 23);
         calendar.set(Calendar.MINUTE, 59);
         calendar.set(Calendar.SECOND, 59);
         return calendar.getTime();
