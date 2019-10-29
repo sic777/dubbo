@@ -60,7 +60,7 @@
 		<fastjson.version>1.2.31</fastjson.version>
 		<httpclient.version>4.5.3</httpclient.version>
 		<commons-beanutils.version>1.9.3</commons-beanutils.version>
-		<netty.version>4.1.1.Final</netty.version>
+		<netty.version>4.1.42.Final</netty.version>
 
 		<!-- plugins version -->
 		<maven-jar-plugin.version>2.4</maven-jar-plugin.version>
