@@ -46,7 +46,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
 		<!-- jars version -->
-		<junit.version>4.12</junit.version>
+		<junit.version>4.13.1</junit.version>
 		<mongo.version>3.4.2</mongo.version>
 		<jedis.version>2.9.0</jedis.version>
 		<druid.version>1.0.21</druid.version>
